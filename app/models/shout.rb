@@ -7,7 +7,7 @@ class Shout < ActiveRecord::Base
 
   attr_accessible   :description, :lat, :lng
 
-  validates :description, presence: true, length: { maximum: 50 }
+  validates :description, presence: true, length: { maximum: 140 }
   validates :lat,         presence: true
   validates :lng,         presence: true
 end

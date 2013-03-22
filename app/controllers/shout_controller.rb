@@ -1,5 +1,6 @@
 class ShoutsController < ApplicationController
   def create
+    Rails.logger.info "BAB #{params}"
     shout = Shout.new(params[:shout])
     shout.save
     render :json => shout
