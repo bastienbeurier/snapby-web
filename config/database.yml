@@ -35,8 +35,8 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: street_shout_production
+  database: streetshoutdb
   pool: 5
-  username: root
-  password:
+  username: streetshout
+  password: isthisit99
   socket: /tmp/mysql.sock
