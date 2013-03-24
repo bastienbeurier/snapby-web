@@ -1,5 +1,5 @@
 class ShoutsController < ApplicationController
-  def create
+  def create_shout
     Rails.logger.info "BAB #{params}"
     shout = Shout.new(params[:shout])
     shout.save
