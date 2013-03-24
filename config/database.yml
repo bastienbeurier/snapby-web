@@ -35,7 +35,7 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: StreetShoutDB
+  database: streetshoutproduction
   pool: 5
   username: streetshout
   password: isthisit99
