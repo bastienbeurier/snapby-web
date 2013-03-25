@@ -9,6 +9,8 @@ class ShoutsController < ApplicationController
   def zone_shouts
     Rails.logger.info "BAB index params: #{params}"
     shouts = Shout.within(:within => params[:radius], :origin => [params[:lat], params[:lng]])
+    Rails.logger.info "BAB shouts: #{shouts}"
+    Rails.logger.info "BAB length: #{shouts.length}"
     render :json => shouts
   end
 end
