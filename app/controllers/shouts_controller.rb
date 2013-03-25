@@ -3,7 +3,7 @@ class ShoutsController < ApplicationController
     Rails.logger.info "BAB create params: #{params}"
     shout = Shout.new(lat: params[:lat], lng: params[:lng], description: params[:description])
     success = shout.save
-    render :json => shout
+    format.json { render :json => shout.to_json }
   end
 
   def zone_shouts
@@ -11,7 +11,7 @@ class ShoutsController < ApplicationController
     shouts = Shout.within(:within => params[:radius], :origin => [params[:lat], params[:lng]])
     Rails.logger.info "BAB shouts: #{shouts}"
     Rails.logger.info "BAB length: #{shouts.length}"
-    render :json => shouts
+    format.json { render :json => shouts.to_json }
   end
 end
   
