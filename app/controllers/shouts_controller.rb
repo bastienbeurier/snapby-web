@@ -5,7 +5,7 @@ class ShoutsController < ApplicationController
     success = shout.save
     format.json { render :json => shout, status: :create }
     respond_to do |format|
-      format.json { render json: shouts, status: :ok }
+      format.json { render json: {result: shout, status: 201} }
     end
   end
 
@@ -13,7 +13,7 @@ class ShoutsController < ApplicationController
     Rails.logger.info "BAB index params: #{params}"
     shouts = Shout.within(:within => params[:radius], :origin => [params[:lat], params[:lng]])
     respond_to do |format|
-      format.json { render json: shouts, status: :ok }
+      format.json { render json: {result: shouts, status: 200} }
     end
   end
 end
