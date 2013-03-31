@@ -16,7 +16,7 @@ class ShoutsController < ApplicationController
   def zone_shouts
     Rails.logger.info "BAB index params: #{params}"
 
-    shouts = Shout.within(:within => params[:radius], :origin => [params[:lat], params[:lng]])
+    shouts = Shout.within(:within => params[:radius], :origin => [params[:lat], params[:lng]]).limit(100)
     
     respond_to do |format|
       format.json { render json: {result: shouts, status: 200} }
