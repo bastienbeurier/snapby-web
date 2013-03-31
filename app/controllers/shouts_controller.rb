@@ -9,6 +9,7 @@ class ShoutsController < ApplicationController
 
     respond_to do |format|
       format.json { render json: {result: shout, status: 201} }
+      format.html { render shout.to_json }
     end
   end
 
@@ -20,6 +21,7 @@ class ShoutsController < ApplicationController
     
     respond_to do |format|
       format.json { render json: {result: shouts, status: 200} }
+      format.html { render shouts.to_json }
     end
   end
 end
