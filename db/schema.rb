@@ -11,14 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130318004921) do
+ActiveRecord::Schema.define(:version => 20130409012235) do
 
   create_table "shouts", :force => true do |t|
     t.float    "lat"
     t.float    "lng"
     t.string   "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "display_name"
+    t.string   "source"
   end
 
 end

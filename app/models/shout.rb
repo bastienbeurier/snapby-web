@@ -10,4 +10,5 @@ class Shout < ActiveRecord::Base
   validates :description, presence: true, length: { maximum: 140 }
   validates :lat,         presence: true
   validates :lng,         presence: true
+  validates :source,      presence: true
 end
