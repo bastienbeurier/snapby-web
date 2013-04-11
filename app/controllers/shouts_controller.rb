@@ -20,6 +20,8 @@ class ShoutsController < ApplicationController
 
     shouts = Shout.within(:within => params[:radius], :origin => [params[:lat], params[:lng]]).where("created_at >= :one_day_ago", {:one_day_ago => one_day_ago}).limit(100)
     
+    Rails.logger.info "BAB zone_shouts response: #{shouts}"
+
     respond_to do |format|
       format.json { render json: {result: shouts, status: 200} }
       format.html { render json: shouts }
