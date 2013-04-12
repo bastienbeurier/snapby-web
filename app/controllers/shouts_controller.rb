@@ -4,7 +4,7 @@ class ShoutsController < ApplicationController
   def create
     Rails.logger.info "BAB create params: #{params}"
     
-    shout = Shout.new(lat: params[:lat], lng: params[:lng], description: params[:description], source: params[:native])
+    shout = Shout.new(lat: params[:lat], lng: params[:lng], description: params[:description], source: "native")
     success = shout.save
 
     respond_to do |format|
