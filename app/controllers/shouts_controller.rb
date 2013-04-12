@@ -4,7 +4,7 @@ class ShoutsController < ApplicationController
   def create
     Rails.logger.info "BAB create params: #{params}"
     
-    shout = Shout.new(lat: params[:lat], lng: params[:lng], description: params[:description])
+    shout = Shout.new(lat: params[:lat], lng: params[:lng], description: params[:description], source: params[:native])
     success = shout.save
 
     respond_to do |format|
@@ -19,8 +19,6 @@ class ShoutsController < ApplicationController
     one_day_ago = Time.now - 1.day
 
     shouts = Shout.within(:within => params[:radius], :origin => [params[:lat], params[:lng]]).where("created_at >= :one_day_ago", {:one_day_ago => one_day_ago}).limit(100)
-    
-    Rails.logger.info "BAB zone_shouts response: #{shouts}"
 
     respond_to do |format|
       format.json { render json: {result: shouts, status: 200} }
