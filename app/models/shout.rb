@@ -5,7 +5,7 @@ class Shout < ActiveRecord::Base
                     :lat_column_name => :lat,
                     :lng_column_name => :lng
 
-  attr_accessible   :description, :lat, :lng
+  attr_accessible   :description, :lat, :lng, :source
 
   validates :description, presence: true, length: { maximum: 140 }
   validates :lat,         presence: true
