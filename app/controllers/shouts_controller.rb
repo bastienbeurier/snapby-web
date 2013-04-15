@@ -18,7 +18,7 @@ class ShoutsController < ApplicationController
     Rails.logger.info "BAB index params: #{params}"
     one_day_ago = Time.now - 1.day
 
-    shouts = Shout.within(params[:radius].to_i, :origin => [params[:lat], params[:lng]]).where("created_at >= :one_day_ago", {:one_day_ago => one_day_ago}).limit(100)
+    shouts = Shout.where("created_at >= :one_day_ago", {:one_day_ago => one_day_ago}).within(params[:radius].to_i, :origin => [params[:lat], params[:lng]]).limit(100)
 
     respond_to do |format|
       format.json { render json: {result: shouts, status: 200} }
