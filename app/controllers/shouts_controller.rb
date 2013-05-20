@@ -3,7 +3,7 @@ class ShoutsController < ApplicationController
   #Create a shout
   def create
     Rails.logger.info "BAB create params: #{params}"
-    
+
     shout = Shout.new(lat: params[:lat], lng: params[:lng], display_name: params[:user_name], description: params[:description], source: "native")
     success = shout.save
 
@@ -43,5 +43,8 @@ class ShoutsController < ApplicationController
       format.json { render json: {result: shouts, status: 200} }
       format.html { render json: shouts }
     end
+  end
+
+  def reload_heroku
   end
 end
