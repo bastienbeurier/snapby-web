@@ -16,12 +16,12 @@ class ShoutsController < ApplicationController
   #Retrieve shouts within  a zone
   def zone_shouts
     Rails.logger.info "BAB zone_shouts params: #{params}"
-    one_day_ago = Time.now - 1.day
+    max_age = Time.now - 4.hours
 
     if params[:notwitter].to_i == 1
-      shouts = Shout.where("source = 'native' AND created_at >= :one_day_ago", {:one_day_ago => one_day_ago}).within(params[:radius].to_i, :origin => [params[:lat], params[:lng]]).limit(100)
+      shouts = Shout.where("source = 'native' AND created_at >= :max_age", {:max_age => max_age}).within(params[:radius].to_i, :origin => [params[:lat], params[:lng]]).limit(100)
     else 
-      shouts = Shout.where("created_at >= :one_day_ago", {:one_day_ago => one_day_ago}).within(params[:radius].to_i, :origin => [params[:lat], params[:lng]]).limit(100)
+      shouts = Shout.where("created_at >= :max_age", {:max_age => max_age}).within(params[:radius].to_i, :origin => [params[:lat], params[:lng]]).limit(100)
     end
 
     respond_to do |format|
@@ -37,7 +37,9 @@ class ShoutsController < ApplicationController
     per_page = params[:per_page] ? params[:per_page] : 20
     page = params[:page] ? params[:page] : 1
 
-    shouts = Shout.where("source = 'native'").paginate(page: page, per_page: per_page).order('id DESC')
+    max_age = Time.now - 4.hours
+
+    shouts = Shout.where("source = 'native' AND created_at >= :max_age", {:max_age => max_age}).paginate(page: page, per_page: per_page).order('id DESC')
 
     respond_to do |format|
       format.json { render json: {result: shouts, status: 200} }
