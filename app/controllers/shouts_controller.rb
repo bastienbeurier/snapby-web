@@ -16,7 +16,7 @@ class ShoutsController < ApplicationController
   #Retrieve shouts within  a zone
   def zone_shouts
     Rails.logger.info "BAB zone_shouts params: #{params}"
-    max_age = Time.now - 4.hours
+    max_age = Time.now - 24.hours
 
     if params[:notwitter].to_i == 1
       shouts = Shout.where("source = 'native' AND created_at >= :max_age", {:max_age => max_age}).within(params[:radius].to_i, :origin => [params[:lat], params[:lng]]).limit(100)
@@ -37,7 +37,7 @@ class ShoutsController < ApplicationController
     per_page = params[:per_page] ? params[:per_page] : 20
     page = params[:page] ? params[:page] : 1
 
-    max_age = Time.now - 4.hours
+    max_age = Time.now - 24.hours
 
     shouts = Shout.where("source = 'native' AND created_at >= :max_age", {:max_age => max_age}).paginate(page: page, per_page: per_page).order('id DESC')
 
