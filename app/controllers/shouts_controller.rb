@@ -7,9 +7,16 @@ class ShoutsController < ApplicationController
     shout = Shout.new(lat: params[:lat], lng: params[:lng], display_name: params[:user_name], description: params[:description], source: "native")
     success = shout.save
 
-    respond_to do |format|
-      format.json { render json: {result: shout, status: 201} }
-      format.html { render json: shout }
+    if success
+      respond_to do |format|
+        format.json { render json: {result: shout, status: 201} }
+        format.html { render json: shout }
+      end
+    else 
+      respond_to do |format|
+        format.json { render(:json => { :errors => "Failed to save shout", :errorStatusCode => "Failed to save shout" }, :status => 500) }
+        format.html { render(:text => "Failed to save shout", :status => 500) }
+      end 
     end
   end
 
