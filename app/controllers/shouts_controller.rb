@@ -39,15 +39,15 @@ class ShoutsController < ApplicationController
 
   #Retrieve shouts within a zone (bouding box)
   def new_zone_shouts
-    Rails.logger.info "BAB zone_shouts params: #{params}"
-    max_age = Time.now - 24.hours
+    # Rails.logger.info "BAB zone_shouts params: #{params}"
+    # max_age = Time.now - 24.hours
 
-    shouts = Shout.where("created_at >= :max_age", {:max_age => max_age}).in_bounds([[params[:neLat], params[:neLng]], [params[:swLat], params[:swLng]]]).limit(100).order("created_at DESC")
+    # shouts = Shout.where("created_at >= :max_age", {:max_age => max_age}).in_bounds([[params[:neLat], params[:neLng]], [params[:swLat], params[:swLng]]]).limit(100).order("created_at DESC")
 
-    respond_to do |format|
-      format.json { render json: {result: shouts, status: 200} }
-      format.html { render json: shouts }
-    end
+    # respond_to do |format|
+    #   format.json { render json: {result: shouts, status: 200} }
+    #   format.html { render json: shouts }
+    # end
   end
 
   #Not used anymore
