@@ -42,7 +42,7 @@ class ShoutsController < ApplicationController
     Rails.logger.info "BAB zone_shouts params: #{params}"
     max_age = Time.now - 24.hours
 
-    shouts = Shout.where("created_at >= :max_age", {:max_age => max_age}).in_bounds([[params[:neLat], params[:neLng]], [params[:swLat], params[:swLng]]]).limit(100).order("created_at DESC")
+    shouts = Shout.where("created_at >= :max_age", {:max_age => max_age}).in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).limit(100).order("created_at DESC")
 
     Rails.logger.info "BAB request response length: #{shouts.length}"
 
