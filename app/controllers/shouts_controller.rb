@@ -26,9 +26,9 @@ class ShoutsController < ApplicationController
     max_age = Time.now - 24.hours
 
     if params[:notwitter].to_i == 1
-      shouts = Shout.where("source = 'native' AND created_at >= :max_age", {:max_age => max_age}).within(params[:radius].to_i, :origin => [params[:lat], params[:lng]]).limit(100)
+      shouts = Shout.where("source = 'native' AND created_at >= :max_age", {:max_age => max_age}).within(params[:radius].to_i, :origin => [params[:lat], params[:lng]]).limit(100).order("created_at DESC")
     else 
-      shouts = Shout.where("created_at >= :max_age", {:max_age => max_age}).within(params[:radius].to_i, :origin => [params[:lat], params[:lng]]).limit(100)
+      shouts = Shout.where("created_at >= :max_age", {:max_age => max_age}).within(params[:radius].to_i, :origin => [params[:lat], params[:lng]]).limit(100).order("created_at DESC")
     end
 
     respond_to do |format|
@@ -37,6 +37,7 @@ class ShoutsController < ApplicationController
     end
   end
 
+  #Not used anymore
   #Retrieve most recent shouts for the feed with pagination
   def global_feed_shouts
     Rails.logger.info "BAB global_feed_shouts params: #{params}"
