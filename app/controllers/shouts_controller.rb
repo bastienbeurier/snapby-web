@@ -38,7 +38,7 @@ class ShoutsController < ApplicationController
   end
 
   #Retrieve shouts within a zone (bouding box)
-  def new_zone_shouts
+  def bound_box_shouts
     # Rails.logger.info "BAB zone_shouts params: #{params}"
     # max_age = Time.now - 24.hours
 
