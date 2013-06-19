@@ -67,7 +67,4 @@ class ShoutsController < ApplicationController
       format.html { render json: shouts }
     end
   end
-
-  def reload_heroku
-  end
 end
