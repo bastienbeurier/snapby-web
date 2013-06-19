@@ -6,7 +6,7 @@ gem 'rails', '3.2.12'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
-gem 'geokit-rails3'
+gem 'geokit-rails'
 gem 'will_paginate', '~> 3.0'
 
 
