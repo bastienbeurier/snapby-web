@@ -12,10 +12,10 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: street_shout_development
+  database: devstreetshout
   pool: 5
-  username: root
-  password:
+  username: street_shout_dev
+  password: isthisit99
   socket: /tmp/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
