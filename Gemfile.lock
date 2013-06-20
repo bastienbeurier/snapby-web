@@ -104,6 +104,8 @@ GEM
     uglifier (2.1.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    urbanairship (2.3.2)
+      json
     will_paginate (3.0.4)
 
 PLATFORMS
@@ -117,4 +119,5 @@ DEPENDENCIES
   rails (= 3.2.12)
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)
+  urbanairship
   will_paginate (~> 3.0)
