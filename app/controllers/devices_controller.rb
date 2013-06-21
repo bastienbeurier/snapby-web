@@ -2,6 +2,14 @@ class DevicesController < ApplicationController
   def update_device_info
     Rails.logger.info "BAB update_device_info: #{params}"
 
+    if !params[:device_id] or !params[:push_token] or !params[:lat] or !params[:lng]
+      respond_to do |format|
+        format.json { render(:json => { :errors => "Incomplete device information", :errorStatusCode => "Incomplete device information" }, :status => 406) }
+        format.html { render(:text => "Incomplete device information", :status => 406) }
+      end
+      return
+    end
+
     device = Device.find_by_device_id(params[:device_id])
 
     if device 
