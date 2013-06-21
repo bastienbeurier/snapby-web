@@ -1,4 +1,5 @@
 class ShoutObserver < ActiveRecord::Observer
+  # Find a way to include module and move code to this module
   # include PushNotification
 
   def after_create(shout)
@@ -7,7 +8,7 @@ class ShoutObserver < ActiveRecord::Observer
 	push_tokens = devices.map { |device| device.push_token }
 
 	begin
-	  	Urbanairship.push({apids: push_tokens, android: {alert: shout.description}})
+	  	Urbanairship.push({apids: push_tokens, android: {alert: '"' + shout.description + '"'}})
 	rescue Exception => e
 	end
   end
