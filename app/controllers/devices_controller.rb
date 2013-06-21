@@ -17,6 +17,8 @@ class DevicesController < ApplicationController
       device.os_version = params[:os_version]
       device.app_version = params[:app_version]
       device.api_version = params[:api_version]
+      device.notification_radius = params[:notification_radius] ? params[:notification_radius] : -1
+      
       if params[:lat] and params[:lng]
         device.lat = params[:lat]
         device.lng = params[:lng]
