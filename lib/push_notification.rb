@@ -6,6 +6,9 @@ module PushNotification
 
 		push_tokens = devices.map { |device| device.push_token }
 
-		Urbanairship.push({apids: push_tokens, android: {alert: shout.description}})
+		begin
+		  	Urbanairship.push({apids: push_tokens, android: {alert: shout.description}})
+		rescue Exception => e
+		end
 	end	
-end
+end	
