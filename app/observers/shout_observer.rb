@@ -1,7 +1,7 @@
 class ShoutObserver < ActiveRecord::Observer
-  include PushNotification
+  # include PushNotification
 
   def after_create(shout)
-    PushNotification.notify_new_shout(shout)
+    # PushNotification.notify_new_shout(shout)
   end
 end
