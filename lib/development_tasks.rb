@@ -1,5 +1,5 @@
 module DevelopmentTasks
-	def self.start_demo
+	def self.demo
 		shouts = [["Great preacher in front of the 24th Street Mission Bar Station!", "Harold", 56.minutes, 37.752199, -122.418584],
         ["A couple is getting married in the middle of the Dolores Park...", "Anyone", 45.minutes, 37.758942, -122.426620],
         ["There is an accident on the highway, it's totally blocked...", "Altruist person", 37.minutes, 37.771597, -122.406321],

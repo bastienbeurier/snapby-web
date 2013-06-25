@@ -72,11 +72,11 @@ class ShoutsController < ApplicationController
   end
 
   #For development only
-  def start_demo
+  def mdemo
     if Rails.env.development?
       Shout.delete_all
 
-      DevelopmentTasks.start_demo
+      DevelopmentTasks.demo
     end
 
     respond_to do |format|
