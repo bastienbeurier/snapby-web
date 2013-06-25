@@ -72,7 +72,7 @@ class ShoutsController < ApplicationController
   end
 
   #For development only
-  def mdemo
+  def demo
     if Rails.env.development?
       Shout.delete_all
 
