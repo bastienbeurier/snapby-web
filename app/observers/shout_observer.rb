@@ -8,7 +8,7 @@ class ShoutObserver < ActiveRecord::Observer
     devices = []
 
     if Rails.env.development?
-      devices = Device.where("notification_radius != 0", {shout_device_id: shout.device_id})
+      devices = Device.where("notification_radius != 0")
     else
       devices = Device.where("notification_radius != 0 AND device_id != :shout_device_id", {shout_device_id: shout.device_id})
     end
