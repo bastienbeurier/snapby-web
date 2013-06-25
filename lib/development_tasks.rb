@@ -1,5 +1,6 @@
 module DevelopmentTasks
-	shouts = [["Great preacher in front of the 24th Street Mission Bar Station!", "Harold", 56.minutes, 37.752199, -122.418584],
+	def self.start_demo
+		shouts = [["Great preacher in front of the 24th Street Mission Bar Station!", "Harold", 56.minutes, 37.752199, -122.418584],
         ["A couple is getting married in the middle of the Dolores Park...", "Anyone", 45.minutes, 37.758942, -122.426620],
         ["There is an accident on the highway, it's totally blocked...", "Altruist person", 37.minutes, 37.771597, -122.406321],
         ["Happy hour at the Mad Dog In The Fog, half price on all drinsk until 7!", "Mad Dog In The Fog", 33.minutes, 37.772072, -122.431018 ],
@@ -21,7 +22,6 @@ module DevelopmentTasks
         ["We are playing soccer and missing a player, anyone near?", "Soccer player", 9.minutes, 37.750663, -122.412286],
         ["To windy today to play tennis at Dolores :(", "Frustrated tennis player", 52.minutes, 37.761114, -122.426727]]
 
-	def self.start_demo
 		shouts.each do |content|
 			shout_creation_time = Time.now - content[2]
 			shout = Shout.new(lat: content[3], lng: content[4], display_name: content[1], description: content[0], source: "native", create_at: shout_creation_time)
