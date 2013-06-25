@@ -77,5 +77,10 @@ class ShoutsController < ApplicationController
 
       DevelopmentTasks::Demo.start_demo
     end
+
+    respond_to do |format|
+      format.json { render json: {result: "Demo ready to start", status: 200} }
+      format.html { render json: "Demo ready to start" }
+    end
   end
 end
