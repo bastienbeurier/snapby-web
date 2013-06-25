@@ -1,5 +1,5 @@
 class ShoutsController < ApplicationController
-  include DevelopmentTasks::Demo
+  include DevelopmentTasks
 
   #Create a shout
   def create
@@ -71,11 +71,12 @@ class ShoutsController < ApplicationController
     end
   end
 
+  #For development only
   def start_demo
     if Rails.env.development?
       Shout.delete_all
 
-      DevelopmentTasks::Demo.start_demo
+      DevelopmentTasks.start_demo
     end
 
     respond_to do |format|
