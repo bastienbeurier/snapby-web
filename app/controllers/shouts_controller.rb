@@ -23,7 +23,7 @@ class ShoutsController < ApplicationController
   #Retrieve shouts within a zone (location and radius)
   def zone_shouts
     Rails.logger.info "BAB zone_shouts params: #{params}"
-    max_age = Time.now - 24.hours
+    max_age = Time.now - SHOUT_DURATION
 
     if params[:notwitter].to_i == 1
       shouts = Shout.where("source = 'native' AND created_at >= :max_age", {:max_age => max_age}).within(params[:radius].to_i, :origin => [params[:lat], params[:lng]]).limit(100).order("created_at DESC")
@@ -40,7 +40,7 @@ class ShoutsController < ApplicationController
   #Retrieve shouts within a zone (bouding box)
   def bound_box_shouts
     Rails.logger.info "BAB zone_shouts params: #{params}"
-    max_age = Time.now - 24.hours
+    max_age = Time.now - SHOUT_DURATION
 
     shouts = Shout.where("created_at >= :max_age", {:max_age => max_age}).in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).limit(100).order("created_at DESC")
 
@@ -52,7 +52,7 @@ class ShoutsController < ApplicationController
     end
   end
 
-  #Not used anymore
+  #Not used anymore (for testing purposes)
   #Retrieve most recent shouts for the feed with pagination
   def global_feed_shouts
     Rails.logger.info "BAB global_feed_shouts params: #{params}"
@@ -60,7 +60,7 @@ class ShoutsController < ApplicationController
     per_page = params[:per_page] ? params[:per_page] : 20
     page = params[:page] ? params[:page] : 1
 
-    max_age = Time.now - 24.hours
+    max_age = Time.now - SHOUT_DURATION
 
     shouts = Shout.where("source = 'native' AND created_at >= :max_age", {:max_age => max_age}).paginate(page: page, per_page: per_page).order('id DESC')
 
