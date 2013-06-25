@@ -1,5 +1,5 @@
 class ShoutsController < ApplicationController
-  # include DevelopmentTasks
+  include DevelopmentTasks
 
   #Create a shout
   def create
