@@ -1,8 +1,9 @@
 class ShoutsController < ApplicationController
+  include DevelopmentTasks::Demo
 
   #Create a shout
   def create
-    Rails.logger.info "BAB create params: #{params}"
+    Rails.logger.debug "BAB create params: #{params}"
 
     shout = Shout.new(lat: params[:lat], lng: params[:lng], display_name: params[:user_name], description: params[:description], source: "native", device_id: params[:device_id])
     success = shout.save
@@ -22,7 +23,7 @@ class ShoutsController < ApplicationController
 
   #Retrieve shouts within a zone (location and radius)
   def zone_shouts
-    Rails.logger.info "BAB zone_shouts params: #{params}"
+    Rails.logger.debug "BAB zone_shouts params: #{params}"
     max_age = Time.now - SHOUT_DURATION
 
     if params[:notwitter].to_i == 1
@@ -39,7 +40,7 @@ class ShoutsController < ApplicationController
 
   #Retrieve shouts within a zone (bouding box)
   def bound_box_shouts
-    Rails.logger.info "BAB zone_shouts params: #{params}"
+    Rails.logger.debug "BAB zone_shouts params: #{params}"
     max_age = Time.now - SHOUT_DURATION
 
     shouts = Shout.where("created_at >= :max_age", {:max_age => max_age}).in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).limit(100).order("created_at DESC")
@@ -55,7 +56,7 @@ class ShoutsController < ApplicationController
   #Not used anymore (for testing purposes)
   #Retrieve most recent shouts for the feed with pagination
   def global_feed_shouts
-    Rails.logger.info "BAB global_feed_shouts params: #{params}"
+    Rails.logger.debug "BAB global_feed_shouts params: #{params}"
 
     per_page = params[:per_page] ? params[:per_page] : 20
     page = params[:page] ? params[:page] : 1
@@ -70,6 +71,11 @@ class ShoutsController < ApplicationController
     end
   end
 
-  def reload_heroku
+  def start_demo
+    if Rails.env.development?
+      Shout.delete_all
+
+      DevelopmentTasks::Demo.start_demo
+    end
   end
 end
