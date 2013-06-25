@@ -15,7 +15,7 @@ module DevelopmentTasks
         ["Helena Miriada is doing her first painting exhibition in the Creativity Explored art gallery, it's open to all!", "Helena Miriada", 11.minutes, 37.778025, -122.405140],
         ["Green Peace volunteers on Marker Street available to give you information and goodies!", "Green Peace", 17.minutes, 37.788556, -122.402287],
         ["Awesome live music at the Revolution Cafe, bring pianists, guitarists, drumers if they want to participate!", "Music lover", 39.minutes, 37.755159, -122.424163],
-        ["Any girl in the Castro area, I can only see dudes in the QBar tonight!"], "Hot guy", 19.minutes, 37.761521, -122.435224],
+        ["Any girl in the Castro area, I can only see dudes in the QBar tonight!", "Hot guy", 19.minutes, 37.761521, -122.435224],
         ["Come try some instruments at Guitar Center and checkout our crazy sales on keyboards", "Guitar center", 12.minutes, 37.790803, -122.422736],
         ["The Marker street drumer is back and ready to play for you for at least an hour!", "Marker Street drumer", 6.minutes, 37.785148, -122.406739],
         ["We are playing soccer and missing a player, anyone near?", "Soccer player", 9.minutes, 37.750663, -122.412286],
