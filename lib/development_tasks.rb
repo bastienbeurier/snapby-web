@@ -4,7 +4,7 @@ module DevelopmentTasks
 	        ["A couple is getting married in the middle of the Dolores Park...", "Anyone", 45.minutes, 37.758942, -122.426620],
 	        ["There is an accident on the highway, it's totally blocked...", "Altruist person", 37.minutes, 37.771597, -122.406321],
 	        ["Happy hour at the Mad Dog In The Fog, half price on all drinsk until 7!", "Mad Dog In The Fog", 33.minutes, 37.772072, -122.431018 ],
-	        ["A bunch of scary dudes at the Haight St entrance of the Dolores Park", "Sarah", 29.minutes, 37.769069, -122.453785],
+	        ["A bunch of scary dudes at the Haight St entrance of the Golen Gate Park", "Sarah", 29.minutes, 37.769069, -122.453785],
 	        ["Sales start early at the Scotch & Soda store on Fillmore Street!!!", "Scoth & Soda", 23.minutes, 37.788348, -122.433824],
 	        ["Selling half price tickets for tonight's concert at the entrance of the Davies Symphony Hall", "Seller", 21.minutes, 37.777601, -122.420257],
 	        ["Charlie Chaplin retrospective starting tonight at the independent cinema Clay Landmark Theatre", "Landmark Theatre", 15.minutes, 37.790320, -122.434559],
