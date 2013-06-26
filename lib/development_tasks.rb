@@ -21,7 +21,7 @@ module DevelopmentTasks
 	        ["We are playing soccer and missing a player, anyone near?", "Soccer player", 9.minutes, 37.750663, -122.412286],
 	        ["To windy today to play tennis at Dolores :(", "Frustrated tennis player", 52.minutes, 37.761114, -122.426727]]
 
-	def demo
+	def self.demo
 
 		shouts.each do |content|
 			shout_creation_time = Time.now - content[2]
