@@ -24,7 +24,7 @@ module DevelopmentTasks
 
 		shouts.each do |content|
 			shout_creation_time = Time.now - content[2]
-			shout = Shout.new(lat: content[3], lng: content[4], display_name: content[1], description: content[0], source: "native", create_at: shout_creation_time)
+			shout = Shout.new(lat: content[3], lng: content[4], display_name: content[1], description: content[0], source: "native", created_at: shout_creation_time)
 			shout.save
 		end	
 	end
