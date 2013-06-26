@@ -2,7 +2,7 @@ class DevicesController < ApplicationController
   def update_device_info
     Rails.logger.info "BAB update_device_info: #{params}"
 
-    if !params[:device_id] or !params[:push_token] or !params[:lat] or !params[:lng]
+    if !params[:device_id] or !params[:push_token]
       respond_to do |format|
         format.json { render(:json => { :errors => "Incomplete device information", :errorStatusCode => "Incomplete device information" }, :status => 406) }
         format.html { render(:text => "Incomplete device information", :status => 406) }
@@ -24,6 +24,14 @@ class DevicesController < ApplicationController
         device.lng = params[:lng]
       end
     else
+      if !params[:lat] or !params[:lng]
+        respond_to do |format|
+          format.json { render(:json => { :errors => "Incomplete device information", :errorStatusCode => "Incomplete device information" }, :status => 406) }
+          format.html { render(:text => "Incomplete device information", :status => 406) }
+        end
+        return
+      end
+
       device = Device.new(device_id: params[:device_id], 
                           push_token: params[:push_token], 
                           device_model: params[:device_model], 
@@ -32,7 +40,8 @@ class DevicesController < ApplicationController
                           app_version: params[:app_version], 
                           api_version: params[:api_version], 
                           lat: params[:lat], 
-                          lng: params[:lng])
+                          lng: params[:lng],
+                          notification_radius: params[:notification_radius])
     end
 
     
