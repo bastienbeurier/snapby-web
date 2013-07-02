@@ -7,9 +7,10 @@ module PushNotification
 	      	devices += Device.within(NOTIFICATION_RADIUS_2 , :origin => [shout.lat, shout.lng]).where("notification_radius = 2")
 	      	devices += Device.within(NOTIFICATION_RADIUS_3 , :origin => [shout.lat, shout.lng]).where("notification_radius = -1 OR notification_radius = 3")
 	    else
-	      	devices = Device.within(NOTIFICATION_RADIUS_1 , :origin => [shout.lat, shout.lng]).where("notification_radius = 1 AND device_id != :shout_device_id", {shout_device_id: shout.device_id})
-	      	devices += Device.within(NOTIFICATION_RADIUS_2 , :origin => [shout.lat, shout.lng]).where("notification_radius = 2 AND device_id != :shout_device_id", {shout_device_id: shout.device_id})
-	      	devices += Device.within(NOTIFICATION_RADIUS_3 , :origin => [shout.lat, shout.lng]).where("(notification_radius = -1 OR notification_radius = 3) AND device_id != :shout_device_id", {shout_device_id: shout.device_id})
+	    	devices = Device.where("device_id != :shout_device_id", {shout_device_id: shout.device_id})
+	      	# devices = Device.within(NOTIFICATION_RADIUS_1 , :origin => [shout.lat, shout.lng]).where("notification_radius = 1 AND device_id != :shout_device_id", {shout_device_id: shout.device_id})
+	      	# devices += Device.within(NOTIFICATION_RADIUS_2 , :origin => [shout.lat, shout.lng]).where("notification_radius = 2 AND device_id != :shout_device_id", {shout_device_id: shout.device_id})
+	      	# devices += Device.within(NOTIFICATION_RADIUS_3 , :origin => [shout.lat, shout.lng]).where("(notification_radius = -1 OR notification_radius = 3) AND device_id != :shout_device_id", {shout_device_id: shout.device_id})
 	    end
 
 	  	push_tokens = devices.map { |device| device.push_token }
