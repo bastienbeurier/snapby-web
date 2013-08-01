@@ -2,6 +2,8 @@ module PushNotification
 	def self.notify_new_shout(shout)
 	    devices = []
 
+	    #handle case where no device_id
+
 	    if Rails.env.development?
 	      	devices = Device.within(NOTIFICATION_RADIUS_1 , :origin => [shout.lat, shout.lng]).where("notification_radius = 1")
 	      	devices += Device.within(NOTIFICATION_RADIUS_2 , :origin => [shout.lat, shout.lng]).where("notification_radius = 2")
