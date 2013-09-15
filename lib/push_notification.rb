@@ -19,9 +19,9 @@ module PushNotification
 
         devices.each do |device|
             if device.os_type == "android"
-                android_tokens += device.push_token
+                android_tokens += [device.push_token]
             elsif device.os_type == "ios"
-                ios_tokens += device.push_token
+                ios_tokens += [device.push_token]
             end
         end
 
