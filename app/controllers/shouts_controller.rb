@@ -38,6 +38,24 @@ class ShoutsController < ApplicationController
     end
   end
 
+  #Get shout by id
+  def show
+    Rails.logger.debug "BAB show shout params: #{params}"
+    shout = Shout.find(params[:id])
+
+    if shout
+      respond_to do |format|
+        format.json { render json: {result: shout, status: 200} }
+        format.html { render json: shout }
+      end
+    else
+      respond_to do |format|
+        format.json { render(:json => { :errors => "Failed to retrieve shout", :errorStatusCode => "Failed to retrieve shout" }, :status => 500) }
+        format.html { render(:text => "Failed to retrieve shout", :status => 500) }
+      end 
+    end
+  end
+
   #Retrieve shouts within a zone (bouding box)
   def bound_box_shouts
     Rails.logger.debug "BAB zone_shouts params: #{params}"
