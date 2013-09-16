@@ -13,6 +13,9 @@ class DevicesController < ApplicationController
     device = Device.find_by_device_id(params[:device_id])
 
     if device 
+
+      Rails.logger.info "BAB DEVICE FOUND IN DB"
+
       device.push_token = params[:push_token]
       device.os_version = params[:os_version]
       device.app_version = params[:app_version]
@@ -24,7 +27,12 @@ class DevicesController < ApplicationController
         device.lng = params[:lng]
       end
     else
+      Rails.logger.info "BAB DEVICE NOT FOUND IN DB"
+
       if !params[:lat] or !params[:lng]
+
+        Rails.logger.info "BAB NO LAT OR NO LNG"
+
         respond_to do |format|
           format.json { render(:json => { :errors => "Incomplete device information", :errorStatusCode => "Incomplete device information" }, :status => 406) }
           format.html { render(:text => "Incomplete device information", :status => 406) }
