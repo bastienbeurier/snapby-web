@@ -20,10 +20,8 @@ module PushNotification
         devices.each do |device|
             if device.os_type == "android"
                 android_tokens += [device.push_token]
-                Rails.logger.debug "BAB ANDROID TOKEN: #{device.push_token}"
             elsif device.os_type == "ios"
                 ios_tokens += [device.push_token]
-                Rails.logger.debug "BAB IOS TOKEN: #{device.push_token}"
             end
         end
 
