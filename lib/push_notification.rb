@@ -27,7 +27,7 @@ module PushNotification
 
         begin
             Urbanairship.push({apids: android_tokens, android: {alert: '"' + shout.description + '"', extra: {shout: shout.to_json}}})
-            Urbanairship.push({device_tokens: ios_tokens, aps: {alert: '"' + shout.description + '"', badge: 0}, extra: {shout: shout.to_json}})
+            Urbanairship.push({device_tokens: ios_tokens, aps: {alert: '"' + shout.description + '"', badge: 0}, extra: {shout_id: shout.id}})
         rescue Exception => e
         end
     end 
