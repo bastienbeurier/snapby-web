@@ -1,7 +1,7 @@
 if Rails.env.development?
-	Urbanairship.application_key = 'NePQiDkcSHWFDyhmEzGgWA'
-	Urbanairship.application_secret = 'ynGtrru1S_m-BVEo_9T9FQ'
-	Urbanairship.master_secret = '1XQd8jYOQWKX5n5KrVoxPw'
+	Urbanairship.application_key = 'd-rOeAKNRGKn9gsFgi18ew'
+	Urbanairship.application_secret = 'EDtx_9xdQOqNvOQDKQJw2w'
+	Urbanairship.master_secret = '52CbajzGRY6cFBLE54tdmA'
 else 	
 	Urbanairship.application_key = 'AzqCIDWGSqmEOJvM95Vfqw'
 	Urbanairship.application_secret = '_YOtj7i6RyeelX_BE9AohQ'
