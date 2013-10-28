@@ -1,6 +1,6 @@
 class CreateScheduledShouts < ActiveRecord::Migration
   def change
-    create_table :shouts do |t|
+    create_table :scheduled_shouts do |t|
       t.float :lat
       t.float :lng
       t.datetime :scheduled_time
