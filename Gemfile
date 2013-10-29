@@ -9,6 +9,7 @@ gem 'mysql2'
 gem 'geokit-rails3'
 gem 'will_paginate', '~> 3.0'
 gem 'urbanairship'
+gem 'paperclip'
 
 
 # Gems used only for assets and not required
