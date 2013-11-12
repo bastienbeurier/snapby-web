@@ -110,10 +110,10 @@ class ShoutsController < ApplicationController
 
     if !flagged_shout
       flagged_shout = FlaggedShout.new(shout_id: params[:id],
-                                          device_id: [params[:device_id]],
+                                          device_id: params[:device_id],
                                           motive: motives[params[:motive].to_i])
-    elsif !flagged_shout.device_id.include?(params[:device_id])
-      flagged_shout.device_id += [params[:device_id]]
+    elsif !flagged_shout.split.device_id.split(",").include?(params[:device_id])
+      flagged_shout.device_id += "," + params[:device_id]
     else
       respond_to do |format|
         format.json { render json: {result: "Shout already flagged by user", status: 200} }
