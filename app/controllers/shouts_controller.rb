@@ -89,18 +89,50 @@ class ShoutsController < ApplicationController
     end
   end
 
-  # def report_shout
-  #   Rails.logger.debug "BAB report_shout params: #{params}"
+  def flag_shout
+    Rails.logger.debug "BAB report_shout params: #{params}"
 
-  #   shout = Shout.find(params[:id])
-  #   flagged_shout = FlaggedShout.find_by_id(params[:id])
+    shout = Shout.find(params[:id])
+    
+    if !shout or !params[:device_id] or !params[:motive]
+      respond_to do |format|
+        format.json { render(:json => { :errors => "Incomplete information to flag shout", :errorStatusCode => "Incomplete information to flag shout" }, :status => 406) }
+        format.html { render(:text => "Incomplete information to flag shout", :status => 406) }
+      end
+      return
+    end
 
-  #   if shout and !flagged_shout
-      
-  #   end
+    #check if not too many recent flags
 
+    flagged_shout = FlaggedShout.find_by_shout_id(params[:id])
 
-  # end
+    motives = ["abuse", "spam", "privacy", "inaccurate", "other"]
+
+    if !flagged_shout
+      flagged_shout = FlaggedShout.new(shout_id: params[:id],
+                                          count: 1,
+                                          device_id: [params[:device_id]]
+                                          motive: motives[params[:motive]])
+    else
+      flagged_shout.count += 1
+      flagged_shout.device_id += [params[:device_id]]
+    end
+
+    #send mail
+    #check if shout should be removed
+
+    if flagged_shout.save
+      respond_to do |format|
+        format.json { render json: {result: "Shout successfully flagged", status: 200} }
+        format.html { render json: "Shout successfully flagged" }
+      end
+    else 
+      respond_to do |format|
+        format.json { render json: {result: "Failed to flag shout", status: 500} }
+        format.html { render json: "Failed to flag shout" }
+      end
+    end
+  end
 
   #For development only
   def demo
