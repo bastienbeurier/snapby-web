@@ -89,6 +89,19 @@ class ShoutsController < ApplicationController
     end
   end
 
+  # def report_shout
+  #   Rails.logger.debug "BAB report_shout params: #{params}"
+
+  #   shout = Shout.find(params[:id])
+  #   flagged_shout = FlaggedShout.find_by_id(params[:id])
+
+  #   if shout and !flagged_shout
+      
+  #   end
+
+
+  # end
+
   #For development only
   def demo
     if Rails.env.development?
