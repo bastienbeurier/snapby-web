@@ -6,5 +6,6 @@ StreetShout::Application.routes.draw do
   match "/demo" => "shouts#demo"
 
   match "/update_device_info" => "devices#update_device_info"
+  match "/flag_shout" => "shouts#flag_shout"
 end
 	
