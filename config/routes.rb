@@ -7,5 +7,7 @@ StreetShout::Application.routes.draw do
 
   match "/update_device_info" => "devices#update_device_info"
   match "/flag_shout" => "shouts#flag_shout"
+
+  match "/black_listed_devices" => "devices#black_listed_devices"
 end
 	

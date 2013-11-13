@@ -1,4 +1,5 @@
 class DevicesController < ApplicationController
+  #Store info about the user device (only devices that can receive push notification)
   def update_device_info
     Rails.logger.info "BAB update_device_info: #{params}"
 
@@ -57,6 +58,16 @@ class DevicesController < ApplicationController
         format.json { render(:json => { :errors => "Failed to save device", :errorStatusCode => "Failed to save shout" }, :status => 500) }
         format.html { render(:text => "Failed to save device", :status => 500) }
       end 
+    end
+  end
+
+  #Get black listed devices
+  def black_listed_devices
+    black_listed_devices = BlackListedDevice.all
+
+    respond_to do |format|
+      format.json { render json: {result: black_listed_devices, status: 200} }
+      format.html { render json: black_listed_devices }
     end
   end
 end
