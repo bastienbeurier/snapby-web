@@ -103,21 +103,22 @@ class ShoutsController < ApplicationController
       return
     end
 
-    #todo: check if not too many recent flags from this user
+    #todo later: check if not too many recent flags from this user (advised by Truchof)
 
     flagged_shout = FlaggedShout.find_by_shout_id(params[:id])
 
     motives = ["abuse", "spam", "privacy", "inaccurate", "other"]
 
+    #Case where the shout is flagged for the first time
     if !flagged_shout
       flagged_shout = FlaggedShout.new(shout_id: params[:id],
                                           device_id: params[:device_id],
                                           motive: motives[params[:motive].to_i])
+    #Case where the shout has already been flagged, but never by that user
     elsif !flagged_shout.device_id.split(",").include?(params[:device_id])
       flagged_shout.device_id += "," + params[:device_id]
       #if more than 5 flags, automatically remove shout and add it to removed_shouts column in db
-      #TODO: change 2 to 5
-      if flagged_shout.device_id.split(",").count >= 2
+      if flagged_shout.device_id.split(",").count >= 5
         removed_shout = RemovedShout.create(shout_id: shout.id,
                                             lat: shout.lat,
                                             lng: shout.lng,
@@ -131,6 +132,7 @@ class ShoutsController < ApplicationController
         shout.destroy
         flagged_shout.destroy
       end
+    #Case where this user already flagged this shout
     else
       respond_to do |format|
         format.json { render json: {result: "Shout already flagged by user", status: 200} }
@@ -139,10 +141,7 @@ class ShoutsController < ApplicationController
       return
     end
 
-    #send mail
-    #check if shout should be removed
-
-
+    #send mail (specified if automatically removed)
 
     if flagged_shout.save
       respond_to do |format|
