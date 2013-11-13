@@ -115,6 +115,22 @@ class ShoutsController < ApplicationController
                                           motive: motives[params[:motive].to_i])
     elsif !flagged_shout.device_id.split(",").include?(params[:device_id])
       flagged_shout.device_id += "," + params[:device_id]
+      #if more than 5 flags, automatically remove shout and add it to removed_shouts column in db
+      #TODO: change 2 to 5
+      if flagged_shout.device_id.split(",").count >= 2
+        removed_shout = RemovedShout.create(shout_id: shout.id,
+                                            lat: shout.lat,
+                                            lng: shout.lng,
+                                            description: shout.description,
+                                            display_name: shout.display_name,
+                                            image: shout.image,
+                                            source: shout.source, 
+                                            shout_created_at: shout.created_at,
+                                            device_id: shout.device_id,
+                                            removed_by: "auto")
+        shout.destroy
+        flagged_shout.destroy
+      end
     else
       respond_to do |format|
         format.json { render json: {result: "Shout already flagged by user", status: 200} }
@@ -126,7 +142,7 @@ class ShoutsController < ApplicationController
     #send mail
     #check if shout should be removed
 
-    
+
 
     if flagged_shout.save
       respond_to do |format|
