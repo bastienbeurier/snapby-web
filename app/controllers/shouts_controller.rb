@@ -89,6 +89,7 @@ class ShoutsController < ApplicationController
     end
   end
 
+  #User flags an abusive shout
   def flag_shout
     Rails.logger.debug "BAB report_shout params: #{params}"
 
@@ -102,7 +103,7 @@ class ShoutsController < ApplicationController
       return
     end
 
-    #check if not too many recent flags
+    #todo: check if not too many recent flags from this user
 
     flagged_shout = FlaggedShout.find_by_shout_id(params[:id])
 
@@ -124,6 +125,8 @@ class ShoutsController < ApplicationController
 
     #send mail
     #check if shout should be removed
+
+    
 
     if flagged_shout.save
       respond_to do |format|
