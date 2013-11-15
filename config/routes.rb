@@ -1,5 +1,6 @@
 StreetShout::Application.routes.draw do
   resources :shouts
+
   match "/zone_shouts" => "shouts#zone_shouts"
   match "/bound_box_shouts" => "shouts#bound_box_shouts"
   match "/global_feed_shouts" => "shouts#global_feed_shouts"
@@ -9,5 +10,7 @@ StreetShout::Application.routes.draw do
   match "/flag_shout" => "shouts#flag_shout"
 
   match "/black_listed_devices" => "devices#black_listed_devices"
+
+  match "/beta" => "beta#index"
 end
 	
