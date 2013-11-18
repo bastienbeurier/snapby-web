@@ -238,7 +238,7 @@ header {
 /* # SPLASH
 -------------------------------------*/
 #splash {
-  background-image: url(./app/assets/images/bg.jpg);
+  background-image: url('../images/bg.jpg');
   background-color: #00AFAB;
   background-size: cover;
   background-position: center center;
@@ -249,7 +249,7 @@ header {
   #splash.splash-inner-page {
     padding: 40px 0; }
   #splash .pattern {
-    background-image: url(./app/assets/images/mosaic.png);
+    background-image: url('../images/mosaic.png');
     background-repeat: repeat;
     background-position: top left;
     height: 100%;
@@ -259,7 +259,7 @@ header {
     left: 0;
     z-index: 10; }
   #splash .inner-shadow {
-    background: url(./app/assets/images/inner-shadow.png) 0 -45px repeat-x;
+    background: url('../images/inner-shadow.png') 0 -45px repeat-x;
     position: absolute;
     z-index: 30;
     bottom: 0;
@@ -387,7 +387,7 @@ header {
       width: 400px;
       height: 550px; }
   #product-container.android-tablet-portrait #device-2nd {
-    background: url(../images/devices/android-phone-portrait@2x.png);
+    background: url('../images/android-phone-portrait@2x.png');
     width: 200px;
     padding: 45px 0 0 0;
     display: block; }
