@@ -263,7 +263,7 @@ footer {
 /* # SPLASH
 -------------------------------------*/
 #splash {
-  background-image: url(../images/bg.jpg);
+  background-image: url(./app/assets/images/bg.jpg);
   background-color: #00AFAB;
   background-size: cover;
   background-position: center center;
@@ -274,7 +274,7 @@ footer {
   #splash.splash-inner-page {
     padding: 40px 0; }
   #splash .pattern {
-    background-image: url("../images/splash/texture/mosaic.png");
+    background-image: url("./app/assets/images/mosaic.jpg");
     background-repeat: repeat;
     background-position: top left;
     height: 100%;
