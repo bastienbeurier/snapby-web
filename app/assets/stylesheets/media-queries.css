@@ -1,0 +1,162 @@
+/*  #MOBILE (Portrait)
+================================================== */
+@media only screen and (max-width: 767px) {
+  .container {
+    width: 290px; }
+
+  /* SPLASH */
+  #splash {
+    background-attachment: scroll; }
+    #splash .pattern {
+      background-attachment: scroll; }
+
+  #product-container #product-info {
+    width: 100% !important;
+    text-align: center;
+    position: relative; }
+    #product-container #product-info .button {
+      margin-right: 0; }
+  #product-container #device,
+  #product-container #device-2nd {
+    display: none !important; }
+
+  /* HEADER */
+  header #header-left {
+    text-align: center;
+    float: none; }
+  header #header-right {
+    float: none; }
+    header #header-right ul {
+      text-align: center; }
+      header #header-right ul li {
+        float: none;
+        display: inline-block;
+        margin: 0 5px; }
+  header .menu {
+    display: none; }
+  header .tinynav-wrap {
+    display: block; }
+
+  body.dark header .tinynav-wrap {
+    background: #555;
+    border: none;
+    color: #000; }
+    body.dark header .tinynav-wrap select {
+      color: #000; }
+
+  /* FOOTER */
+  footer #footer-right {
+    float: left;
+    margin: 10px 0 0 0; }
+    footer #footer-right li {
+      margin: 0 15px 10px 0; }
+
+  /* CONTENT */
+  #product-container #product-info {
+    bottom: auto;
+    padding: 0 0 40px 0; }
+
+  #product-container #product-info h1 {
+    font-size: 28px;
+    line-height: 1.5em; }
+
+  #content h2 {
+    font-size: 25px; }
+  #content h3 {
+    font-size: 22px; }
+  #content h4 {
+    font-size: 19px; }
+  #content h5 {
+    font-size: 16px; }
+  #content h6 {
+    font-size: 15px; }
+  #content .section-title span em {
+    width: 35px;
+    height: 35px; }
+
+  /* ELEMENTS */
+  .frame {
+    border: none;
+    padding: 0; }
+
+  .slide-control {
+    display: none; }
+
+  .gallery-list li {
+    width: 290px;
+    opacity: 1; }
+
+  #twitter-box,
+  #twitter-box .tweet_list li {
+    height: 10em; }
+
+  .contact-info-pane {
+    position: relative;
+    padding: 20px; } }
+/*  #TABLET (Portrait)
+================================================== */
+@media screen and (min-width: 768px) and (max-width: 1140px) {
+  .container {
+    width: 740px; }
+
+  /* SPLASH */
+  #product-container #device {
+    margin: 0 auto !important;
+    bottom: 0 !important; }
+  #product-container #product-info {
+    width: 100% !important;
+    text-align: center;
+    position: relative;
+    bottom: auto;
+    padding: 0 0 40px 0; }
+  #product-container.ipad-portrait #device-2nd, #product-container.android-tablet-portrait #device-2nd {
+    left: 55px; }
+  #product-container.ipad-landscape #device-2nd, #product-container.android-tablet-landscape #device-2nd {
+    right: 0; }
+
+  /* CONTENT */
+  #content h2 {
+    font-size: 25px; }
+  #content h3 {
+    font-size: 17px; }
+  #content h4 {
+    font-size: 16px; }
+  #content h5 {
+    font-size: 15px; }
+  #content h6 {
+    font-size: 15px; }
+  #content .section-title span em {
+    width: 35px;
+    height: 35px; }
+
+  /* ELEMENTS */
+  .gallery-list li {
+    width: 365px;
+    opacity: 1; } }
+/* # VISIBLE & HIDDEN
+-------------------------------------*/
+.visible-phone,
+.visible-tablet,
+.hidden-desktop {
+  display: none !important; }
+
+@media only screen and (max-width: 767px) {
+  .visible-phone,
+  .hidden-desktop,
+  .hidden-tablet {
+    display: inherit !important; }
+
+  .visible-desktop,
+  .visible-tablet,
+  .hidden-phone {
+    display: none !important; } }
+@media screen and (min-width: 768px) and (max-width: 1140px) {
+  .visible-tablet,
+  .hidden-desktop,
+  .hidden-phone {
+    display: inherit !important; }
+
+  .visible-desktop,
+  .visible-phone,
+  .hidden-tablet {
+    display: none !important; } }
