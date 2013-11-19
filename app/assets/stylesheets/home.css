@@ -295,14 +295,18 @@ header {
   #product-container #product-info {
     position: absolute;
     right: 0;
-    bottom: 120px;
+    bottom: 170px;
     width: 450px; }
     #product-container #product-info h1 {
       font-size: 42px;
       margin: 0 0 25px 0;
-      line-height: 1.25em; }
+      line-height: 1.25em; 
+      text-align: center;}
     #product-container #product-info p {
-      margin: 0 0 40px 0; }
+      margin: 0 0 40px 0; 
+      text-align: center;}
+      #product-container #product-info .container {
+        width: 220px;}
   #product-container #device {
     background: #555;
     width: 550px;
@@ -497,7 +501,6 @@ header {
       float: right;      
     }
       #content .container #footer-right .footer-link {
-      margin-left: 20px; 
       font-weight: 600;
       color: #a5a5a5; }
     #content .container .button {
@@ -600,7 +603,7 @@ em {
 /* BUTTON */
 
 .button-download, .button-download:visited {
-  margin: 0 20px 20px 0;
+  margin: 0 10px 0px 10px;
   border: 2px solid; 
   border-radius:5px;
   background-color: rgba(255,255,255,0.1);

@@ -45,11 +45,14 @@
       color: #000; }
 
   /* FOOTER */
-  footer #footer-right {
-    float: left;
-    margin: 10px 0 0 0; }
-    footer #footer-right li {
-      margin: 0 15px 10px 0; }
+  #footer-right {
+    margin-right: 11px; }
+  #footer-left {
+    margin-left: 7px; }
+    #footer-left p {
+      text-align: center;
+    }
+
 
   /* CONTENT */
   #product-container #product-info {
