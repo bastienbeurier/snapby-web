@@ -501,6 +501,7 @@ header {
       float: right;      
     }
       #content .container #footer-right .footer-link {
+      margin-left: 20px; 
       font-weight: 600;
       color: #a5a5a5; }
     #content .container .button {
