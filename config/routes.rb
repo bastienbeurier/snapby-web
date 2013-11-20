@@ -14,5 +14,10 @@ StreetShout::Application.routes.draw do
   match "/black_listed_devices" => "devices#black_listed_devices"
 
   match "/beta" => "beta#index"
+
+  match "/about" => "home#about"
+  match "/privacy" => "home#privacy"
+  match "/terms" => "home#terms"
+  match "/contact" => "home#contact"
 end
 	
