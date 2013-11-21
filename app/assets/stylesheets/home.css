@@ -310,12 +310,13 @@ header {
     width: 450px; }
     #product-container #product-info h1 {
       font-family: 'Ubuntu-Title-webfont';
-      font-size: 42px;
-      margin: 0 0 25px 0;
+      font-size: 80px;
+      margin: 0 0 15px 0;
       line-height: 1.25em; 
       text-align: center;}
     #product-container #product-info p {
-      margin: 0 0 40px 0; 
+      margin: 0 0 15px 0; 
+      font-size: 35px;
       text-align: center;}
       #product-container #product-info .container {
         width: 220px;}
