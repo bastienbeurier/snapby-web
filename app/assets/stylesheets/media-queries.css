@@ -58,11 +58,8 @@
   /* CONTENT */
   #product-container #product-info {
     bottom: auto;
+    margin-bottom: 50px;
     padding: 0 0 40px 0; }
-
-    #product-container #product-info h1 {
-      font-size: 80px;
-    }
 
 
   #content h2 {
