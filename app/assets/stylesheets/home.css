@@ -311,7 +311,7 @@ header {
     #product-container #product-info h1 {
       font-family: 'Ubuntu-Title-webfont';
       font-size: 80px;
-      margin: 0 0 15px 0;
+      margin: 0 0 0 0;
       line-height: 1.25em; 
       text-align: center;}
     #product-container #product-info p {
@@ -617,7 +617,7 @@ em {
 /* BUTTON */
 
 .button-download, .button-download:visited {
-  margin: 0 10px 0px 10px;
+  margin: 30px 10px 0px 10px;
   border: 2px solid; 
   border-radius:5px;
   background-color: rgba(255,255,255,0.1);
