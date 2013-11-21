@@ -2,6 +2,14 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('<%= asset_path("Ubuntu-Title-webfont.ttf") %>');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -298,6 +306,7 @@ header {
     bottom: 170px;
     width: 450px; }
     #product-container #product-info h1 {
+      font-family: 'Ubuntu';
       font-size: 42px;
       margin: 0 0 25px 0;
       line-height: 1.25em; 
