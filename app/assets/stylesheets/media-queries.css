@@ -60,6 +60,11 @@
     bottom: auto;
     padding: 0 0 40px 0; }
 
+    #product-container #product-info h1 {
+      font-size: 80px;
+    }
+
+
   #content h2 {
     font-size: 25px; }
   #content h3 {
@@ -107,6 +112,8 @@
     width: 100% !important;
     text-align: center;
     position: relative;
+    bottom: auto;
+    margin-bottom: 50px;
     padding: 0 0 40px 0; }
   #product-container.ipad-portrait #device-2nd, #product-container.android-tablet-portrait #device-2nd {
     left: 55px; }
