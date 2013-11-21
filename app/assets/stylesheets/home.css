@@ -306,7 +306,7 @@ header {
   #product-container #product-info {
     position: absolute;
     right: 0;
-    bottom: 170px;
+    bottom: 200px;
     width: 450px; }
     #product-container #product-info h1 {
       font-family: 'Ubuntu-Title-webfont';

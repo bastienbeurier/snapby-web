@@ -13,7 +13,8 @@
   #product-container #product-info {
     width: 100% !important;
     text-align: center;
-    position: relative; }
+    position: relative; 
+    bottom: 250px;}
     #product-container #product-info .button {
       margin-right: 0; }
   #product-container #device,
@@ -110,7 +111,7 @@
     width: 100% !important;
     text-align: center;
     position: relative;
-    bottom: auto;
+    bottom: 250px;
     padding: 0 0 40px 0; }
   #product-container.ipad-portrait #device-2nd, #product-container.android-tablet-portrait #device-2nd {
     left: 55px; }
