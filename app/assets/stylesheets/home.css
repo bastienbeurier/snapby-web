@@ -658,11 +658,11 @@ em {
   overflow: hidden;
   margin-top: 50px; }
   #contact .container {
-    width: 200px; 
+    width: 500px; 
     color: #000; }
     #contact .container h1 {
       font-weight: 800;
-      font-size: 25px; }
+      font-size: 20px; }
     #contact .container p {
       color: #000;
       font-weight: 400; }
