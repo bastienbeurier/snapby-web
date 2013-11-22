@@ -662,8 +662,11 @@ em {
     color: #000; }
     #contact .container h1 {
       font-weight: 800;
-      font-size: 20px; }
+      font-size: 18px; 
+      margin-bottom: 10px; 
+      margin-top: 20px; }
     #contact .container p {
       color: #000;
       font-weight: 400; }
+
 
