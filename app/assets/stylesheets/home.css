@@ -675,9 +675,10 @@ em {
     #category .container p {
       font-weight: 400; 
       margin-bottom: 10px; }
-    #category .container li {
+    #category .container ul li {
       margin-left: 10px;
       font-weight: 400; 
-      list-style-type: none;}
+      list-style-type: none;
+      margin-bottom: 5px; }
 
 
