@@ -664,10 +664,11 @@ em {
       font-weight: 800;
       font-size: 18px; 
       margin-bottom: 10px; 
-      margin-top: 20px; 
+      margin-top: 10px; 
       color: #7A9ED3; }
     #category .container p {
       color: #000;
-      font-weight: 400; }
+      font-weight: 400; 
+      margin-bottom: 10px; }
 
 
