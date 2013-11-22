@@ -13,7 +13,7 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,800' rel='stylesheet' type='text/css'>
 
   <!-- Base Style -->
   <link rel="stylesheet" type="text/css" href="/assets/screen.css" />
@@ -23,6 +23,10 @@
   <script src="/assets/modernizr.min.js"></script>
 </head>
 
-<%= yield %>
+<body>
+  <%= yield %>
+</body>
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/assets/jquery-1.10.0.min.js"><\/script>')</script>
 </html>
