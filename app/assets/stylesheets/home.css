@@ -656,10 +656,9 @@ em {
   position: relative;
   padding: 120px 0 0 0;
   overflow: hidden;
-  color: #FFF; 
   margin-top: 100px; }
 
-#contact p {
+#contact .container p {
   color: 000;
   font-weight: 400;
 }
