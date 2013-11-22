@@ -654,13 +654,12 @@ em {
   background-size: cover;
   background-position: center center;
   position: relative;
-  overflow: hidden;
-  margin-top: 10px; }
+  overflow: hidden; }
   #category .container {
     max-width: 600px; 
-    position:fixed;
-    right:0;
-    left:0;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
     color: #000; }
     #category .container h2 {
       font-weight: 800;
