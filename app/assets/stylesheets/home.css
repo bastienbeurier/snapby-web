@@ -659,16 +659,25 @@ em {
   margin-top: 50px; }
   #category .container {
     width: 600px; 
-    color: #5c5c5c; }
+    color: #000; }
+    #category .container h2 {
+      font-weight: 800;
+      font-size: 24px; 
+      margin-bottom: 10px; 
+      margin-top: 10px; 
+      color: #7A9ED3; }
     #category .container h1 {
       font-weight: 800;
       font-size: 18px; 
       margin-bottom: 10px; 
-      margin-top: 10px; 
+      margin-top: 20px; 
       color: #7A9ED3; }
     #category .container p {
-      color: #000;
       font-weight: 400; 
       margin-bottom: 10px; }
+    #category .container li {
+      margin-left: 10px;
+      font-weight: 400; 
+      list-style-type: none;}
 
 
