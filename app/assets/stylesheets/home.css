@@ -647,9 +647,9 @@ em {
     background-position: 15px center; }
 
 
-/* Contact */
+/* Categories */
 
-#contact {
+#category {
   background-color: #fff;
   background-size: cover;
   background-position: center center;
@@ -657,15 +657,16 @@ em {
   padding: 120px 0 0 0;
   overflow: hidden;
   margin-top: 50px; }
-  #contact .container {
-    width: 500px; 
-    color: #000; }
-    #contact .container h1 {
+  #category .container {
+    width: 600px; 
+    color: #5c5c5c; }
+    #category .container h1 {
       font-weight: 800;
       font-size: 18px; 
       margin-bottom: 10px; 
-      margin-top: 20px; }
-    #contact .container p {
+      margin-top: 20px; 
+      color: #7A9ED3; }
+    #category .container p {
       color: #000;
       font-weight: 400; }
 
