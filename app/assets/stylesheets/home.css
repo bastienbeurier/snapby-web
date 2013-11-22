@@ -656,9 +656,14 @@ em {
   position: relative;
   padding: 120px 0 0 0;
   overflow: hidden;
-  margin-top: 50px; }
+  margin-top: 10px; }
   #category .container {
-    width: 600px; 
+    max-width: 600px; 
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
     color: #000; }
     #category .container h2 {
       font-weight: 800;
