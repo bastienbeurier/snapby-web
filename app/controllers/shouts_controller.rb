@@ -21,6 +21,7 @@ class ShoutsController < ApplicationController
     end
   end
 
+  #Not used anymore (for testing purposes)
   #Retrieve shouts within a zone (location and radius)
   def zone_shouts
     Rails.logger.debug "BAB zone_shouts params: #{params}"
