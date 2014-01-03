@@ -1,7 +1,7 @@
 StreetShout::Application.routes.draw do
   resources :shouts
 
-  get "/" => "home#index"
+  root :to => "home#index"
 
   get "/zone_shouts" => "shouts#zone_shout"
   get "/bound_box_shouts" => "shouts#bound_box_shouts"
