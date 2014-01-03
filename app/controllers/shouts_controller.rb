@@ -5,7 +5,10 @@ class ShoutsController < ApplicationController
   def create
     Rails.logger.debug "BAB create params: #{params}"
 
-    shout = Shout.new(lat: params[:lat], lng: params[:lng], display_name: params[:user_name], description: params[:description], source: "native", device_id: params[:device_id], image: params[:image])
+    params[:source] = "native"
+    params[:display_name] = params[:user_name]
+
+    shout = Shout.new(shout_params)
     success = shout.save
 
     if success
@@ -18,24 +21,6 @@ class ShoutsController < ApplicationController
         format.json { render(:json => { :errors => "Failed to save shout", :errorStatusCode => "Failed to save shout" }, :status => 500) }
         format.html { render(:text => "Failed to save shout", :status => 500) }
       end 
-    end
-  end
-
-  #Not used anymore (for testing purposes)
-  #Retrieve shouts within a zone (location and radius)
-  def zone_shouts
-    Rails.logger.debug "BAB zone_shouts params: #{params}"
-    max_age = Time.now - SHOUT_DURATION
-
-    if params[:notwitter].to_i == 1
-      shouts = Shout.where("source = 'native' AND created_at >= :max_age", {:max_age => max_age}).within(params[:radius].to_i, :origin => [params[:lat], params[:lng]]).limit(100).order("created_at DESC")
-    else 
-      shouts = Shout.where("created_at >= :max_age", {:max_age => max_age}).within(params[:radius].to_i, :origin => [params[:lat], params[:lng]]).limit(100).order("created_at DESC")
-    end
-
-    respond_to do |format|
-      format.json { render json: {result: shouts, status: 200} }
-      format.html { render json: shouts }
     end
   end
 
@@ -77,7 +62,7 @@ class ShoutsController < ApplicationController
   def global_feed_shouts
     Rails.logger.debug "BAB global_feed_shouts params: #{params}"
 
-    per_page = params[:per_page] ? params[:per_page] : 20
+    per_page = params[:per_page] ? params[:per_page] : 100
     page = params[:page] ? params[:page] : 1
 
     max_age = Time.now - SHOUT_DURATION
@@ -112,9 +97,9 @@ class ShoutsController < ApplicationController
 
     #Case where the shout is flagged for the first time
     if !flagged_shout
-      flagged_shout = FlaggedShout.new(shout_id: params[:id],
-                                          device_id: params[:device_id],
-                                          motive: motives[params[:motive].to_i])
+      params[:motive] = motives[params[:motive].to_i]
+      params[:shout_id] = params[:id]
+      flagged_shout = FlaggedShout.new(flag_params)
     #Case where the shout has already been flagged, but never by that user
     elsif !flagged_shout.device_id.split(",").include?(params[:device_id])
       flagged_shout.device_id += "," + params[:device_id]
@@ -169,5 +154,15 @@ class ShoutsController < ApplicationController
       format.json { render json: {result: "Demo ready to start", status: 200} }
       format.html { render json: "Demo ready to start" }
     end
+  end
+
+private 
+
+  def shout_params
+    params.permit(:lat, :lng, :display_name, :description, :source, :device_id, :image)
+  end
+
+  def flag_params
+    params.permit(:shout_id, :device_id, :motive)
   end
 end

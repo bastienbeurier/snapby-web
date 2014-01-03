@@ -15,6 +15,5 @@ gem 'coffee-rails', '4.0.1'
 gem 'jquery-rails', '3.0.4'
 
 #for rails 3 functionalities
-gem 'protected_attributes' #to remove avec testing rails 4
 gem 'rails-observers'
 gem 'actionpack-page_caching'
