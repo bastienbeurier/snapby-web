@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
-	#Website slash page
+	caches_page :index
+
+	#Website splash page
 	def index
 	end
 
