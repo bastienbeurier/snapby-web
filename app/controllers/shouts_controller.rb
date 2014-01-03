@@ -156,6 +156,10 @@ class ShoutsController < ApplicationController
     end
   end
 
+  def obsolete_api
+    format.json { render json: {result: "obsolete_api", status: 251} }
+  end
+
 private 
 
   def shout_params
@@ -165,4 +169,5 @@ private
   def flag_params
     params.permit(:shout_id, :device_id, :motive)
   end
+
 end
