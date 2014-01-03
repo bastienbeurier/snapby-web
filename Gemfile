@@ -18,5 +18,3 @@ gem 'jquery-rails', '3.0.4'
 gem 'protected_attributes' #to remove avec testing rails 4
 gem 'rails-observers'
 gem 'actionpack-page_caching'
-gem 'actionpack-action_caching'
-gem 'activerecord-deprecated_finders'
