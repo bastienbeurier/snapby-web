@@ -33,16 +33,7 @@ class DevicesController < ApplicationController
         return
       end
 
-      device = Device.new(device_id: params[:device_id], 
-                          push_token: params[:push_token], 
-                          device_model: params[:device_model], 
-                          os_version: params[:os_version], 
-                          os_type: params[:os_type], 
-                          app_version: params[:app_version], 
-                          api_version: params[:api_version], 
-                          lat: params[:lat], 
-                          lng: params[:lng],
-                          notification_radius: params[:notification_radius])
+      device = Device.new(device_params)
     end
 
     
@@ -69,5 +60,11 @@ class DevicesController < ApplicationController
       format.json { render json: {result: black_listed_devices, status: 200} }
       format.html { render json: black_listed_devices }
     end
+  end
+
+  private
+
+  def device_params
+    params.permit(:device_id, :push_token, :device_model, :os_version, :os_type, :app_version, :api_version, :lat, :lng, :notification_radius)
   end
 end

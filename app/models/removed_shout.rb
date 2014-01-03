@@ -1,6 +1,4 @@
 class RemovedShout < ActiveRecord::Base
-  attr_accessible   :shout_id, :removed_by, :shout_created_at, :description, :lat, :lng, :source, :created_at, :display_name, :device_id, :image
-
   validates :description,      presence: true, length: { maximum: 140 }
   validates :lat,              presence: true
   validates :lng,              presence: true
