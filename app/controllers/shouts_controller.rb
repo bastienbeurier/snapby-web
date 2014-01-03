@@ -157,7 +157,7 @@ class ShoutsController < ApplicationController
   end
 
   def obsolete_api
-    format.json { render json: {result: "obsolete_api", status: 251} }
+    format.json { render json: {result: "obsolete_api", status: 200} }
   end
 
 private 
