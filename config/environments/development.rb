@@ -18,6 +18,9 @@ StreetShout::Application.configure do
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
 
+  # See everything in the log (default is :info)
+  config.log_level = :debug
+
   # Expands the lines which load the assets
   config.assets.debug = true
 end
