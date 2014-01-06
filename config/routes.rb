@@ -17,5 +17,8 @@ StreetShout::Application.routes.draw do
   get "/privacy" => "home#privacy"
   get "/terms" => "home#terms"
   get "/contact" => "home#contact"
+
+  get "/obsolete_api" => "shouts#obsolete_api"
+  
 end
 	

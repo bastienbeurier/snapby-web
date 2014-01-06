@@ -156,6 +156,15 @@ class ShoutsController < ApplicationController
     end
   end
 
+  def obsolete_api
+    Rails.logger.debug "TRUCHOV API_Version params: #{params}"
+    if ! ACCEPTED_APIS.include?(params[:API_Version].to_f)
+      render json: {result: "IsObsolete", status: 251}
+    else
+      render json: {result: "OK", status: 200}
+    end
+  end
+
 private 
 
   def shout_params
@@ -165,4 +174,5 @@ private
   def flag_params
     params.permit(:shout_id, :device_id, :motive)
   end
+
 end
