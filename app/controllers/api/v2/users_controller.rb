@@ -1,3 +1,3 @@
-class Api::V1::UsersController < Api::V1::ApiController
+class Api::V2::UsersController < Api::V2::ApiController
     skip_before_filter :authenticate_user!, :only => [:create]
 end
