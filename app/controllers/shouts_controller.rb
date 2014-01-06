@@ -48,8 +48,8 @@ class ShoutsController < ApplicationController
     max_age = Time.now - SHOUT_DURATION
 
     shouts = Shout.where("created_at >= :max_age", {:max_age => max_age}).in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).limit(100).order("created_at DESC")
-
-    Rails.logger.info "BAB rbound_box_shouts response: #{shouts.collect(&:created_at)}"
+      
+    Rails.logger.debug "BAB rbound_box_shouts response: #{shouts.collect(&:created_at)}"
 
     respond_to do |format|
       format.json { render json: {result: shouts, status: 200} }
