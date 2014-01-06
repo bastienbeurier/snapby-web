@@ -158,7 +158,7 @@ class ShoutsController < ApplicationController
 
   def obsolete_api
     Rails.logger.info "TRUCH API_Version params: #{params}"
-    if ! ACCEPTED_APIS.include(params[:API_Version].to_i)
+    if ! ACCEPTED_APIS.include?(params[:API_Version].to_f)
       render json: {result: "IsObsolete", status: 251}
     end
   end
