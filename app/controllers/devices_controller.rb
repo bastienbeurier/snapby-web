@@ -1,7 +1,7 @@
 class DevicesController < ApplicationController
   #Store info about the user device (only devices that can receive push notification)
   def update_device_info
-    Rails.logger.info "BAB update_device_info: #{params}"
+    Rails.logger.debug "BAB update_device_info: #{params}"
 
     if !params[:device_id] or !params[:push_token]
       respond_to do |format|
