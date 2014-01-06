@@ -5,8 +5,7 @@ class DevicesController < ApplicationController
 
     if !params[:device_id] or !params[:push_token]
       respond_to do |format|
-        format.json { render(:json => { :errors => "Incomplete device information", :errorStatusCode => "Incomplete device information" }, :status => 406) }
-        format.html { render(:text => "Incomplete device information", :status => 406) }
+        format.json { render :json => { :errors => ["Incomplete device information"] }, :status => 406 }
       end
       return
     end
@@ -27,8 +26,7 @@ class DevicesController < ApplicationController
     else
       if !params[:lat] or !params[:lng]
         respond_to do |format|
-          format.json { render(:json => { :errors => "Incomplete device information", :errorStatusCode => "Incomplete device information" }, :status => 406) }
-          format.html { render(:text => "Incomplete device information", :status => 406) }
+          format.json { render :json => { :errors => ["Incomplete device information"] }, :status => 406  }
         end
         return
       end
@@ -41,13 +39,11 @@ class DevicesController < ApplicationController
 
     if success
       respond_to do |format|
-        format.json { render json: {result: device, status: 201} }
-        format.html { render json: device }
+        format.json { render json: { result: device }, status: 201 }
       end
     else 
       respond_to do |format|
-        format.json { render(:json => { :errors => "Failed to save device", :errorStatusCode => "Failed to save shout" }, :status => 500) }
-        format.html { render(:text => "Failed to save device", :status => 500) }
+        format.json { render :json => { :errors => ["Failed to save device"] }, :status => 500  }
       end 
     end
   end
@@ -57,8 +53,7 @@ class DevicesController < ApplicationController
     black_listed_devices = BlackListedDevice.all
 
     respond_to do |format|
-      format.json { render json: {result: black_listed_devices, status: 200} }
-      format.html { render json: black_listed_devices }
+      format.json { render json: { result: black_listed_devices }, status: 200 }
     end
   end
 

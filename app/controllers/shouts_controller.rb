@@ -13,13 +13,11 @@ class ShoutsController < ApplicationController
 
     if success
       respond_to do |format|
-        format.json { render json: {result: shout, status: 201} }
-        format.html { render json: shout }
+        format.json { render json: {result: shout}, status: 201 }
       end
     else 
       respond_to do |format|
-        format.json { render(:json => { :errors => "Failed to save shout", :errorStatusCode => "Failed to save shout" }, :status => 500) }
-        format.html { render(:text => "Failed to save shout", :status => 500) }
+        format.json { render :json => { :errors => ["Failed to save shout"] }, :status => 500 }
       end 
     end
   end
@@ -31,13 +29,11 @@ class ShoutsController < ApplicationController
 
     if shout
       respond_to do |format|
-        format.json { render json: {result: shout, status: 200} }
-        format.html { render json: shout }
+        format.json { render json: {result: shout}, status: 200 }
       end
     else
       respond_to do |format|
-        format.json { render(:json => { :errors => "Failed to retrieve shout", :errorStatusCode => "Failed to retrieve shout" }, :status => 500) }
-        format.html { render(:text => "Failed to retrieve shout", :status => 500) }
+        format.json { render :json => { :errors => ["Failed to retrieve shout"]}, :status => 500  }
       end 
     end
   end
@@ -52,8 +48,7 @@ class ShoutsController < ApplicationController
     Rails.logger.debug "BAB rbound_box_shouts response: #{shouts.collect(&:created_at)}"
 
     respond_to do |format|
-      format.json { render json: {result: shouts, status: 200} }
-      format.html { render json: shouts }
+      format.json { render json: {result: shouts}, status: 200 }
     end
   end
 
@@ -70,8 +65,7 @@ class ShoutsController < ApplicationController
     shouts = Shout.where("source = 'native' AND created_at >= :max_age", {:max_age => max_age}).paginate(page: page, per_page: per_page).order('id DESC')
 
     respond_to do |format|
-      format.json { render json: {result: shouts, status: 200} }
-      format.html { render json: shouts }
+      format.json { render json: {result: shouts}, status: 200 }
     end
   end
 
@@ -83,8 +77,7 @@ class ShoutsController < ApplicationController
     
     if !shout or !params[:device_id] or !params[:motive]
       respond_to do |format|
-        format.json { render(:json => { :errors => "Incomplete information to flag shout", :errorStatusCode => "Incomplete information to flag shout" }, :status => 406) }
-        format.html { render(:text => "Incomplete information to flag shout", :status => 406) }
+        format.json { render :json => { :errors => ["Incomplete information to flag shout"]}, :status => 406  }
       end
       return
     end
@@ -121,8 +114,7 @@ class ShoutsController < ApplicationController
     #Case where this user already flagged this shout
     else
       respond_to do |format|
-        format.json { render json: {result: "Shout already flagged by user", status: 200} }
-        format.html { render json: "Shout already flagged by user" }
+        format.json { render json: {errors: ["Shout already flagged by user"]}, status: 422 }
       end
       return
     end
@@ -131,13 +123,11 @@ class ShoutsController < ApplicationController
 
     if flagged_shout.save
       respond_to do |format|
-        format.json { render json: {result: "Shout successfully flagged", status: 200} }
-        format.html { render json: "Shout successfully flagged" }
+        format.json { render json: {result: "Shout successfully flagged"}, status: 200 }
       end
     else 
       respond_to do |format|
-        format.json { render json: {result: "Failed to flag shout", status: 500} }
-        format.html { render json: "Failed to flag shout" }
+        format.json { render json: {errors: ["Failed to flag shout"]}, status: 500 }
       end
     end
   end
@@ -145,14 +135,11 @@ class ShoutsController < ApplicationController
   #For development only
   def demo
     if Rails.env.development?
-      Shout.delete_all
-
       DevelopmentTasks.demo
     end
 
     respond_to do |format|
-      format.json { render json: {result: "Demo ready to start", status: 200} }
-      format.html { render json: "Demo ready to start" }
+      format.json { render json: {result: "Demo ready to start"}, status: 200 }
     end
   end
 

@@ -1,4 +1,6 @@
 StreetShout::Application.routes.draw do
+  devise_for :users
+  devise_for :users, :controllers => {sessions:'sessions'} # custom controller for API token access
   resources :shouts
 
   root :to => "home#index"
