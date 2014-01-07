@@ -1,4 +1,4 @@
-class Api::V2::SessionsController < Devise::SessionsController
+class Api::V2::SessionsController < ApplicationController
   before_action :authenticate_user!, only: :destroy
 
   respond_to :json
