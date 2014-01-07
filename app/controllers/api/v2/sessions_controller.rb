@@ -15,7 +15,7 @@ class Api::V2::SessionsController < ApplicationController
   end
 
   def destroy
-    user = User.where(authentication_token: params[:authentication_token]).first    
+    user = User.where(authentication_token: params[:auth_token]).first    
     user.reset_authentication_token!
     render :json => { :message => ["Session deleted."] }, :status => :ok
   end

@@ -1,4 +1,5 @@
 StreetShout::Application.routes.draw do
+  devise_for :users
   resources :shouts
 
   root :to => "home#index"
