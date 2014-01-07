@@ -25,6 +25,10 @@ StreetShout::Application.routes.draw do
       resources :users
       resources :sessions
       devise_for :users, :controllers => { sessions:'api/v2/sessions' } # custom controller for API token access
+      devise_scope :user do
+        post "/sign_in", :to => 'sessions#create'
+        delete "/sign_out", :to => 'sessions#destroy'
+      end
     end
   end
 end
