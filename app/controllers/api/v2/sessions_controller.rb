@@ -1,7 +1,5 @@
 class Api::V2::SessionsController < ApplicationController
-  before_action :authenticate_user!, only: :destroy
-
-  respond_to :json
+  skip_before_filter :authenticate_user!, :only => :create
 
   def create
     user = User.find_for_database_authentication(:email => params[:email])
