@@ -109,7 +109,6 @@ class ShoutsController < ApplicationController
                                             device_id: shout.device_id,
                                             removed_by: "auto")
         shout.destroy
-        flagged_shout.destroy
       end
     #Case where this user already flagged this shout
     else
@@ -120,6 +119,7 @@ class ShoutsController < ApplicationController
     end
 
     #send mail (specified if automatically removed)
+    UserMailer.flagged_shout_email(flagged_shout,shout).deliver
 
     if flagged_shout.save
       respond_to do |format|

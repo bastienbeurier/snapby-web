@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>The shout with id <%= @flagged_shout.shout_id %> has just been flag!</h1>
+    <p>
+       The motive of this flag is <%= @flagged_shout.motive %>.<br/>
+    </p>
+    <p>
+       The number of flag for this shout is: <%= @flagged_shout.device_id.split(",").count %>.<br/>
+    </p>
+    <p>The text of this shout is:  <%= @shout.description%>. </p>
+    <% if @shout.image %>
+      <p>You can find the image at: <%= link_to "this adress", "http://" + @shout.image + "--400" %>.</p>
+    <% end %>
+  </body>
+</html>
