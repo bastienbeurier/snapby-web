@@ -6,7 +6,7 @@ class Api::V2::SessionsController < ApplicationController
 
     if user && user.valid_password?(params[:password])
       user.ensure_authentication_token!
-      render :json => { :result => user }, :status => :ok
+      render :json => { result: { auth_token: user.authentication_token} }, :status => :ok
     else
       render :json => { :errors => ["Invalid email or password."] }, :status => :unauthorized
     end
