@@ -24,5 +24,18 @@ StreetShout::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
+  # Mailer
   config.action_mailer.default_url_options = { :host => 'dev-street-shout.herokuapp.com' }
+  ActionMailer::Base.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  ActionMailer::Base.smtp_settings = {
+      :address        => 'smtp.gmail.com',
+      :domain         => 'http://www.street-shout.com',
+      :port           => 587,
+      :user_name      => 'info@street-shout.com',
+      :password       => ENV['MAILER_PASS'],
+      :authentication => :plain
+  }
+  
 end
