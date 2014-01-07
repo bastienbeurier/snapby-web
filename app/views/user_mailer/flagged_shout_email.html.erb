@@ -11,6 +11,9 @@
     <p>
        The number of flag for this shout is: <%= @flagged_shout.device_id.split(",").count %>.<br/>
     </p>
-    <p>Check if this shout should indeed be removed!</p>
+    <p>The text of this shout is:  <%= @shout.description%>. </p>
+    <% if @shout.image %>
+      <p>You can find the image at: <%= link_to "this adress", "http://" + @shout.image + "--400" %>.</p>
+    <% end>
   </body>
 </html>
