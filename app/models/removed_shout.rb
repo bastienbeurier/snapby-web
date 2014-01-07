@@ -7,4 +7,5 @@ class RemovedShout < ActiveRecord::Base
   validates :shout_id,         presence: true
   validates :removed_by,  	   presence: true
   validates :shout_created_at, presence: true
+  #add validates :user_id, presence: true
 end

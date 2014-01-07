@@ -6,7 +6,7 @@ class Api::V2::FlagsController < Api::V2::ApiController
 
     shout = Shout.find(params[:shout_id])
     
-    if !shout or !params[:user_id] or !params[:motive]
+    if !shout or !params[:motive]
       respond_to do |format|
         format.json { render :json => { :errors => ["Incomplete information to flag shout"]}, :status => 406  }
       end
@@ -22,8 +22,8 @@ class Api::V2::FlagsController < Api::V2::ApiController
     if !flagged_shout
       flagged_shout = FlaggedShout.new(flag_params)
     #Case where the shout has already been flagged, but never by that user
-    elsif !flagged_shout.user_ids.split(",").include?(params[:user_id])
-      flagged_shout.user_ids += "," + params[:user_id]
+    elsif !flagged_shout.user_ids.split(",").include?(current_user.id)
+      flagged_shout.user_ids += "," + current_user.id
       #if more than 5 flags, automatically remove shout and add it to removed_shouts column in db
       if flagged_shout.user_ids.split(",").count >= 5
         removed_shout = RemovedShout.create(shout_id: shout.id,
@@ -37,7 +37,6 @@ class Api::V2::FlagsController < Api::V2::ApiController
                                             user_id: shout.user_id,
                                             removed_by: "auto")
         shout.destroy
-        flagged_shout.destroy
       end
     #Case where this user already flagged this shout
     else
@@ -48,10 +47,11 @@ class Api::V2::FlagsController < Api::V2::ApiController
     end
 
     #send mail (specified if automatically removed)
+    UserMailer.flagged_shout_email(flagged_shout,shout).deliver
 
     if flagged_shout.save
       respond_to do |format|
-        format.json { render json: {result: "Shout successfully flagged"}, status: 200 }
+        format.json { render json: {message: "Shout successfully flagged"}, status: 200 }
       end
     else 
       respond_to do |format|

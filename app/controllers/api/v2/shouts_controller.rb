@@ -6,7 +6,7 @@ class Api::V2::ShoutsController < Api::V2::ApiController
     Rails.logger.debug "BAB create params: #{params}"
 
     params[:source] = "native"
-    params[:display_name] = params[:user_name]
+    params[:user_id] = current_user.id
 
     shout = Shout.new(shout_params)
     success = shout.save
@@ -44,8 +44,6 @@ class Api::V2::ShoutsController < Api::V2::ApiController
     max_age = Time.now - SHOUT_DURATION
 
     shouts = Shout.where("created_at >= :max_age", {:max_age => max_age}).in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).limit(100).order("created_at DESC")
-      
-    Rails.logger.debug "BAB rbound_box_shouts response: #{shouts.collect(&:created_at)}"
 
     respond_to do |format|
       format.json { render json: {result: {shouts: shouts } }, status: 200 }
@@ -55,6 +53,6 @@ class Api::V2::ShoutsController < Api::V2::ApiController
 private 
 
   def shout_params
-    params.permit(:lat, :lng, :display_name, :description, :source, :device_id, :image)
+    params.permit(:lat, :lng, :username, :description, :source, :user_id, :image)
   end
 end
