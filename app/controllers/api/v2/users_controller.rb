@@ -1,5 +1,6 @@
 class Api::V2::UsersController < Api::V2::ApiController
-  skip_before_filter :authenticate_user!, :only => [:create]
+
+  respond_to :json
 
   def create
     user = User.new(user_params)
