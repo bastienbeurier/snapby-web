@@ -119,7 +119,7 @@ class ShoutsController < ApplicationController
     end
 
     #send mail (specified if automatically removed)
-    UserMailer.flagged_shout_email(flag,shout).deliver
+    UserMailer.flagged_shout_email(flagged_shout,shout).deliver
 
     if flagged_shout.save
       respond_to do |format|
