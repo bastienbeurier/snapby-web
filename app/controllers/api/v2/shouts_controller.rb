@@ -36,7 +36,7 @@ class Api::V2::ShoutsController < Api::V2::ApiController
 
     shouts = Shout.where("created_at >= :max_age", {:max_age => max_age}).in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).limit(100).order("created_at DESC")
 
-    render json: {result: {shouts: shouts } }, status: 200 }
+    render json: {result: {shouts: shouts } }, status: 200
   end
 
 private 
