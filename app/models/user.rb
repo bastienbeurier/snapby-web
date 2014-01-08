@@ -5,14 +5,12 @@ class User < ActiveRecord::Base
                     :lat_column_name => :lat,
                     :lng_column_name => :lng
 
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
-  # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :token_authenticatable, :validatable
 
+  #devise automatically checks email format and convert to lower case
   validates_uniqueness_of :email
   validates :email, presence: true
   validates :password, presence: true
-  validates :username, presence: true
+  validates :username, presence: true, length: { maximum: 20 }
 end
