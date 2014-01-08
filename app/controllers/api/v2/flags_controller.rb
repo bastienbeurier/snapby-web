@@ -7,55 +7,31 @@ class Api::V2::FlagsController < Api::V2::ApiController
     shout = Shout.find(params[:shout_id])
     
     if !shout or !params[:motive]
-      respond_to do |format|
-        format.json { render :json => { :errors => ["Incomplete information to flag shout"]}, :status => 406  }
-      end
+      render :json => { :errors => ["Incomplete information to flag shout"]}, :status => 406
       return
     end
 
-    flagged_shout = FlaggedShout.find_by_shout_id(params[:shout_id])
+    existing_flags = Flag.find_by(shout_id: shout.id)
 
-    #remove this array!
-    # motives = ["abuse", "spam", "privacy", "inaccurate", "other"]
-
-    #Case where the shout is flagged for the first time
-    if !flagged_shout
-      flagged_shout = FlaggedShout.new(flag_params)
-    #Case where the shout has already been flagged, but never by that user
-    elsif !flagged_shout.user_ids.split(",").include?(current_user.id)
-      flagged_shout.user_ids += "," + current_user.id
-      #if more than 5 flags, automatically remove shout and add it to removed_shouts column in db
-      if flagged_shout.user_ids.split(",").count >= 5
-        removed_shout = RemovedShout.create(shout_id: shout.id,
-                                            lat: shout.lat,
-                                            lng: shout.lng,
-                                            description: shout.description,
-                                            display_name: shout.display_name,
-                                            image: shout.image,
-                                            source: shout.source, 
-                                            shout_created_at: shout.created_at,
-                                            user_id: shout.user_id,
-                                            removed_by: "auto")
-        shout.destroy
-      end
     #Case where this user already flagged this shout
-    else
-      respond_to do |format|
-        format.json { render json: {errors: ["Shout already flagged by user"]}, status: 422 }
-      end
+    if existing_flags.find_by(flagger_id: flag.flagger_id)
+      render json: {errors: ["Shout already flagged by user"]}, status: 422
       return
-    end
+    else
+      flag = Flag.new(flag_params)
 
-    #send mail (specified if automatically removed)
-    UserMailer.flagged_shout_email(flagged_shout,shout).deliver
+      if flag.save
+        #if more than 5 flags, do not display the shout anymore
+        if existing_flags.count >= 5
+          shout.update_attributes(removed: true)
+        end
 
-    if flagged_shout.save
-      respond_to do |format|
-        format.json { render json: {message: "Shout successfully flagged"}, status: 200 }
-      end
-    else 
-      respond_to do |format|
-        format.json { render json: {errors: ["Failed to flag shout"]}, status: 500 }
+        #send mail (specified if automatically removed)
+        UserMailer.flagged_shout_email(flag,shout).deliver
+
+        render json: {message: "Shout successfully flagged"}, status: 200
+      else 
+        render json: {errors: ["Failed to flag shout"]}, status: 500 
       end
     end
   end
@@ -63,7 +39,7 @@ class Api::V2::FlagsController < Api::V2::ApiController
 private
 
   def flag_params
-    params.permit(:shout_id, :user_id, :motive)
+    params.permit(:shout_id, :motive, :flagger_id)
   end 
 
 end

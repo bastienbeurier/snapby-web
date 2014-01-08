@@ -4,9 +4,7 @@ class DevicesController < ApplicationController
     Rails.logger.debug "BAB update_device_info: #{params}"
 
     if !params[:device_id] or !params[:push_token]
-      respond_to do |format|
-        format.json { render :json => { :errors => ["Incomplete device information"] }, :status => 406 }
-      end
+      render json: { :errors => ["Incomplete device information"] }, :status => 406
       return
     end
 
@@ -25,9 +23,7 @@ class DevicesController < ApplicationController
       end
     else
       if !params[:lat] or !params[:lng]
-        respond_to do |format|
-          format.json { render :json => { :errors => ["Incomplete device information"] }, :status => 406  }
-        end
+        render json: { :errors => ["Incomplete device information"] }, :status => 406
         return
       end
 
@@ -38,13 +34,9 @@ class DevicesController < ApplicationController
     success = device.save
 
     if success
-      respond_to do |format|
-        format.json { render json: { result: device }, status: 201 }
-      end
+      render json: { result: device }, status: 201
     else 
-      respond_to do |format|
-        format.json { render :json => { :errors => ["Failed to save device"] }, :status => 500  }
-      end 
+      render json: { :errors => ["Failed to save device"] }, :status => 500 
     end
   end
 
@@ -52,9 +44,7 @@ class DevicesController < ApplicationController
   def black_listed_devices
     black_listed_devices = BlackListedDevice.all
 
-    respond_to do |format|
-      format.json { render json: { result: black_listed_devices }, status: 200 }
-    end
+    render json: { result: black_listed_devices }, status: 200
   end
 
   private

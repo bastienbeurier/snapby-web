@@ -29,8 +29,6 @@ class HomeController < ApplicationController
 
     shouts = Shout.where("source = 'native' AND created_at >= :max_age", {:max_age => max_age}).paginate(page: page, per_page: per_page).order('id DESC')
 
-    respond_to do |format|
-      format.json { render json: {result: shouts}, status: 200 }
-    end
+    render json: {result: shouts}, status: 200
   end
 end
