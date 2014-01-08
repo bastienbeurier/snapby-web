@@ -25,6 +25,7 @@ StreetShout::Application.routes.draw do
     namespace :v2  do
       resources :users, only: [:create]
       devise_for :users, :controllers => { sessions:'api/v2/sessions' } # custom controller for API token access
+      get "/obsolete_api" => "api/v2/api#obsolete_api"
     end
   end
 end

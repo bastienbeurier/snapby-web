@@ -1,7 +1,7 @@
 class Api::V2::ApiController < ApplicationController
   before_action :authenticate_user!
 
-  skip_before_filter :authenticate_user!, :only => :obsolete_api
+  # skip_before_filter :authenticate_user!, :only => :obsolete_api
 
   respond_to :json
 
