@@ -5,7 +5,7 @@ class Api::V2::UsersController < Api::V2::ApiController
     user = User.new(user_params)
 
     if user.save
-      render json: { result: user }, status: 201
+      render json: { result: { user: user, token: token } }, status: 201
     else
       render json: { :errors => user.errors }, status: 422
     end
@@ -14,6 +14,6 @@ class Api::V2::UsersController < Api::V2::ApiController
 private 
 
   def user_params
-    params.permit(:email, :password, :password_confirmation)
+    params.permit(:email, :password, :password_confirmation, :username, :device_model, :os_version, :os_type, :app_version, :api_version)
   end
 end

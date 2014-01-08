@@ -17,10 +17,10 @@ class CreateDevices < ActiveRecord::Migration
   end
 
   def self.up
-    add_index  :pages, [:lat, :lng]
+    add_index  :devices, [:lat, :lng]
   end
 
   def self.down
-    remove_index  :pages, [:lat, :lng]
+    remove_index  :devices, [:lat, :lng]
   end
 end

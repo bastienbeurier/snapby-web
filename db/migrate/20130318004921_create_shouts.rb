@@ -8,12 +8,4 @@ class CreateShouts < ActiveRecord::Migration
       t.timestamps
     end
   end
-
-  def self.up
-    add_index  :pages, [:lat, :lng]
-  end
-
-  def self.down
-    remove_index  :pages, [:lat, :lng]
-  end
 end
