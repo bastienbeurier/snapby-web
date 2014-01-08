@@ -8,8 +8,8 @@ class UserMailer < ActionMailer::Base
   #   mail(to: @user.email, subject: 'Welcome to My Awesome Site')
   # end
 
-  def flagged_shout_email(flagged_shout,shout)
-    @flagged_shout=flagged_shout
+  def flagged_shout_email(flag,shout)
+    @flag=flag
     @shout=shout
     mail(to: "info@street-shout.com", subject: 'A shout has just been flagged!')
   end

@@ -9,16 +9,11 @@ class Api::V2::ShoutsController < Api::V2::ApiController
     params[:user_id] = current_user.id
 
     shout = Shout.new(shout_params)
-    success = shout.save
 
-    if success
-      respond_to do |format|
-        format.json { render json: {result: { shout: shout } }, status: 201 }
-      end
+    if shout.save
+      render json: {result: { shout: shout } }, status: 201
     else 
-      respond_to do |format|
-        format.json { render :json => { :errors => ["Failed to save shout"] }, :status => 500 }
-      end 
+      render json: { :errors => ["Failed to save shout"] }, :status => 500
     end
   end
 
@@ -28,13 +23,9 @@ class Api::V2::ShoutsController < Api::V2::ApiController
     shout = Shout.find(params[:id])
 
     if shout
-      respond_to do |format|
-        format.json { render json: {result: { shout: shout } }, status: 200 }
-      end
+      render json: {result: { shout: shout } }, status: 200
     else
-      respond_to do |format|
-        format.json { render :json => { :errors => ["Failed to retrieve shout"]}, :status => 500  }
-      end 
+      render json: { :errors => ["Failed to retrieve shout"]}, :status => 500
     end
   end
 
@@ -45,9 +36,7 @@ class Api::V2::ShoutsController < Api::V2::ApiController
 
     shouts = Shout.where("created_at >= :max_age", {:max_age => max_age}).in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).limit(100).order("created_at DESC")
 
-    respond_to do |format|
-      format.json { render json: {result: {shouts: shouts } }, status: 200 }
-    end
+    render json: {result: {shouts: shouts } }, status: 200 }
   end
 
 private 

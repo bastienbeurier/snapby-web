@@ -1,4 +1,6 @@
 class Shout < ActiveRecord::Base
+  has_many :flags
+  
   acts_as_mappable  :default_units => :kms, 
                     :default_formula => :sphere, 
                     :distance_field_name => :distance,
