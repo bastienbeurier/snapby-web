@@ -5,7 +5,8 @@ class Api::V2::UsersController < Api::V2::ApiController
     user = User.new(user_params)
 
     if user.save
-      render json: { result: { user: user, token: token } }, status: 201
+      user.ensure_authentication_token!
+      render json: { result: { user: user, token: user.authentication_token } }, status: 201
     else
       render json: { :errors => user.errors }, status: 422
     end

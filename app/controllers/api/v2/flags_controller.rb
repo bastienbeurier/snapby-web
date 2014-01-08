@@ -7,7 +7,7 @@ class Api::V2::FlagsController < Api::V2::ApiController
     shout = Shout.find(params[:shout_id])
     
     if !shout or !params[:motive]
-      render :json => { :errors => ["Incomplete information to flag shout"]}, :status => 406
+      render :json => { :errors => ["Incomplete information to flag shout"]}, status: 406
       return
     end
 

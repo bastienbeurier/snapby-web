@@ -13,7 +13,7 @@ class Api::V2::ShoutsController < Api::V2::ApiController
     if shout.save
       render json: {result: { shout: shout } }, status: 201
     else 
-      render json: { :errors => ["Failed to save shout"] }, :status => 500
+      render json: { :errors => shout.errors }, :status => 500
     end
   end
 
