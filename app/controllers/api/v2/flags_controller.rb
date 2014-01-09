@@ -1,7 +1,7 @@
 class Api::V2::FlagsController < Api::V2::ApiController
 
   #User flags an abusive shout
-  def flag_shout
+  def create
     Rails.logger.debug "BAB report_shout params: #{params}"
 
     shout = Shout.find(params[:shout_id])
