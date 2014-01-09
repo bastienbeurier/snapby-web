@@ -7,7 +7,7 @@ class Api::V2::ApiController < ApplicationController
 
   def authenticate_user!
     unless current_user
-      render :json => { errors: ["Authentication error"] }, :status => 401
+      render :json => { errors: { authentication: ["no valid token"] } }, :status => 401
     end
   end
 

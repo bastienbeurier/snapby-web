@@ -11,9 +11,9 @@ class Api::V2::ShoutsController < Api::V2::ApiController
     shout = Shout.new(shout_params)
 
     if shout.save
-      render json: {result: { shout: shout } }, status: 201
+      render json: { result: { shout: shout } }, status: 201
     else 
-      render json: { :errors => shout.errors }, :status => 500
+      render json: { errors: { internal: shout.errors } }, :status => 500
     end
   end
 
@@ -23,9 +23,9 @@ class Api::V2::ShoutsController < Api::V2::ApiController
     shout = Shout.find(params[:id])
 
     if shout
-      render json: {result: { shout: shout } }, status: 200
+      render json: { result: { shout: shout } }, status: 200
     else
-      render json: { :errors => ["Failed to retrieve shout"]}, :status => 500
+      render json: { errors: { internal: ["failed to retrieve shout"] } }, :status => 500
     end
   end
 
