@@ -5,6 +5,12 @@ class Api::V2::ApiController < ApplicationController
 
   respond_to :json
 
+  def authenticate_user!
+    unless current_user
+      render :json => { errors: ["Authentication error"] }, :status => 401
+    end
+  end
+
   def obsolete_api
     Rails.logger.debug "TRUCHOV API_Version params: #{params}"
     if !ACCEPTED_APIS.include?(params[:API_Version].to_f)
