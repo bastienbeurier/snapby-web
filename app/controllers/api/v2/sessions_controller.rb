@@ -8,13 +8,13 @@ class Api::V2::SessionsController < Api::V2::ApiController
       user.ensure_authentication_token!
       render json: { result: { user: user, auth_token: user.authentication_token} }, status: 200
     else
-      render json: { :errors => ["Invalid email or password."] }, status: 401
+      render json: { errors: { authentication: ["invalid email or password"] } }, status: 401
     end
   end
 
   def destroy
     user = User.where(authentication_token: params[:auth_token]).first    
     user.reset_authentication_token!
-    render json: { :message => ["Session deleted."] }, status: 200
+    render json: { result: { messages: ["session deleted"] } }, status: 200
   end
 end

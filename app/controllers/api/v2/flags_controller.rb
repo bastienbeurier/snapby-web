@@ -7,7 +7,7 @@ class Api::V2::FlagsController < Api::V2::ApiController
     shout = Shout.find(params[:shout_id])
     
     if !shout or !params[:motive]
-      render :json => { :errors => ["Incomplete information to flag shout"]}, status: 406
+      render :json => { :errors => { incomplete: ["incomplete information to flag shout"] } }, status: 406
       return
     end
 
@@ -15,7 +15,7 @@ class Api::V2::FlagsController < Api::V2::ApiController
 
     #Case where this user already flagged this shout
     if existing_flags.find_by(flagger_id: flag.flagger_id)
-      render json: {errors: ["Shout already flagged by user"]}, status: 422
+      render json: {errors: { duplicate: ["shout already flagged by user"] } }, status: 422
       return
     else
       flag = Flag.new(flag_params)
@@ -29,9 +29,9 @@ class Api::V2::FlagsController < Api::V2::ApiController
         #send mail (specified if automatically removed)
         UserMailer.flagged_shout_email(flag,shout).deliver
 
-        render json: {message: "Shout successfully flagged"}, status: 200
+        render json: {result: { messages: ["shout successfully flagged"] } }, status: 200
       else 
-        render json: {errors: ["Failed to flag shout"]}, status: 500 
+        render json: {errors: { internal: ["Failed to flag shout"] } }, status: 500 
       end
     end
   end
