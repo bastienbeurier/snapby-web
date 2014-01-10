@@ -30,7 +30,6 @@ StreetShout::Application.routes.draw do
 
       get "/obsolete_api" => "api#obsolete_api"
       get "/bound_box_shouts" => "shouts#bound_box_shouts"
-      post "/generate_new_password_email" => "users#generate_new_password_email"
     end
   end
 end
