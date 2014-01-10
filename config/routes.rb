@@ -1,5 +1,5 @@
 StreetShout::Application.routes.draw do
-  devise_for :users, :skip => [:registrations,:passwords] 
+  devise_for :users, :skip => [:registrations] 
   resources :shouts
 
   root :to => "home#index"
