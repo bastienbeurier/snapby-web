@@ -23,7 +23,7 @@ StreetShout::Application.routes.draw do
 
   namespace :api do
     namespace :v2  do
-      resources :users, only: [:create]
+      resources :users, only: [:create, :update]
       resources :flags, only: [:create]
       resources :shouts, only: [:create, :show]
       devise_for :users, :controllers => { sessions:'api/v2/sessions' } # custom controller for API token access with devise
