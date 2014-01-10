@@ -10,6 +10,7 @@ class Api::V2::PasswordsController < Devise::PasswordsController
   def create
     user = User.find_by(email: params[:email])
     user.send_reset_password_instructions
+    @path = edit_api_v2_user_password_url(user, :reset_password_token => user.reset_password_token) 
     render json: { result: { messages: ["Reset password instructions have been sent to #{user.email}."] } }, status: 201
   end
 
