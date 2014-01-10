@@ -31,7 +31,7 @@ class Api::V2::UsersController < Api::V2::ApiController
     end
 
     if current_user.save
-      render json: { result: {user: user } }, status: 201
+      render json: { result: {user: current_user } }, status: 201
     else 
       render json: { :errors => ["Failed to update user info"] }, :status => 500 
     end
