@@ -9,7 +9,7 @@ class PasswordsController < Devise::PasswordsController
 	end
 
 	def edit
-		super
+		render nothing: true
 	end
 
 	def update
