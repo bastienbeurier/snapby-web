@@ -9,7 +9,9 @@ class Api::V2::PasswordsController < Devise::PasswordsController
 
   def create
     user = User.find_by(email: params[:email])
+    Rails.logger.debug "TRUCHOV before: #{user.reset_password_token}"
     user.send_reset_password_instructions
+    Rails.logger.debug "TRUCHOV after: #{user.reset_password_token}"
     render json: { result: { messages: ["Reset password instructions have been sent to #{user.email}."] } }, status: 201
   end
 
