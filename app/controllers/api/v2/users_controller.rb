@@ -1,5 +1,5 @@
 class Api::V2::UsersController < Api::V2::ApiController
-  skip_before_filter :authenticate_user!, :only => :create
+  skip_before_filter :authenticate_user!, :only => [:create,:generate_new_password_email]
 
   def create
     Rails.logger.debug "BAB create user: #{params}"
