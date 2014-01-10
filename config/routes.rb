@@ -1,7 +1,7 @@
 StreetShout::Application.routes.draw do
   devise_for :users, :skip => [:registrations], :controllers => { passwords:'passwords' } 
   resources :shouts
-
+  patch  "/users/password" => "passwords#update"
   root :to => "home#index"
 
   get "/zone_shouts" => "shouts#zone_shout"
