@@ -1,9 +1,6 @@
 class Api::V2::PasswordsController < Api::V2::ApiController
   skip_before_filter :authenticate_user!, :only => :create
 
-  def new
-    
-  end
 
   def create
     user = User.find_by(email: params[:email])
