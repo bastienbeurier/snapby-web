@@ -14,7 +14,7 @@ class Api::V2::FlagsController < Api::V2::ApiController
     existing_flags = Flag.find_by(shout_id: shout.id)
 
     #Case where this user already flagged this shout
-    if existing_flags.find_by(flagger_id: flag.flagger_id)
+    if existing_flags.find_by(flagger_id: params[:flagger_id])
       render json: {errors: { duplicate: ["shout already flagged by user"] } }, status: 422
       return
     else
