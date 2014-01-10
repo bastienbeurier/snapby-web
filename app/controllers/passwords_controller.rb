@@ -15,7 +15,7 @@ class PasswordsController < Devise::PasswordsController
 	def update
     Rails.logger.debug "TRUCHOV update 1"
 		self.resource = resource_class.reset_password_by_token(resource_params)
-    Rails.logger.debug "TRUCHOV update 1"
+    Rails.logger.debug "TRUCHOV update 2"
     yield resource if block_given?
 
     Rails.logger.debug "TRUCHOV update user: #{resource.errors}"
