@@ -30,9 +30,6 @@ class Api::V2::UsersController < Api::V2::ApiController
       current_user.lng = params[:lng]
     end
 
-    
-    success = device.save
-
     if current_user.save
       render json: { result: {user: user } }, status: 201
     else 
