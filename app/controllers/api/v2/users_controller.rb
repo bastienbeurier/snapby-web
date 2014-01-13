@@ -1,5 +1,5 @@
 class Api::V2::UsersController < Api::V2::ApiController
-  skip_before_filter :authenticate_user!, :only => :create
+  skip_before_filter :authenticate_user!, :only => [:create,:generate_new_password_email]
 
   def create
     Rails.logger.debug "BAB create user: #{params}"
@@ -9,7 +9,7 @@ class Api::V2::UsersController < Api::V2::ApiController
       user.ensure_authentication_token!
       render json: { result: { user: user, auth_token: user.authentication_token } }, status: 201
     else
-      render json: { errors: { user: user.errors } }, status: 422
+      render json: { errors: { user: user.errors } }, status: 222 # Need a success code to handle errors in IOS
     end
   end
 
@@ -31,11 +31,12 @@ class Api::V2::UsersController < Api::V2::ApiController
     end
 
     if current_user.save
-      render json: { result: {user: user } }, status: 201
+      render json: { result: {user: current_user } }, status: 201
     else 
       render json: { :errors => ["Failed to update user info"] }, :status => 500 
     end
   end
+
 
 private 
 
