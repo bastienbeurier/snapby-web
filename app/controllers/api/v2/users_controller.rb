@@ -1,8 +1,9 @@
 class Api::V2::UsersController < Api::V2::ApiController
-  skip_before_filter :authenticate_user!, :only => [:create,:generate_new_password_email]
+  skip_before_filter :authenticate_user!, :only => [:create]
 
   def create
     Rails.logger.debug "BAB create user: #{params}"
+
     user = User.new(user_params)
 
     if user.save
@@ -46,5 +47,9 @@ private
 
   def update_user_params
     params.permit(:device_model, :os_version, :os_type, :app_version, :api_version)
+  end
+
+  def is_facebook_connect?
+    return params.key?(:facebook_id)
   end
 end
