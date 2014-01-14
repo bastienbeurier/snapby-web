@@ -42,7 +42,7 @@ class Api::V2::UsersController < Api::V2::ApiController
 private 
 
   def user_params
-    params.permit(:email, :password, :username, :device_model, :os_version, :os_type, :app_version, :api_version)
+    params.permit(:email, :password, :username, :device_model, :os_version, :os_type, :app_version, :api_version, :facebook_id, :facebook_name)
   end
 
   def update_user_params
