@@ -16,11 +16,11 @@ class User < ActiveRecord::Base
   validates :username, presence: true, length: { minimum: MIN_USERNAME_LENGTH, maximum: MAX_USERNAME_LENGTH }
 
   def save_and_return_token
-    if user.save
-      user.ensure_authentication_token!
-      render json: { result: { user: user, auth_token: user.authentication_token } }, status: 201
+    if save
+      ensure_authentication_token!
+      render json: { result: { user: self, auth_token: authentication_token } }, status: 201
     else
-      render json: { errors: { user: user.errors } }, status: 222 # Need a success code to handle errors in IOS
+      render json: { errors: { user: errors } }, status: 222 # Need a success code to handle errors in IOS
     end
   end
 end
