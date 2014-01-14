@@ -12,6 +12,6 @@ class User < ActiveRecord::Base
   #devise validates uniqueness of email
   validates_uniqueness_of :username, case_sensitive: false
   validates :email, presence: true
-  validates :password, presence: true , on: :create, if :is_facebook_connect? #between 6..128 chars (defined in Devise config)
+  validates :password, presence: true , on: :create, if: :is_facebook_connect? #between 6..128 chars (defined in Devise config)
   validates :username, presence: true, length: { minimum: 6, maximum: 20 }
 end
