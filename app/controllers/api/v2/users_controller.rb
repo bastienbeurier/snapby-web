@@ -6,7 +6,7 @@ class Api::V2::UsersController < Api::V2::ApiController
 
     user = User.new(user_params)
 
-    user.save_and_return_token
+    save_and_return_token(user)
   end
 
   def update
@@ -39,12 +39,23 @@ class Api::V2::UsersController < Api::V2::ApiController
         user.facebook_id = params[:facebook_id]
         user.facebook_name = params[:facebook_name]
       else
+        params[:username] = params[:username][0, [params[:username].length, MAX_USERNAME_LENGTH].min]
         user = User.new(facebook_user_params)
       end
-      user.save_and_return_token
+      save_and_return_token(user,false)
   end
 
+
 private 
+
+  def save_and_return_token(user,validate_user=true)
+    if user.save(:validate=> validate_user)
+      user.ensure_authentication_token!
+      render json: { result: { user: user, auth_token: user.authentication_token } }, status: 201
+    else
+      render json: { errors: { user: user.errors } }, status: 222 # Need a success code to handle errors in IOS
+    end
+  end
 
   def user_params
     params.permit(:email, :password, :username, :device_model, :os_version, :os_type, :app_version, :api_version)
@@ -56,6 +67,5 @@ private
 
   def facebook_user_params
     params.permit(:email, :facebook_id, :facebook_name, :username)
-    params[:username] = params[:username].str[0,MAX_USERNAME_LENGTH]
   end
 end
