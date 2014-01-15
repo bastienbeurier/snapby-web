@@ -30,6 +30,7 @@ StreetShout::Application.routes.draw do
 
       get "/obsolete_api" => "api#obsolete_api"
       get "/bound_box_shouts" => "shouts#bound_box_shouts"
+      post "users/facebook_create_or_update" => "users#facebook_create_or_update"
     end
   end
 end

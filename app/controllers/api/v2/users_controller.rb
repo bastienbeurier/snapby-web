@@ -1,8 +1,9 @@
 class Api::V2::UsersController < Api::V2::ApiController
-  skip_before_filter :authenticate_user!, :only => [:create,:generate_new_password_email]
+  skip_before_filter :authenticate_user!, :only => [:create, :facebook_create_or_update]
 
   def create
     Rails.logger.debug "BAB create user: #{params}"
+
     user = User.new(user_params)
 
     if user.save
@@ -33,7 +34,25 @@ class Api::V2::UsersController < Api::V2::ApiController
     if current_user.save
       render json: { result: {user: current_user } }, status: 201
     else 
-      render json: { :errors => ["Failed to update user info"] }, :status => 500 
+      render json: { errors: ["Failed to update user info"] }, :status => 500 
+    end
+  end
+
+  def facebook_create_or_update
+    user = User.find_by_email(params[:email])
+    if user
+      user.facebook_id = params[:facebook_id]
+      user.facebook_name = params[:facebook_name]
+    else
+      params[:username] = params[:username][0, [params[:username].length, MAX_USERNAME_LENGTH].min]
+      user = User.new(facebook_user_params)
+    end
+
+    if user.save(validate: false)
+      user.ensure_authentication_token!
+      render json: { result: { user: user, auth_token: user.authentication_token } }, status: 201
+    else
+      render json: { errors: ["Failed to create or update user with facebook"] }, status: 500 
     end
   end
 
@@ -46,5 +65,9 @@ private
 
   def update_user_params
     params.permit(:device_model, :os_version, :os_type, :app_version, :api_version)
+  end
+
+  def facebook_user_params
+    params.permit(:email, :facebook_id, :facebook_name, :username)
   end
 end

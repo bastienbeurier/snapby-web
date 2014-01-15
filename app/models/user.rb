@@ -13,5 +13,6 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username, case_sensitive: false
   validates :email, presence: true
   validates :password, presence: true , on: :create #between 6..128 chars (defined in Devise config)
-  validates :username, presence: true, length: { minimum: 6, maximum: 20 }
+  validates :username, presence: true, length: { minimum: MIN_USERNAME_LENGTH, maximum: MAX_USERNAME_LENGTH }
+
 end
