@@ -6,7 +6,12 @@ class Api::V2::UsersController < Api::V2::ApiController
 
     user = User.new(user_params)
 
-    save_and_return_token(user)
+    if user.save
+      user.ensure_authentication_token!
+      render json: { result: { user: user, auth_token: user.authentication_token } }, status: 201
+    else
+      render json: { errors: { user: user.errors } }, status: 222 # Need a success code to handle errors in IOS
+    end
   end
 
   def update
@@ -29,33 +34,30 @@ class Api::V2::UsersController < Api::V2::ApiController
     if current_user.save
       render json: { result: {user: current_user } }, status: 201
     else 
-      render json: { :errors => ["Failed to update user info"] }, :status => 500 
+      render json: { errors: ["Failed to update user info"] }, :status => 500 
     end
   end
 
   def facebook_create_or_update
-      user = User.find_by_email(params[:email])
-      if user
-        user.facebook_id = params[:facebook_id]
-        user.facebook_name = params[:facebook_name]
-      else
-        params[:username] = params[:username][0, [params[:username].length, MAX_USERNAME_LENGTH].min]
-        user = User.new(facebook_user_params)
-      end
-      save_and_return_token(user,false)
+    user = User.find_by_email(params[:email])
+    if user
+      user.facebook_id = params[:facebook_id]
+      user.facebook_name = params[:facebook_name]
+    else
+      params[:username] = params[:username][0, [params[:username].length, MAX_USERNAME_LENGTH].min]
+      user = User.new(facebook_user_params)
+    end
+
+    if user.save(validate: false)
+      user.ensure_authentication_token!
+      render json: { result: { user: user, auth_token: user.authentication_token } }, status: 201
+    else
+      render json: { errors: ["Failed to create or update user with facebook"] }, status: 500 
+    end
   end
 
 
 private 
-
-  def save_and_return_token(user,validate_user=true)
-    if user.save(:validate=> validate_user)
-      user.ensure_authentication_token!
-      render json: { result: { user: user, auth_token: user.authentication_token } }, status: 201
-    else
-      render json: { errors: { user: user.errors } }, status: 222 # Need a success code to handle errors in IOS
-    end
-  end
 
   def user_params
     params.permit(:email, :password, :username, :device_model, :os_version, :os_type, :app_version, :api_version)
