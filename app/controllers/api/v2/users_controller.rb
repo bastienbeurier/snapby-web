@@ -41,16 +41,18 @@ class Api::V2::UsersController < Api::V2::ApiController
   def facebook_create_or_update
     user = User.find_by_email(params[:email])
     if user
+      is_signup = false
       user.facebook_id = params[:facebook_id]
       user.facebook_name = params[:facebook_name]
     else
+      is_signup = true
       params[:username] = params[:username][0, [params[:username].length, MAX_USERNAME_LENGTH].min]
       user = User.new(facebook_user_params)
     end
 
     if user.save(validate: false)
       user.ensure_authentication_token!
-      render json: { result: { user: user, auth_token: user.authentication_token } }, status: 201
+      render json: { result: { user: user, auth_token: user.authentication_token, is_signup: is_signup} }, status: 201
     else
       render json: { errors: ["Failed to create or update user with facebook"] }, status: 500 
     end
