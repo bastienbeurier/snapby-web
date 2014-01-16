@@ -7,7 +7,11 @@ class Api::V2::PasswordsController < Api::V2::ApiController
     
     user.send_reset_password_instructions 
 
-    render json: { result: { messages: ["Reset password instructions have been sent to #{user.email}."] } }, status: 201
+    if  user.errors.empty?
+      render json: { result: { messages: ["Reset password instructions have been sent to #{user.email}."] } }, status: 201
+    else
+      render json: { result: { errors: ["Failed to update user info"] } }, status: 500
+    end
   end
 
 
