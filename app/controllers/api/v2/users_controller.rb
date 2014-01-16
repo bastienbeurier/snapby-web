@@ -39,6 +39,7 @@ class Api::V2::UsersController < Api::V2::ApiController
   end
 
   def facebook_create_or_update
+    # todoBT there is a security issue here
     user = User.find_by_email(params[:email])
     if user
       is_signup = false
