@@ -7,6 +7,10 @@ class ShoutsController < ApplicationController
 
     params[:source] = "native"
     params[:display_name] = params[:user_name]
+    #Make v1 shouts work with v2
+    params[:username] = params[:user_name]
+    params[:user_id] = 0
+    params[:removed] = false
 
     shout = Shout.new(shout_params)
     success = shout.save
@@ -155,7 +159,7 @@ class ShoutsController < ApplicationController
 private 
 
   def shout_params
-    params.permit(:lat, :lng, :display_name, :description, :source, :device_id, :image)
+    params.permit(:lat, :lng, :display_name, :description, :source, :device_id, :image, :username, :user_id, :removed)
   end
 
   def flag_params
