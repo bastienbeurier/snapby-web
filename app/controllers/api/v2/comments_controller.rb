@@ -17,7 +17,6 @@ class Api::V2::CommentsController < Api::V2::ApiController
   def index
     Rails.logger.debug "BAB comment index params: #{params}"
 
-
     if !params[:shout_id]
       render json: { :errors => {:incomplete : ["Incomplete comment information"] } }, :status => 406
       return
