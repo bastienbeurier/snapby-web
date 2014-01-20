@@ -260,7 +260,7 @@ header {
   #splash.splash-inner-page {
     padding: 40px 0; }
   #splash .pattern {
-    background-image: url(<%= asset_path'mosaic.png'%>);
+    background-image: url(<%= asset_path 'mosaic.png' %>);
     background-repeat: repeat;
     background-position: top left;
     height: 100%;
@@ -270,7 +270,7 @@ header {
     left: 0;
     z-index: 10; }
   #splash .inner-shadow {
-    background: url(<%= asset_path'inner-shadow.png'%>) 0 -45px repeat-x;
+    background: url(<%= asset_path 'inner-shadow.png' %>) 0 -45px repeat-x;
     position: absolute;
     z-index: 30;
     bottom: 0;
@@ -330,6 +330,7 @@ header {
       height: 400px;
       margin: 0 auto; }
       #product-container #device #screen img {
+        margin-top :-20px;
         width: 100%; }
   #product-container #device-2nd {
     position: absolute;
