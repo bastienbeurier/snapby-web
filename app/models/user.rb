@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :shouts
+
   acts_as_mappable  :default_units => :kms, 
                     :default_formula => :sphere, 
                     :distance_field_name => :distance,
