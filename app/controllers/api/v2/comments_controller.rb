@@ -18,7 +18,7 @@ class Api::V2::CommentsController < Api::V2::ApiController
     Rails.logger.debug "BAB comment index params: #{params}"
 
     if !params[:shout_id]
-      render json: { :errors => {:incomplete : ["Incomplete comment information"] } }, :status => 406
+      render json: { errors: {incomplete: ["Incomplete comment information"] } }, :status => 406
       return
     end
 
@@ -31,7 +31,7 @@ class Api::V2::CommentsController < Api::V2::ApiController
 private
 
   def comment_params
-    params.permit(:shout_id, :shouter_id, :content, :commenter_id, :commenter_username, :lat, :lng)
+    params.permit(:shout_id, :shouter_id, :description, :commenter_id, :commenter_username, :lat, :lng)
   end 
 
 end
