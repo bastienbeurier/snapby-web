@@ -250,7 +250,7 @@ header {
 /* # SPLASH
 -------------------------------------*/
 #splash {
-  background-image: url('/assets/bg.jpg');
+  background-image: url(image_path('bg.jpg'));
   background-color: #fff;
   background-size: cover;
   background-position: center center;
@@ -261,7 +261,7 @@ header {
   #splash.splash-inner-page {
     padding: 40px 0; }
   #splash .pattern {
-    background-image: url('/assets/mosaic.png');
+    background-image: url(image_path('mosaic.png'));
     background-repeat: repeat;
     background-position: top left;
     height: 100%;
@@ -271,7 +271,7 @@ header {
     left: 0;
     z-index: 10; }
   #splash .inner-shadow {
-    background: url('/assets/inner-shadow.png') 0 -45px repeat-x;
+    background: url(image_path('inner-shadow.png')) 0 -45px repeat-x;
     position: absolute;
     z-index: 30;
     bottom: 0;

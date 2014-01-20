@@ -249,7 +249,7 @@ header {
 /* # SPLASH
 -------------------------------------*/
 #splash {
-  background-image: url(image_path('bg.jpg');
+  background-image: url(image_path('bg.jpg'));
   background-color: #fff;
   background-size: cover;
   background-position: center center;
@@ -260,7 +260,7 @@ header {
   #splash.splash-inner-page {
     padding: 40px 0; }
   #splash .pattern {
-    background-image: url(image_path('mosaic.png');
+    background-image: url(image_path('mosaic.png'));
     background-repeat: repeat;
     background-position: top left;
     height: 100%;
