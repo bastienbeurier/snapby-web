@@ -4,6 +4,9 @@ class Api::V2::CommentsController < Api::V2::ApiController
   def create
     Rails.logger.debug "BAB create comment params: #{params}"
 
+    params[:commenter_id] = current_user.id
+    params[:commenter_username] = current_user.username
+
     comment = Comment.new(comment_params)
 
     if comment.save
