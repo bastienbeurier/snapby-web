@@ -1,5 +1,7 @@
 class Shout < ActiveRecord::Base
   has_many :flags
+  has_many :comments
+  belongs_to :user
   
   acts_as_mappable  :default_units => :kms, 
                     :default_formula => :sphere, 
