@@ -38,7 +38,9 @@ class ShoutsController < ApplicationController
         format.json { render json: {result: shout}, status: 200 }
       end
     else
-      render :json => { :errors => ["Failed to retrieve shout"]}, :status => 500
+      respond_to do |format|
+        format.json { render :json => { :errors => ["Failed to retrieve shout"]}, :status => 500}
+      end
     end
   end
 
