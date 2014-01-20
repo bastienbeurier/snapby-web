@@ -9,8 +9,8 @@
   <title>Street Shout | <%= yield(:title) %></title>
   <meta name="description" content="Street Shout lets you discover and share unique, fun, and interesting events currently happening around you." />
 
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag     :all %>
+  <%= javascript_include_tag  :defaults%>
   <%= csrf_meta_tags %>
 
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,800' rel='stylesheet' type='text/css'>
