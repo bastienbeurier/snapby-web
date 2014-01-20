@@ -22,7 +22,7 @@ class Api::V2::ShoutsController < Api::V2::ApiController
   #Get shout by id
   def show
     Rails.logger.debug "BAB show shout params: #{params}"
-    shout = Shout.find(params[:id])
+    shout = Shout.find_by(id: params[:id])
 
     if shout
       render json: { result: { shout: shout } }, status: 200

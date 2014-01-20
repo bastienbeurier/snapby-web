@@ -27,18 +27,18 @@ class ShoutsController < ApplicationController
   end
 
   #Get shout by id
+  # Still used for web sharing
   def show
     Rails.logger.debug "BAB show shout params: #{params}"
-    shout = Shout.find(params[:id])
+    shout = Shout.find_by(id: params[:id])
 
     if shout
       respond_to do |format|
+        format.html
         format.json { render json: {result: shout}, status: 200 }
       end
     else
-      respond_to do |format|
-        format.json { render :json => { :errors => ["Failed to retrieve shout"]}, :status => 500  }
-      end 
+      render :json => { :errors => ["Failed to retrieve shout"]}, :status => 500
     end
   end
 
