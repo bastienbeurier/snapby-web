@@ -1,5 +1,5 @@
 class Api::V2::ShoutsController < Api::V2::ApiController
-  skip_before_filter :authenticate_user!, :only => [:show, :bound_box_shouts]
+  skip_before_filter :authenticate_user!, :only => [:show, :bound_box_shouts, :get_meta_data]
 
   #Create a shout
   def create
