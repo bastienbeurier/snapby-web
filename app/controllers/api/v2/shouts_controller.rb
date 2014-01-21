@@ -43,7 +43,7 @@ class Api::V2::ShoutsController < Api::V2::ApiController
     comments = shout.comments
     
     if comments
-      render json: { result: { last_comment: comments.last, comment_count: comments.length } }, status: 200
+      render json: { result: { comment_count: comments.length } }, status: 200
     else
       render json: { errors: { internal: ["failed to retrieve shout meta data"] } }, :status => 500
     end
