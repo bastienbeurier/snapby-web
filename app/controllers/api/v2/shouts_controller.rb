@@ -1,5 +1,5 @@
 class Api::V2::ShoutsController < Api::V2::ApiController
-  skip_before_filter :authenticate_user!, :only => [:show, :bound_box_shouts, :get_meta_data]
+  skip_before_filter :authenticate_user!, :only => [:show, :bound_box_shouts, :get_shout_meta_data]
 
   #Create a shout
   def create
@@ -32,7 +32,7 @@ class Api::V2::ShoutsController < Api::V2::ApiController
   end
 
   #Get shout meta data
-  def get_meta_data
+  def get_shout_meta_data
     Rails.logger.debug "BAB get shout meta data: #{params}"
     shout = Shout.find(params[:shout_id])
 
