@@ -33,7 +33,7 @@ class Api::V2::ShoutsController < Api::V2::ApiController
 
   #Get shout meta data
   def get_meta_data
-    Rails.logger.debug "BAB get shout meta data: #{{params}}"
+    Rails.logger.debug "BAB get shout meta data: #{params}"
     shout = Shout.find(params[:shout_id])
 
     if !shout
