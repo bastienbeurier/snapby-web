@@ -31,6 +31,24 @@ class Api::V2::ShoutsController < Api::V2::ApiController
     end
   end
 
+  #Get shout meta data
+  def get_meta_data
+    Rails.logger.debug "BAB get shout meta data: #{{params}}"
+    shout = Shout.find(params[:shout_id])
+
+    if !shout
+      render json: { errors: { invalid: ["wrong shout id"] } }, :status => 406
+    end
+
+    comments = shout.comments
+    
+    if comments
+      render json: { result: { last_comment: comments.last, comment_count: comments.length } }, status: 200
+    else
+      render json: { errors: { internal: ["failed to retrieve shout meta data"] } }, :status => 500
+    end
+  end
+
   #Retrieve shouts within a zone (bouding box)
   def bound_box_shouts
     Rails.logger.debug "BAB zone_shouts params: #{params}"
