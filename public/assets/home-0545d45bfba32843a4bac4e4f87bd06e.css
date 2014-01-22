@@ -564,7 +564,8 @@ header ul.social-list li a i {
   z-index: 1000;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  border: 2px solid #a8a8a8; }
+  border: 2px solid #a8a8a8;
+  text-align: center; }
 
 .footer .container {
   padding-bottom: 10px;
@@ -581,11 +582,14 @@ header ul.social-list li a i {
   font-weight: 600;
   color: #989898; }
 
-.footer .container #footer-phone .footer-link {
-  font-weight: 800;
+.footer .container #footer-mid .footer-link {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  width: 100px; }
+
+.footer .container #footer-mid .footer-link {
+  font-weight: 800;
   color: #7A9ED3; }
 
 /* BUTTON

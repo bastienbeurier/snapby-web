@@ -513,6 +513,7 @@ header {
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   border: 2px solid #A8A8A8 ;
+  text-align: center;
   }
   .footer .container {
     padding-bottom: 10px; 
@@ -528,7 +529,8 @@ header {
     .footer .container #footer-mid .footer-link{
       display:block;
       margin-left: auto;
-      margin-right: auto;}
+      margin-right: auto;
+      width: 100px;}
       .footer .container #footer-mid .footer-link{
         font-weight: 800;
         color: #7A9ED3;}
