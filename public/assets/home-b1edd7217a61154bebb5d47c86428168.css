@@ -1,13 +1,14 @@
 /* Welcome to Compass.
  * In this file you should write your main styles. (or centralize your imports)*/
 
+
 @font-face {
   font-family: 'Ubuntu-Title-webfont';
-  src:asset_url(<%= font_path 'Ubuntu-Title-webfont.eot'%>, font);
-  src:url(<%= font_path 'Ubuntu-Title-webfont.eot'%>) format('embedded-opentype'),
-    url(<%= font_path 'Ubuntu-Title-webfont.svg'%>) format('svg'),
-    url(<%= font_path 'Ubuntu-Title-webfont.woff'%>) format('woff'),
-    url(<%= font_path 'Ubuntu-Title-webfont.ttf'%>) format('truetype');
+  src:asset_url(/assets/Ubuntu-Title-webfont.eot, font);
+  src:url(/assets/Ubuntu-Title-webfont.eot) format('embedded-opentype'),
+    url(/assets/Ubuntu-Title-webfont.svg) format('svg'),
+    url(/assets/Ubuntu-Title-webfont.woff) format('woff'),
+    url(/assets/Ubuntu-Title-webfont.ttf) format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -251,7 +252,7 @@ header {
 /* # SPLASH
 -------------------------------------*/
 #splash {
-  background-image: url(<%= image_path 'bg.jpg' %>);
+  background-image: url(/assets/bg.jpg);
   background-color: #fff;
   background-size: cover;
   background-position: center center;
@@ -272,7 +273,7 @@ header {
     left: 0;
     z-index: 10; }
   #splash .inner-shadow {
-    background: <%= asset_path ('inner-shadow.png') %> 0 -45px repeat-x;
+    background: /assets/inner-shadow.png 0 -45px repeat-x;
     position: absolute;
     z-index: 30;
     bottom: 0;
@@ -408,7 +409,7 @@ header {
       width: 400px;
       height: 550px; }
   #product-container.android-tablet-portrait #device-2nd {
-    background: url(<%= asset_path 'android-phone-portrait@2x.png' %>);
+    background: url(/assets/android-phone-portrait@2x.png);
     width: 200px;
     padding: 45px 0 0 0;
     display: block; }
@@ -466,7 +467,7 @@ header {
       height: 255px;
       margin-left: 97px; }
   #product-container.android-phone-portrait #device {
-    background: url(<%= asset_path "android-phone-portrait@2x.png" %>) no-repeat center top;
+    background: url(/assets/android-phone-portrait@2x.png) no-repeat center top;
     padding: 85px 0 0 0;
     width: 380px;
     margin-left: 50px; }
