@@ -27,6 +27,7 @@ StreetShout::Application.routes.draw do
       resources :flags, only: [:create]
       resources :shouts, only: [:create, :show]
       resources :comments, only: [:create, :index]
+      resources :likes, only: [:create, :index]
       devise_for :users, :skip => [:registrations], :controllers => { sessions:'api/v2/sessions', passwords:'api/v2/passwords' } # custom controller for API token access with devise
 
       get "/obsolete_api" => "api#obsolete_api"
