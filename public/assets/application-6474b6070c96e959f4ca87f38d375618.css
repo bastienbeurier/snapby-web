@@ -572,13 +572,13 @@ header ul.social-list li a i {
   color: #a8a8a8;
   position: fixed;
   bottom: 0;
-  left: 0;
-  right: 0;
+  left: 5px;
+  right: 5px;
   height: 40px;
   z-index: 1000;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  border: 2px solid #989898; }
+  border: 2px solid #a8a8a8; }
 
 .footer .container {
   padding-bottom: 10px;
@@ -595,10 +595,12 @@ header ul.social-list li a i {
   font-weight: 600;
   color: #989898; }
 
-.footer .container #footer-phone {
-  font-weight: 600;
+.footer .container #footer-phone .footer-link {
+  font-weight: 800;
+  display: block;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  color: #7A9ED3; }
 
 /* BUTTON
 -------------------------------------*/
@@ -801,7 +803,7 @@ header ul.social-list li a i {
     opacity: 1; } 
 
   /* FOOTER */
-  #footer-phone{
+  #footer-mid{
     float: left; }
   #footer-left {
     display: none !important;}
