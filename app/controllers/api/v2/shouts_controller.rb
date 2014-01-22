@@ -40,13 +40,7 @@ class Api::V2::ShoutsController < Api::V2::ApiController
       render json: { errors: { invalid: ["wrong shout id"] } }, :status => 406
     end
 
-    comments = shout.comments
-    
-    if comments
-      render json: { result: { comment_count: comments.length } }, status: 200
-    else
-      render json: { errors: { internal: ["failed to retrieve shout meta data"] } }, :status => 500
-    end
+    render json: { result: { comment_count: shout.comments.length, like_count: shout.likes.length} }, status: 200
   end
 
   #Retrieve shouts within a zone (bouding box)

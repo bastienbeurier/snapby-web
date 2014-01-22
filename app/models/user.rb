@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :shouts
+  has_many :likes
 
   acts_as_mappable  :default_units => :kms, 
                     :default_formula => :sphere, 
