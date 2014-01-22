@@ -16,29 +16,27 @@ class ShoutsController < ApplicationController
     success = shout.save
 
     if success
-      respond_to do |format|
-        format.json { render json: {result: shout}, status: 201 }
-      end
+      render json: {result: shout}, status: 201
     else 
-      respond_to do |format|
-        format.json { render :json => { :errors => ["Failed to save shout"] }, :status => 500 }
-      end 
+      render :json => { :errors => ["Failed to save shout"] }, :status => 500
     end
   end
 
   #Get shout by id
+  # Still used for web sharing
   def show
     Rails.logger.debug "BAB show shout params: #{params}"
-    shout = Shout.find(params[:id])
+    shout = Shout.find_by(id: params[:id])
 
     if shout
       respond_to do |format|
+        format.html
         format.json { render json: {result: shout}, status: 200 }
       end
     else
       respond_to do |format|
-        format.json { render :json => { :errors => ["Failed to retrieve shout"]}, :status => 500  }
-      end 
+        format.json { render :json => { :errors => ["Failed to retrieve shout"]}, :status => 500}
+      end
     end
   end
 
@@ -51,9 +49,7 @@ class ShoutsController < ApplicationController
       
     Rails.logger.debug "BAB rbound_box_shouts response: #{shouts.collect(&:created_at)}"
 
-    respond_to do |format|
-      format.json { render json: {result: shouts}, status: 200 }
-    end
+    render json: {result: shouts}, status: 200
   end
 
   #Not used anymore (for testing purposes)
@@ -68,9 +64,7 @@ class ShoutsController < ApplicationController
 
     shouts = Shout.where("source = 'native' AND created_at >= :max_age", {:max_age => max_age}).paginate(page: page, per_page: per_page).order('id DESC')
 
-    respond_to do |format|
-      format.json { render json: {result: shouts}, status: 200 }
-    end
+    render json: {result: shouts}, status: 200
   end
 
   #User flags an abusive shout
@@ -80,9 +74,7 @@ class ShoutsController < ApplicationController
     shout = Shout.find(params[:id])
     
     if !shout or !params[:device_id] or !params[:motive]
-      respond_to do |format|
-        format.json { render :json => { :errors => ["Incomplete information to flag shout"]}, :status => 406  }
-      end
+      render :json => { :errors => ["Incomplete information to flag shout"]}, :status => 406 
       return
     end
 
@@ -116,9 +108,7 @@ class ShoutsController < ApplicationController
       end
     #Case where this user already flagged this shout
     else
-      respond_to do |format|
-        format.json { render json: {errors: ["Shout already flagged by user"]}, status: 422 }
-      end
+      render json: {errors: ["Shout already flagged by user"]}, status: 422
       return
     end
 
@@ -126,13 +116,9 @@ class ShoutsController < ApplicationController
     UserMailer.flagged_shout_email(flagged_shout,shout).deliver
 
     if flagged_shout.save
-      respond_to do |format|
-        format.json { render json: {result: "Shout successfully flagged"}, status: 200 }
-      end
+      render json: {result: "Shout successfully flagged"}, status: 200
     else 
-      respond_to do |format|
-        format.json { render json: {errors: ["Failed to flag shout"]}, status: 500 }
-      end
+      render json: {errors: ["Failed to flag shout"]}, status: 500
     end
   end
 
@@ -141,10 +127,7 @@ class ShoutsController < ApplicationController
     if Rails.env.development?
       DevelopmentTasks.demo
     end
-
-    respond_to do |format|
-      format.json { render json: {result: "Demo ready to start"}, status: 200 }
-    end
+    render json: {result: "Demo ready to start"}, status: 200
   end
 
   def obsolete_api

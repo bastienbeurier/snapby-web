@@ -76,7 +76,7 @@ StreetShout::Application.configure do
       :address        => 'smtp.gmail.com',
       :domain         => 'http://www.street-shout.com',
       :port           => 587,
-      :user_name      => 'info@street-shout.com',
+      :user_name      => SENDER_EMAIL_,
       :password       => ENV['INFO_MAIL_PASS'],
       :authentication => :plain
   }
