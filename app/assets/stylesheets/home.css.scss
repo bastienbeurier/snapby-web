@@ -624,10 +624,12 @@ html, body{
 }
 
 #display_shout {
-  max-width: 100%;
-  height: auto;
-  width: auto\9; /* ie8 */}
+    height: 100%;
+  }
   #display_shout .shout_img {
+    max-width: 100%;
+  height: auto;
+  width: auto\9; /* ie8 */
       padding: 5% 10% 5% 10%;
   }
 
