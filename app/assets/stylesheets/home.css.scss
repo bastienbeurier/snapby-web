@@ -619,6 +619,10 @@ header {
 
 /* Categories
 -------------------------------------*/
+html, body{
+  min-height: 100%;
+}
+
 #display_shout {
   max-width: 100%;
   height: auto;
