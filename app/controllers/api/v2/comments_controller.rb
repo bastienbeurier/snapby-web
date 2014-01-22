@@ -11,7 +11,7 @@ class Api::V2::CommentsController < Api::V2::ApiController
 
     if comment.save
       shout = Shout.find(params[:shout_id])
-      render json: { result: { comments: shout.comments } }, status: 201
+      render json: { result: { comments: shout.comments.reverse } }, status: 201
     else 
       render json: { errors: { internal: comment.errors } }, :status => 500
     end
@@ -29,7 +29,7 @@ class Api::V2::CommentsController < Api::V2::ApiController
     shout = Shout.find(params[:shout_id])
 
     #TODO: handle when there is a lot of comments (not for now)
-    render json: {result: {comments: shout.comments } }, status: 200
+    render json: {result: {comments: shout.comments.reverse } }, status: 200
   end
 
 private
