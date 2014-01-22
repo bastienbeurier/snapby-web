@@ -526,11 +526,12 @@ header {
       font-weight: 600;
       color: #989898  ;}
     .footer .container #footer-mid .footer-link{
-      font-weight: 800;
       display:block;
       margin-left: auto;
-      margin-right: auto;
-      color: #7A9ED3;}
+      margin-right: auto;}
+      .footer .container #footer-mid .footer-link{
+        font-weight: 800;
+        color: #7A9ED3;}
 
 
 
