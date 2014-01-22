@@ -3,11 +3,11 @@
 
 @font-face {
   font-family: 'Ubuntu-Title-webfont';
-  src:url(font_path 'Ubuntu-Title-webfont.eot');
-  src:url(font_path 'Ubuntu-Title-webfont.eot') format('embedded-opentype'),
-    url(font_path 'Ubuntu-Title-webfont.svg') format('svg'),
-    url(font_path 'Ubuntu-Title-webfont.woff') format('woff'),
-    url(font_path 'Ubuntu-Title-webfont.ttf') format('truetype');
+  src:font_url('Ubuntu-Title-webfont.eot');
+  src:font_url('Ubuntu-Title-webfont.eot') format('embedded-opentype'),
+    font_url('Ubuntu-Title-webfont.svg') format('svg'),
+    font_url('Ubuntu-Title-webfont.woff') format('woff'),
+    font_url('Ubuntu-Title-webfont.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -262,7 +262,7 @@ header {
   #splash.splash-inner-page {
     padding: 40px 0; }
   #splash .pattern {
-    background-image: url(image_path('mosaic.png'));
+    background-image: image_url('mosaic.png');
     background-repeat: repeat;
     background-position: top left;
     height: 100%;
@@ -272,7 +272,7 @@ header {
     left: 0;
     z-index: 10; }
   #splash .inner-shadow {
-    background: url(image_path('inner-shadow.png')) 0 -45px repeat-x;
+    background: image_url('inner-shadow.png') 0 -45px repeat-x;
     position: absolute;
     z-index: 30;
     bottom: 0;

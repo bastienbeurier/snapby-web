@@ -1,23 +1,9 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
-
-
- */
-
 /* Welcome to Compass.
  * In this file you should write your main styles. (or centralize your imports)*/
 @font-face {
   font-family: 'Ubuntu-Title-webfont';
-  src: url(font_path "Ubuntu-Title-webfont.eot");
-  src: url(font_path "Ubuntu-Title-webfont.eot") format("embedded-opentype"), url(font_path "Ubuntu-Title-webfont.svg") format("svg"), url(font_path "Ubuntu-Title-webfont.woff") format("woff"), url(font_path "Ubuntu-Title-webfont.ttf") format("truetype");
+  src: url(/assets/Ubuntu-Title-webfont.eot);
+  src: url(/assets/Ubuntu-Title-webfont.eot) format("embedded-opentype"), url(/assets/Ubuntu-Title-webfont.svg) format("svg"), url(/assets/Ubuntu-Title-webfont.woff) format("woff"), url(/assets/Ubuntu-Title-webfont.ttf) format("truetype");
   font-weight: normal;
   font-style: normal; }
 
@@ -280,7 +266,7 @@ header ul.social-list li a i {
   padding: 40px 0; }
 
 #splash .pattern {
-  background-image: url("/assets/mosaic.png");
+  background-image: url(/assets/mosaic.png);
   background-repeat: repeat;
   background-position: top left;
   height: 100%;
@@ -291,7 +277,7 @@ header ul.social-list li a i {
   z-index: 10; }
 
 #splash .inner-shadow {
-  background: url("/assets/inner-shadow.png") 0 -45px repeat-x;
+  background: url(/assets/inner-shadow.png) 0 -45px repeat-x;
   position: absolute;
   z-index: 30;
   bottom: 0;
@@ -678,149 +664,3 @@ header ul.social-list li a i {
 
 #category .bottom_three {
   margin-bottom: 3cm; }
-/*  #MOBILE (Portrait)
-================================================== */
-
-@media only screen and (max-width: 767px) {
-  .container {
-    width: 290px; }
-  #category { 
-    padding-top: 20px;}
-
-  /* SPLASH */
-  #splash {
-    background-attachment: scroll; }
-    #splash .pattern {
-      background-attachment: scroll; }
-
-  /* PRODUCT CONTAINER */
-  #product-container #product-info {
-    width: 100% !important;
-    text-align: center;
-    position: relative;
-    margin-bottom: 100px; }
-    #product-container #product-info .button {
-      margin-right: 0; }
-    #product-container #product-info {
-      bottom: auto;
-      margin-bottom: 50px;
-      padding: 0 0 40px 0; }
-    #product-container #product-info h1 {
-      font-size: 55px;
-      line-height: 1.5em; }
-  #product-container #device,
-  #product-container #device-2nd {
-    display: none !important; }
-
-  /* HEADER */
-  header #header-left {
-    text-align: center;
-    float: none; }
-  header #header-right {
-    float: none; }
-    header #header-right ul {
-      text-align: center; }
-      header #header-right ul li {
-        float: none;
-        display: inline-block;
-        margin: 0 5px; }
-  header .menu {
-    display: none; }
-  header .tinynav-wrap {
-    display: block; }
-
-  body.dark header .tinynav-wrap {
-    background: #555;
-    border: none;
-    color: #000; }
-    body.dark header .tinynav-wrap select {
-      color: #000; }
-
-  /* FOOTER */
-  .footer {
-    height: 80;
-  }
-  #footer-right {
-    margin-right: 11px; }
-  #footer-left {
-    display: none !important;}
-
-
-  /* ELEMENTS */
-  .frame {
-    border: none;
-    padding: 0; }
-
-  .slide-control {
-    display: none; }
-
-  .gallery-list li {
-    width: 290px;
-    opacity: 1; }
-
-  #twitter-box,
-  #twitter-box .tweet_list li {
-    height: 10em; }
-
-  .contact-info-pane {
-    position: relative;
-    padding: 20px; } 
-}
-
-
-/*  #TABLET (Portrait)
-================================================== */
-@media screen and (min-width: 768px) and (max-width: 1140px) {
-  .container {
-    width: 740px; }
-
-  /* PRODUCT CONTAINER */
-  #product-container #device {
-    margin: 0 auto !important;
-    bottom: 0 !important; }
-  #product-container #product-info {
-    width: 100% !important;
-    text-align: center;
-    position: relative;
-    bottom: auto;
-    margin-bottom: 50px;
-    padding: 0 0 40px 0; }
-  #product-container.ipad-portrait #device-2nd, #product-container.android-tablet-portrait #device-2nd {
-    left: 55px; }
-  #product-container.ipad-landscape #device-2nd, #product-container.android-tablet-landscape #device-2nd {
-    right: 0; }
-
-  /* ELEMENTS */
-  .gallery-list li {
-    width: 365px;
-    opacity: 1; } 
-}
-
-
-/* # VISIBLE & HIDDEN
--------------------------------------*/
-.visible-phone,
-.visible-tablet,
-.hidden-desktop {
-  display: none !important; }
-
-@media only screen and (max-width: 767px) {
-  .visible-phone,
-  .hidden-desktop,
-  .hidden-tablet {
-    display: inherit !important; }
-
-  .visible-desktop,
-  .visible-tablet,
-  .hidden-phone {
-    display: none !important; } }
-@media screen and (min-width: 768px) and (max-width: 1140px) {
-  .visible-tablet,
-  .hidden-desktop,
-  .hidden-phone {
-    display: inherit !important; }
-
-  .visible-desktop,
-  .visible-phone,
-  .hidden-tablet {
-    display: none !important; } }
