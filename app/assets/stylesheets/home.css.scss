@@ -515,7 +515,6 @@ header {
   border: 2px solid #989898 ;
   }
   .footer .container {
-
     padding-bottom: 10px; 
     padding-top: 10px; }
     .footer .container #footer-left {
@@ -528,7 +527,8 @@ header {
       color: #989898  ;}
     .footer .container #footer-phone{
       font-weight: 600;
-      float: center;}
+      margin-left: auto;
+      margin-right: auto;}
 
 
 
