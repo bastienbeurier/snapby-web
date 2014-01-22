@@ -620,16 +620,16 @@ header {
 /* Categories
 -------------------------------------*/
 html, body{
-  min-height: 100%;
+  height: 100%;
 }
 
 #display_shout {
     height: 100%;
+    padding: 5% 10% 5% 10%;
   }
   #display_shout .shout_img {
-    max-width: 100%;
+  max-width: 100%;
   height: auto;
   width: auto\9; /* ie8 */
-      padding: 5% 10% 5% 10%;
   }
 

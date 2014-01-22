@@ -1,0 +1,692 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)*/
+@font-face {
+  font-family: 'Ubuntu-Title-webfont';
+  src: url(/assets/Ubuntu-Title-webfont.eot);
+  src: url(/assets/Ubuntu-Title-webfont.eot) format("embedded-opentype"), url(/assets/Ubuntu-Title-webfont.svg) format("svg"), url(/assets/Ubuntu-Title-webfont.woff) format("woff"), url(/assets/Ubuntu-Title-webfont.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline; }
+
+html {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle; }
+
+q, blockquote {
+  quotes: none; }
+
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none; }
+
+a img {
+  border: none; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block; }
+
+.one_half, .one_third, .two_third, .three_fourth, .one_fourth, .two_fourth {
+  float: left;
+  height: auto !important;
+  margin-right: 4%;
+  min-height: 1px;
+  position: relative; }
+
+.one_half {
+  width: 48%; }
+
+.one_third {
+  width: 30.6%; }
+
+.two_third {
+  width: 65.3%; }
+
+.one_fourth {
+  width: 22%; }
+
+.two_fourth {
+  width: 48%; }
+
+.three_fourth {
+  width: 74%; }
+
+.last {
+  clear: right;
+  margin-right: 0 !important; }
+
+.one_half .one_half {
+  margin-right: 8.3%;
+  width: 45.83%; }
+
+.one_half .one_third {
+  margin-right: 8.3%;
+  width: 27.7%; }
+
+.one_half .two_third {
+  margin-right: 8.3%;
+  width: 63.8%; }
+
+.two_third .one_third {
+  margin-right: 6.12%;
+  width: 29.25%; }
+
+.two_third .two_third {
+  margin-right: 6.12%;
+  width: 64.62%; }
+
+.two_third .one_fourth {
+  margin-right: 6.12%;
+  width: 20.4%; }
+
+/*  #MOBILE (Portrait)
+================================================== */
+@media only screen and (max-width: 767px) {
+  .one_half, .one_third, .two_third, .three_fourth, .one_fourth, .two_fourth {
+    width: 100%;
+    margin: 0 0 20px 0; } }
+/*  #TABLET (Portrait)
+================================================== */
+@media screen and (min-width: 768px) and (max-width: 1140px) {
+  /*.one_half, .one_third, .two_third, .three_fourth, .one_fourth, .two_fourth {
+      width: 100%;
+      margin: 0 0 20px 0;
+  }*/ }
+/* # MIXINS
+-------------------------------------*/
+/* # GENERAL
+-------------------------------------*/
+body {
+  color: #a5a5a5;
+  background-color: #fff;
+  font: normal 100% 'Open Sans', Helvetica, Arial, sans-serif;
+  line-height: 1.5em;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  font-smooth: always; }
+
+a {
+  text-decoration: none;
+  color: #e54b00;
+  outline: none; }
+
+a:hover {
+  color: #b73a00; }
+
+::selection,
+::-moz-selection {
+  background: #222;
+  color: #FFF; }
+
+.last {
+  margin-right: 0 !important; }
+
+header, footer, article, section, nav, menu, hgroup {
+  display: block; }
+
+/* LAYOUT */
+.container {
+  width: 1000px;
+  margin: 0 auto;
+  position: relative; }
+
+.spacer {
+  clear: both;
+  height: 20px; }
+
+.text-center {
+  text-align: center; }
+
+/* CLEAR */
+/* http://sonspring.com/journal/clearing-floats */
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0; }
+
+/* http://css-tricks.com/snippets/css/clear-fix/ */
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table; }
+
+.clearfix:after {
+  clear: both; }
+
+.clearfix {
+  zoom: 1;
+  /* For IE 6/7 (trigger hasLayout) */ }
+
+/* # COLOR SCHEME
+-------------------------------------*/
+.dark #splash {
+  color: #000; }
+
+/* # HEADER
+-------------------------------------*/
+header {
+  line-height: 1em;
+  position: absolute;
+  width: 100%;
+  background: none;
+  /* SOCIAL LIST */ }
+
+header a {
+  color: #888; }
+
+header a:hover {
+  color: #555; }
+
+header .social-box {
+  position: absolute;
+  right: 0;
+  margin: 0 auto;
+  background: #fff;
+  padding: 10px;
+  -webkit-border-radius: 0px 0px 0 3px;
+  border-radius: 0px 0px 0 3px;
+  z-index: 1000;
+  opacity: 0.5; }
+
+header ul.social-list {
+  margin: 0;
+  list-style: none; }
+
+header ul.social-list li {
+  background: none;
+  padding: 0;
+  margin: 0;
+  float: left;
+  margin: 0 8px; }
+
+header ul.social-list li a {
+  -webkit-border-radius: 22px;
+  -moz-border-radius: 22px;
+  border-radius: 22px;
+  background: #aaa;
+  display: block;
+  width: 22px;
+  height: 22px;
+  line-height: 22px;
+  text-align: center; }
+
+header ul.social-list li a:hover {
+  background: #555; }
+
+header ul.social-list li a i {
+  font-size: 14px;
+  line-height: 22px !important;
+  color: #fff; }
+
+/* # SPLASH
+-------------------------------------*/
+#splash {
+  background-image: url(/assets/bg.jpg);
+  background-color: #fff;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  padding: 120px 0 0 0;
+  overflow: hidden;
+  color: #FFF; }
+
+#splash.splash-inner-page {
+  padding: 40px 0; }
+
+#splash .pattern {
+  background-image: url(/assets/mosaic.png);
+  background-repeat: repeat;
+  background-position: top left;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10; }
+
+#splash .inner-shadow {
+  background: url(/assets/inner-shadow.png) 0 -45px repeat-x;
+  position: absolute;
+  z-index: 30;
+  bottom: 0;
+  width: 100%;
+  height: 60px; }
+
+/* # INNER PAGE
+-------------------------------------*/
+.page-title {
+  font-size: 40px;
+  line-height: 1.5em; }
+
+.sub-title {
+  opacity: 0.75;
+  font-size: 16px;
+  line-height: 1.5em; }
+
+/* # DEVICEs & PRODUCT INFO
+-------------------------------------*/
+#product-container {
+  position: relative;
+  z-index: 20;
+  /* iPAD - PORTRAIT */
+  /* iPAD - LANDSCAPE */
+  /* ANDROID TABLET - PORTRAIT */
+  /* ANDROID TABLET - LANDSCAPE */
+  /* iPHONE - PORTRAIT */
+  /* iPHONE - LANDSCAPE */
+  /* ANDROID PHONE - PORTRAIT */
+  /* ANDROID PHONE - LANDSCAPE */
+  /* MACBOOK */ }
+
+#product-container #product-info {
+  position: absolute;
+  right: 0;
+  bottom: 200px;
+  width: 450px; }
+
+#product-container #product-info h1 {
+  font-family: 'Ubuntu-Title-webfont';
+  font-size: 80px;
+  margin: 0 0 -10px 0;
+  line-height: 1.25em;
+  text-align: center; }
+
+#product-container #product-info p {
+  margin: 0 0 15px 0;
+  font-size: 35px;
+  text-align: center; }
+
+#product-container #product-info .container {
+  width: 220px; }
+
+#product-container #device {
+  background: #555;
+  width: 550px;
+  position: relative;
+  background-size: 100% !important; }
+
+#product-container #device #screen {
+  width: 400px;
+  height: 400px;
+  margin: 0 auto; }
+
+#product-container #device #screen img {
+  margin-top: -20px;
+  width: 100%; }
+
+#product-container #device-2nd {
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: 100% !important;
+  left: 0;
+  bottom: 0;
+  display: none; }
+
+#product-container #device-2nd #screen-2nd {
+  margin: 0 auto; }
+
+#product-container #device-2nd #screen-2nd img {
+  width: 100%; }
+
+#product-container.ipad-portrait #product-info {
+  width: 400px; }
+
+#product-container.ipad-portrait.white #device {
+  background: url(../images/devices/ipad-white-portrait@2x.png) no-repeat center top; }
+
+#product-container.ipad-portrait.white #device-2nd {
+  background: url(../images/devices/iphone-white-portrait@2x.png); }
+
+#product-container.ipad-portrait #device {
+  background: url(../images/devices/ipad-portrait@2x.png) no-repeat center top;
+  padding: 54px 0 0 0;
+  width: 500px;
+  margin-left: 50px; }
+
+#product-container.ipad-portrait #device #screen {
+  width: 404px;
+  height: 505px; }
+
+#product-container.ipad-portrait #device-2nd {
+  background: url(../images/devices/iphone-portrait@2x.png);
+  width: 200px;
+  padding: 60px 0 0 0;
+  display: block; }
+
+#product-container.ipad-portrait #device-2nd #screen-2nd {
+  height: 240px;
+  width: 172px;
+  margin-left: 15px; }
+
+#product-container.ipad-landscape #product-info {
+  width: 100%;
+  position: relative;
+  text-align: center; }
+
+#product-container.ipad-landscape.white #device {
+  background: url(../images/devices/ipad-white-landscape@2x.png) no-repeat center top; }
+
+#product-container.ipad-landscape.white #device-2nd {
+  background: url(../images/devices/iphone-white-landscape@2x.png) no-repeat; }
+
+#product-container.ipad-landscape #device {
+  background: url(../images/devices/ipad-landscape@2x.png) no-repeat center top;
+  padding: 52px 0 0 0;
+  width: 700px;
+  margin: 0 auto; }
+
+#product-container.ipad-landscape #device #screen {
+  width: 572px;
+  height: 380px;
+  margin-left: 59px; }
+
+#product-container.ipad-landscape #device-2nd {
+  background: url(../images/devices/iphone-landscape@2x.png) no-repeat;
+  width: 370px;
+  padding: 11px 0 0 0;
+  left: auto;
+  right: 50px;
+  display: block; }
+
+#product-container.ipad-landscape #device-2nd #screen-2nd {
+  height: 120px;
+  width: 266px;
+  margin-left: 53px; }
+
+#product-container.android-tablet-portrait #product-info {
+  width: 400px; }
+
+#product-container.android-tablet-portrait #device {
+  background: url(../images/devices/android-tablet-portrait@2x.png) no-repeat center top;
+  padding: 90px 0 0 0;
+  width: 500px;
+  margin-left: 50px; }
+
+#product-container.android-tablet-portrait #device #screen {
+  width: 400px;
+  height: 550px; }
+
+#product-container.android-tablet-portrait #device-2nd {
+  background: url("/assets/android-phone-portrait@2x.png");
+  width: 200px;
+  padding: 45px 0 0 0;
+  display: block; }
+
+#product-container.android-tablet-portrait #device-2nd #screen-2nd {
+  height: 240px;
+  width: 177px; }
+
+#product-container.android-tablet-landscape #product-info {
+  width: 100%;
+  position: relative;
+  text-align: center; }
+
+#product-container.android-tablet-landscape #device {
+  background: url(../images/devices/android-tablet-landscape@2x.png) no-repeat center top;
+  padding: 42px 0 0 0;
+  width: 700px;
+  margin: 0 auto; }
+
+#product-container.android-tablet-landscape #device #screen {
+  width: 550px;
+  height: 350px;
+  margin-left: 80px; }
+
+#product-container.android-tablet-landscape #device-2nd {
+  background: url(/assets/android-phone-landscape@2x.png) no-repeat;
+  width: 370px;
+  padding: 10px 0 0 0;
+  left: auto;
+  right: 80px;
+  display: block; }
+
+#product-container.android-tablet-landscape #device-2nd #screen-2nd {
+  height: 120px;
+  width: 280px;
+  margin-left: 44px; }
+
+#product-container.iphone-portrait #device {
+  background: url(../images/devices/iphone-portrait@2x.png) no-repeat center top;
+  padding: 126px 0 0 0;
+  width: 420px;
+  margin-left: 50px; }
+
+#product-container.iphone-portrait #device #screen {
+  width: 362px;
+  height: 450px;
+  margin-left: 31px; }
+
+#product-container.iphone-portrait.white #device {
+  background: url(../images/devices/iphone-white-portrait@2x.png) no-repeat center top; }
+
+#product-container.iphone-landscape #product-info {
+  width: 100%;
+  position: relative;
+  text-align: center; }
+
+#product-container.iphone-landscape.white #device {
+  background: url(../images/devices/iphone-white-landscape@2x.png) no-repeat center top; }
+
+#product-container.iphone-landscape #device {
+  background: url(../images/devices/iphone-landscape@2x.png) no-repeat center top;
+  padding: 21px 0 0 0;
+  width: 680px;
+  margin: 0 auto; }
+
+#product-container.iphone-landscape #device #screen {
+  width: 490px;
+  height: 255px;
+  margin-left: 97px; }
+
+#product-container.android-phone-portrait #device {
+  background: url("/assets/android-phone-portrait@2x.png") no-repeat center top;
+  padding: 85px 0 0 0;
+  width: 380px;
+  margin-left: 50px; }
+
+#product-container.android-phone-portrait #device #screen {
+  width: 338px;
+  height: 450px; }
+
+#product-container.android-phone-landscape #product-info {
+  width: 100%;
+  position: relative;
+  text-align: center; }
+
+#product-container.android-phone-landscape #device {
+  background: url(/assets/android-phone-landscape@2x.png) no-repeat center top;
+  padding: 18px 0 0 0;
+  width: 640px;
+  margin: 0 auto; }
+
+#product-container.android-phone-landscape #device #screen {
+  width: 490px;
+  height: 250px; }
+
+#product-container.macbook #product-info {
+  width: 100%;
+  position: relative;
+  text-align: center; }
+
+#product-container.macbook #device {
+  background: url(../images/devices/macbook@2x.png) no-repeat center top;
+  padding: 30px 0 0 0;
+  width: 732px;
+  margin-left: auto;
+  margin-right: auto; }
+
+#product-container.macbook #device #screen {
+  width: 680px;
+  height: 400px; }
+
+/* Footer
+-------------------------------------*/
+.footer {
+  background: #FFF;
+  color: #a8a8a8;
+  position: fixed;
+  bottom: 0;
+  left: 5px;
+  right: 5px;
+  height: 40px;
+  z-index: 1000;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border: 2px solid #a8a8a8;
+  text-align: center; }
+
+.footer .container {
+  padding-bottom: 10px;
+  padding-top: 10px; }
+
+.footer .container #footer-left {
+  float: left; }
+
+.footer .container #footer-right {
+  float: right; }
+
+.footer .container #footer-right .footer-link {
+  margin-left: 20px;
+  font-weight: 600;
+  color: #989898; }
+
+.footer .container #footer-mid .footer-link {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px; }
+
+.footer .container #footer-mid .footer-link {
+  font-weight: 800;
+  color: #7A9ED3; }
+
+/* BUTTON
+-------------------------------------*/
+.button-download, .button-download:visited {
+  margin: 30px 10px 0px 10px;
+  border: 2px solid;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+  position: relative;
+  font-weight: normal;
+  overflow: hidden;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block; }
+
+.button-download:hover, .button-download:visited:hover {
+  background-color: rgba(255, 255, 255, 0.3); }
+
+.button-download span, .button-download:visited span {
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  position: relative;
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  padding: 15px 40px 15px 40px;
+  line-height: 1em;
+  text-decoration: none;
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  background-repeat: no-repeat;
+  background-position: 15px center; }
+
+/* Categories
+-------------------------------------*/
+#category {
+  background-color: #fff;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 80px; }
+
+#category .container {
+  max-width: 600px;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-top: 2px solid #7A9ED3;
+  color: #000; }
+
+#category .container h1 {
+  font-weight: 800;
+  font-size: 24px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  line-height: 200%;
+  color: #7A9ED3; }
+
+#category .container h2 {
+  font-weight: 800;
+  font-size: 18px;
+  margin-bottom: 15px;
+  margin-top: 30px;
+  line-height: 150%;
+  color: #7A9ED3; }
+
+#category .container h3 {
+  font-weight: bold;
+  margin-bottom: 10px; }
+
+#category .container p {
+  font-weight: 400;
+  margin-bottom: 10px; }
+
+#category .container ul li {
+  margin-left: 10px;
+  font-weight: 400;
+  list-style-type: none;
+  margin-bottom: 5px; }
+
+#category .bottom_three {
+  margin-bottom: 3cm; }
+
+/* Categories
+-------------------------------------*/
+html, body {
+  height: 100%; }
+
+#display_shout {
+  height: 100%;
+  padding: 5% 10% 5% 10%; }
+
+#display_shout .shout_img {
+  max-width: 100%;
+  height: auto;
+  width: auto\9;
+  /* ie8 */ }
