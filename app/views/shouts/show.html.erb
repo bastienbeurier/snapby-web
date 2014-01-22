@@ -7,6 +7,8 @@
 
 <p>Content : <%= @shout.description %></p>
 
-<section id="shout_img">
-	<%=image_tag("http://" + @shout.image + "--400") %>
+<section id="display_shout">
+	<div class="shout_img">
+		<%=image_tag("http://" + @shout.image + "--400") %>
+	</div>
 </section>
