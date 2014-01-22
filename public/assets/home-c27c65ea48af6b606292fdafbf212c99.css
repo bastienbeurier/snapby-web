@@ -1,12 +1,9 @@
 /* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+ * In this file you should write your main styles. (or centralize your imports)*/
 
 
 @font-face {
   font-family: 'Ubuntu-Title-webfont';
-  src:url(/assets/Ubuntu-Title-webfont.eot);
   src:url(/assets/Ubuntu-Title-webfont.eot) format('embedded-opentype'),
     url(/assets/Ubuntu-Title-webfont.svg) format('svg'),
     url(/assets/Ubuntu-Title-webfont.woff) format('woff'),
@@ -282,6 +279,7 @@ header {
     width: 100%;
     height: 60px; }
 
+
 /* # INNER PAGE
 -------------------------------------*/
 .page-title {
@@ -505,32 +503,29 @@ header {
 -------------------------------------*/
 .footer {
   background: #FFF;
-  color: #666;
+  color: #A8A8A8 ;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 25px;
-  border-top: 1px solid $grayMediumLight;
+  height: 40px;
+  z-index: 1000;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border: 2px solid #989898 ;
   }
   .footer .container {
-    padding-bottom: 50px; 
-    padding-top: 30px; }
+
+    padding-bottom: 10px; 
+    padding-top: 10px; }
     .footer .container #footer-left {
-      float:left;
-      color: #a5a5a5;
-    }
+      float:left;}
     .footer .container #footer-right {
-      float: right;      
-    }
-    .footer .container #footer-right .footer-link {
-    margin-left: 20px;
-    font-weight: 600;
-    color: #a5a5a5; }
-    .footer .container .button {
-      float: right; 
-      margin-right: 0px;
-    }
+      float: right;}
+      .footer .container #footer-right .footer-link {
+      margin-left: 20px;
+      font-weight: 600;
+      color: #989898  ;}
 
 
 
@@ -576,25 +571,28 @@ header {
   background-size: cover;
   background-position: center center;
   position: relative;
-  overflow: hidden; }
+  overflow: hidden; 
+  padding-top: 80px;}
   #category .container {
     max-width: 600px; 
     padding-top: 10px;
     padding-right: 10px;
     padding-left: 10px;
+    border-top: 2px solid #7A9ED3;
     color: #000; }
     #category .container h1 {
-      text-align:center;
       font-weight: 800;
       font-size: 24px; 
-      margin-bottom: 10px; 
-      margin-top: 10px; 
+      margin-bottom: 20px; 
+      margin-top: 10px;
+      line-height:200%;
       color: #7A9ED3;}
     #category .container h2 {
       font-weight: 800;
       font-size: 18px; 
-      margin-bottom: 10px; 
-      margin-top: 20px; 
+      margin-bottom: 15px; 
+      margin-top: 30px;
+      line-height:150%;
       color: #7A9ED3; }
     #category .container h3 {
       font-weight:bold;; 
@@ -607,5 +605,7 @@ header {
       font-weight: 400; 
       list-style-type: none;
       margin-bottom: 5px; }
+  #category .bottom_three {
+    margin-bottom: 3cm;}
 
 
