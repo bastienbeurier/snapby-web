@@ -1,6 +1,14 @@
 
 <p> ah ah </p>
 
-<%= @shout.description %>
+<p>This shout has pluralize(<%= shout.likes.count %>,"like")</p>
 
-<%="http://" + @shout.image + "--400" %>
+<p>This shout was created <%= time_ago_in_words(shout.created_at) %> ago</p>
+
+<p>This shout has pluralize(<%= shout.comments.count %>,"comment")</p>
+
+<p><%= @shout.description %></p>
+
+<p><%= @shout.user.username %></p>
+
+<%=image_tag("http://" + @shout.image + "--400") %>
