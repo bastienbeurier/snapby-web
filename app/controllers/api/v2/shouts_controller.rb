@@ -1,5 +1,5 @@
 class Api::V2::ShoutsController < Api::V2::ApiController
-  skip_before_filter :authenticate_user!, :only => [:show, :bound_box_shouts]
+  skip_before_filter :authenticate_user!, :only => [:show, :bound_box_shouts, :get_shout_meta_data]
 
   #Create a shout
   def create
@@ -28,6 +28,24 @@ class Api::V2::ShoutsController < Api::V2::ApiController
       render json: { result: { shout: shout } }, status: 200
     else
       render json: { errors: { internal: ["failed to retrieve shout"] } }, :status => 500
+    end
+  end
+
+  #Get shout meta data
+  def get_shout_meta_data
+    Rails.logger.debug "BAB get shout meta data: #{params}"
+    shout = Shout.find(params[:shout_id])
+
+    if !shout
+      render json: { errors: { invalid: ["wrong shout id"] } }, :status => 406
+    end
+
+    comments = shout.comments
+    
+    if comments
+      render json: { result: { comment_count: comments.length } }, status: 200
+    else
+      render json: { errors: { internal: ["failed to retrieve shout meta data"] } }, :status => 500
     end
   end
 

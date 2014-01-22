@@ -17,7 +17,6 @@ class Api::V2::UsersController < Api::V2::ApiController
   def update
     Rails.logger.debug "BAB update user: #{params}"
 
-
     current_user.assign_attributes(update_user_params)
 
     current_user.notification_radius = params[:notification_radius] ? params[:notification_radius] : -1
