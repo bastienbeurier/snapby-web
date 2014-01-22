@@ -3,6 +3,8 @@
 @media only screen and (max-width: 767px) {
   .container {
     width: 290px; }
+  #category { 
+    padding-top: 20px;}
 
   /* SPLASH */
   #splash {
@@ -10,6 +12,7 @@
     #splash .pattern {
       background-attachment: scroll; }
 
+  /* PRODUCT CONTAINER */
   #product-container #product-info {
     width: 100% !important;
     text-align: center;
@@ -17,6 +20,13 @@
     margin-bottom: 100px; }
     #product-container #product-info .button {
       margin-right: 0; }
+    #product-container #product-info {
+      bottom: auto;
+      margin-bottom: 50px;
+      padding: 0 0 40px 0; }
+    #product-container #product-info h1 {
+      font-size: 55px;
+      line-height: 1.5em; }
   #product-container #device,
   #product-container #device-2nd {
     display: none !important; }
@@ -46,39 +56,14 @@
       color: #000; }
 
   /* FOOTER */
+  .footer {
+    height: 80;
+  }
   #footer-right {
     margin-right: 11px; }
   #footer-left {
-    margin-left: 7px; }
-    #footer-left p {
-      text-align: center;
-    }
+    display: none !important;}
 
-
-  /* CONTENT */
-  #product-container #product-info {
-    bottom: auto;
-    margin-bottom: 50px;
-    padding: 0 0 40px 0; }
-
-    #product-container #product-info h1 {
-      font-size: 55px;
-      line-height: 1.5em; }
-
-
-  #content h2 {
-    font-size: 25px; }
-  #content h3 {
-    font-size: 22px; }
-  #content h4 {
-    font-size: 19px; }
-  #content h5 {
-    font-size: 16px; }
-  #content h6 {
-    font-size: 15px; }
-  #content .section-title span em {
-    width: 35px;
-    height: 35px; }
 
   /* ELEMENTS */
   .frame {
@@ -98,14 +83,17 @@
 
   .contact-info-pane {
     position: relative;
-    padding: 20px; } }
+    padding: 20px; } 
+}
+
+
 /*  #TABLET (Portrait)
 ================================================== */
 @media screen and (min-width: 768px) and (max-width: 1140px) {
   .container {
     width: 740px; }
 
-  /* SPLASH */
+  /* PRODUCT CONTAINER */
   #product-container #device {
     margin: 0 auto !important;
     bottom: 0 !important; }
@@ -121,25 +109,13 @@
   #product-container.ipad-landscape #device-2nd, #product-container.android-tablet-landscape #device-2nd {
     right: 0; }
 
-  /* CONTENT */
-  #content h2 {
-    font-size: 25px; }
-  #content h3 {
-    font-size: 17px; }
-  #content h4 {
-    font-size: 16px; }
-  #content h5 {
-    font-size: 15px; }
-  #content h6 {
-    font-size: 15px; }
-  #content .section-title span em {
-    width: 35px;
-    height: 35px; }
-
   /* ELEMENTS */
   .gallery-list li {
     width: 365px;
-    opacity: 1; } }
+    opacity: 1; } 
+}
+
+
 /* # VISIBLE & HIDDEN
 -------------------------------------*/
 .visible-phone,

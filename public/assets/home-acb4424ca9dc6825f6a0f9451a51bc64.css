@@ -3,13 +3,14 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
+
 @font-face {
   font-family: 'Ubuntu-Title-webfont';
-  src:url(<%= asset_path 'Ubuntu-Title-webfont.eot'%>);
-  src:url(<%= asset_path 'Ubuntu-Title-webfont.eot'%>) format('embedded-opentype'),
-    url(<%= asset_path 'Ubuntu-Title-webfont.svg'%>) format('svg'),
-    url(<%= asset_path 'Ubuntu-Title-webfont.woff'%>) format('woff'),
-    url(<%= asset_path 'Ubuntu-Title-webfont.ttf'%>) format('truetype');
+  src:url(/assets/Ubuntu-Title-webfont.eot);
+  src:url(/assets/Ubuntu-Title-webfont.eot) format('embedded-opentype'),
+    url(/assets/Ubuntu-Title-webfont.svg) format('svg'),
+    url(/assets/Ubuntu-Title-webfont.woff) format('woff'),
+    url(/assets/Ubuntu-Title-webfont.ttf) format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -253,14 +254,9 @@ header {
 /* # SPLASH
 -------------------------------------*/
 #splash {
-  background-image: url(<%= asset_path 'bg.jpg' %>);
+  background-image: url(/assets/bg.jpg);
   background-color: #fff;
   background-size: cover;
-
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  
   background-position: center center;
   position: relative;
   padding: 120px 0 0 0;
@@ -269,7 +265,7 @@ header {
   #splash.splash-inner-page {
     padding: 40px 0; }
   #splash .pattern {
-    background-image: url(<%= asset_path 'mosaic.png' %>);
+    background-image: url(/assets/mosaic.png);
     background-repeat: repeat;
     background-position: top left;
     height: 100%;
@@ -279,13 +275,12 @@ header {
     left: 0;
     z-index: 10; }
   #splash .inner-shadow {
-    background: url(<%= asset_path 'inner-shadow.png' %>) 0 -45px repeat-x;
+    background: url(/assets/inner-shadow.png) 0 -45px repeat-x;
     position: absolute;
     z-index: 30;
     bottom: 0;
     width: 100%;
     height: 60px; }
-
 
 /* # INNER PAGE
 -------------------------------------*/
@@ -415,7 +410,7 @@ header {
       width: 400px;
       height: 550px; }
   #product-container.android-tablet-portrait #device-2nd {
-    background: url(<%= asset_path 'android-phone-portrait@2x.png' %>);
+    background: url(/assets/android-phone-portrait@2x.png);
     width: 200px;
     padding: 45px 0 0 0;
     display: block; }
@@ -473,7 +468,7 @@ header {
       height: 255px;
       margin-left: 97px; }
   #product-container.android-phone-portrait #device {
-    background: url(<%= asset_path "android-phone-portrait@2x.png" %>) no-repeat center top;
+    background: url(/assets/android-phone-portrait@2x.png) no-repeat center top;
     padding: 85px 0 0 0;
     width: 380px;
     margin-left: 50px; }
@@ -506,37 +501,40 @@ header {
       width: 680px;
       height: 400px; }
 
-/* Footer
+/* .Footer
 -------------------------------------*/
 .footer {
   background: #FFF;
-  color: #A8A8A8 ;
+  color: #666;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 40px;
-  z-index: 1000;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  border: 2px solid #989898 ;
+  height: 25px;
+  border-top: 1px solid $grayMediumLight;
   }
   .footer .container {
-
-    padding-bottom: 10px; 
-    padding-top: 10px; }
+    padding-bottom: 50px; 
+    padding-top: 30px; }
     .footer .container #footer-left {
-      float:left;}
+      float:left;
+      color: #a5a5a5;
+    }
     .footer .container #footer-right {
-      float: right;}
-      .footer .container #footer-right .footer-link {
-      margin-left: 20px;
-      font-weight: 600;
-      color: #989898  ;}
+      float: right;      
+    }
+    .footer .container #footer-right .footer-link {
+    margin-left: 20px;
+    font-weight: 600;
+    color: #a5a5a5; }
+    .footer .container .button {
+      float: right; 
+      margin-right: 0px;
+    }
 
 
 
-/* BUTTON
+/* BUTTON */
 -------------------------------------*/
 
 .button-download, .button-download:visited {
@@ -570,7 +568,7 @@ header {
     background-position: 15px center; }
 
 
-/* Categories
+/* Categories */
 -------------------------------------*/
 
 #category {
@@ -578,28 +576,25 @@ header {
   background-size: cover;
   background-position: center center;
   position: relative;
-  overflow: hidden; 
-  padding-top: 80px;}
+  overflow: hidden; }
   #category .container {
     max-width: 600px; 
     padding-top: 10px;
     padding-right: 10px;
     padding-left: 10px;
-    border-top: 2px solid #7A9ED3;
     color: #000; }
     #category .container h1 {
+      text-align:center;
       font-weight: 800;
       font-size: 24px; 
-      margin-bottom: 20px; 
-      margin-top: 10px;
-      line-height:200%;
+      margin-bottom: 10px; 
+      margin-top: 10px; 
       color: #7A9ED3;}
     #category .container h2 {
       font-weight: 800;
       font-size: 18px; 
-      margin-bottom: 15px; 
-      margin-top: 30px;
-      line-height:150%;
+      margin-bottom: 10px; 
+      margin-top: 20px; 
       color: #7A9ED3; }
     #category .container h3 {
       font-weight:bold;; 
@@ -612,7 +607,5 @@ header {
       font-weight: 400; 
       list-style-type: none;
       margin-bottom: 5px; }
-  #category .bottom_three {
-    margin-bottom: 3cm;}
 
 

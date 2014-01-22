@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>Street Shout | <%= yield(:title) %></title>
-  <meta name="description" content="Street Shout lets you discover and share unique, fun, and interesting events currently happening around you." />
+    <title>Street Shout | <%= yield(:title) %></title>
+    <meta name="description" content="Street Shout lets you discover and share unique, fun, and interesting events currently happening around you." />
 
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
 
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,800' rel='stylesheet' type='text/css'>
 
-  <!-- Modernizr -->
-  <script src= <%= stylesheet_link_tag "/assets/modernizr.min.js"%> ></script>
-</head>
+    <!-- Modernizr -->
+    <script src= <%= stylesheet_link_tag "/assets/modernizr.min.js"%> ></script>
+  </head>
 
-<body>
-  <%= yield %>
-</body>
+  <body>
+    <%= yield %>
+    
+    <%= render 'layouts/footer' %>
+  </body>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="/assets/jquery-1.10.0.min.js"><\/script>')</script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="/assets/jquery-1.10.0.min.js"><\/script>')</script>
 </html>
