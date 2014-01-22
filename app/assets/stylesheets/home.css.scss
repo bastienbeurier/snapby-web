@@ -1,16 +1,16 @@
 /* Welcome to Compass.
  * In this file you should write your main styles. (or centralize your imports)*/
 
-/*@font-face {
+@font-face {
   font-family: 'Ubuntu-Title-webfont';
-  src:font_url('Ubuntu-Title-webfont.eot');
-  src:font_url('Ubuntu-Title-webfont.eot') format('embedded-opentype'),
-    font_url('Ubuntu-Title-webfont.svg') format('svg'),
-    font_url('Ubuntu-Title-webfont.woff') format('woff'),
-    font_url('Ubuntu-Title-webfont.ttf') format('truetype');
+  src:asset-url('Ubuntu-Title-webfont.eot',font);
+  src:asset-url('Ubuntu-Title-webfont.eot',font) format('embedded-opentype'),
+    asset-url('Ubuntu-Title-webfont.svg',font) format('svg'),
+    asset-url('Ubuntu-Title-webfont.woff',font) format('woff'),
+    asset-url('Ubuntu-Title-webfont.ttf',font) format('truetype');
   font-weight: normal;
   font-style: normal;
-}*/
+}
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
