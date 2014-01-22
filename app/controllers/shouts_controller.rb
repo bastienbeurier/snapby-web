@@ -1,6 +1,27 @@
 class ShoutsController < ApplicationController
   include DevelopmentTasks
 
+  # Get shout by id
+  # Still used for web sharing
+  def show
+    Rails.logger.debug "BAB show shout params: #{params}"
+    @shout = Shout.find_by(id: params[:id])
+
+    if @shout
+      respond_to do |format|
+        format.html
+        format.json { render json: {result: @shout}, status: 200 }
+      end
+    else
+      respond_to do |format|
+        format.json { render :json => { :errors => ["Failed to retrieve shout"]}, :status => 500}
+      end
+    end
+  end
+
+ # ---------------------------------------------------------------------------------------
+ # Deprecated from v2
+ # ---------------------------------------------------------------------------------------
   #Create a shout
   def create
     Rails.logger.debug "BAB create params: #{params}"
@@ -19,24 +40,6 @@ class ShoutsController < ApplicationController
       render json: {result: shout}, status: 201
     else 
       render :json => { :errors => ["Failed to save shout"] }, :status => 500
-    end
-  end
-
-  #Get shout by id
-  # Still used for web sharing
-  def show
-    Rails.logger.debug "BAB show shout params: #{params}"
-    shout = Shout.find_by(id: params[:id])
-
-    if shout
-      respond_to do |format|
-        format.html
-        format.json { render json: {result: shout}, status: 200 }
-      end
-    else
-      respond_to do |format|
-        format.json { render :json => { :errors => ["Failed to retrieve shout"]}, :status => 500}
-      end
     end
   end
 
@@ -138,6 +141,9 @@ class ShoutsController < ApplicationController
       render json: {result: "OK", status: 200}
     end
   end
+
+
+# ---------------------------------------------------------------------------------------
 
 private 
 
