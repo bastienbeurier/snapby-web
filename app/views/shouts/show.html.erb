@@ -1,11 +1,11 @@
 
 <p> ah ah </p>
 
-<p>This shout has pluralize(<%= shout.likes.count %>,"like")</p>
+<p>This shout has pluralize(<%= @shout.likes.count %>,"like")</p>
 
-<p>This shout was created <%= time_ago_in_words(shout.created_at) %> ago</p>
+<p>This shout was created <%= time_ago_in_words(@shout.created_at) %> ago</p>
 
-<p>This shout has pluralize(<%= shout.comments.count %>,"comment")</p>
+<p>This shout has pluralize(<%= @shout.comments.count %>,"comment")</p>
 
 <p><%= @shout.description %></p>
 
