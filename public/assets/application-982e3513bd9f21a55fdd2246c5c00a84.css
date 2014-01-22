@@ -595,6 +595,10 @@ header ul.social-list li a i {
   font-weight: 600;
   color: #989898; }
 
+.footer .container #footer-phone {
+  font-weight: 600;
+  float: center; }
+
 /* BUTTON
 -------------------------------------*/
 .button-download, .button-download:visited {
@@ -741,7 +745,7 @@ header ul.social-list li a i {
     height: 80;
   }
   #footer-right {
-    margin-right: 11px; }
+    display: none !important;}
   #footer-left {
     display: none !important;}
 
@@ -795,6 +799,12 @@ header ul.social-list li a i {
     width: 365px;
     opacity: 1; } 
 }
+
+  /* FOOTER */
+  #footer-phone{
+    float: left; }
+  #footer-left {
+    display: none !important;}
 
 
 /* # VISIBLE & HIDDEN

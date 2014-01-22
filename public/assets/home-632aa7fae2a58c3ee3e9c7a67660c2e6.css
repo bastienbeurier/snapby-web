@@ -581,6 +581,10 @@ header ul.social-list li a i {
   font-weight: 600;
   color: #989898; }
 
+.footer .container #footer-phone {
+  font-weight: 600;
+  float: center; }
+
 /* BUTTON
 -------------------------------------*/
 .button-download, .button-download:visited {
