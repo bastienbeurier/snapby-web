@@ -257,6 +257,11 @@ header {
   background-image: url(/assets/bg.jpg);
   background-color: #fff;
   background-size: cover;
+
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  
   background-position: center center;
   position: relative;
   padding: 120px 0 0 0;
@@ -281,6 +286,7 @@ header {
     bottom: 0;
     width: 100%;
     height: 60px; }
+
 
 /* # INNER PAGE
 -------------------------------------*/
@@ -501,40 +507,37 @@ header {
       width: 680px;
       height: 400px; }
 
-/* .Footer
+/* Footer
 -------------------------------------*/
 .footer {
   background: #FFF;
-  color: #666;
+  color: #A8A8A8 ;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 25px;
-  border-top: 1px solid $grayMediumLight;
+  height: 40px;
+  z-index: 1000;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border: 2px solid #989898 ;
   }
   .footer .container {
-    padding-bottom: 50px; 
-    padding-top: 30px; }
+
+    padding-bottom: 10px; 
+    padding-top: 10px; }
     .footer .container #footer-left {
-      float:left;
-      color: #a5a5a5;
-    }
+      float:left;}
     .footer .container #footer-right {
-      float: right;      
-    }
-    .footer .container #footer-right .footer-link {
-    margin-left: 20px;
-    font-weight: 600;
-    color: #a5a5a5; }
-    .footer .container .button {
-      float: right; 
-      margin-right: 0px;
-    }
+      float: right;}
+      .footer .container #footer-right .footer-link {
+      margin-left: 20px;
+      font-weight: 600;
+      color: #989898  ;}
 
 
 
-/* BUTTON */
+/* BUTTON
 -------------------------------------*/
 
 .button-download, .button-download:visited {
@@ -568,7 +571,7 @@ header {
     background-position: 15px center; }
 
 
-/* Categories */
+/* Categories
 -------------------------------------*/
 
 #category {
@@ -576,25 +579,28 @@ header {
   background-size: cover;
   background-position: center center;
   position: relative;
-  overflow: hidden; }
+  overflow: hidden; 
+  padding-top: 80px;}
   #category .container {
     max-width: 600px; 
     padding-top: 10px;
     padding-right: 10px;
     padding-left: 10px;
+    border-top: 2px solid #7A9ED3;
     color: #000; }
     #category .container h1 {
-      text-align:center;
       font-weight: 800;
       font-size: 24px; 
-      margin-bottom: 10px; 
-      margin-top: 10px; 
+      margin-bottom: 20px; 
+      margin-top: 10px;
+      line-height:200%;
       color: #7A9ED3;}
     #category .container h2 {
       font-weight: 800;
       font-size: 18px; 
-      margin-bottom: 10px; 
-      margin-top: 20px; 
+      margin-bottom: 15px; 
+      margin-top: 30px;
+      line-height:150%;
       color: #7A9ED3; }
     #category .container h3 {
       font-weight:bold;; 
@@ -607,5 +613,7 @@ header {
       font-weight: 400; 
       list-style-type: none;
       margin-bottom: 5px; }
+  #category .bottom_three {
+    margin-bottom: 3cm;}
 
 
