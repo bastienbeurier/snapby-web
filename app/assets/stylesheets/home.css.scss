@@ -512,7 +512,7 @@ header {
   z-index: 1000;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  border: 2px solid #7A9ED3 ;
+  border: 2px solid #A8A8A8 ;
   }
   .footer .container {
     padding-bottom: 10px; 
@@ -525,7 +525,7 @@ header {
       margin-left: 20px;
       font-weight: 600;
       color: #989898  ;}
-    .footer .container #footer-phone{
+    .footer .container #footer-phone .footer-link{
       font-weight: 800;
       display:block;
       margin-left: auto;
