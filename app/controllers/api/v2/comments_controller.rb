@@ -10,7 +10,8 @@ class Api::V2::CommentsController < Api::V2::ApiController
     comment = Comment.new(comment_params)
 
     if comment.save
-      render json: { result: { comment: comment } }, status: 201
+      shout = Shout.find(params[:shout_id])
+      render json: { result: { comments: shout.comments } }, status: 201
     else 
       render json: { errors: { internal: comment.errors } }, :status => 500
     end
@@ -25,10 +26,10 @@ class Api::V2::CommentsController < Api::V2::ApiController
       return
     end
 
-    #TODO: handle when there is a lot of comments (not for now)
-    comments = Comment.where("shout_id = :shout_id", {:shout_id => params[:shout_id]}).limit(100).order("created_at DESC")
+    shout = Shout.find(params[:shout_id])
 
-    render json: {result: {comments: comments } }, status: 200
+    #TODO: handle when there is a lot of comments (not for now)
+    render json: {result: {comments: shout.comments } }, status: 200
   end
 
 private
