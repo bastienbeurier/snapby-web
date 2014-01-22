@@ -624,10 +624,14 @@ html, body{
 }
 
 #display_shout {
-    height: 100%;
-    padding: 5% 10% 5% 10%;
+    position: absolute;
+    top: 5%;
+    left:10%;
+    width:auto;
+    height: auto;
+    max-width: 80%;
   }
-  #display_shout .shout_img {
+shout_img {
   max-width: 100%;
   height: auto;
   width: auto\9; /* ie8 */
