@@ -619,21 +619,21 @@ header {
 
 /* Categories
 -------------------------------------*/
-html, body{
+/*html, body{
   height: 100%;
 }
-
+*/
 #display_shout {
+    max-width: 80%;
     position: absolute;
     top: 5%;
     left:10%;
     width:auto;
     height: auto;
-    max-width: 80%;
   }
 shout_img {
   max-width: 100%;
   height: auto;
-  width: auto\9; /* ie8 */
+  /*width: auto\9; ie8  */
   }
 
