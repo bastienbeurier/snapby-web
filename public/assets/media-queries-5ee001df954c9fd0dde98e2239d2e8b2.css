@@ -61,7 +61,7 @@
     height: 80;
   }
   #footer-right {
-    margin-right: 11px; }
+    display: none !important;}
   #footer-left {
     display: none !important;}
 
@@ -114,7 +114,15 @@
   .gallery-list li {
     width: 365px;
     opacity: 1; } 
+
+  /* FOOTER */
+  #footer-phone{
+    float: left; }
+  #footer-left {
+    display: none !important;}
 }
+
+
 
 
 /* # VISIBLE & HIDDEN
