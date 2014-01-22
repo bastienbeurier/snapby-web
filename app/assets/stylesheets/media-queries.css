@@ -60,9 +60,12 @@
     height: 80;
   }
   #footer-right {
-    margin-right: 11px; }
+    display: none !important;}
   #footer-left {
     display: none !important;}
+  #footer-phone{
+    display: inline !important; 
+    text-align: center; }
 
 
   /* ELEMENTS */
