@@ -232,36 +232,36 @@ header, footer, article, section, nav, menu, hgroup {
 
 #standard-text {
   position: relative;
-  overflow: scroll; 
-  margin-top: 80px;
-  margin-bottom: 3cm;}
+  margin-top: 80px;}
   #standard-text .container {
+    margin-bottom: 3cm;
+    overflow: scroll;
     max-width: 600px; 
     padding: 10px;
-    border-top: 2px solid #7A9ED3;
-    color: #000; }
+    border-top: 2px solid #7A9ED3;}
     #standard-text .container h1 {
       font-weight: 800;
       font-size: 24px; 
-      margin-bottom: 20px; 
-      margin-top: 10px;
+      margin-bottom: 30px; 
+      margin-top: 15px;
       line-height:200%;
       color: #7A9ED3;}
     #standard-text .container h2 {
       font-weight: 800;
       font-size: 18px; 
-      margin-bottom: 15px; 
-      margin-top: 30px;
+      margin-bottom: 10px; 
+      margin-top: 20px;
       line-height:150%;
       color: #7A9ED3; }
     #standard-text .container h3 {
-      font-weight:bold;; 
-      margin-bottom: 10px; }
+      font-weight:bold; 
+      margin-top: 10px;
+      margin-bottom: 5px; }
     #standard-text .container p {
       font-weight: 400; 
-      margin-bottom: 10px; }
+      margin-bottom: 5px; }
     #standard-text .container ul li {
-      margin-left: 10px;
+      margin-left: 20px;
       font-weight: 400; 
       margin-bottom: 5px; }
 
