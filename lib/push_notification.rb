@@ -50,7 +50,7 @@ module PushNotification
                 user_notification.blocked_count += 1
             end 
 
-            user.notification.save!
+            user_notification.save!
         end
 
         begin
