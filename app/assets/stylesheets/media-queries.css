@@ -67,7 +67,7 @@
   #footer-right, #footer-left {
     display: none !important;}
   .footer .container #footer-mid a {
-    width:50%;
+    max-width:50%;
   }
 
 

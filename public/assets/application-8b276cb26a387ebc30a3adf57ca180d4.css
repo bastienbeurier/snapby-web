@@ -227,15 +227,11 @@ a {
   font-weight: 600; }
 
 .footer .container #footer-mid {
-  margin-left: auto;
-  margin-right: auto;
   text-align: center;
-  height: 100%;
-  border: 1.5px solid red; }
+  height: 100%; }
 
 .footer .container #footer-mid a {
-  height: 100%;
-  border: 1.5px solid yellow;
+  height: 60px;
   display: inline_block;
   padding-left: 50px;
   padding-right: 50px; }
@@ -389,10 +385,11 @@ a {
   .footer {
     height: 80;
   }
-  #footer-right {
+  #footer-right, #footer-left {
     display: none !important;}
-  #footer-left {
-    display: none !important;}
+  .footer .container #footer-mid a {
+    width:50%;
+  }
 
 }
 
@@ -416,9 +413,11 @@ a {
     padding: 0 0 40px 0; }
 
   /* FOOTER */
-  #footer-left, #footer-right {
+  #footer-right, #footer-left {
     display: none !important;}
-}
+  .footer .container #footer-mid a {
+    max-width:50%;
+  }
 
 
 
