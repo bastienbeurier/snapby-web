@@ -3,9 +3,9 @@
 
 @media only screen and (max-width: 767px) {
   .container {
-    width: 290px; }
+    width: 280px; }
   #standard-text { 
-    padding-top: 20px;}
+    margin-top: 30px;}
 
   /* SPLASH */
   #splash {
@@ -64,9 +64,7 @@
     padding: 0 0 40px 0; }
 
   /* FOOTER */
-  #footer-mid{
-    float: left; }
-  #footer-left {
+  #footer-left, #footer-right {
     display: none !important;}
 }
 

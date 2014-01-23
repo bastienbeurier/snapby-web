@@ -2,9 +2,9 @@
 ================================================== */
 @media only screen and (max-width: 767px) {
   .container {
-    width: 290px; }
+    width: 280px; }
   #standard-text { 
-    margin-top: 20px;}
+    margin-top: 30px;}
 
   /* SPLASH */
   #splash {
