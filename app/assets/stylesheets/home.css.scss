@@ -625,7 +625,7 @@ html, body{
 
 #display_shout {
     width: 90%;
-    position: absolute;
+    position: relative;
     top: 5%;
     left:5%;
     height: auto;
@@ -639,8 +639,8 @@ html, body{
   width: auto\9; /*ie8  */
   }
 #display_shout h2{
-  position: relative;
   display: block;
+  max-width: 90%;
   margin-left: auto;
   margin-right: auto;
   h2 span { 
