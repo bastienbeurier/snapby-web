@@ -2,9 +2,9 @@
 ================================================== */
 @media only screen and (max-width: 767px) {
   .container {
-    width: 290px; }
-  #category { 
-    padding-top: 20px;}
+    width: 280px; }
+  #standard-text { 
+    margin-top: 30px;}
 
   /* SPLASH */
   #splash {
@@ -31,59 +31,16 @@
   #product-container #device-2nd {
     display: none !important; }
 
-  /* HEADER */
-  header #header-left {
-    text-align: center;
-    float: none; }
-  header #header-right {
-    float: none; }
-    header #header-right ul {
-      text-align: center; }
-      header #header-right ul li {
-        float: none;
-        display: inline-block;
-        margin: 0 5px; }
-  header .menu {
-    display: none; }
-  header .tinynav-wrap {
-    display: block; }
-
-  body.dark header .tinynav-wrap {
-    background: #555;
-    border: none;
-    color: #000; }
-    body.dark header .tinynav-wrap select {
-      color: #000; }
 
   /* FOOTER */
   .footer {
     height: 80;
   }
   #footer-right {
-    margin-right: 11px; }
+    display: none !important;}
   #footer-left {
     display: none !important;}
 
-
-  /* ELEMENTS */
-  .frame {
-    border: none;
-    padding: 0; }
-
-  .slide-control {
-    display: none; }
-
-  .gallery-list li {
-    width: 290px;
-    opacity: 1; }
-
-  #twitter-box,
-  #twitter-box .tweet_list li {
-    height: 10em; }
-
-  .contact-info-pane {
-    position: relative;
-    padding: 20px; } 
 }
 
 
@@ -104,42 +61,11 @@
     bottom: auto;
     margin-bottom: 50px;
     padding: 0 0 40px 0; }
-  #product-container.ipad-portrait #device-2nd, #product-container.android-tablet-portrait #device-2nd {
-    left: 55px; }
-  #product-container.ipad-landscape #device-2nd, #product-container.android-tablet-landscape #device-2nd {
-    right: 0; }
 
-  /* ELEMENTS */
-  .gallery-list li {
-    width: 365px;
-    opacity: 1; } 
+  /* FOOTER */
+  #footer-left, #footer-right {
+    display: none !important;}
 }
 
 
-/* # VISIBLE & HIDDEN
--------------------------------------*/
-.visible-phone,
-.visible-tablet,
-.hidden-desktop {
-  display: none !important; }
 
-@media only screen and (max-width: 767px) {
-  .visible-phone,
-  .hidden-desktop,
-  .hidden-tablet {
-    display: inherit !important; }
-
-  .visible-desktop,
-  .visible-tablet,
-  .hidden-phone {
-    display: none !important; } }
-@media screen and (min-width: 768px) and (max-width: 1140px) {
-  .visible-tablet,
-  .hidden-desktop,
-  .hidden-phone {
-    display: inherit !important; }
-
-  .visible-desktop,
-  .visible-phone,
-  .hidden-tablet {
-    display: none !important; } }

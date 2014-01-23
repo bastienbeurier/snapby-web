@@ -4,22 +4,19 @@
       <% if yield(:title) != "Home" %>
         <a href="/" class="footer-link">Home</a>
       <% end %>
-      <% if yield(:title) != "About" %>
       <a href="/about" class="footer-link">About</a>
-      <% end %>
-      <% if yield(:title) != "Privacy" %>
       <a href="/privacy" class="footer-link">Privacy</a>
-      <% end %>
-      <% if yield(:title) != "Terms" %>
       <a href="/terms" class="footer-link">Terms</a>
-      <% end %>
-      <% if yield(:title) != "Contact" %>
       <a href="/contact" class="footer-link">Contact</a>
-      <% end %>
     </div>
 
     <div id="footer-left">
       <p>© 2013 <%=SHOUT_COMPANY_NAME%></p>
+    </div>
+
+    <div id="footer-mid">
+      <%= link_to image_tag("badge_apple_store.png", alt: "Android"), APPLE_STORE_LINK %>
+      <%= link_to image_tag("badge_android_store.png", alt: "Android"), ANDROID_STORE_LINK %>
     </div>
   </div>
 </footer>

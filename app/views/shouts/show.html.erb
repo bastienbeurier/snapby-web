@@ -1,2 +1,25 @@
+<% provide(:title, 'Display Shout') %>
 
-<p> ah ah </p>
+<div id="product-container" class="container android-phone-portrait">
+  <div id="product-info">
+    <h1>shout</h1>
+    <p>here & now</p>
+  </div>
+</div>	
+		
+
+<div id="display_shout">
+ 	<%=image_tag("http://" + @shout.image + "--400") %>
+
+ 	<h2><span> <%= @shout.description %> </span></p>
+</div>
+
+
+<section id="standard-text">
+  <div class="container">
+		<p><%= @shout.user.username %> shouted <%= time_ago_in_words(@shout.created_at) %> ago</p>
+		<p>This shout has <%=pluralize( @shout.likes.count ,"like")%> and <%= pluralize(@shout.comments.count,"comment")%></p>
+	</div>
+	<div class="spacer">
+  </div>
+</section>

@@ -1,21 +1,26 @@
 <% provide(:title, 'Password Resetting') %>
 
-<section id="category">
+<section id="standard-text">
   <div class="container">
-	<h2>Change your password</h2>
+		<h1>Reset your password</h1>
 
-	<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
-	  <%= devise_error_messages! %>
-	  <%= f.hidden_field :reset_password_token %>
+		
+		<p><%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %></p>
+		<p><%= devise_error_messages! %></p>
+		<p><%= f.hidden_field :reset_password_token %></p>
+		
 
-	  <div><%= f.label :password, "New password" %><br />
-	  <%= f.password_field :password, :autofocus => true %></div>
+		<p><%= f.label :password, "New password" %><br />
+		<%= f.password_field :password, :autofocus => true %></p>
 
-	  <div><%= f.label :password_confirmation, "Confirm new password" %><br />
-	  <%= f.password_field :password_confirmation %></div>
+		<p><%= f.label :password_confirmation, "Confirm new password" %><br />
+		<%= f.password_field :password_confirmation %></p>
 
-	  <div><%= f.submit "Change my password" %></div>
+		<p><%= f.submit "Change my password" %></p>
 	<% end %>
   
+  </div>
+
+  <div class="spacer">
   </div>
 </section>

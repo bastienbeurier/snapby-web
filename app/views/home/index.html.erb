@@ -2,33 +2,17 @@
 
 <section id="splash">
 
-  <div id="product-container" class="container android-phone-portrait">
-    <div id="product-info">
-      <h1>street shout</h1>
-      <p>here & now</p>
-      <div class="container">
-        <div class="button-download">
-              <a href="#">                  
-                <span>Coming Soon</span>
-              </a>
-            </div>
-      </div>
+  <%= render 'shared/title' %>
 
-    </div><!-- #info -->
-    
+  <div id="product-container" class="container android-phone-portrait">
+
     <div id="device">
       <div id="screen">
         <img src=> <%= image_tag("app-screen-2.jpg") %> <alt="screen" />
       </div>
-    </div><!-- #device -->
-
-    <div id="device-2nd">
-      <div id="screen-2nd">
-        <img src=> <%= image_tag("app-screen-2.jpg") %> <alt="screen" />
-      </div>
-    </div><!-- #device-2 -->
+    </div>
 
   </div>
 
   <div class="inner-shadow"></div>
-</section><!-- #splash -->
+</section>
