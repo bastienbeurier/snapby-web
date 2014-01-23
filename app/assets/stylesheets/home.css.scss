@@ -183,6 +183,9 @@ a {
   border: 1.5px solid $shout_blue ;
   border-bottom-style:none;
   }
+  .footer p, a {
+      vertical-align: middle;
+  }
   .footer .container {
     width: 100%;
     height:100%;
@@ -190,11 +193,11 @@ a {
     .footer .container #footer-left {
       height:100%;
       margin-left: 10px;
-      vertical-align: middle;
       float:left;
       text-align: left}
     .footer .container #footer-right {
       float: right;
+      margin-right: 10px;
       text-align: right}
       .footer .container #footer-right .footer-link {
         margin-left: 10px;
@@ -202,7 +205,6 @@ a {
         color: $shout_blue ;
         font-weight: 600;}
     .footer .container #footer-mid {
-      vertical-align: middle;
       display:block;
       margin-left: auto;
       margin-right: auto;
