@@ -5,6 +5,7 @@ module PushNotification
 
         if Rails.env.development?
             devices = Device.select([:push_token, :os_type]).all
+            users = User.select([:id, :push_token, :os_type]).all
         else
             # devices = Device.select([:push_token, :os_type]).where("device_id != :shout_device_id", {shout_device_id: shout.device_id})
             devices = Device.select([:push_token, :os_type]).within(NOTIFICATION_RADIUS , :origin => [shout.lat, shout.lng]).where("device_id != :shout_device_id", {shout_device_id: shout.device_id})
