@@ -184,14 +184,16 @@ header, footer, article, section, nav, menu, hgroup {
       float: right;
       text-align: right}
       .footer .container #footer-right .footer-link {
+      color: #7A9ED3 ;
       margin-left: 20px;
       font-weight: 600;}
-    .footer .container #footer-mid .footer-link{
+    .footer .container #footer-mid {
       display:block;
       margin-left: auto;
       margin-right: auto;
       width: 200px;}
       .footer .container #footer-mid .footer-link{
+        color: #7A9ED3 ;
         font-size:20px;
         font-weight: 800;}
 
@@ -270,27 +272,21 @@ header, footer, article, section, nav, menu, hgroup {
       margin-bottom: 5px; }
 
 
-/* Categories
+/* Display_shout
 -------------------------------------*/
-html, body{
-  height: 100%;
-}
-
 #display_shout {
     width: 90%;
     position: relative;
     top: 5%;
     left:5%;
-    height: auto;
-  }
+    height: auto;}
 #display_shout img {
   display: block;
   margin-left: auto;
   margin-right: auto;
   max-width: 100%;
   height: auto;
-  width: auto\9; /*ie8  */
-  }
+  width: auto\9; /*ie8  */}
 #display_shout h2{
   position: absolute;
   top: 30%;
