@@ -210,9 +210,12 @@ a {
     .footer .container #footer-mid {
       height:100%;
       width: 100%;
+      display: table;
+      border: 1.5px solid red;
       margin: 0 auto;}
       .footer .container #footer-mid img {
         height: 60%;
+        vertical-align: middle;
         width: auto;
       }
 
