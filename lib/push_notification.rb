@@ -36,11 +36,11 @@ module PushNotification
                 user_notification.blocked_count = 0
 
                 if user.os_type and user.os_type == "android" and user.push_token and !android_tokens.include?(user.push_token)
-                    android_tokens != [user.push_token]
+                    android_tokens += [user.push_token]
                     user_notification.sent_count += 1
                     user_notification.last_sent_date = Time.now
                 elsif user.os_type and user.os_type == "ios" and user.push_token and !ios_tokens.include?(user.push_token)
-                    android_tokens != [user.push_token]
+                    ios_tokens += [user.push_token]
                     user_notification.sent_count += 1
                     user_notification.last_sent_date = Time.now
                 end
