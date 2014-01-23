@@ -214,8 +214,10 @@ a {
       height: 100%;
       border: 1.5px solid red;}
       .footer .container #footer-mid a {
+        height: 100%;
         border: 1.5px solid yellow;
         display: inline_block;
+        padding-left: 50px;
         margin-left: auto;
         margin-right: auto;
         }
