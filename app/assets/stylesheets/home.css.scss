@@ -189,9 +189,12 @@ a {
   }
   .footer .container {
     display: table;
+
+    border: 1.5px solid red ;
     width: 100%;
     height:100%}
     .footer .container #footer-left {
+      border: 1.5px solid red ;
       display: table;
       height:100%;
       margin-left: 10px;
