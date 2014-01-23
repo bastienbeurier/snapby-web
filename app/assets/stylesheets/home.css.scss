@@ -232,12 +232,14 @@ header, footer, article, section, nav, menu, hgroup {
 
 #standard-text {
   position: relative;
+  margin-bottom: 10cm;
   margin-top: 80px;}
   #standard-text .container {
     margin-bottom: 3cm;
     overflow: scroll;
     max-width: 600px; 
     padding: 10px;
+    color: #000; 
     border-top: 2px solid #7A9ED3;}
     #standard-text .container h1 {
       font-weight: 800;
