@@ -18,4 +18,7 @@ CONTACT_EMAIL = "info@street-shout.com"
 SENDER_EMAIL = SENDER_EMAIL_
 FLAG_EMAIL = "info@street-shout.com"
 
+APP_STORE_LINK = "http://itunes.apple.com/app/id734887535?mt=8"
+ANDROID_STORE_LINK = ""
+
 DELETE_ACCOUNT_LINK = "#" #todoBT delete account
