@@ -37,10 +37,12 @@
   .footer {
     height: 80;
   }
-  #footer-right {
+  #footer-right, #footer-left {
     display: none !important;}
-  #footer-left {
-    display: none !important;}
+  .footer .container #footer-mid a {
+    width:50%;
+    padding: auto;
+  }
 
 }
 
@@ -64,9 +66,12 @@
     padding: 0 0 40px 0; }
 
   /* FOOTER */
-  #footer-left, #footer-right {
+  #footer-right, #footer-left {
     display: none !important;}
-}
+  .footer .container #footer-mid a {
+    max-width:50%;
+    padding: auto;
+  }
 
 
 

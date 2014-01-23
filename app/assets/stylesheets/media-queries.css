@@ -40,6 +40,7 @@
     display: none !important;}
   .footer .container #footer-mid a {
     width:50%;
+    padding: auto;
   }
 
 }
@@ -68,6 +69,7 @@
     display: none !important;}
   .footer .container #footer-mid a {
     max-width:50%;
+    padding: auto;
   }
 
 
