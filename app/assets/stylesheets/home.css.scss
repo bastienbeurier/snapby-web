@@ -171,7 +171,7 @@ a {
 -------------------------------------*/
 .footer {
   background: #FFF;
-  color: $shout_blue ;
+  color: #808080 ;
   position: fixed;
   bottom: 0;
   left: 0px;
@@ -184,6 +184,7 @@ a {
   border-bottom-style:none;
   }
   .footer .container {
+    vertical-align: middle;
     padding: 10px}
     .footer .container #footer-left {
       float:left;
@@ -194,7 +195,7 @@ a {
       .footer .container #footer-right .footer-link {
       color: $shout_blue ;
       margin-left: 20px;
-      font-weight: 600;}
+      font-weight: 800;}
     .footer .container #footer-mid {
       display:block;
       margin-left: auto;

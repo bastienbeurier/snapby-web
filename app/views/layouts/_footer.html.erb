@@ -4,18 +4,10 @@
       <% if yield(:title) != "Home" %>
         <a href="/" class="footer-link">Home</a>
       <% end %>
-      <% if yield(:title) != "About" %>
       <a href="/about" class="footer-link">About</a>
-      <% end %>
-      <% if yield(:title) != "Privacy" %>
       <a href="/privacy" class="footer-link">Privacy</a>
-      <% end %>
-      <% if yield(:title) != "Terms" %>
       <a href="/terms" class="footer-link">Terms</a>
-      <% end %>
-      <% if yield(:title) != "Contact" %>
       <a href="/contact" class="footer-link">Contact</a>
-      <% end %>
     </div>
 
     <div id="footer-left">
