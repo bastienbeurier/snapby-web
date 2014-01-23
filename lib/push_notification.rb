@@ -2,7 +2,7 @@ module PushNotification
     def self.notify_new_shout(shout)
         devices = []
         users = []
-        
+
         if Rails.env.development?
             devices = Device.select([:push_token, :os_type]).all
         else

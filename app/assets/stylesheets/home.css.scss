@@ -208,17 +208,18 @@ a {
         color: $shout_blue ;
         font-weight: 600;}
     .footer .container #footer-mid {
-      height:100%;
-      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
       border: 1.5px solid red;}
       .footer .container #footer-mid a {
         border: 1.5px solid yellow;
         display: inline_block;
         margin-left: auto;
         margin-right: auto;
-        height: 60%;
-        width: auto;}
+        }
         .footer .container #footer-mid a img {
+          height: 70%;
+          width: auto;
           text-align: center;
         }
 
