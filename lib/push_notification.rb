@@ -34,7 +34,7 @@ module PushNotification
             end
 
             #Check if notification delay is over
-            if user_notification + NOTIFICATION_DELAY < Time.now
+            if user_notification.last_sent + NOTIFICATION_DELAY < Time.now
                 user_notification.blocked_count = 0
 
                 if user.os_type and user.os_type == "android" and user.push_token and !android_tokens.include?(user.push_token)
