@@ -619,10 +619,10 @@ header {
 
 /* Categories
 -------------------------------------*/
-/*html, body{
+html, body{
   height: 100%;
 }
-*/
+
 #display_shout {
     max-width: 80%;
     position: absolute;
@@ -631,9 +631,9 @@ header {
     width:auto;
     height: auto;
   }
-shout_img {
+#display_shout img {
   max-width: 100%;
   height: auto;
-  /*width: auto\9; ie8  */
+  width: auto\9; /*ie8  */
   }
 
