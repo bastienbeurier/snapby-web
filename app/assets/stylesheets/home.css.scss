@@ -1,6 +1,12 @@
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)*/
 
+/* Constant
+-------------------------------------*/
+$shout_blue : #7A9ED3;
+
+
+
+/* # GENERAL
+-------------------------------------*/
 @font-face {
   font-family: 'Ubuntu-Title-webfont';
   src:asset-url('Ubuntu-Title-webfont.eot',font);
@@ -35,9 +41,6 @@ time, mark, audio, video {
 ol, ul {
   list-style: none; }
 
-
-/* # GENERAL
--------------------------------------*/
 body {
   color: #a5a5a5;
   background-color: #fff;
@@ -49,6 +52,11 @@ body {
 
 header, footer, article, section, nav, menu, hgroup {
   display: block; }
+
+a {
+  text-decoration: none;
+  color: #e54b00;
+  outline: none; }
 
 .container {
   width: 1000px;
@@ -163,7 +171,7 @@ header, footer, article, section, nav, menu, hgroup {
 -------------------------------------*/
 .footer {
   background: #FFF;
-  color: #7A9ED3 ;
+  color: $shout_blue ;
   position: fixed;
   bottom: 0;
   left: 0px;
@@ -172,7 +180,7 @@ header, footer, article, section, nav, menu, hgroup {
   z-index: 1000;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  border: 1px solid #7A9ED3 ;
+  border: 1.5px solid $shout_blue ;
   border-bottom-style:none;
   }
   .footer .container {
@@ -184,7 +192,7 @@ header, footer, article, section, nav, menu, hgroup {
       float: right;
       text-align: right}
       .footer .container #footer-right .footer-link {
-      color: #7A9ED3 ;
+      color: $shout_blue ;
       margin-left: 20px;
       font-weight: 600;}
     .footer .container #footer-mid {
@@ -193,7 +201,7 @@ header, footer, article, section, nav, menu, hgroup {
       margin-right: auto;
       width: 200px;}
       .footer .container #footer-mid .footer-link{
-        color: #7A9ED3 ;
+        color: $shout_blue ;
         font-size:20px;
         font-weight: 800;}
 
@@ -244,21 +252,21 @@ header, footer, article, section, nav, menu, hgroup {
     max-width: 600px; 
     padding: 10px;
     color: #000; 
-    border-top: 2px solid #7A9ED3;}
+    border-top: 2px solid $shout_blue;}
     #standard-text .container h1 {
       font-weight: 800;
       font-size: 24px; 
       margin-bottom: 20px; 
       margin-top: 15px;
       line-height:200%;
-      color: #7A9ED3;}
+      color: $shout_blue;}
     #standard-text .container h2 {
       font-weight: 800;
       font-size: 18px; 
       margin-bottom: 10px; 
       margin-top: 20px;
       line-height:150%;
-      color: #7A9ED3; }
+      color: $shout_blue; }
     #standard-text .container h3 {
       font-weight:bold; 
       margin-top: 10px;

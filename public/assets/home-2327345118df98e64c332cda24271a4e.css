@@ -1,19 +1,7 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
-
-
- */
-
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)*/
+/* Constant
+-------------------------------------*/
+/* # GENERAL
+-------------------------------------*/
 @font-face {
   font-family: 'Ubuntu-Title-webfont';
   src: url(/assets/Ubuntu-Title-webfont.eot);
@@ -44,8 +32,6 @@ time, mark, audio, video {
 ol, ul {
   list-style: none; }
 
-/* # GENERAL
--------------------------------------*/
 body {
   color: #a5a5a5;
   background-color: #fff;
@@ -58,10 +44,19 @@ body {
 header, footer, article, section, nav, menu, hgroup {
   display: block; }
 
+a {
+  text-decoration: none;
+  color: #e54b00;
+  outline: none; }
+
 .container {
   width: 1000px;
   margin: 0 auto;
   position: relative; }
+
+.spacer {
+  clear: both;
+  height: 100px; }
 
 /* CLEAR */
 /* http://sonspring.com/journal/clearing-floats */
@@ -186,7 +181,7 @@ header, footer, article, section, nav, menu, hgroup {
   z-index: 1000;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  border: 1px solid #7a9ed3;
+  border: 1.5px solid #7a9ed3;
   border-bottom-style: none; }
 
 .footer .container {
@@ -201,16 +196,18 @@ header, footer, article, section, nav, menu, hgroup {
   text-align: right; }
 
 .footer .container #footer-right .footer-link {
+  color: #7a9ed3;
   margin-left: 20px;
   font-weight: 600; }
 
-.footer .container #footer-mid .footer-link {
+.footer .container #footer-mid {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 200px; }
 
 .footer .container #footer-mid .footer-link {
+  color: #7a9ed3;
   font-size: 20px;
   font-weight: 800; }
 
@@ -254,19 +251,19 @@ header, footer, article, section, nav, menu, hgroup {
   margin-top: 80px; }
 
 #standard-text .container {
-  margin-bottom: 3cm;
   overflow: scroll;
   max-width: 600px;
   padding: 10px;
-  border-top: 2px solid #7A9ED3; }
+  color: #000;
+  border-top: 2px solid #7a9ed3; }
 
 #standard-text .container h1 {
   font-weight: 800;
   font-size: 24px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   margin-top: 15px;
   line-height: 200%;
-  color: #7A9ED3; }
+  color: #7a9ed3; }
 
 #standard-text .container h2 {
   font-weight: 800;
@@ -274,7 +271,7 @@ header, footer, article, section, nav, menu, hgroup {
   margin-bottom: 10px;
   margin-top: 20px;
   line-height: 150%;
-  color: #7A9ED3; }
+  color: #7a9ed3; }
 
 #standard-text .container h3 {
   font-weight: bold;
@@ -290,11 +287,8 @@ header, footer, article, section, nav, menu, hgroup {
   font-weight: 400;
   margin-bottom: 5px; }
 
-/* Categories
+/* Display_shout
 -------------------------------------*/
-html, body {
-  height: 100%; }
-
 #display_shout {
   width: 90%;
   position: relative;
@@ -327,77 +321,3 @@ html, body {
   /* fallback color */
   background: rgba(0, 0, 0, 0.3);
   padding: 20px; }
-/*  #MOBILE (Portrait)
-================================================== */
-
-@media only screen and (max-width: 767px) {
-  .container {
-    width: 290px; }
-  #standard-text { 
-    padding-top: 20px;}
-
-  /* SPLASH */
-  #splash {
-    background-attachment: scroll; }
-    #splash .pattern {
-      background-attachment: scroll; }
-
-  /* PRODUCT CONTAINER */
-  #product-container #product-info {
-    width: 100% !important;
-    text-align: center;
-    position: relative;
-    margin-bottom: 100px; }
-    #product-container #product-info .button {
-      margin-right: 0; }
-    #product-container #product-info {
-      bottom: auto;
-      margin-bottom: 50px;
-      padding: 0 0 40px 0; }
-    #product-container #product-info h1 {
-      font-size: 55px;
-      line-height: 1.5em; }
-  #product-container #device,
-  #product-container #device-2nd {
-    display: none !important; }
-
-
-  /* FOOTER */
-  .footer {
-    height: 80;
-  }
-  #footer-right {
-    display: none !important;}
-  #footer-left {
-    display: none !important;}
-
-}
-
-
-/*  #TABLET (Portrait)
-================================================== */
-@media screen and (min-width: 768px) and (max-width: 1140px) {
-  .container {
-    width: 740px; }
-
-  /* PRODUCT CONTAINER */
-  #product-container #device {
-    margin: 0 auto !important;
-    bottom: 0 !important; }
-  #product-container #product-info {
-    width: 100% !important;
-    text-align: center;
-    position: relative;
-    bottom: auto;
-    margin-bottom: 50px;
-    padding: 0 0 40px 0; }
-
-  /* FOOTER */
-  #footer-mid{
-    float: left; }
-  #footer-left {
-    display: none !important;}
-}
-
-
-

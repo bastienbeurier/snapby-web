@@ -12,8 +12,10 @@
 
  */
 
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)*/
+/* Constant
+-------------------------------------*/
+/* # GENERAL
+-------------------------------------*/
 @font-face {
   font-family: 'Ubuntu-Title-webfont';
   src: url(/assets/Ubuntu-Title-webfont.eot);
@@ -44,8 +46,6 @@ time, mark, audio, video {
 ol, ul {
   list-style: none; }
 
-/* # GENERAL
--------------------------------------*/
 body {
   color: #a5a5a5;
   background-color: #fff;
@@ -54,6 +54,23 @@ body {
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
   font-smooth: always; }
+
+header, footer, article, section, nav, menu, hgroup {
+  display: block; }
+
+a {
+  text-decoration: none;
+  color: #e54b00;
+  outline: none; }
+
+.container {
+  width: 1000px;
+  margin: 0 auto;
+  position: relative; }
+
+.spacer {
+  clear: both;
+  height: 100px; }
 
 /* CLEAR */
 /* http://sonspring.com/journal/clearing-floats */
@@ -178,7 +195,7 @@ body {
   z-index: 1000;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  border: 1px solid #7a9ed3;
+  border: 1.5px solid #7a9ed3;
   border-bottom-style: none; }
 
 .footer .container {
@@ -193,16 +210,18 @@ body {
   text-align: right; }
 
 .footer .container #footer-right .footer-link {
+  color: #7a9ed3;
   margin-left: 20px;
   font-weight: 600; }
 
-.footer .container #footer-mid .footer-link {
+.footer .container #footer-mid {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 200px; }
 
 .footer .container #footer-mid .footer-link {
+  color: #7a9ed3;
   font-size: 20px;
   font-weight: 800; }
 
@@ -243,50 +262,47 @@ body {
 -------------------------------------*/
 #standard-text {
   position: relative;
-  overflow: scroll;
-  margin-top: 80px;
-  margin-bottom: 100px; }
+  margin-top: 80px; }
 
 #standard-text .container {
+  overflow: scroll;
   max-width: 600px;
   padding: 10px;
-  border-top: 2px solid #7A9ED3;
-  color: #000; }
+  color: #000;
+  border-top: 2px solid #7a9ed3; }
 
 #standard-text .container h1 {
   font-weight: 800;
   font-size: 24px;
   margin-bottom: 20px;
-  margin-top: 10px;
+  margin-top: 15px;
   line-height: 200%;
-  color: #7A9ED3; }
+  color: #7a9ed3; }
 
 #standard-text .container h2 {
   font-weight: 800;
   font-size: 18px;
-  margin-bottom: 15px;
-  margin-top: 30px;
+  margin-bottom: 10px;
+  margin-top: 20px;
   line-height: 150%;
-  color: #7A9ED3; }
+  color: #7a9ed3; }
 
 #standard-text .container h3 {
   font-weight: bold;
-  margin-bottom: 10px; }
+  margin-top: 10px;
+  margin-bottom: 5px; }
 
 #standard-text .container p {
   font-weight: 400;
-  margin-bottom: 10px; }
+  margin-bottom: 5px; }
 
 #standard-text .container ul li {
-  margin-left: 10px;
+  margin-left: 20px;
   font-weight: 400;
   margin-bottom: 5px; }
 
-/* Categories
+/* Display_shout
 -------------------------------------*/
-html, body {
-  height: 100%; }
-
 #display_shout {
   width: 90%;
   position: relative;
