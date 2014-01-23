@@ -27,7 +27,7 @@ module PushNotification
             #Create UserNotification instance if user doesn't have one
             if !user_notification
                 old_date = DateTime.new(2000, 1, 1)
-                user_notification  = UserNotification.new(user_id: user.id, sent_count: 0, last_sent_date: old_date, blocked_count: 0)
+                user_notification  = UserNotification.new(user_id: user.id, sent_count: 0, last_sent: old_date, blocked_count: 0)
                 user_notification.save!
             end
 
@@ -38,11 +38,11 @@ module PushNotification
                 if user.os_type and user.os_type == "android" and user.push_token and !android_tokens.include?(user.push_token)
                     android_tokens += [user.push_token]
                     user_notification.sent_count += 1
-                    user_notification.last_sent_date = Time.now
+                    user_notification.last_sent = Time.now
                 elsif user.os_type and user.os_type == "ios" and user.push_token and !ios_tokens.include?(user.push_token)
                     ios_tokens += [user.push_token]
                     user_notification.sent_count += 1
-                    user_notification.last_sent_date = Time.now
+                    user_notification.last_sent = Time.now
                 end
             #Otherwise, block de notification
             else
