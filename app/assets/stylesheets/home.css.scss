@@ -55,6 +55,10 @@ header, footer, article, section, nav, menu, hgroup {
   margin: 0 auto;
   position: relative; }
 
+.spacer {
+  clear: both;
+  height: 100px;}
+
 /* CLEAR */
 /* http://sonspring.com/journal/clearing-floats */
 .clear {
@@ -232,10 +236,8 @@ header, footer, article, section, nav, menu, hgroup {
 
 #standard-text {
   position: relative;
-  margin-bottom: 10cm;
   margin-top: 80px;}
   #standard-text .container {
-    margin-bottom: 3cm;
     overflow: scroll;
     max-width: 600px; 
     padding: 10px;
@@ -244,7 +246,7 @@ header, footer, article, section, nav, menu, hgroup {
     #standard-text .container h1 {
       font-weight: 800;
       font-size: 24px; 
-      margin-bottom: 30px; 
+      margin-bottom: 20px; 
       margin-top: 15px;
       line-height:200%;
       color: #7A9ED3;}
