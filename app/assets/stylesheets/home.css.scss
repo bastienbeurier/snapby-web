@@ -47,6 +47,14 @@ body {
   -webkit-font-smoothing: antialiased;
   font-smooth: always; }
 
+header, footer, article, section, nav, menu, hgroup {
+  display: block; }
+
+.container {
+  width: 1000px;
+  margin: 0 auto;
+  position: relative; }
+
 /* CLEAR */
 /* http://sonspring.com/journal/clearing-floats */
 .clear {
@@ -226,7 +234,7 @@ body {
   position: relative;
   overflow: scroll; 
   margin-top: 80px;
-  margin-bottom: 100px;}
+  margin-bottom: 3cm;}
   #standard-text .container {
     max-width: 600px; 
     padding: 10px;
