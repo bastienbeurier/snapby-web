@@ -532,7 +532,7 @@ header {
       margin-right: auto;
       width: 200px;}
       .footer .container #footer-mid .footer-link{
-        font-family: 'Ubuntu-Title-webfont';
+        font-size:20px;
         font-weight: 800;
         color: #7A9ED3;}
 
@@ -646,8 +646,7 @@ html, body{
   width: 100%;}
 #display_shout h2 span { 
   color: white; 
-  font: bold 24px/45px;
-  font-family: 'Ubuntu-Title-webfont';; 
+  font: bold 45px;
   letter-spacing: -1px;  
   background: rgb(0, 0, 0); /* fallback color */
   background: rgba(0, 0, 0, 0.3);
