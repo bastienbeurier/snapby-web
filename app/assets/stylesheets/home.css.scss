@@ -194,10 +194,13 @@ a {
       display: table;
       height:100%;
       margin-left: 30px;
-      margin-left: 50px;
       float:left;
+       border: 1.5px solid yellow ;
+        width:20%;
       text-align: left}
     .footer .container #footer-right {
+      border: 1.5px solid red ;
+       width:40%;
       height:100%;
       display: table;
       float: right;
@@ -209,6 +212,9 @@ a {
         color: $shout_blue ;
         font-weight: 600;}
     .footer .container #footer-mid {
+      border: 1.5px solid blue ;
+      float: left;
+      width:40%;
       text-align: center;
       height: 100%;}
       .footer .container #footer-mid a {
