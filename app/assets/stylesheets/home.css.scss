@@ -185,7 +185,7 @@ a {
   }
   .footer .container #footer-left p{
     display: table-cell;
-    vertical-align: center;
+    vertical-align: middle;
   }
   .footer .container {
     display: table;
@@ -201,16 +201,19 @@ a {
       float:left;
       text-align: left}
     .footer .container #footer-right {
+      border: 1.5px solid red ;
       display: table;
       float: right;
       margin-right: 20px;
       text-align: right}
       .footer .container #footer-right .footer-link {
+        border: 1.5px solid yellow ;
         padding-left: 15px;
         padding-right: 15px;
         color: $shout_blue ;
         font-weight: 600;}
     .footer .container #footer-mid {
+      border: 1.5px solid yellow ;
       display:block;
       margin-left: auto;
       margin-right: auto;
