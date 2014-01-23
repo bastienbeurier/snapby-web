@@ -1,8 +1,8 @@
 <% provide(:title, 'Password Resetting') %>
 
-<section id="category">
+<section id="standard-text">
   <div class="container">
-	<h2>Change your password</h2>
+	<h1>Change your password</h>
 
 	<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
 	  <%= devise_error_messages! %>

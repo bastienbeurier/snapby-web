@@ -15,12 +15,9 @@
 </div>
 
 
-<section id="category">
+<section id="standard-text">
   <div class="container">
 		<p><%= @shout.user.username %> shouted <%= time_ago_in_words(@shout.created_at) %> ago</p>
 		<p>This shout has <%=pluralize( @shout.likes.count ,"like")%> and <%= pluralize(@shout.comments.count,"comment")%></p>
 	</div>
-
-	 <div class="bottom_three">
-  </div>
 </section>
