@@ -30,7 +30,6 @@ module PushNotification
             if !user_notification
                 old_date = DateTime.new(2000, 1, 1)
                 user_notification  = UserNotification.new(user_id: user.id, sent_count: 0, last_sent: old_date, blocked_count: 0)
-                user_notification.save!
             end
 
             #Check if notification delay is over
@@ -50,6 +49,8 @@ module PushNotification
             else
                 user_notification.blocked_count += 1
             end 
+
+            user.notification.save!
         end
 
         begin
