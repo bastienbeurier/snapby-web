@@ -188,9 +188,9 @@ a {
     vertical-align: center;
   }
   .footer .container {
+    display: table;
     width: 100%;
-    height:100%;
-    padding: 10px}
+    height:100%}
     .footer .container #footer-left {
       display: table;
       height:100%;
@@ -203,8 +203,8 @@ a {
       margin-right: 20px;
       text-align: right}
       .footer .container #footer-right .footer-link {
-        padding-left: 10px;
-        padding-right: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
         color: $shout_blue ;
         font-weight: 600;}
     .footer .container #footer-mid {
