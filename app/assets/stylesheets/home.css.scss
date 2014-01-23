@@ -639,10 +639,9 @@ html, body{
   width: auto\9; /*ie8  */
   }
 #display_shout h2{
-  display: block;
-  max-width: 90%;
-  margin-left: auto;
-  margin-right: auto;
+  position: absolute;
+  text-align: center;
+  width: 100%;
   h2 span { 
    color: white; 
    font: bold 24px/45px Helvetica, Sans-Serif; 
