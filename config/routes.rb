@@ -34,7 +34,7 @@ StreetShout::Application.routes.draw do
       get "/bound_box_shouts" => "shouts#bound_box_shouts"
       post "users/facebook_create_or_update" => "users#facebook_create_or_update"
       get  "/get_shout_meta_data" => "shouts#get_shout_meta_data"
-      patch "/update_user_credentials" => "users/update_user_credentials"
+      patch "/update_user_credentials" => "users#update_user_credentials"
     end
   end
 end
