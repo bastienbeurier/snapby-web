@@ -1,5 +1,6 @@
 <footer class="footer">
   <div class="container">
+
     <div id="footer-right">
       <% if yield(:title) != "Home" %>
         <a href="/" class="footer-link">Home</a>
@@ -16,5 +17,11 @@
       <%= link_to image_tag("badge_android_store.png", alt: "Android"), ANDROID_STORE_LINK %>
     </div>
 
+    <div id="footer-phone-left">
+      <%= link_to image_tag("badge_apple_store.png", alt: "Android"), APPLE_STORE_LINK %>
+    </div>
+    <div id="footer-phone-right">
+      <%= link_to image_tag("badge_android_store.png", alt: "Android"), ANDROID_STORE_LINK %>
+    </div>
   </div>
 </footer>
