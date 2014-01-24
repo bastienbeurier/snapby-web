@@ -34,17 +34,13 @@
 
 
   /* FOOTER */
-  .footer {
-    height: 80;
-  }
   #footer-right, #footer-left {
     display: none !important;}
-  .footer .container #footer-mid a {
-    width:50%;
-    padding: auto;
+  #footer-phone-right, #footer-phone-left{
+    display: inline !important;
   }
 
-}
+
 
 
 /*  #TABLET (Portrait)
@@ -68,10 +64,12 @@
   /* FOOTER */
   #footer-right, #footer-left {
     display: none !important;}
-  .footer .container #footer-mid a {
-    max-width:50%;
-    padding: auto;
+  #footer-phone-right, #footer-phone-left{
+    display: inline !important;
+          display: table;
+      text-align: center;
   }
+}
 
 
 

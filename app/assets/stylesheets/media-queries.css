@@ -33,9 +33,6 @@
 
 
   /* FOOTER */
-  .footer {
-    height: 80;
-  }
   #footer-right, #footer-left {
     display: none !important;}
   #footer-phone-right, #footer-phone-left{
@@ -68,7 +65,10 @@
     display: none !important;}
   #footer-phone-right, #footer-phone-left{
     display: inline !important;
+          display: table;
+      text-align: center;
   }
+}
 
 
 
