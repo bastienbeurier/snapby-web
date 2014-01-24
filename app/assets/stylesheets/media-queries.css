@@ -61,12 +61,8 @@
     padding: 0 0 40px 0; }
 
   /* FOOTER */
-  #footer-right, #footer-left {
-    display: none !important;}
-  #footer-phone-right, #footer-phone-left{
-    display: inline !important;
-          display: table;
-      text-align: center;
+  .footer a, .footer p {
+    padding-right: 10px;
   }
 }
 
