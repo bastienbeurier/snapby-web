@@ -158,20 +158,20 @@ a {
 
 /* Title
 -------------------------------------*/
-#Title {
+#title {
   position: relative;}
-  #Title .container {
+  #title .container {
     overflow: scroll;
     max-width: 600px; 
     padding: 10px;}
-    #standard-text .container h1 {
+    #title .container h1 {
       font-family: 'Ubuntu-Title-webfont';
       font-size: 100px;
       margin: 0 0 -10px 0;
       line-height: 1.25em; 
       text-align: center;
       color: $shout_blue;}
-    #standard-text .container h2 {
+    #title .container h2 {
       margin: 0 0 15px 0; 
       font-size: 24px;
       text-align: center;
@@ -301,7 +301,7 @@ a {
   width: auto\9; /*ie8  */}
 #display_shout h2{
   position: absolute;
-  top: 25%;
+  top: 5%%;
   text-align: center;
   padding: 30px;
   width: 80%;}
