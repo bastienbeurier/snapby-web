@@ -166,7 +166,7 @@ a {
     overflow: scroll;}
     #title .container h1 {
       font-size: 100px;
-      margin: 0 0 -10px 0;
+      margin: -10px 0 -10px 0;
       line-height: 1.25em; 
       text-align: center;
       color: $shout_blue;}
@@ -177,8 +177,6 @@ a {
       color: $shout_blue; }
     #title .container .logo img{
       display: block;
-      margin-left: auto;
-      margin-right: auto;
       max-width: 70px;
       height: auto;
       margin: auto;
@@ -310,13 +308,14 @@ a {
   position: absolute;
   top: 5%%;
   text-align: center;
-  padding: 10%;
+  max-width: 1000 px;
   width: 100%}
 #display_shout h2 span { 
   border-radius: 10px;
   color: white; 
   font-size: 40px;
   font-weight: 600;
+  line-height: 1.5;
   letter-spacing: -1px;
   background: rgb(0, 0, 0); /* fallback color */
   background: rgba(0, 0, 0, 0.3);
