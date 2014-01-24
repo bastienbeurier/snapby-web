@@ -21,8 +21,6 @@ class Api::V2::UsersController < Api::V2::ApiController
 
     if params[:push_token]
       current_user.push_token = params[:push_token]
-    else 
-      current_user.push_token = nil
     end
     
     if params[:lat] and params[:lng]
