@@ -159,13 +159,14 @@ a {
 /* Title
 -------------------------------------*/
 #title {
+  font-family: 'Ubuntu-Title-webfont';
+  padding: 30px;
   position: relative;}
   #title .container {
     overflow: scroll;
-    max-width: 600px; 
+    max-width: 400px; 
     padding: 10px;}
     #title .container h1 {
-      font-family: 'Ubuntu-Title-webfont';
       font-size: 100px;
       margin: 0 0 -10px 0;
       line-height: 1.25em; 
@@ -176,6 +177,12 @@ a {
       font-size: 24px;
       text-align: center;
       color: $shout_blue; }
+    #title .container .logo{
+      max-width: 30%;
+      height: auto;
+      margin: auto;
+      padding: 10px;
+    }
 
 
 /* Logo
@@ -304,7 +311,7 @@ a {
   top: 5%%;
   text-align: center;
   padding: 30px;
-  width: 80%;}
+  width: auto}
 #display_shout h2 span { 
   border-radius: 10px;
   color: white; 
