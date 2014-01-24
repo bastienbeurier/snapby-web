@@ -35,7 +35,7 @@ class Api::V2::UsersController < Api::V2::ApiController
     end
   end
 
-  def update_user_credentials
+  def modify_user_credentials
     Rails.logger.debug "BAB update user credentials: #{params}"
 
     #Only username for now, potentially profile picture, email, password in the future
