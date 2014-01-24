@@ -215,14 +215,15 @@ a {
         font-weight: 600;}
     .footer .container #footer-phone-left {
       float: left;
-      width: 49%;
+      width: 50%;
+      padding-right: 5px;
       height: 100%;
       display: table;
       text-align: right;
       display: none;}
     .footer .container #footer-phone-right {
       float: right;
-      width: 49%;
+      width: 50%;
       height: 100%;
       display: table;
       text-align: left;
