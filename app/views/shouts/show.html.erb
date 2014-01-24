@@ -13,7 +13,7 @@
 <% if @shout.created_at < Time.now - SHOUT_DURATION %>
     <section id="standard-text">
       <div class="container">
-        <p> Your city is moving fast and your shout has expired <%= time_ago_in_words(Time.now - SHOUT_DURATION - @shout.created_at) %> ago.
+        <p> Your city is moving fast and your shout has expired <%= time_ago_in_words(@shout.created_at + SHOUT_DURATION) %> ago.
         </p>
       </div>
     </section>
