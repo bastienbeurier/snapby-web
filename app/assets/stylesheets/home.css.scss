@@ -198,8 +198,10 @@ a {
       border: 1.5px solid yellow ;
       text-align: left}
       .footer .container #footer-left a {
-        padding-left: 50px;
         padding-right: 50px;
+      }
+      .footer .container #footer-left p {
+        padding-right: 100px;
       }
     .footer .container #footer-right {
       border: 1.5px solid red ;
@@ -210,7 +212,7 @@ a {
       text-align: right}
       .footer .container #footer-right .footer-link {
         height:100%;
-        padding-left: 20px;
+        padding-left: 30px;
         color: $shout_blue ;
         font-weight: 600;}
 
