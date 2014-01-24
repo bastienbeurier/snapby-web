@@ -182,8 +182,6 @@ a {
     }
 
 
-/* Logo
--------------------------------------*/
 
 /* Footer
 -------------------------------------*/
@@ -313,7 +311,8 @@ a {
   color: white; 
   font-size: 40px;
   font-weight: 600;
-  max-width: 1000 px;
+  max-width: 1000px;
+  word-wrap: break-word;
   line-height: 1.5;
   letter-spacing: -1px;
   background: rgb(0, 0, 0); /* fallback color */
