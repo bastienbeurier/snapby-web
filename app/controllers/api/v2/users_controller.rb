@@ -38,12 +38,14 @@ class Api::V2::UsersController < Api::V2::ApiController
   def facebook_create_or_update
     # todoBT there is a security issue here
     user = User.find_by_email(params[:email])
+    
     if user
       is_signup = false
       user.facebook_id = params[:facebook_id]
       user.facebook_name = params[:facebook_name]
     else
       is_signup = true
+      params[:profile_picture] = "graph.facebook.com/#{params[:userame]}/picture"
       params[:username] = params[:username][0, [params[:username].length, MAX_USERNAME_LENGTH].min]
       user = User.new(facebook_user_params)
     end
@@ -68,6 +70,6 @@ private
   end
 
   def facebook_user_params
-    params.permit(:email, :facebook_id, :facebook_name, :username)
+    params.permit(:email, :facebook_id, :facebook_name, :username, :profile_picture)
   end
 end
