@@ -64,8 +64,10 @@ a {
   outline: none; }
 
 .container {
-  width: 1100px;
+  width: 1200px;
   margin: 0 auto;
+  padding-right: 20px;
+  padding-left: 20px;
   position: relative; }
 
 .spacer-fix, .spacer-variable {
@@ -172,7 +174,7 @@ a {
 -------------------------------------*/
 #title {
   font-family: 'Ubuntu-Title-webfont';
-  padding: 15px;
+  padding-top: 30px;
   position: relative; }
 
 #title .container {
@@ -180,13 +182,12 @@ a {
 
 #title .container h1 {
   font-size: 100px;
-  margin: -10px 0 -10px 0;
+  margin: -20px 0 -20px 0;
   line-height: 1.25em;
   text-align: center;
   color: #7a9ed3; }
 
 #title .container h2 {
-  margin: 0 0 15px 0;
   font-size: 24px;
   text-align: center;
   color: #7a9ed3; }
@@ -197,8 +198,6 @@ a {
   height: auto;
   margin: auto; }
 
-/* Logo
--------------------------------------*/
 /* Footer
 -------------------------------------*/
 .footer {
@@ -310,6 +309,7 @@ a {
 /* Display_shout
 -------------------------------------*/
 #display_shout {
+  max-width: 1160px;
   width: 90%;
   position: relative;
   top: 5%;
@@ -330,7 +330,6 @@ a {
   position: absolute;
   top: 5%%;
   text-align: center;
-  max-width: 1000 px;
   width: 100%; }
 
 #display_shout h2 span {
@@ -338,12 +337,31 @@ a {
   color: white;
   font-size: 40px;
   font-weight: 600;
+  max-width: 1000px;
+  word-wrap: break-word;
   line-height: 1.5;
   letter-spacing: -1px;
   background: black;
   /* fallback color */
   background: rgba(0, 0, 0, 0.3);
   padding: 2px; }
+
+/* MESSAGE
+-------------------------------------*/
+#message {
+  padding-top: 20px;
+  position: relative; }
+
+#message .container {
+  overflow: scroll;
+  max-width: 600px;
+  padding: 10px;
+  color: #000; }
+
+#message .container p {
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 20px; }
 /*  #MOBILE (Portrait)
 ================================================== */
 
@@ -378,13 +396,13 @@ a {
 
   /* Title */
   #title {
-    padding: 5px;}
+    padding-top: 10px;}
       #title .container h1 {
         font-size: 60px;}
       #title .container h2 {
         font-size: 15px;}
       #title .container .logo img{
-        max-width: 40px;}
+        max-width: 50px;}
 
   /* FOOTER */
   #footer-right, #footer-left {

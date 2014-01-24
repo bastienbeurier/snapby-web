@@ -9,6 +9,10 @@
     </p>
   </div>
 </section>
+<section id="standard-text">
+      <div class="container">
+  </div>
+</section>
 
 <% if @shout.created_at < Time.now - SHOUT_DURATION %>
     <section id="standard-text">
@@ -31,7 +35,8 @@
 
     <section id="standard-text">
       <div class="container">
-    		<h2>@<%= @shout.username %> <p> (<%= time_ago_in_words(@shout.created_at) %> ago) </p> </h2>
+    		<h2>@<%= @shout.username %>  </h2>
+        <p> (<%= time_ago_in_words(@shout.created_at) %> ago) </p>
     		<p><%=pluralize( @shout.likes.count ,"like")%> | <%= pluralize(@shout.comments.count,"comment")%></p>
     	</div>
     </section>
