@@ -172,37 +172,30 @@ a {
 -------------------------------------*/
 #title {
   font-family: 'Ubuntu-Title-webfont';
-  padding: 30px;
+  padding-top: 30px;
   position: relative; }
 
 #title .container {
-  overflow: scroll;
-  padding: 10px; }
+  overflow: scroll; }
 
 #title .container h1 {
   font-size: 100px;
-  margin: 0 0 -10px 0;
+  margin: -20px 0 -20px 0;
   line-height: 1.25em;
   text-align: center;
   color: #7a9ed3; }
 
 #title .container h2 {
-  margin: 0 0 15px 0;
   font-size: 24px;
   text-align: center;
   color: #7a9ed3; }
 
 #title .container .logo img {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 100px;
+  max-width: 70px;
   height: auto;
-  margin: auto;
-  padding: 10px; }
+  margin: auto; }
 
-/* Logo
--------------------------------------*/
 /* Footer
 -------------------------------------*/
 .footer {
@@ -334,7 +327,6 @@ a {
   position: absolute;
   top: 5%%;
   text-align: center;
-  padding: 3px;
   width: 100%; }
 
 #display_shout h2 span {
@@ -342,11 +334,29 @@ a {
   color: white;
   font-size: 40px;
   font-weight: 600;
+  max-width: 1000px;
+  word-wrap: break-word;
+  line-height: 1.5;
   letter-spacing: -1px;
   background: black;
   /* fallback color */
   background: rgba(0, 0, 0, 0.3);
   padding: 2px; }
+
+/* MESSAGE
+-------------------------------------*/
+#message {
+  position: relative; }
+
+#message .container {
+  overflow: scroll;
+  max-width: 600px;
+  padding: 10px;
+  color: #000; }
+
+#message .container p {
+  font-weight: 600;
+  margin-bottom: 20px; }
 /*  #MOBILE (Portrait)
 ================================================== */
 
@@ -381,13 +391,13 @@ a {
 
   /* Title */
   #title {
-    padding: 15px;}
+    padding-top: 10px;}
       #title .container h1 {
         font-size: 60px;}
       #title .container h2 {
         font-size: 15px;}
       #title .container .logo img{
-        max-width: 60px;}
+        max-width: 50px;}
 
   /* FOOTER */
   #footer-right, #footer-left {
