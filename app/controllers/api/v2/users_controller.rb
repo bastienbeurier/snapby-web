@@ -35,6 +35,21 @@ class Api::V2::UsersController < Api::V2::ApiController
     end
   end
 
+  def update_user_credentials
+    Rails.logger.debug "BAB update user credentials: #{params}"
+
+    #Only username for now, potentially profile picture, email, password in the future
+    if params[:username]
+      current_user.username = params[:username]
+    end
+
+    if current_user.save
+      render json: { result: {user: current_user } }, status: 201
+    else 
+      render json: { errors: { user: current_user.errors } }, status: 222 # Need a success code to handle errors in IOS
+    end
+  end
+
   def facebook_create_or_update
     # todoBT there is a security issue here
     user = User.find_by_email(params[:email])
