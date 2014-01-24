@@ -185,6 +185,7 @@ a {
   }
   .footer a, .footer p {
     display: table-cell;
+    padding-right: 30px;
     vertical-align: middle;
   }
   .footer .container {
@@ -197,21 +198,15 @@ a {
       float:left;
       text-align: left}
       .footer .container #footer-left a {
-        padding-right: 30px;
         padding-top: 5px;
-      }
-      .footer .container #footer-left p {
-        padding-right: 30px;
       }
     .footer .container #footer-right {
       height:100%;
       display: table;
       float: right;
-      margin-right: 30px;
       text-align: right}
       .footer .container #footer-right .footer-link {
         height:100%;
-        padding-left: 30px;
         color: $shout_blue ;
         font-weight: 600;}
     .footer .container #footer-phone-left {

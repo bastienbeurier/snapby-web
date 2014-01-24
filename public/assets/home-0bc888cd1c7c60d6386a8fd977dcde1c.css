@@ -186,6 +186,7 @@ a {
 
 .footer a, .footer p {
   display: table-cell;
+  padding-right: 30px;
   vertical-align: middle; }
 
 .footer .container {
@@ -200,22 +201,16 @@ a {
   text-align: left; }
 
 .footer .container #footer-left a {
-  padding-right: 50px;
   padding-top: 5px; }
-
-.footer .container #footer-left p {
-  padding-right: 100px; }
 
 .footer .container #footer-right {
   height: 100%;
   display: table;
   float: right;
-  margin-right: 30px;
   text-align: right; }
 
 .footer .container #footer-right .footer-link {
   height: 100%;
-  padding-left: 30px;
   color: #7a9ed3;
   font-weight: 600; }
 
@@ -225,7 +220,7 @@ a {
   height: 100%;
   display: table;
   text-align: center;
-  display: none !important; }
+  display: none; }
 
 .footer .container #footer-phone-right {
   float: right;
@@ -233,7 +228,7 @@ a {
   height: 100%;
   display: table;
   text-align: center;
-  display: none !important; }
+  display: none; }
 
 /* BUTTON
 -------------------------------------*/
