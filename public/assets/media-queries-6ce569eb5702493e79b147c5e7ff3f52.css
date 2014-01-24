@@ -2,12 +2,10 @@
 ================================================== */
 
 @media only screen and (max-width: 767px) {
-  .spacer { 
+  .spacer-variable { 
     height: 30px;}
   .container {
     width: 280px; }
-    .container .spacer { 
-      height: 80px;}
 
   /* SPLASH */
   #splash {
@@ -21,8 +19,6 @@
     text-align: center;
     position: relative;
     margin-bottom: 100px; }
-    #product-container #product-info .button {
-      margin-right: 0; }
     #product-container #product-info {
       bottom: auto;
       margin-bottom: 50px;
@@ -40,6 +36,16 @@
     display: none !important;}
   #footer-phone-right, #footer-phone-left{
     display: inline-table !important;
+  }
+  .footer a, .footer p {
+    padding-right: 0px;
+  }
+
+  /* DISPLAY_SHOUT */
+  #display_shout {
+    padding-bottom: 10px;}
+    #display_shout h2 span {
+      font-size: 60px;
   }
 }
 

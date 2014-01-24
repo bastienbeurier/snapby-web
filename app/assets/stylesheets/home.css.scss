@@ -111,7 +111,7 @@ a {
 
 
 
-/* # DEVICEs & PRODUCT INFO
+/* Name
 -------------------------------------*/
 #product-container {
   position: relative;
@@ -145,17 +145,6 @@ a {
       #product-container #device #screen img {
         margin-top :-20px;
         width: 100%; }
-  #product-container #device-2nd {
-    position: absolute;
-    background-repeat: no-repeat;
-    background-size: 100% !important;
-    left: 0;
-    bottom: 0;
-    display: none; }
-    #product-container #device-2nd #screen-2nd {
-      margin: 0 auto; }
-      #product-container #device-2nd #screen-2nd img {
-        width: 100%; }
   
   #product-container.android-phone-portrait #device {
     background: url(image_path("android-phone-portrait@2x.png")) no-repeat center top;
@@ -165,6 +154,10 @@ a {
     #product-container.android-phone-portrait #device #screen {
       width: 338px;
       height: 450px; }
+
+
+/* Logo
+-------------------------------------*/
 
 
 /* Footer
@@ -229,38 +222,6 @@ a {
       display: none;}
 
 
-/* BUTTON
--------------------------------------*/
-
-.button-download, .button-download:visited {
-  margin: 30px 10px 0px 10px;
-  border: 2px solid; 
-  border-radius:5px;
-  background-color: rgba(255,255,255,0.1);
-  position: relative;
-  font-weight: normal;
-  overflow: hidden;
-  text-align: left;
-  text-decoration: none;
-  display: inline-block; }
-  .button-download:hover, .button-download:visited:hover {
-    background-color: rgba(255,255,255,0.3); }
-
-.button-download span, .button-download:visited span {
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    border-radius: 8px;
-    position: relative;
-    color: #fff;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-    padding: 15px 40px 15px 40px;
-    line-height: 1em;
-    text-decoration: none;
-    display: block;
-    font-size: 18px;
-    font-weight: 600;
-    background-repeat: no-repeat;
-    background-position: 15px center; }
 
 
 /* STANDARD-TEXT
@@ -309,7 +270,7 @@ a {
     top: 5%;
     left:5%;
     height: auto;
-    padding-bottom: 50px;}
+    padding-bottom: 30px;}
 #display_shout img {
   display: block;
   margin-left: auto;
@@ -325,7 +286,8 @@ a {
 #display_shout h2 span { 
   border-radius: 10px;
   color: white; 
-  font: bold 60px;
+  font-size: 80px;
+  font-weight: 600;
   letter-spacing: -1px;
   line-height: 2;  
   background: rgb(0, 0, 0); /* fallback color */
