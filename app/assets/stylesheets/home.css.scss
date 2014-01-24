@@ -188,6 +188,9 @@ a {
     padding-right: 30px;
     vertical-align: middle;
   }
+  .footer img {
+    padding-top: 5px;
+  }
   .footer .container {
     width: 100%;
     height:100%}
@@ -197,9 +200,6 @@ a {
       margin-left: 30px;
       float:left;
       text-align: left}
-      .footer .container #footer-left a {
-        padding-top: 5px;
-      }
     .footer .container #footer-right {
       height:100%;
       display: table;
