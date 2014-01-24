@@ -7,9 +7,9 @@ class Api::V2::LikesController < Api::V2::ApiController
     params[:liker_id] = current_user.id
     params[:liker_username] = current_user.username
 
-    like = Like.where("shout_id = :shout_id AND liker_id = :liker_id", params[:shout_id], params[:liker_id])
+    shout = Shout.find(params[:shout_id])
 
-    if like.length > 0
+    if shout.likes.collect(&:liker_id).include? current_user.id
       render json: { errors: { invalid: ["Shout already liked by user"] } }, :status => 406
       return
     end
