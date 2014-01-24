@@ -211,14 +211,16 @@ a {
   height: 100%;
   margin-left: 30px;
   float: left;
-  border: 1.5px solid yellow;
   text-align: left; }
 
 .footer .container #footer-left a {
-  marging-left: 20px; }
+  padding-right: 30px;
+  padding-top: 5px; }
+
+.footer .container #footer-left p {
+  padding-right: 100px; }
 
 .footer .container #footer-right {
-  border: 1.5px solid red;
   height: 100%;
   display: table;
   float: right;
@@ -227,22 +229,25 @@ a {
 
 .footer .container #footer-right .footer-link {
   height: 100%;
-  padding-left: 20px;
+  padding-left: 30px;
   color: #7a9ed3;
   font-weight: 600; }
 
-.footer .container #footer-mid {
-  border: 1.5px solid blue;
-  width: 40%;
+.footer .container #footer-phone-left {
+  float: left;
+  width: 50%;
+  height: 100%;
+  display: table;
   text-align: center;
-  width: 100%;
-  height: 100%; }
+  display: none; }
 
-.footer .container #footer-mid a {
-  height: 60px;
-  display: inline_block;
-  padding-left: 50px;
-  padding-right: 50px; }
+.footer .container #footer-phone-right {
+  float: right;
+  width: 50%;
+  height: 100%;
+  display: table;
+  text-align: center;
+  display: none; }
 
 /* BUTTON
 -------------------------------------*/
@@ -395,12 +400,11 @@ a {
   }
   #footer-right, #footer-left {
     display: none !important;}
-  .footer .container #footer-mid a {
-    width:50%;
-    padding: auto;
+  #footer-phone-right, #footer-phone-left{
+    display: inline !important;
   }
 
-}
+
 
 
 /*  #TABLET (Portrait)
@@ -424,9 +428,8 @@ a {
   /* FOOTER */
   #footer-right, #footer-left {
     display: none !important;}
-  .footer .container #footer-mid a {
-    max-width:50%;
-    padding: auto;
+  #footer-phone-right, #footer-phone-left{
+    display: inline !important;
   }
 
 

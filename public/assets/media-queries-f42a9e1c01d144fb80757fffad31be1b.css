@@ -39,11 +39,11 @@
   }
   #footer-right, #footer-left {
     display: none !important;}
-  .footer .container #footer-mid a {
-    width:50%;
+  #footer-phone-right, #footer-phone-left{
+    display: inline !important;
   }
 
-}
+
 
 
 /*  #TABLET (Portrait)
@@ -67,8 +67,8 @@
   /* FOOTER */
   #footer-right, #footer-left {
     display: none !important;}
-  .footer .container #footer-mid a {
-    max-width:50%;
+  #footer-phone-right, #footer-phone-left{
+    display: inline !important;
   }
 
 

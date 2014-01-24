@@ -39,7 +39,7 @@
   #footer-right, #footer-left {
     display: none !important;}
   #footer-phone-right, #footer-phone-left{
-    display: inline;
+    display: inline !important;
   }
 
 
@@ -67,7 +67,7 @@
   #footer-right, #footer-left {
     display: none !important;}
   #footer-phone-right, #footer-phone-left{
-    display: inline;
+    display: inline !important;
   }
 
 
