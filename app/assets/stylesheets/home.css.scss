@@ -198,7 +198,8 @@ a {
       border: 1.5px solid yellow ;
       text-align: left}
       .footer .container #footer-left a {
-        marging-left: 20px;
+        padding-left: 50px;
+        padding-right: 50px;
       }
     .footer .container #footer-right {
       border: 1.5px solid red ;
@@ -212,18 +213,6 @@ a {
         padding-left: 20px;
         color: $shout_blue ;
         font-weight: 600;}
-    .footer .container #footer-mid {
-      border: 1.5px solid blue ;
-      width:40%;
-      text-align: center;
-      width: 100%;
-      height: 100%;}
-      .footer .container #footer-mid a {
-        height: 60px;
-        display: inline_block;
-        padding-left: 50px;
-        padding-right: 50px;
-        }
 
 
 /* BUTTON
