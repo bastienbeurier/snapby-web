@@ -63,7 +63,7 @@ a {
   margin: 0 auto;
   position: relative; }
 
-.spacer {
+.spacer-fix, .spacer-variable {
   clear: both;
   height: 85px;}
 
@@ -215,15 +215,14 @@ a {
         font-weight: 600;}
     .footer .container #footer-phone-left {
       float: left;
-      width: 50%;
-      padding-right: 5px;
+      width: 49.5%;
       height: 100%;
       display: table;
       text-align: right;
       display: none;}
     .footer .container #footer-phone-right {
       float: right;
-      width: 50%;
+      width: 49.5%;
       height: 100%;
       display: table;
       text-align: left;
