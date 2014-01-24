@@ -160,18 +160,17 @@ a {
 -------------------------------------*/
 #title {
   font-family: 'Ubuntu-Title-webfont';
-  padding: 15px;
+  padding-top: 30px;
   position: relative;}
   #title .container {
     overflow: scroll;}
     #title .container h1 {
       font-size: 100px;
-      margin: -10px 0 -10px 0;
+      margin: -20px 0 -20px 0;
       line-height: 1.25em; 
       text-align: center;
       color: $shout_blue;}
     #title .container h2 {
-      margin: 0 0 15px 0; 
       font-size: 24px;
       text-align: center;
       color: $shout_blue; }
@@ -308,17 +307,32 @@ a {
   position: absolute;
   top: 5%%;
   text-align: center;
-  max-width: 1000 px;
   width: 100%}
 #display_shout h2 span { 
   border-radius: 10px;
   color: white; 
   font-size: 40px;
   font-weight: 600;
+  max-width: 1000 px;
   line-height: 1.5;
   letter-spacing: -1px;
   background: rgb(0, 0, 0); /* fallback color */
   background: rgba(0, 0, 0, 0.3);
   padding: 2px; 
 }
+
+
+/* MESSAGE
+-------------------------------------*/
+
+#message {
+  position: relative;}
+  #message .container {
+    overflow: scroll;
+    max-width: 600px; 
+    padding: 10px;
+    color: #000; }
+    #message .container p {
+      font-weight: 600; 
+      margin-bottom: 20px; }
 

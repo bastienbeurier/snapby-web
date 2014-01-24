@@ -3,25 +3,45 @@
 
 <%= render 'shared/title' %>
 
-<!-- todo is the shout dead?????? -->
-<!-- todo placeholder ?????? -->
-
-<div id="display_shout">
-  <% if @shout.image %>
- 	  <%= image_tag("http://" + @shout.image + "--400") %>
-  <% else %>
-    <!-- <%=  image_tag("") %> -->
-  <% end %>
-
- 	<h2><span> <%= @shout.description %> </span></p>
-</div>
-
-
-<section id="standard-text">
+<section id="Message">
   <div class="container">
-		<p><%= @shout.username %> shouted <%= time_ago_in_words(@shout.created_at) %> ago</p>
-		<p>This shout has <%=pluralize( @shout.likes.count ,"like")%> and <%= pluralize(@shout.comments.count,"comment")%></p>
-	</div>
-	<div class="spacer-fix">
+    <p> Someone just shared a shout with you!
+    </p>
   </div>
 </section>
+
+<% if @shout.created_at < Time.now - SHOUT_DURATION %>
+    <section id="standard-text">
+      <div class="container">
+        <p> Your city is moving fast and your shout has expired <%= time_ago_in_words(Time.now - SHOUT_DURATION - @shout.created_at) %> ago.
+        </p>
+      </div>
+    </section>
+<% else %>
+    <div id="display_shout">
+      <% if @shout.image %>
+     	  <%= image_tag("http://" + @shout.image + "--400") %>
+      <% else %>
+        <!-- <%=  image_tag("") %> -->   <!-- todo placeholder ?????? -->
+      <% end %>
+
+     	<h2><span> <%= @shout.description %> </span></p>
+    </div>
+
+
+    <section id="standard-text">
+      <div class="container">
+    		<h2>@<%= @shout.username %> <p> (<%= time_ago_in_words(@shout.created_at) %> ago) </p> </h2>
+    		<p><%=pluralize( @shout.likes.count ,"like")%> | <%= pluralize(@shout.comments.count,"comment")%></p>
+    	</div>
+    </section>
+<% end %>
+
+<section id="Message">
+  <div class="container">
+    <p> Download the app and get instantly all shouts around you! </p>
+  </div>
+</section>
+
+<div class="spacer-fix">
+</div>
