@@ -38,9 +38,6 @@
   #footer-phone-right, #footer-phone-left{
     display: inline-table !important;
   }
-  .footer a, .footer p {
-    padding-right: 0px;
-  }
 }
 
 
@@ -64,7 +61,7 @@
     padding: 0 0 40px 0; }
 
   /* FOOTER */
-  .footer a, .footer p {
+  .footer .container #footer-right .footer-link {
     padding-right: 10px;
   }
 }

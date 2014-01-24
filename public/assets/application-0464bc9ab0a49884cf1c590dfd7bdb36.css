@@ -200,8 +200,11 @@ a {
 
 .footer a, .footer p {
   display: table-cell;
-  padding-right: 30px;
+  padding-right: 5px;
   vertical-align: middle; }
+
+.footer img {
+  padding-top: 5px; }
 
 .footer .container {
   width: 100%;
@@ -214,8 +217,8 @@ a {
   float: left;
   text-align: left; }
 
-.footer .container #footer-left a {
-  padding-top: 5px; }
+.footer .container #footer-left p {
+  padding-right: 30px; }
 
 .footer .container #footer-right {
   height: 100%;
@@ -225,23 +228,24 @@ a {
 
 .footer .container #footer-right .footer-link {
   height: 100%;
+  padding-right: 30px;
   color: #7a9ed3;
   font-weight: 600; }
 
 .footer .container #footer-phone-left {
   float: left;
-  width: 50%;
+  width: 45%;
   height: 100%;
   display: table;
-  text-align: center;
+  text-align: right;
   display: none; }
 
 .footer .container #footer-phone-right {
   float: right;
-  width: 50%;
+  width: 45%;
   height: 100%;
   display: table;
-  text-align: center;
+  text-align: left;
   display: none; }
 
 /* BUTTON
@@ -393,7 +397,7 @@ a {
   #footer-right, #footer-left {
     display: none !important;}
   #footer-phone-right, #footer-phone-left{
-    display: inline !important;
+    display: inline-table !important;
   }
 }
 
@@ -418,12 +422,8 @@ a {
     padding: 0 0 40px 0; }
 
   /* FOOTER */
-  #footer-right, #footer-left {
-    display: none !important;}
-  #footer-phone-right, #footer-phone-left{
-    display: inline !important;
-          display: table;
-      text-align: center;
+  .footer .container #footer-right .footer-link {
+    padding-right: 10px;
   }
 }
 
