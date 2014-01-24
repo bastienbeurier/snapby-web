@@ -59,7 +59,7 @@ a {
   outline: none; }
 
 .container {
-  width: 1200px;
+  width: 1000px;
   margin: 0 auto;
   padding-right: 20px;
   padding-left: 20px;
@@ -223,6 +223,7 @@ a {
     }
     .footer .container #footer-right {
       height:100%;
+      padding-right: 10px;
       display: table;
       float: right;
       text-align: right}
@@ -290,7 +291,6 @@ a {
 /* Display_shout
 -------------------------------------*/
 #display_shout {
-  border: 2px solid $shout_blue;
     width: 90%;
     position: relative;
     top: 5%;
@@ -298,19 +298,17 @@ a {
     height: auto;
     padding-bottom: 30px;}
 #display_shout img {
-  border-top: 2px solid green;
   display: block;
   margin-left: auto;
   margin-right: auto;
   height: auto;
   width: auto\9; /*ie8  */}
 #display_shout h2{
-  border-top: 2px solid yellow;
   position: absolute;
   top: 5%%;
   text-align: center;
-  width: 80%;
-  margin-left: 10%;}
+  width: 70%;
+  margin-left: 15%;}
 #display_shout h2 span { 
   border-radius: 10px;
   color: white; 
