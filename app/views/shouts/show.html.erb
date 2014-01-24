@@ -9,7 +9,6 @@
     </p>
   </div>
 </section>
-</section>
 
 <% if @shout.created_at < Time.now - SHOUT_DURATION %>
     <section id="standard-text">
@@ -19,12 +18,14 @@
       </div>
     </section>
     <section id="standard-text">
-        <div class="container">
-    </div>
+      <div class="container">
+      </div>
+    </section>
 <% else %>
     <section id="standard-text">
-        <div class="container">
-    </div>
+      <div class="container">
+      </div>
+    </section>
     <div id="display_shout">
       <% if @shout.image %>
      	  <%= image_tag("http://" + @shout.image + "--400") %>
