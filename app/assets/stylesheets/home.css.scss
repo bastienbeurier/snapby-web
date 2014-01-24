@@ -290,7 +290,7 @@ a {
 /* Display_shout
 -------------------------------------*/
 #display_shout {
-  border-top: 2px solid $shout_blue;
+  border: 2px solid $shout_blue;
     width: 90%;
     position: relative;
     top: 5%;
@@ -309,7 +309,8 @@ a {
   position: absolute;
   top: 5%%;
   text-align: center;
-  width: 100%}
+  width: 80%;
+  margin-left: 10%;}
 #display_shout h2 span { 
   border-radius: 10px;
   color: white; 
