@@ -1,17 +1,3 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
-
-
- */
-
 /* Constant
 -------------------------------------*/
 /* # GENERAL
@@ -70,7 +56,7 @@ a {
 
 .spacer {
   clear: both;
-  height: 100px; }
+  height: 85px; }
 
 /* CLEAR */
 /* http://sonspring.com/journal/clearing-floats */
@@ -200,7 +186,7 @@ a {
 
 .footer a, .footer p {
   display: table-cell;
-  padding-right: 30px;
+  padding-right: 5px;
   vertical-align: middle; }
 
 .footer img {
@@ -217,6 +203,9 @@ a {
   float: left;
   text-align: left; }
 
+.footer .container #footer-left p {
+  padding-right: 30px; }
+
 .footer .container #footer-right {
   height: 100%;
   display: table;
@@ -225,15 +214,17 @@ a {
 
 .footer .container #footer-right .footer-link {
   height: 100%;
+  padding-right: 30px;
   color: #7a9ed3;
   font-weight: 600; }
 
 .footer .container #footer-phone-left {
   float: left;
   width: 50%;
+  margin-right: 5px;
   height: 100%;
   display: table;
-  text-align: center;
+  text-align: right;
   display: none; }
 
 .footer .container #footer-phone-right {
@@ -241,7 +232,7 @@ a {
   width: 50%;
   height: 100%;
   display: table;
-  text-align: center;
+  text-align: left;
   display: none; }
 
 /* BUTTON
@@ -280,8 +271,7 @@ a {
 /* STANDARD-TEXT
 -------------------------------------*/
 #standard-text {
-  position: relative;
-  margin-top: 80px; }
+  position: relative; }
 
 #standard-text .container {
   overflow: scroll;
@@ -327,7 +317,8 @@ a {
   position: relative;
   top: 5%;
   left: 5%;
-  height: auto; }
+  height: auto;
+  padding-bottom: 50px; }
 
 #display_shout img {
   display: block;
@@ -354,77 +345,3 @@ a {
   /* fallback color */
   background: rgba(0, 0, 0, 0.3);
   padding: 20px; }
-/*  #MOBILE (Portrait)
-================================================== */
-
-@media only screen and (max-width: 767px) {
-  .container {
-    width: 280px; }
-  #standard-text { 
-    margin-top: 30px;}
-
-  /* SPLASH */
-  #splash {
-    background-attachment: scroll; }
-    #splash .pattern {
-      background-attachment: scroll; }
-
-  /* PRODUCT CONTAINER */
-  #product-container #product-info {
-    width: 100% !important;
-    text-align: center;
-    position: relative;
-    margin-bottom: 100px; }
-    #product-container #product-info .button {
-      margin-right: 0; }
-    #product-container #product-info {
-      bottom: auto;
-      margin-bottom: 50px;
-      padding: 0 0 40px 0; }
-    #product-container #product-info h1 {
-      font-size: 55px;
-      line-height: 1.5em; }
-  #product-container #device,
-  #product-container #device-2nd {
-    display: none !important; }
-
-
-  /* FOOTER */
-  #footer-right, #footer-left {
-    display: none !important;}
-  #footer-phone-right, #footer-phone-left{
-    display: inline-table !important;
-  }
-  .footer a, .footer p {
-    padding-right: 0px;
-  }
-}
-
-
-
-/*  #TABLET (Portrait)
-================================================== */
-@media screen and (min-width: 768px) and (max-width: 1140px) {
-  .container {
-    width: 740px; }
-
-  /* PRODUCT CONTAINER */
-  #product-container #device {
-    margin: 0 auto !important;
-    bottom: 0 !important; }
-  #product-container #product-info {
-    width: 100% !important;
-    text-align: center;
-    position: relative;
-    bottom: auto;
-    margin-bottom: 50px;
-    padding: 0 0 40px 0; }
-
-  /* FOOTER */
-  .footer a, .footer p {
-    padding-right: 10px;
-  }
-}
-
-
-
