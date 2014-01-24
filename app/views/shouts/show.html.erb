@@ -5,7 +5,7 @@
 
 <section id="message">
   <div class="container">
-    <p> Someone just shared a shout with you!
+    <p> Someone shared a shout with you!
     </p>
   </div>
 </section>
@@ -13,7 +13,7 @@
 <% if @shout.created_at < Time.now - SHOUT_DURATION %>
     <section id="standard-text">
       <div class="container">
-        <p> Your city is moving fast and your shout has expired <%= time_ago_in_words(@shout.created_at + SHOUT_DURATION) %> ago.
+        <p> ..but the world is moving too fast, your shout expired <%= time_ago_in_words(@shout.created_at + SHOUT_DURATION) %> ago.
         </p>
       </div>
     </section>
@@ -39,7 +39,7 @@
 
 <section id="message">
   <div class="container">
-    <p> Download the app and get instantly all shouts around you! </p>
+    <p> Download the app to get all shouts around you in real time! </p>
   </div>
 </section>
 
