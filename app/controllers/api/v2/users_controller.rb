@@ -45,7 +45,7 @@ class Api::V2::UsersController < Api::V2::ApiController
       user.facebook_name = params[:facebook_name]
     else
       is_signup = true
-      params[:profile_picture] = "graph.facebook.com/#{params[:userame]}/picture"
+      params[:profile_picture] = "graph.facebook.com/#{params[:username]}/picture"
       params[:username] = params[:username][0, [params[:username].length, MAX_USERNAME_LENGTH].min]
       user = User.new(facebook_user_params)
     end
