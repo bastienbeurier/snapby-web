@@ -158,13 +158,11 @@ a {
 -------------------------------------*/
 #title {
   font-family: 'Ubuntu-Title-webfont';
-  padding: 30px;
+  padding: 15px;
   position: relative; }
 
 #title .container {
-  overflow: scroll;
-  max-width: 400px;
-  padding: 10px; }
+  overflow: scroll; }
 
 #title .container h1 {
   font-size: 100px;
@@ -179,11 +177,13 @@ a {
   text-align: center;
   color: #7a9ed3; }
 
-#title .container .logo {
-  max-width: 30%;
+#title .container .logo img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 70px;
   height: auto;
-  margin: auto;
-  padding: 10px; }
+  margin: auto; }
 
 /* Logo
 -------------------------------------*/
@@ -318,7 +318,7 @@ a {
   position: absolute;
   top: 5%%;
   text-align: center;
-  padding: 3px;
+  padding: 10%;
   width: 100%; }
 
 #display_shout h2 span {
