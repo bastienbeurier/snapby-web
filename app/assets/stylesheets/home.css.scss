@@ -165,10 +165,10 @@ a {
   padding-top: 30px;
   position: relative;}
   #title .container {
-    overflow: scroll;}
+    overflow: hidden;}
     #title .container h1 {
       font-size: 100px;
-      margin: -20px 0 -20px 0;
+      margin: -15px 0 -15px 0;
       line-height: 1.25em; 
       text-align: center;
       color: $shout_blue;}
@@ -210,6 +210,7 @@ a {
     padding-top: 5px;
   }
   .footer .container {
+    padding: 0;
     width: 100%;
     height:100%}
     .footer .container #footer-left {
