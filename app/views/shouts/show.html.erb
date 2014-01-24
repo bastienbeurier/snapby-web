@@ -1,12 +1,7 @@
 <% provide(:title, 'Display Shout') %>
 
-<div id="product-container" class="container android-phone-portrait">
-  <div id="product-info">
-    <h1>shout</h1>
-    <p>here & now</p>
-  </div>
-</div>	
-		
+
+<%= render 'shared/title' %>
 
 <div id="display_shout">
  	<%=image_tag("http://" + @shout.image + "--400") %>

@@ -215,14 +215,15 @@ a {
         font-weight: 600;}
     .footer .container #footer-phone-left {
       float: left;
-      width: 45%;
+      width: 50%;
+      padding-right: 5px;
       height: 100%;
       display: table;
       text-align: right;
       display: none;}
     .footer .container #footer-phone-right {
       float: right;
-      width: 45%;
+      width: 50%;
       height: 100%;
       display: table;
       text-align: left;
@@ -267,8 +268,7 @@ a {
 -------------------------------------*/
 
 #standard-text {
-  position: relative;
-  margin-top: 80px;}
+  position: relative;}
   #standard-text .container {
     overflow: scroll;
     max-width: 600px; 
@@ -309,7 +309,8 @@ a {
     position: relative;
     top: 5%;
     left:5%;
-    height: auto;}
+    height: auto;
+    padding-bottom: 50px;}
 #display_shout img {
   display: block;
   margin-left: auto;
