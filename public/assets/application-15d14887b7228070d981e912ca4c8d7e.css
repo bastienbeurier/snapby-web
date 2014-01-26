@@ -272,7 +272,9 @@ a {
   position: relative; }
 
 #standard-text .container {
-  overflow: scroll;
+  position: relative;
+  -ms-overflow-style: none;
+  overflow: hidden;
   max-width: 600px;
   padding: 10px;
   color: #000;
@@ -354,7 +356,8 @@ a {
   position: relative; }
 
 #message .container {
-  overflow: scroll;
+  position: relative;
+  overflow: hidden;
   max-width: 600px;
   padding: 10px;
   color: #000; }

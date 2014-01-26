@@ -258,6 +258,7 @@ a {
   position: relative;}
   #standard-text .container {
     position: relative;
+    -ms-overflow-style: none;
     overflow: hidden;
     max-width: 600px; 
     padding: 10px;
