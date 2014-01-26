@@ -257,6 +257,7 @@ a {
 #standard-text {
   position: relative;}
   #standard-text .container {
+    position: relative;
     overflow: hidden;
     max-width: 600px; 
     padding: 10px;
@@ -332,6 +333,7 @@ a {
   padding-top: 20px;
   position: relative;}
   #message .container {
+    position: relative;
     overflow: hidden;
     max-width: 600px; 
     padding: 10px;
