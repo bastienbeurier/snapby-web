@@ -90,6 +90,7 @@ a {
   position: relative;
   padding: 120px 0 0 0;
   overflow: hidden;
+  height: 100%;
   color: #FFF; }
   #splash.splash-inner-page {
     padding: 40px 0; }
@@ -161,10 +162,8 @@ a {
     }
 
 #title_white {
-  position: absolute;
-  right: 0;
-  bottom: 200px;
-  width: 450px;}
+  float: right;
+  margin-right: 10%;}
   #title_white .container {
     padding-top: 30px;
     color: #FFFFFF;
