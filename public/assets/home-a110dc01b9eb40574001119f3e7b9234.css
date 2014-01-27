@@ -110,77 +110,76 @@ a {
   position: relative;
   z-index: 20; }
 
-#product-container #product-info {
-  position: absolute;
-  right: 0;
-  bottom: 200px;
-  width: 450px; }
-
-#product-container #product-info h1 {
-  font-family: 'Ubuntu-Title-webfont';
-  font-size: 80px;
-  margin: 0 0 -10px 0;
-  line-height: 1.25em;
-  text-align: center; }
-
-#product-container #product-info p {
-  margin: 0 0 15px 0;
-  font-size: 35px;
-  text-align: center; }
-
-#product-container #product-info .container {
-  width: 220px; }
-
 #product-container #device {
-  background: #555;
-  width: 550px;
+  background: url("/assets/android-phone-portrait@2x.png") no-repeat center top;
+  width: 380px;
   position: relative;
+  padding: 85px 0 0 0;
+  margin-left: 50px;
   background-size: 100% !important; }
 
 #product-container #device #screen {
-  width: 400px;
-  height: 400px;
+  width: 338px;
+  height: 450px;
   margin: 0 auto; }
 
 #product-container #device #screen img {
   margin-top: -20px;
   width: 100%; }
 
-#product-container.android-phone-portrait #device {
-  background: url("/assets/android-phone-portrait@2x.png") no-repeat center top;
-  padding: 85px 0 0 0;
-  width: 380px;
-  margin-left: 50px; }
-
-#product-container.android-phone-portrait #device #screen {
-  width: 338px;
-  height: 450px; }
-
 /* Title
 -------------------------------------*/
-#title {
+#title_blue {
   font-family: 'Ubuntu-Title-webfont';
   padding-top: 30px;
   position: relative; }
 
-#title .container {
+#title_blue .container {
   overflow: hidden; }
 
-#title .container h1 {
+#title_blue .container h1 {
   font-size: 100px;
   margin: -15px 0 -15px 0;
   line-height: 1.25em;
   text-align: center;
   color: #7a9ed3; }
 
-#title .container h2 {
+#title_blue .container h2 {
   font-size: 24px;
   text-align: center;
   color: #7a9ed3; }
 
-#title .container .logo img {
+#title_blue .container .logo img {
   display: block;
   max-width: 70px;
+  height: auto;
+  margin: auto; }
+
+#title_white {
+  position: absolute;
+  right: 0;
+  bottom: 200px;
+  width: 450px; }
+
+#title_white .container {
+  padding-top: 30px;
+  color: #FFFFFF;
+  font-family: 'Ubuntu-Title-webfont';
+  overflow: hidden; }
+
+#title_white .container h1 {
+  font-size: 100px;
+  margin: -15px 0 -15px 0;
+  line-height: 1.25em;
+  text-align: center; }
+
+#title_white .container h2 {
+  font-size: 35px;
+  text-align: center; }
+
+#title_white .container .logo img {
+  display: block;
+  max-width: 100px;
   height: auto;
   margin: auto; }
 

@@ -161,25 +161,26 @@ a {
     }
 
 #title_white {
-  font-family: 'Ubuntu-Title-webfont';
-  padding-top: 30px;
-  color: #FFFFFF;
-  position: relative;}
+  position: absolute;
+  right: 0;
+  bottom: 200px;
+  width: 450px;}
   #title_white .container {
+    padding-top: 30px;
+    color: #FFFFFF;
+    font-family: 'Ubuntu-Title-webfont';
     overflow: hidden;}
     #title_white .container h1 {
       font-size: 100px;
       margin: -15px 0 -15px 0;
       line-height: 1.25em; 
-      text-align: center;
-      color: $shout_blue;}
+      text-align: center;}
     #title_white .container h2 {
-      font-size: 24px;
-      text-align: center;
-      color: $shout_blue; }
+      font-size: 35px;
+      text-align: center;}
     #title_white .container .logo img{
       display: block;
-      max-width: 70px;
+      max-width: 100px;
       height: auto;
       margin: auto;
     }
