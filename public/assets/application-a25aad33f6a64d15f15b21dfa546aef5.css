@@ -124,51 +124,22 @@ a {
   position: relative;
   z-index: 20; }
 
-#product-container #product-info {
-  position: absolute;
-  right: 0;
-  bottom: 200px;
-  width: 450px; }
-
-#product-container #product-info h1 {
-  font-family: 'Ubuntu-Title-webfont';
-  font-size: 80px;
-  margin: 0 0 -10px 0;
-  line-height: 1.25em;
-  text-align: center; }
-
-#product-container #product-info p {
-  margin: 0 0 15px 0;
-  font-size: 35px;
-  text-align: center; }
-
-#product-container #product-info .container {
-  width: 220px; }
-
 #product-container #device {
-  background: #555;
-  width: 550px;
+  background: url("/assets/android-phone-portrait@2x.png") no-repeat center top;
+  width: 380px;
   position: relative;
+  padding: 85px 0 0 0;
+  margin-left: 50px;
   background-size: 100% !important; }
 
 #product-container #device #screen {
-  width: 400px;
-  height: 400px;
+  width: 338px;
+  height: 450px;
   margin: 0 auto; }
 
 #product-container #device #screen img {
   margin-top: -20px;
   width: 100%; }
-
-#product-container.android-phone-portrait #device {
-  background: url("/assets/android-phone-portrait@2x.png") no-repeat center top;
-  padding: 85px 0 0 0;
-  width: 380px;
-  margin-left: 50px; }
-
-#product-container.android-phone-portrait #device #screen {
-  width: 338px;
-  height: 450px; }
 
 /* Title
 -------------------------------------*/
@@ -272,6 +243,8 @@ a {
   position: relative; }
 
 #standard-text .container {
+  position: relative;
+  -ms-overflow-style: none;
   overflow: hidden;
   max-width: 600px;
   padding: 10px;
@@ -354,6 +327,7 @@ a {
   position: relative; }
 
 #message .container {
+  position: relative;
   overflow: hidden;
   max-width: 600px;
   padding: 10px;
@@ -379,18 +353,6 @@ a {
       background-attachment: scroll; }
 
   /* PRODUCT CONTAINER */
-  #product-container #product-info {
-    width: 100% !important;
-    text-align: center;
-    position: relative;
-    margin-bottom: 100px; }
-    #product-container #product-info {
-      bottom: auto;
-      margin-bottom: 50px;
-      padding: 0 0 40px 0; }
-    #product-container #product-info h1 {
-      font-size: 55px;
-      line-height: 1.5em; }
   #product-container #device,
   #product-container #device-2nd {
     display: none !important; }
@@ -439,13 +401,6 @@ a {
   #product-container #device {
     margin: 0 auto !important;
     bottom: 0 !important; }
-  #product-container #product-info {
-    width: 100% !important;
-    text-align: center;
-    position: relative;
-    bottom: auto;
-    margin-bottom: 50px;
-    padding: 0 0 40px 0; }
 
   /* FOOTER */
   .footer .container #footer-right .footer-link {

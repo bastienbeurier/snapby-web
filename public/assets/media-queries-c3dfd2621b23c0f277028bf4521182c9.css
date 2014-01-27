@@ -14,18 +14,6 @@
       background-attachment: scroll; }
 
   /* PRODUCT CONTAINER */
-  #product-container #product-info {
-    width: 100% !important;
-    text-align: center;
-    position: relative;
-    margin-bottom: 100px; }
-    #product-container #product-info {
-      bottom: auto;
-      margin-bottom: 50px;
-      padding: 0 0 40px 0; }
-    #product-container #product-info h1 {
-      font-size: 55px;
-      line-height: 1.5em; }
   #product-container #device,
   #product-container #device-2nd {
     display: none !important; }
@@ -46,7 +34,7 @@
   #footer-phone-right, #footer-phone-left{
     display: inline-table !important;
   }
-  .footer a, .footer p {
+  .footer a, .footer p, #footer-right {
     padding-right: 0px;
   }
 
@@ -74,17 +62,10 @@
   #product-container #device {
     margin: 0 auto !important;
     bottom: 0 !important; }
-  #product-container #product-info {
-    width: 100% !important;
-    text-align: center;
-    position: relative;
-    bottom: auto;
-    margin-bottom: 50px;
-    padding: 0 0 40px 0; }
 
   /* FOOTER */
   .footer .container #footer-right .footer-link {
-    padding-right: 10px;
+    padding-right: 9px;
   }
 
   /* DISPLAY_SHOUT*/
