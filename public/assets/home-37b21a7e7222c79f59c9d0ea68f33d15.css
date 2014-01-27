@@ -1,17 +1,3 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
-
-
- */
-
 /* Constant
 -------------------------------------*/
 /* # GENERAL
@@ -94,6 +80,7 @@ a {
   position: relative;
   padding: 120px 0 0 0;
   overflow: hidden;
+  height: 100%;
   color: #FFF; }
 
 #splash.splash-inner-page {
@@ -170,29 +157,31 @@ a {
   margin: auto; }
 
 #title_white {
-  font-family: 'Ubuntu-Title-webfont';
-  padding-top: 30px;
-  color: #FFFFFF;
-  position: relative; }
+  position: absolute;
+  right: 0;
+  bottom: 200px;
+  width: 450px;
+  margin-right: 10%; }
 
 #title_white .container {
+  padding-top: 30px;
+  color: #FFFFFF;
+  font-family: 'Ubuntu-Title-webfont';
   overflow: hidden; }
 
 #title_white .container h1 {
   font-size: 100px;
   margin: -15px 0 -15px 0;
   line-height: 1.25em;
-  text-align: center;
-  color: #7a9ed3; }
+  text-align: center; }
 
 #title_white .container h2 {
-  font-size: 24px;
-  text-align: center;
-  color: #7a9ed3; }
+  font-size: 35px;
+  text-align: center; }
 
 #title_white .container .logo img {
   display: block;
-  max-width: 70px;
+  max-width: 100px;
   height: auto;
   margin: auto; }
 
@@ -364,82 +353,3 @@ a {
   font-weight: 600;
   font-size: 20px;
   margin-bottom: 5px; }
-/*  #MOBILE (Portrait)
-================================================== */
-
-@media only screen and (max-width: 767px) {
-  .spacer-variable { 
-    height: 30px;}
-  .container {
-    width: 280px; }
-
-  /* SPLASH */
-  #splash {
-    background-attachment: scroll; }
-    #splash .pattern {
-      background-attachment: scroll; }
-
-  /* PRODUCT CONTAINER */
-  #product-container #device{
-    display: none !important; }
-
-  /* Title */
-  #title_blue {
-    padding-top: 10px;}
-      #title_blue .container h1 {
-        font-size: 60px;}
-      #title_blue .container h2 {
-        font-size: 15px;}
-      #title_blue .container .logo img{
-        max-width: 50px;}
-
-  /* FOOTER */
-  #footer-right, #footer-left {
-    display: none !important;}
-  #footer-phone-right, #footer-phone-left{
-    display: inline-table !important;
-  }
-  .footer a, .footer p, #footer-right {
-    padding-right: 0px;
-  }
-
-  /* DISPLAY_SHOUT */
-  #display_shout {
-    padding-bottom: 10px;}
-    #display_shout h2{
-      width: 100%;
-      margin-left: 0%;
-    }
-    #display_shout h2 span {
-      font-size: 18px;
-  }
-}
-
-
-
-/*  #TABLET (Portrait)
-================================================== */
-@media screen and (min-width: 768px) and (max-width: 1140px) {
-  .container {
-    width: 740px; }
-
-  /* PRODUCT CONTAINER */
-  #product-container #device {
-    margin: 0 auto !important;
-    bottom: 0 !important; }
-
-  /* FOOTER */
-  .footer .container #footer-right .footer-link {
-    padding-right: 9px;
-  }
-
-  /* DISPLAY_SHOUT*/
-    /* DISPLAY_SHOUT */
-    #display_shout h2{
-      width: 90%;
-      margin-left: 5%;
-    }
-}
-
-
-

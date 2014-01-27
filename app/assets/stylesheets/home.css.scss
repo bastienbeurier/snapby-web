@@ -162,7 +162,10 @@ a {
     }
 
 #title_white {
-  float: right;
+  position: absolute;
+    right: 0;
+    bottom: 200px;
+    width: 450px;
   margin-right: 10%;}
   #title_white .container {
     padding-top: 30px;
