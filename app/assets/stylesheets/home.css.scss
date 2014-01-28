@@ -92,8 +92,6 @@ a {
   overflow: hidden;
   height: 100%;
   color: #FFF; }
-  #splash.splash-inner-page {
-    padding: 40px 0; }
   #splash .pattern {
     background-image: image_url('mosaic.png');
     background-repeat: repeat;
@@ -162,10 +160,7 @@ a {
     }
 
 #title_white {
-  position: absolute;
-    right: 0;
-    bottom: 200px;
-    width: 450px;
+  position: relative;
   margin-right: 10%;}
   #title_white .container {
     padding-top: 30px;
