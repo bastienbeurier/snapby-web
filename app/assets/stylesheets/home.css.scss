@@ -148,7 +148,8 @@ a {
       font-size: 35px;
       text-align: center;}
       #product-container #product-info .container {
-        width: 220px;}
+        display: table;
+        text-align: center}
   #product-container #device {
     background: #555;
     width: 550px;
@@ -515,38 +516,6 @@ a {
       margin-bottom: 5px; }
 
 
-/* BUTTON 
--------------------------------------*/
-
-.button-download, .button-download:visited {
-  margin: 30px 10px 0px 10px;
-  border: 2px solid; 
-  border-radius:5px;
-  background-color: rgba(255,255,255,0.1);
-  position: relative;
-  font-weight: normal;
-  overflow: hidden;
-  text-align: left;
-  text-decoration: none;
-  display: inline-block; }
-  .button-download:hover, .button-download:visited:hover {
-    background-color: rgba(255,255,255,0.3); }
-
-.button-download span, .button-download:visited span {
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    border-radius: 8px;
-    position: relative;
-    color: #fff;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-    padding: 15px 40px 15px 40px;
-    line-height: 1em;
-    text-decoration: none;
-    display: block;
-    font-size: 18px;
-    font-weight: 600;
-    background-repeat: no-repeat;
-    background-position: 15px center; }
 
 /* # CONTENT
 -------------------------------------*/
