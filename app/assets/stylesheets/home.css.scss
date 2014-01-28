@@ -134,6 +134,7 @@ a {
   /* MACBOOK */ }
   #product-container #product-info {
     font-family: 'Ubuntu-Title-webfont';
+    border: 2px solid;
     position: absolute;
     right: 0;
     bottom: 200px;
@@ -149,7 +150,8 @@ a {
       text-align: center;}
     #product-container #product-info a {
       display: inline-block;
-      padding: 5px;
+      padding: 2.5px;
+      margin: auto;
       vertical-align: middle;
       text-align: center}
   #product-container #device {
