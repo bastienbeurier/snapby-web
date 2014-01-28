@@ -135,13 +135,13 @@ a {
   /* ANDROID PHONE - LANDSCAPE */
   /* MACBOOK */ }
   #product-container #product-info {
+    font-family: 'Ubuntu-Title-webfont';
     position: absolute;
     right: 0;
     bottom: 200px;
     width: 450px; }
     #product-container #product-info h1 {
-      font-family: 'Ubuntu-Title-webfont';
-      font-size: 80px;
+      font-size: 100px;
       margin: 0 0 -10px 0;
       line-height: 1.25em; 
       text-align: center;}
@@ -559,16 +559,16 @@ a {
   #content .container {
     padding: 0; 
     padding-bottom: 50px; }
-    #content .container #footer-left {
+    #content .container #footer-home-left {
       padding-top: 30px; 
       float:left;
       color: #a5a5a5;
     }
-    #content .container #footer-right {
+    #content .container #footer-home-right {
       padding-top: 30px; 
       float: right;      
     }
-      #content .container #footer-right .footer-link {
+      #content .container #footer-home-right .footer-home-link {
       margin-left: 20px; 
       font-weight: 600;
       color: #a5a5a5; }
