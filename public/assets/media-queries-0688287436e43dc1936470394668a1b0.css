@@ -19,16 +19,16 @@
     text-align: center;
     position: relative;
     margin-bottom: 100px; 
-    bottom: auto;
-    padding: 0 0 40px 0;}
+    bottom: 50px;}
     #product-container #product-info .button {
       margin-right: 0; }
   #product-container #device,
   #product-container #device-2nd {
     display: none !important; }
     #product-container #product-info h1 {
-      font-size: 55px;
-      line-height: 1.5em; }
+      font-size: 75px;}
+    #product-container #product-info p {
+      font-size: 27px;}
 
   /* Title */
   #title_blue {

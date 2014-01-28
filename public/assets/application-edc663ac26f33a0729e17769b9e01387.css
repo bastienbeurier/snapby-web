@@ -128,22 +128,13 @@ a:hover {
 -------------------------------------*/
 #product-container {
   position: relative;
-  z-index: 20;
-  /* iPAD - PORTRAIT */
-  /* iPAD - LANDSCAPE */
-  /* ANDROID TABLET - PORTRAIT */
-  /* ANDROID TABLET - LANDSCAPE */
-  /* iPHONE - PORTRAIT */
-  /* iPHONE - LANDSCAPE */
-  /* ANDROID PHONE - PORTRAIT */
-  /* ANDROID PHONE - LANDSCAPE */
-  /* MACBOOK */ }
+  z-index: 20; }
 
 #product-container #product-info {
   font-family: 'Ubuntu-Title-webfont';
-  border: 2px solid;
   position: absolute;
   right: 0;
+  text-align: center;
   bottom: 200px;
   width: 450px; }
 
@@ -154,7 +145,7 @@ a:hover {
   text-align: center; }
 
 #product-container #product-info p {
-  margin: 0 0 15px 0;
+  margin: 0 0 40px 0;
   font-size: 35px;
   text-align: center; }
 
@@ -639,8 +630,7 @@ a:hover {
     text-align: center;
     position: relative;
     margin-bottom: 100px; 
-    bottom: auto;
-    padding: 0 0 40px 0;}
+    bottom: 50px;}
     #product-container #product-info .button {
       margin-right: 0; }
   #product-container #device,
