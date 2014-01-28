@@ -8,6 +8,7 @@
 
   /* SPLASH */
   #splash {
+    padding: 50px 0 0 0;
     background-attachment: scroll; }
     #splash .pattern {
       background-attachment: scroll; }

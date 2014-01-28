@@ -117,7 +117,7 @@ a {
   width: 380px;
   position: relative;
   padding: 85px 0 0 0;
-  margin-left: 50px;
+  margin-left: 80px;
   background-size: 100% !important; }
 
 #product-container #device #screen {
@@ -362,6 +362,7 @@ a {
 
   /* SPLASH */
   #splash {
+    padding: 50px 0 0 0;
     background-attachment: scroll; }
     #splash .pattern {
       background-attachment: scroll; }
@@ -379,6 +380,9 @@ a {
         font-size: 15px;}
       #title_blue .container .logo img{
         max-width: 50px;}
+  #title_white {
+    left: 0%;
+    padding-bottom: 200px;}
 
   /* FOOTER */
   #footer-right, #footer-left {
@@ -414,6 +418,10 @@ a {
   #product-container #device {
     margin: 0 auto !important;
     bottom: 0 !important; }
+
+  #title_white {
+    left: 0%;
+    padding-bottom: 50px;}
 
   /* FOOTER */
   .footer .container #footer-right .footer-link {
