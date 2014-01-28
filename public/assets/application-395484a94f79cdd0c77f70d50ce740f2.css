@@ -134,6 +134,7 @@ a {
 #title_blue {
   font-family: 'Ubuntu-Title-webfont';
   padding-top: 30px;
+  padding-bottom: 20px;
   position: relative; }
 
 #title_blue .container {
@@ -337,7 +338,8 @@ a {
 /* MESSAGE
 -------------------------------------*/
 #message {
-  padding-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 20px;
   position: relative; }
 
 #message .container {
@@ -362,6 +364,7 @@ a {
 
   /* SPLASH */
   #splash {
+    padding: 50px 0 0 0;
     background-attachment: scroll; }
     #splash .pattern {
       background-attachment: scroll; }
@@ -381,7 +384,7 @@ a {
         max-width: 50px;}
   #title_white {
     left: 0%;
-    padding-bottom: 300px;}
+    padding-bottom: 250px;}
 
   /* FOOTER */
   #footer-right, #footer-left {
