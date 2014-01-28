@@ -164,20 +164,21 @@ a {
   position: relative;
   left: 15%;}
   #title_white .container {
-    padding-top: 30px;
+    padding-top: 10px;
     color: #FFFFFF;
     font-family: 'Ubuntu-Title-webfont';
     overflow: hidden;}
     #title_white .container h1 {
-      font-size: 120px;
+      font-size: 100px;
+      margin: -5px 0 -5px 0;
       line-height: 1.25em; 
       text-align: center;}
     #title_white .container h2 {
-      font-size: 50px;
+      font-size: 35px;
       text-align: center;}
     #title_white .container .logo img{
       display: block;
-      max-width: 120px;
+      max-width: 100px;
       height: auto;
       margin: auto;
     }
