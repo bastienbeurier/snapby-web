@@ -35,6 +35,7 @@ StreetShout::Application.routes.draw do
       post "users/facebook_create_or_update" => "users#facebook_create_or_update"
       get  "/get_shout_meta_data" => "shouts#get_shout_meta_data"
       patch "/modify_user_credentials" => "users#modify_user_credentials"
+      put "/modify_user_credentials" => "users#modify_user_credentials"
     end
   end
 end
