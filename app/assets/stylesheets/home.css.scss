@@ -42,7 +42,6 @@ ol, ul {
   list-style: none; }
 
 body {
-  height: 100%;
   color: #a5a5a5;
   background-color: #fff;
   font: normal 100% 'Open Sans', Helvetica, Arial, sans-serif;
@@ -346,3 +345,68 @@ a {
       font-size: 20px;
       margin-bottom: 5px; }
 
+
+/* BUTTON 
+-------------------------------------*/
+
+.button-download, .button-download:visited {
+  margin: 30px 10px 0px 10px;
+  border: 2px solid; 
+  border-radius:5px;
+  background-color: rgba(255,255,255,0.1);
+  position: relative;
+  font-weight: normal;
+  overflow: hidden;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block; }
+  .button-download:hover, .button-download:visited:hover {
+    background-color: rgba(255,255,255,0.3); }
+
+.button-download span, .button-download:visited span {
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    position: relative;
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    padding: 15px 40px 15px 40px;
+    line-height: 1em;
+    text-decoration: none;
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    background-repeat: no-repeat;
+    background-position: 15px center; }
+
+/* # CONTENT
+-------------------------------------*/
+#content {
+  background: #FFF;
+  color: #666;
+  /* BASE ELEMENTS STYLE */ }
+  #content .container {
+    padding: 0; 
+    padding-bottom: 50px; }
+    #content .container #footer-left {
+      padding-top: 30px; 
+      float:left;
+      color: #a5a5a5;
+    }
+    #content .container #footer-right {
+      padding-top: 30px; 
+      float: right;      
+    }
+      #content .container #footer-right .footer-link {
+      margin-left: 20px; 
+      font-weight: 600;
+      color: #a5a5a5; }
+    #content .container .button {
+      float: right; 
+      margin-right: 0px;
+    }
+  #content p {
+    margin: 0 0 20px 0; }
+  #content img {
+    max-width: 100%;
+    display: block; }
