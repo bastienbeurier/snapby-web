@@ -84,8 +84,7 @@ a {
 /* # SPLASH
 -------------------------------------*/
 #splash {
-  background-image: image_url('bg.jpg');
-  height: 100%;
+  background-image: url('/assets/bg.jpg');
   background-color: #fff;
   background-size: cover;
   background-position: center center;
@@ -93,18 +92,20 @@ a {
   padding: 120px 0 0 0;
   overflow: hidden;
   color: #FFF; }
-  // #splash .pattern {
-  //   background-image: image_url('mosaic.png');
-  //   background-repeat: repeat;
-  //   background-position: top left;
-  //   height: 100%;
-  //   width: 100%;
-  //   position: absolute;
-  //   top: 0;
-  //   left: 0;
-  //   z-index: 10; }
+  #splash.splash-inner-page {
+    padding: 40px 0; }
+  #splash .pattern {
+    background-image: url('/assets/mosaic.png');
+    background-repeat: repeat;
+    background-position: top left;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10; }
   #splash .inner-shadow {
-    background: image_url('inner-shadow.png') 0 -45px repeat-x;
+    background: url('/assets/inner-shadow.png') 0 -45px repeat-x;
     position: absolute;
     z-index: 30;
     bottom: 0;
@@ -113,25 +114,48 @@ a {
 
 
 
-/* Name
+/* # DEVICEs & PRODUCT INFO
 -------------------------------------*/
 #product-container {
   position: relative;
   z-index: 20;}
+  #product-container #product-info {
+    position: absolute;
+    right: 0;
+    bottom: 200px;
+    width: 450px; }
+    #product-container #product-info h1 {
+      font-family: 'Ubuntu-Title-webfont';
+      font-size: 80px;
+      margin: 0 0 -10px 0;
+      line-height: 1.25em; 
+      text-align: center;}
+    #product-container #product-info p {
+      margin: 0 0 15px 0; 
+      font-size: 35px;
+      text-align: center;}
+      #product-container #product-info .container {
+        width: 220px;}
   #product-container #device {
-    background: url(image_path("android-phone-portrait@2x.png")) no-repeat center top;
-    width: 380px;
+    background: #555;
+    width: 550px;
     position: relative;
-    padding: 85px 0 0 0;
-    margin-left: 80px;
     background-size: 100% !important; }
     #product-container #device #screen {
-      width: 338px;
-      height: 450px;
+      width: 400px;
+      height: 400px;
       margin: 0 auto; }
       #product-container #device #screen img {
-        margin-top :-20px;
         width: 100%; }
+  #product-container.android-phone-portrait #device {
+    background: url(/assets/android-phone-portrait@2x.png) no-repeat center top;
+    padding: 85px 0 0 0;
+    width: 380px;
+    margin-left: 50px; }
+    #product-container.android-phone-portrait #device #screen {
+      width: 338px;
+      height: 450px; }
+
   
 
 
@@ -157,29 +181,6 @@ a {
     #title_blue .container .logo img{
       display: block;
       max-width: 70px;
-      height: auto;
-      margin: auto;
-    }
-
-#title_white {
-  position: relative;
-  left: 15%;}
-  #title_white .container {
-    padding-top: 10px;
-    color: #FFFFFF;
-    font-family: 'Ubuntu-Title-webfont';
-    overflow: hidden;}
-    #title_white .container h1 {
-      font-size: 100px;
-      margin: -5px 0 -5px 0;
-      line-height: 1.25em; 
-      text-align: center;}
-    #title_white .container h2 {
-      font-size: 35px;
-      text-align: center;}
-    #title_white .container .logo img{
-      display: block;
-      max-width: 100px;
       height: auto;
       margin: auto;
     }

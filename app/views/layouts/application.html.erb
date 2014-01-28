@@ -20,7 +20,9 @@
   <body>
     <%= yield %>
     
-    <%= render 'layouts/footer' %>
+    <% if yield(:title) != "Shout" %>
+      <%= render 'layouts/footer' %>
+    <% end %>
   </body>
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>

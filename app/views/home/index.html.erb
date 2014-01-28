@@ -1,29 +1,38 @@
-<% provide(:title, 'Home') %>
+<% provide(:title, 'Shout') %>
 
 
 <section id="splash">
-
-   <div id="product-container">
-
-    <section id="title_white">
-    	<div class="container">
-  	    <div class="logo">
-  	      <%= image_tag("shout-logo-white.png") %>
-  	    </div>
-  	    <h1>shout</h1>
-  	    <h2>here & now</h2>
-  	  </div>
-  	</section>  
-
-    <div id="clear">
+  <div id="product-container" class="container android-phone-portrait">
+    <div id="product-info">
+      <h1>shout</h1>
+      <p>here & now</p>
+      <div class="container">
+        <div class="button-download">
+              <a href="#">                  
+                <span>Coming Soon</span>
+              </a>
+            </div>
+      </div>
     </div>
-
+    
     <div id="device">
       <div id="screen">
-        <%= image_tag("app-screen-2.jpg") %>
+        <img src="/assets/app-screen-2.jpg" alt="screen" />
       </div>
     </div>
   </div>
 
-  <div class="inner-shadow"></div>
-</section>
+  <section id="content">
+  <div class="container">
+    <div id="footer-right">
+      <a href="/about" class="footer-link">About</a>
+      <a href="/privacy" class="footer-link">Privacy</a>
+      <a href="/terms" class="footer-link">Terms</a>
+      <a href="/contact" class="footer-link">Contact</a>
+    </div>
+
+    <div id="footer-left">
+      <p>Copyright © 2013 Street Shout. All Rights Reserved</p>
+    </div>
+  </div>
+</section><!-- #content -->
