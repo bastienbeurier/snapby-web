@@ -147,9 +147,11 @@ a {
       margin: 0 0 15px 0; 
       font-size: 35px;
       text-align: center;}
-      #product-container #product-info .container {
-        display: table;
-        text-align: center}
+    #product-container #product-info .img {
+      display: table;
+      padding: 5px;
+      vertical-align: middle;
+      text-align: center}
   #product-container #device {
     background: #555;
     width: 550px;
