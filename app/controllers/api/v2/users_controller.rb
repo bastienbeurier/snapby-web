@@ -85,6 +85,6 @@ private
   end
 
   def facebook_user_params
-    params.permit(:email, :facebook_id, :facebook_name, :username, :profile_picture)
+    params.permit(:email, :facebook_id, :facebook_name, :username, :profile_picture, :device_model, :os_version, :os_type, :app_version, :api_version)
   end
 end
