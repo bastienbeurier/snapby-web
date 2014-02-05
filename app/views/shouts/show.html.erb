@@ -32,18 +32,18 @@
 <% else %>
     <section id="standard-text">
       <div class="container">
+
+        <div id="display_shout">
+          <% if @shout.image %>
+         	  <%= image_tag("http://" + @shout.image + "--400") %>
+          <% else %>
+            <%= image_tag("shout-place-holder.png") %> 
+          <% end %>
+
+         	<h2><span> <%= @shout.description %> </span></p>
+        </div>
       </div>
     </section>
-    <div id="display_shout">
-      <% if @shout.image %>
-     	  <%= image_tag("http://" + @shout.image + "--400") %>
-      <% else %>
-        <!-- <%=  image_tag("") %> -->   <!-- todo placeholder ?????? -->
-      <% end %>
-
-     	<h2><span> <%= @shout.description %> </span></p>
-    </div>
-
 
     <section id="standard-text">
       <div class="container">

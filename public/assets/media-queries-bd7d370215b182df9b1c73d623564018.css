@@ -1,5 +1,6 @@
 /*  #MOBILE (Portrait)
 ================================================== */
+
 @media only screen and (max-width: 767px) {
   .spacer-variable { 
     height: 30px;}
@@ -62,9 +63,16 @@
   /* DISPLAY_SHOUT */
   #display_shout {
     padding-bottom: 10px;}
+    #display_shout img {
+      min-width: 100%;}
+    #display_shout h2{
+      width: 95%;
+      margin-left: 0%;
+    }
     #display_shout h2 span {
       font-size: 18px;
   }
+
 }
 
 
@@ -92,6 +100,15 @@
   .footer .container #footer-right .footer-link {
     padding-right: 9px;
   }
+
+  /* DISPLAY_SHOUT*/
+    /* DISPLAY_SHOUT */
+    #display_shout img {
+      min-width: 90%;}
+    #display_shout h2{
+      width: 85%;
+      margin-left: 5%;
+    }
 }
 
 

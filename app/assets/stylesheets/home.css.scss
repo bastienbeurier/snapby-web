@@ -467,17 +467,15 @@ a {
     padding-bottom: 30px;}
 #display_shout img {
   display: block;
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  height: auto;
-  width: auto\9; /*ie8  */}
+  width: 100%;
+  margin-top: 5px;
+  height: auto;}
 #display_shout h2{
   position: absolute;
+  margin: 5%;
   top: 5%%;
   text-align: center;
-  width: 70%;
-  margin-left: 15%;}
+  width: 90%;}
 #display_shout h2 span { 
   border-radius: 10px;
   color: white; 
