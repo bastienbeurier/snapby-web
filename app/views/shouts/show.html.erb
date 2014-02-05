@@ -42,7 +42,11 @@
 
          	<h2><span> <%= @shout.description %> </span></p>
         </div>
+      </div>
+    </section>
 
+    <section id="standard-text">
+      <div class="container">
     		<h2>@<%= @shout.username %>  </h2>
         <p> <%= time_ago_in_words(@shout.created_at) %> ago | <%=pluralize( @shout.likes.count ,"like")%> | <%= pluralize(@shout.comments.count,"comment")%></p>
     	</div>
