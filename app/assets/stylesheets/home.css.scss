@@ -459,7 +459,7 @@ a {
 /* Display_shout
 -------------------------------------*/
 #display_shout {
-    border-top: 2px solid $shout_blue;
+    border: 2px solid $shout_blue;
     width: 90%;
     position: relative;
     top: 5%;
@@ -467,7 +467,7 @@ a {
     height: auto;
     padding-bottom: 30px;}
 #display_shout img {
-  border-top: 2px solid yellow;
+  border: 2px solid yellow;
   min-width:1000px;
   display: block;
   max-width: 100%;
@@ -476,13 +476,14 @@ a {
   height: auto;
   width: auto\9; /*ie8  */}
 #display_shout h2{
-  border-top: 2px solid red;
+  border: 2px solid red;
   position: absolute;
   top: 5%%;
   text-align: center;
   width: 70%;
   margin-left: 15%;}
 #display_shout h2 span { 
+  border: 2px solid green;
   border-radius: 10px;
   color: white; 
   font-size: 40px;
