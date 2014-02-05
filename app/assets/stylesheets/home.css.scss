@@ -469,8 +469,9 @@ a {
 #display_shout img {
   border: 2px solid yellow;
   display: block;
-  min-width:600px;
+  width:600px;
   max-width: 100%;
+  margin-top: 5px;
   margin-left: auto;
   margin-right: auto;
   height: auto;
@@ -478,9 +479,10 @@ a {
 #display_shout h2{
   border: 2px solid red;
   position: absolute;
+  margin: auto;
   top: 5%%;
   text-align: center;
-  width: 55%;}
+  width: 100%;}
 #display_shout h2 span { 
   border: 2px solid green;
   border-radius: 10px;

@@ -32,21 +32,17 @@
 <% else %>
     <section id="standard-text">
       <div class="container">
-      </div>
-    </section>
-    <div id="display_shout">
-      <% if @shout.image %>
-     	  <%= image_tag("http://" + @shout.image + "--400") %>
-      <% else %>
-        <!-- <%=  image_tag("") %> -->   <!-- todo placeholder ?????? -->
-      <% end %>
 
-     	<h2><span> <%= @shout.description %> </span></p>
-    </div>
+        <div id="display_shout">
+          <% if @shout.image %>
+         	  <%= image_tag("http://" + @shout.image + "--400") %>
+          <% else %>
+            <!-- <%=  image_tag("") %> -->   <!-- todo placeholder ?????? -->
+          <% end %>
 
+         	<h2><span> <%= @shout.description %> </span></p>
+        </div>
 
-    <section id="standard-text">
-      <div class="container">
     		<h2>@<%= @shout.username %>  </h2>
         <p> <%= time_ago_in_words(@shout.created_at) %> ago | <%=pluralize( @shout.likes.count ,"like")%> | <%= pluralize(@shout.comments.count,"comment")%></p>
     	</div>
