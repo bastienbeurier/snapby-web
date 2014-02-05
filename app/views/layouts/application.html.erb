@@ -10,12 +10,12 @@
     <meta property="og:title" content="Shout - Here & Now" />
     <meta name="description" content="The city guide of spontaneous events!\n Download Shout and discover all the great things happening around you right now." />
     <meta property="og:description" content="The city guide of spontaneous events!\n Download Shout and discover all the great things happening around you right now." />
-    <meta property="og:image" content=
-      <% if content_for?(:image) %>
+    <meta property="og:image" content= "<%= image_tag("app-icon-120.png") %> " />
+<!--       <% if content_for?(:image) %>
         <%= yield(:image) %>
       <% else %>
         <%= image_tag("app-icon-120.png") %> 
-    />
+    /> -->
 
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
