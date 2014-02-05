@@ -1,5 +1,8 @@
 <% provide(:title, 'Here & Now') %>
 
+<% if @shout.image %>
+  <%= provide(:image,"http://" + @shout.image + "--400") %>
+<% end %>
 
 <section id="title_blue">
   <div class="container">
