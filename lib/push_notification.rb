@@ -67,6 +67,7 @@ module PushNotification
     shout.comments.each do |com|
       if ! user_ids.include?(com.shouter_id) and com.shouter_id != comment.shouter_id
         user_ids += [com.shouter_id]
+      end
     end
     users = User.select([:id, :push_token, :os_type]).where(id: user_ids)
 
