@@ -69,8 +69,9 @@ module PushNotification
         user_ids += [com.shouter_id]
       end
     end
+    # todo add user who liked
     users = User.select([:id, :push_token, :os_type]).where(id: user_ids)
-
+    Rails.logger.debug "BAB create comment users: #{users}"
     android_tokens = []
     ios_tokens = []
     users.each do |user|
@@ -86,5 +87,9 @@ module PushNotification
       Urbanairship.push({device_tokens: ios_tokens, aps: {alert: '"' + comment.commenter_username + ' commented on ' + shout.username + '''s shout"', badge: 0}, extra: {shout_id: comment.id}})
     rescue Exception => e
     end
-  end 
+  end
+
+  def self.notify_new_like(like)
+    
+  end  
 end 
