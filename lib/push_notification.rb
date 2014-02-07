@@ -71,7 +71,7 @@ module PushNotification
     end
     # todo add user who liked
     users = User.select([:id, :push_token, :os_type]).where(id: user_ids)
-    Rails.logger.debug "BAB create comment users: #{users}"
+    
     android_tokens = []
     ios_tokens = []
     users.each do |user|
@@ -81,10 +81,10 @@ module PushNotification
         ios_tokens += [user.push_token]
       end
     end
-
+    Rails.logger.debug "TRUC: #{ios_tokens}"
     begin
-      Urbanairship.push({apids: android_tokens, android: {alert: '"' + comment.commenter_username + ' commented on ' + shout.username + '''s shout"', extra: {shout: comment.to_json}}})
-      Urbanairship.push({device_tokens: ios_tokens, aps: {alert: '"' + comment.commenter_username + ' commented on ' + shout.username + '''s shout"', badge: 0}, extra: {shout_id: comment.id}})
+      Urbanairship.push({apids: android_tokens, android: {alert: '"' + comment.commenter_username + ' commented on ' + shout.username + '\s shout"', extra: {shout: comment.to_json}}})
+      Urbanairship.push({device_tokens: ios_tokens, aps: {alert: '"' + comment.commenter_username + ' commented on ' + shout.username + '\s shout"', badge: 0}, extra: {shout_id: comment.id}})
     rescue Exception => e
     end
   end
