@@ -105,12 +105,13 @@ module PushNotification
 
   def self.notify_new_like(like)
     nb_likes = like.shout.likes.count
-    if like.liker_id != like.shout.shouter_id and ( nb_likes == 1 or nb_likes % 5 == 0 )
-      shouter = User.select([:id, :push_token, :os_type]).where(id: like.shout.user_id)
-      if shouter.os_type and shouter.os_type == "android" and shouter.push_token 
-        android_tokens += [shouter.push_token]
-      elsif shouter.os_type and shouter.os_type == "ios" and shouter.push_token 
-        ios_tokens += [shouter.push_token]
+
+    if like.liker_id != like.shout.user_id and ( nb_likes == 1 or nb_likes % 5 == 0 )
+      user = User.select([:id, :push_token, :os_type]).where(id: like.shout.user_id)
+      if user.os_type and user.os_type == "android" and user.push_token 
+        android_tokens += [user.push_token]
+      elsif user.os_type and user.os_type == "ios" and user.push_token 
+        ios_tokens += [user.push_token]
       end
 
       message = '"' + like.liker_username + (nb_likes == 1? ' likes' : ' and ' + (nb_likes - 1) + ' others like') + ' your shout"'
