@@ -107,7 +107,7 @@ module PushNotification
     nb_likes = like.shout.likes.count
 
     if like.liker_id != like.shout.user_id and ( nb_likes == 1 or nb_likes % 5 == 0 )
-      user = User.select([:id, :push_token, :os_type]).where(id: like.shout.user_id)
+      user = User.select([:id, :push_token, :os_type]).find_by(id: like.shout.user_id)
       if user.os_type and user.os_type == "android" and user.push_token 
         android_tokens += [user.push_token]
       elsif user.os_type and user.os_type == "ios" and user.push_token 
