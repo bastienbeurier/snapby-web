@@ -70,7 +70,7 @@ module PushNotification
     shout = comment.shout
     shout.comments.each do |com|
       if ! user_ids.include?(com.commenter_id) and com.commenter_id != comment.commenter_id
-        user_ids += [com.shouter_id]
+        user_ids += [com.commenter_id]
       end
     end
 
