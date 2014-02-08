@@ -63,19 +63,19 @@ module PushNotification
   def self.notify_new_comment(comment)
     user_ids = []
 
-    if comment.commenter_id != comment.shouter_id
+    if comment.shouter_id != comment.commenter_id
       user_ids += [comment.shouter_id]
     end
 
     shout = comment.shout
     shout.comments.each do |com|
-      if ! user_ids.include?(com.shouter_id) and com.shouter_id != comment.commenter_id
+      if ! user_ids.include?(com.commenter_id) and com.commenter_id != comment.commenter_id
         user_ids += [com.shouter_id]
       end
     end
 
     # todo add user who liked
-    
+
     users = User.select([:id, :push_token, :os_type]).where(id: user_ids)
     
     android_tokens = []
