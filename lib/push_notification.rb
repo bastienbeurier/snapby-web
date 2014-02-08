@@ -109,10 +109,10 @@ module PushNotification
         ios_tokens += [shouter.push_token]
       end
 
-      message = '"' + like.liker_username + (nb_likes == 1? ' likes' : ' and ' + (nb_likes - 1) + ' others like') ' your shout"'
+      message = '"' + like.liker_username + (nb_likes == 1? ' likes' : ' and ' + (nb_likes - 1) + ' others like') + ' your shout"'
       begin
-        Urbanairship.push({apids: android_tokens, android: {alert: '"Your shout "', extra: {like: like.to_json}}})
-        Urbanairship.push({device_tokens: ios_tokens, aps: {alert: , badge: 0}, extra: {like_id: like.id}})
+        Urbanairship.push({apids: android_tokens, android: {alert: message, extra: {like: like.to_json}}})
+        Urbanairship.push({device_tokens: ios_tokens, aps: {alert: message, badge: 0}, extra: {like_id: like.id}})
       rescue Exception => e
       end
     end
