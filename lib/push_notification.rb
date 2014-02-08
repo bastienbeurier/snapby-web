@@ -82,6 +82,10 @@ module PushNotification
 
     users = User.select([:id, :push_token, :os_type]).where(id: user_ids)
     
+    if users == nil
+      return 
+    end
+
     android_tokens = []
     ios_tokens = []
     users.each do |user|
@@ -93,16 +97,16 @@ module PushNotification
     end
 
     begin
-      Urbanairship.push({apids: android_tokens, android: {alert: '"' + comment.commenter_username + ' just commented on ' + shout.username + '\'s shout"', extra: {comment: comment.to_json}}})
-      Urbanairship.push({device_tokens: ios_tokens, aps: {alert: '"' + comment.commenter_username + ' just commented on ' + shout.username + '\'s shout"', badge: 0}, extra: {comment_id: comment.id}})
+      Urbanairship.push({apids: android_tokens, android: {alert: '"' + comment.commenter_username + ' just commented on ' + shout.username + '\'s shout"', extra: {shout: shout.to_json}}})
+      Urbanairship.push({device_tokens: ios_tokens, aps: {alert: '"' + comment.commenter_username + ' just commented on ' + shout.username + '\'s shout"', badge: 0}, extra: {shout_id: comment.shout_id}})
     rescue Exception => e
     end
   end
 
   def self.notify_new_like(like)
     nb_likes = like.shout.likes.count
-    if nb_likes == 1 or nb_likes % 5 == 0
-      shouter = like.user
+    if like.liker_id != like.shout.shouter_id and ( nb_likes == 1 or nb_likes % 5 == 0 )
+      shouter = User.select([:id, :push_token, :os_type]).where(id: like.shout.user_id)
       if shouter.os_type and shouter.os_type == "android" and shouter.push_token 
         android_tokens += [shouter.push_token]
       elsif shouter.os_type and shouter.os_type == "ios" and shouter.push_token 
