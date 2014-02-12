@@ -14,9 +14,9 @@ SHOUT_SHORT_NAME_CAPITAL = "SHOUT"
 SHOUT_POST_NAME = "message"
 SCORE_NAME = "karma"
 
-CONTACT_EMAIL = "info@street-shout.com"
+CONTACT_EMAIL = "info@shouthereandnow.com"
 SENDER_EMAIL = SENDER_EMAIL_
-FLAG_EMAIL = "info@street-shout.com"
+FLAG_EMAIL = "info@shouthereandnow.com"
 
 APPLE_STORE_LINK = "http://itunes.apple.com/app/id734887535?mt=8"
 ANDROID_STORE_LINK = "https://play.google.com/store/apps/details?id=com.streetshout.android"

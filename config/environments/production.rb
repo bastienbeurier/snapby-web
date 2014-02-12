@@ -74,7 +74,7 @@ StreetShout::Application.configure do
   config.action_mailer.raise_delivery_errors = true
   ActionMailer::Base.smtp_settings = {
       :address        => 'smtp.gmail.com',
-      :domain         => 'http://www.street-shout.com',
+      :domain         => 'http://www.shouthereandnow.com',
       :port           => 587,
       :user_name      => SENDER_EMAIL_,
       :password       => ENV['INFO_MAIL_PASS'],
