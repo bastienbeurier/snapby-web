@@ -66,7 +66,6 @@
     #display_shout h2 span {
       font-size: 18px;
   }
-
 }
 
 
@@ -94,7 +93,12 @@
   .footer .container #footer-right .footer-link {
     padding-right: 9px;
   }
-
+  .footer-left{
+    margin-left: 10px;
+  }
+  .footer .container #footer-left p {
+    padding-right: 10px;
+  }
 }
 
 

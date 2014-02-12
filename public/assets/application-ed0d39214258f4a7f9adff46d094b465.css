@@ -533,7 +533,7 @@ a:hover {
   height: auto; }
 
 #display_shout h2 {
-  position: relative;
+  position: absolute;
   margin: 5%;
   top: 5%%;
   text-align: center;
@@ -700,6 +700,12 @@ a:hover {
   /* FOOTER */
   .footer .container #footer-right .footer-link {
     padding-right: 9px;
+  }
+  .footer-left{
+    margin-left: 10px;
+  }
+  .footer .container #footer-left p {
+    padding-right: 10px;
   }
 }
 
