@@ -10,6 +10,6 @@ class UserMailer < ActionMailer::Base
 
    def welcome_email(user)
     @user=user
-    mail(to: @user.email, subject: 'Welcome to the Shout community!')
+    mail(to: @user.email, subject: 'Welcome to the Shout Community!')
   end
 end
