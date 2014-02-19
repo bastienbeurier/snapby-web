@@ -7,4 +7,9 @@ class UserMailer < ActionMailer::Base
     @shout=shout
     mail(to: FLAG_EMAIL, subject: 'A shout has just been flagged!')
   end
+
+   def welcome_email(user)
+    @user=user
+    mail(to: @user.email, subject: 'Welcome to the Shout Community!')
+  end
 end
