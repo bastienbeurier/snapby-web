@@ -25,11 +25,23 @@ development:
 test:
   adapter: mysql2
   encoding: utf8
+  collation: utf8_general_ci
   reconnect: false
-  database: street_shout_test
+  database: teststreetshout
   pool: 5
   username: root
-  password:
+  password: 
+  socket: /tmp/mysql.sock
+
+local:
+  adapter: mysql2
+  encoding: utf8
+  collation: utf8_general_ci
+  reconnect: false
+  database: localstreetshout
+  pool: 5
+  username: root
+  password: 
   socket: /tmp/mysql.sock
 
 production:

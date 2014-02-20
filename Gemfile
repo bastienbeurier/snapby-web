@@ -8,6 +8,8 @@ gem 'geokit-rails'
 gem 'will_paginate', '~> 3.0'
 gem 'urbanairship'
 gem 'devise', '3.0.0rc'
+gem 'airbrake'
+gem 'paperclip'
 
 gem 'sass-rails', '4.0.1'
 gem 'uglifier', '2.1.1'
