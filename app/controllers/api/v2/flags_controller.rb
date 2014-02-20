@@ -27,8 +27,12 @@ class Api::V2::FlagsController < Api::V2::ApiController
         end
 
         #send mail (specified if automatically removed)
-        UserMailer.flagged_shout_email(flag,shout).deliver
-
+        begin
+          UserMailer.flagged_shout_email(flag,shout).deliver
+        rescue Exception => e
+          Airbrake.notify(e)
+        end
+        
         render json: {result: { messages: ["shout successfully flagged"] } }, status: 200
       else 
         render json: {errors: { internal: ["Failed to flag shout"] } }, status: 500 

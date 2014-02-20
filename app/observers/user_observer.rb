@@ -1,6 +1,10 @@
 class UserObserver < ActiveRecord::Observer
 
   def after_create(user)
-  	# UserMailer.welcome_email(user).deliver
+  	begin
+    	UserMailer.welcome_email(user).deliver
+  	rescue Exception => e
+    	Airbrake.notify(e)
+  	end
   end
 end
