@@ -12,12 +12,6 @@
         <%= link_to image_tag("badge_apple_store.png", alt: "apple-store-link"), APPLE_STORE_LINK %>
         <%= link_to image_tag("badge_android_store.png", alt: "play-store-link"), ANDROID_STORE_LINK %>
       </div>
-      
-
-      <div>
-        <%= link_to image_tag("follow-facebook.png", alt: "facebook-link"), FACEBOOK_PAGE_LINK %>
-        <%= link_to image_tag("follow-twitter.png", alt: "twitter-link"), TWITTER_PAGE_LINK %>
-      </div>
     </div>
 
     <div id="device">
@@ -33,15 +27,36 @@
 
 <section id="content">
   <div class="container">
-    <div id="footer-home-right">
+    <div class="footer-home-right">
       <a href="/about" class="footer-home-link">About</a>
       <a href="/privacy" class="footer-home-link">Privacy</a>
       <a href="/terms" class="footer-home-link">Terms</a>
       <a href="/contact" class="footer-home-link">Contact</a>
     </div>
 
-    <div id="footer-home-left">
+    <div class="footer-home-left">
       <p>Copyright © 2014 Shout - Here & Now. All Rights Reserved</p>
     </div>
   </div>
+
+  <div class="clear"></div>
+
+  <div class="container-media">
+    <div class="footer-home-right">
+      <%= link_to image_tag("webzeen-logo.jpg", alt: "facebook-link"), WEBZEEN_LINK %>
+      <%= link_to image_tag("topappli-logo.png", alt: "facebook-link"), TOPAPPLI_LINK %>
+    </div>
+
+    <div class="footer-home-left">
+      <%= link_to image_tag("follow-facebook.png", alt: "facebook-link"), FACEBOOK_PAGE_LINK %>
+      <%= link_to image_tag("follow-twitter.png", alt: "facebook-link"), TWITTER_PAGE_LINK %>
+    </div>
+  </div>
+
+<!--   <div class="container-share">
+    <div class="share-left">
+      <%= link_to image_tag("follow-facebook.png", alt: "facebook-link"), FACEBOOK_PAGE_LINK %>
+      <%= link_to image_tag("follow-facebook.png", alt: "facebook-link"), FACEBOOK_PAGE_LINK %>
+    </div>
+  </div>  -->
 </section><!-- #content -->

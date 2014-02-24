@@ -26,4 +26,7 @@ ANDROID_STORE_LINK = "https://play.google.com/store/apps/details?id=com.streetsh
 FACEBOOK_PAGE_LINK = "https://www.facebook.com/appcenter/612068318842588"
 TWITTER_PAGE_LINK = "https://twitter.com/ShoutHereAndNow"
 
+TOPAPPLI_LINK = "http://www.topappli.fr/nouveaute-decouvrez-ce-quil-se-passe-autour-de-vous-grace-a-shout_12735"
+WEBZEEN_LINK = "http://www.webzeen.fr/high-tech/applications-mobiles/shout-tous-les-evenements-autour-de-vous-en-temps-reel/12419"
+
 DELETE_ACCOUNT_LINK = "#" #todoBT delete account
