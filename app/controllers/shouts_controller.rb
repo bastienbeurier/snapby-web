@@ -1,5 +1,4 @@
 class ShoutsController < ApplicationController
-  include DevelopmentTasks
 
   # Get shout by id
   # Still used for web sharing
@@ -19,120 +18,6 @@ class ShoutsController < ApplicationController
     end
   end
 
- # ---------------------------------------------------------------------------------------
- # Deprecated from v2
- # ---------------------------------------------------------------------------------------
-  #Create a shout
-  def create
-    Rails.logger.debug "BAB create params: #{params}"
-
-    params[:source] = "native"
-    params[:display_name] = params[:user_name]
-    #Make v1 shouts work with v2
-    params[:username] = params[:user_name]
-    params[:user_id] = 0
-    params[:removed] = false
-
-    shout = Shout.new(shout_params)
-    success = shout.save
-
-    if success
-      render json: {result: shout}, status: 201
-    else 
-      render :json => { :errors => ["Failed to save shout"] }, :status => 500
-    end
-  end
-
-  #Retrieve shouts within a zone (bouding box)
-  def bound_box_shouts
-    Rails.logger.debug "BAB zone_shouts params: #{params}"
-    max_age = Time.now - SHOUT_DURATION
-
-    shouts = Shout.where("created_at >= :max_age", {:max_age => max_age}).in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).limit(100).order("created_at DESC")
-      
-    Rails.logger.debug "BAB rbound_box_shouts response: #{shouts.collect(&:created_at)}"
-
-    render json: {result: shouts}, status: 200
-  end
-
-  #Not used anymore (for testing purposes)
-  #Retrieve most recent shouts for the feed with pagination
-  def global_feed_shouts
-    Rails.logger.debug "BAB global_feed_shouts params: #{params}"
-
-    per_page = params[:per_page] ? params[:per_page] : 100
-    page = params[:page] ? params[:page] : 1
-
-    max_age = Time.now - SHOUT_DURATION
-
-    shouts = Shout.where("source = 'native' AND created_at >= :max_age", {:max_age => max_age}).paginate(page: page, per_page: per_page).order('id DESC')
-
-    render json: {result: shouts}, status: 200
-  end
-
-  #User flags an abusive shout
-  def flag_shout
-    Rails.logger.debug "BAB report_shout params: #{params}"
-
-    shout = Shout.find(params[:id])
-    
-    if !shout or !params[:device_id] or !params[:motive]
-      render :json => { :errors => ["Incomplete information to flag shout"]}, :status => 406 
-      return
-    end
-
-    #todo later: check if not too many recent flags from this user (advised by Truchof)
-
-    flagged_shout = FlaggedShout.find_by_shout_id(params[:id])
-
-    motives = ["abuse", "spam", "privacy", "inaccurate", "other"]
-
-    #Case where the shout is flagged for the first time
-    if !flagged_shout
-      params[:motive] = motives[params[:motive].to_i]
-      params[:shout_id] = params[:id]
-      flagged_shout = FlaggedShout.new(flag_params)
-    #Case where the shout has already been flagged, but never by that user
-    elsif !flagged_shout.device_id.split(",").include?(params[:device_id])
-      flagged_shout.device_id += "," + params[:device_id]
-      #if more than 5 flags, automatically remove shout and add it to removed_shouts column in db
-      if flagged_shout.device_id.split(",").count >= 5
-        removed_shout = RemovedShout.create(shout_id: shout.id,
-                                            lat: shout.lat,
-                                            lng: shout.lng,
-                                            description: shout.description,
-                                            display_name: shout.display_name,
-                                            image: shout.image,
-                                            source: shout.source, 
-                                            shout_created_at: shout.created_at,
-                                            device_id: shout.device_id,
-                                            removed_by: "auto")
-        shout.destroy
-      end
-    #Case where this user already flagged this shout
-    else
-      render json: {errors: ["Shout already flagged by user"]}, status: 422
-      return
-    end
-
-    #send mail (specified if automatically removed)
-    UserMailer.flagged_shout_email(flagged_shout,shout).deliver
-
-    if flagged_shout.save
-      render json: {result: "Shout successfully flagged"}, status: 200
-    else 
-      render json: {errors: ["Failed to flag shout"]}, status: 500
-    end
-  end
-
-  #For development only
-  def demo
-    if Rails.env.development?
-      DevelopmentTasks.demo
-    end
-    render json: {result: "Demo ready to start"}, status: 200
-  end
-
   def obsolete_api
     Rails.logger.debug "TRUCHOV API_Version params: #{params}"
     if ! ACCEPTED_APIS.include?(params[:api_version].to_f)
@@ -141,18 +26,4 @@ class ShoutsController < ApplicationController
       render json: {result: "OK", status: 200}
     end
   end
-
-
-# ---------------------------------------------------------------------------------------
-
-private 
-
-  def shout_params
-    params.permit(:lat, :lng, :display_name, :description, :source, :device_id, :image, :username, :user_id, :removed)
-  end
-
-  def flag_params
-    params.permit(:shout_id, :device_id, :motive)
-  end
-
 end
