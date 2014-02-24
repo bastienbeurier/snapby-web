@@ -14,5 +14,7 @@ class Shout < ActiveRecord::Base
   validates :lat,         presence: true
   validates :lng,         presence: true
   validates :source,      presence: true
-  #todo add validates user_id, presence:true
+  validates :user_id,     presence: true
+  validates :username,    presence: true
+  #add validates image
 end

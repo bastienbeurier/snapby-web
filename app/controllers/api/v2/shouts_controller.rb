@@ -7,8 +7,6 @@ class Api::V2::ShoutsController < Api::V2::ApiController
 
     params[:source] = "native"
     params[:user_id] = current_user.id
-    #Remove after v1 is obsolete
-    params[:display_name] = params[:username]
 
     shout = Shout.new(shout_params)
 
@@ -56,6 +54,6 @@ class Api::V2::ShoutsController < Api::V2::ApiController
 private 
 
   def shout_params
-    params.permit(:lat, :lng, :username, :display_name, :description, :source, :user_id, :image)
+    params.permit(:lat, :lng, :username, :description, :source, :user_id, :image)
   end
 end
