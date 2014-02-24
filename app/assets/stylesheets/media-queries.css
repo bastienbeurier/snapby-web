@@ -18,14 +18,15 @@
     text-align: center;
     position: relative;
     padding-bottom: 50px;
-    bottom: 100px;}
+    bottom: 80px;}
   #product-container #device,
   #product-container #device-2nd {
     display: none !important; }
     #product-container #product-info h1 {
-      font-size: 75px;}
-    #product-container #product-info p {
-      font-size: 27px;}
+      font-size: 80px;}
+    #product-container #product-info h2 {
+      font-size: 18px;
+      margin: 0 0 35px 0; }
 
   /* Title */
   #title_blue {
@@ -84,8 +85,10 @@
     text-align: center;
     position: relative;
     bottom: auto;
-    margin-bottom: 50px;
+    bottom: 30px;
     padding: 0 0 40px 0; }
+    #product-container #product-info h2 {
+      margin: 0 0 60px 0; }
 
 
   /* FOOTER */

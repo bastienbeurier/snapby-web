@@ -124,20 +124,26 @@ a {
   position: relative;
   z-index: 20;}
   #product-container #product-info {
-    font-family: 'Ubuntu-Title-webfont';
     position: absolute;
     right: 0;
     text-align: center;
     bottom: 200px;
-    width: 450px; }
+    width: 550px; }
     #product-container #product-info h1 {
-      font-size: 100px;
-      margin: 0 0 -10px 0;
+      font-family: 'Ubuntu-Title-webfont';
+      font-size: 120px;
+      margin: 0 0 -20px 0;
       line-height: 1.25em; 
       text-align: center;}
-    #product-container #product-info p {
+    #product-container #product-info h2 {
       margin: 0 0 40px 0; 
-      font-size: 35px;
+      font-size: 30px;
+      text-align: center;}
+      #product-container #product-info p {
+      margin: -10px 0 40px 0; 
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 130%;
       text-align: center;}
     #product-container #product-info a {
       display: inline-block;
@@ -145,6 +151,9 @@ a {
       margin: auto;
       vertical-align: middle;
       text-align: center}
+    #product-container #product-info #store-links {
+      padding-right: 20px;
+    }
   #product-container #device {
     background: #555;
     width: 550px;

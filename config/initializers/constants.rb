@@ -23,4 +23,7 @@ WEBSITE_HOME = "www.shouthereandnow.com"
 APPLE_STORE_LINK = "http://itunes.apple.com/app/id734887535?mt=8"
 ANDROID_STORE_LINK = "https://play.google.com/store/apps/details?id=com.streetshout.android"
 
+FACEBOOK_PAGE_LINK = "https://www.facebook.com/appcenter/612068318842588"
+TWITTER_PAGE_LINK = "https://twitter.com/ShoutHereAndNow"
+
 DELETE_ACCOUNT_LINK = "#" #todoBT delete account

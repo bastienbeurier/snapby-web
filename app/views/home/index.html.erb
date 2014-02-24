@@ -5,10 +5,19 @@
   <div id="product-container" class="container android-phone-portrait">
     <div id="product-info">
       <h1>shout</h1>
-      <p>here & now</p>
+      <h2>Here & Now</h2>
+      <p>The city guide of spontaneous events</p>
 
-      <%= link_to image_tag("badge_apple_store.png", alt: "Android"), APPLE_STORE_LINK %>
-      <%= link_to image_tag("badge_android_store.png", alt: "Android"), ANDROID_STORE_LINK %>
+      <div id="store-links">
+        <%= link_to image_tag("badge_apple_store.png", alt: "apple-store-link"), APPLE_STORE_LINK %>
+        <%= link_to image_tag("badge_android_store.png", alt: "play-store-link"), ANDROID_STORE_LINK %>
+      </div>
+      
+
+      <div>
+        <%= link_to image_tag("follow-facebook.png", alt: "facebook-link"), FACEBOOK_PAGE_LINK %>
+        <%= link_to image_tag("follow-twitter.png", alt: "twitter-link"), TWITTER_PAGE_LINK %>
+      </div>
     </div>
 
     <div id="device">
