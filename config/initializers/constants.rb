@@ -30,3 +30,5 @@ TOPAPPLI_LINK = "http://www.topappli.fr/nouveaute-decouvrez-ce-quil-se-passe-aut
 WEBZEEN_LINK = "http://www.webzeen.fr/high-tech/applications-mobiles/shout-tous-les-evenements-autour-de-vous-en-temps-reel/12419"
 
 DELETE_ACCOUNT_LINK = "#" #todoBT delete account
+
+ANONYMOUS_USERNAME = "Anonymous"
