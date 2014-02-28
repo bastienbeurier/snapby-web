@@ -10,6 +10,8 @@ class Api::V2::ShoutsController < Api::V2::ApiController
 
     shout = Shout.new(shout_params)
 
+    shout.anonymous = params[:anonymous] == "1"
+
     if shout.save
       render json: { result: { shout: shout } }, status: 201
     else 
@@ -23,6 +25,9 @@ class Api::V2::ShoutsController < Api::V2::ApiController
     shout = Shout.find_by(id: params[:id])
 
     if shout
+      if shout.anonymous
+        shout.username = ANONYMOUS_USERNAME
+      end
       render json: { result: { shout: shout } }, status: 200
     else
       render json: { errors: { internal: ["failed to retrieve shout"] } }, :status => 500
@@ -48,6 +53,11 @@ class Api::V2::ShoutsController < Api::V2::ApiController
 
     shouts = Shout.where("created_at >= :max_age", {:max_age => max_age}).in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).limit(100).order("created_at DESC")
 
+    shouts.each do |shout|
+      if shout.anonymous
+        shout.username = ANONYMOUS_USERNAME
+      end
+    end
     render json: {result: {shouts: shouts } }, status: 200
   end
 

@@ -11,13 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140124112208) do
-
-  create_table "black_listed_devices", force: true do |t|
-    t.string   "device_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20140228164516) do
 
   create_table "comments", force: true do |t|
     t.integer  "shout_id"
@@ -32,32 +26,6 @@ ActiveRecord::Schema.define(version: 20140124112208) do
   end
 
   add_index "comments", ["shout_id"], name: "index_comments_on_shout_id", using: :btree
-
-  create_table "devices", force: true do |t|
-    t.string   "device_id"
-    t.string   "push_token"
-    t.float    "lat"
-    t.float    "lng"
-    t.integer  "notification_radius"
-    t.string   "device_model"
-    t.string   "os_version"
-    t.string   "os_type"
-    t.string   "app_version"
-    t.string   "api_version"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "devices", ["device_id"], name: "index_devices_on_device_id", unique: true, using: :btree
-
-  create_table "flagged_shouts", force: true do |t|
-    t.integer  "shout_id"
-    t.string   "motive"
-    t.string   "device_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "user_ids"
-  end
 
   create_table "flags", force: true do |t|
     t.integer "shout_id"
@@ -76,22 +44,6 @@ ActiveRecord::Schema.define(version: 20140124112208) do
   end
 
   add_index "likes", ["shout_id"], name: "index_likes_on_shout_id", using: :btree
-
-  create_table "removed_shouts", force: true do |t|
-    t.integer  "shout_id"
-    t.float    "lat"
-    t.float    "lng"
-    t.string   "description"
-    t.string   "display_name"
-    t.string   "source"
-    t.string   "device_id"
-    t.string   "image"
-    t.string   "removed_by"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.datetime "shout_created_at"
-    t.integer  "user_id"
-  end
 
   create_table "scheduled_shouts", force: true do |t|
     t.float    "lat"
@@ -116,13 +68,12 @@ ActiveRecord::Schema.define(version: 20140124112208) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "display_name"
     t.string   "source"
-    t.string   "device_id"
     t.string   "image"
     t.integer  "user_id"
     t.string   "username"
-    t.boolean  "removed",      default: false
+    t.boolean  "removed",     default: false
+    t.boolean  "anonymous",   default: false
   end
 
   create_table "user_notifications", force: true do |t|

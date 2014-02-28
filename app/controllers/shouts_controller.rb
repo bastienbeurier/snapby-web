@@ -7,6 +7,9 @@ class ShoutsController < ApplicationController
     @shout = Shout.find_by(id: params[:id])
 
     if @shout
+      if @shout.anonymous
+        @shout.username = ANONYMOUS_USERNAME
+      end
       respond_to do |format|
         format.html
         format.json { render json: {result: @shout}, status: 200 }
