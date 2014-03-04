@@ -17,8 +17,7 @@ class Api::V2::LikesController < Api::V2::ApiController
     like = Like.new(like_params)  
     
     if like.save
-      shout.like_count += 1
-      shout.save
+      shout.update_attributes(like_count: shout.like_count + 1)
       render json: { result: { like_count: shout.like_count } }, status: 201
     else 
       render json: { errors: { internal: like.errors } }, :status => 500
