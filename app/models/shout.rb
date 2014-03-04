@@ -10,7 +10,7 @@ class Shout < ActiveRecord::Base
                     :lat_column_name => :lat,
                     :lng_column_name => :lng
 
-  validates :description, presence: true, length: { maximum: 140 }
+  validates :description, length: { maximum: 140 }
   validates :lat,         presence: true
   validates :lng,         presence: true
   validates :source,      presence: true
