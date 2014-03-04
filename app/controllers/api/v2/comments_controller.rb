@@ -11,6 +11,8 @@ class Api::V2::CommentsController < Api::V2::ApiController
 
     if comment.save
       shout = Shout.find(params[:shout_id])
+      shout.comment_count += 1
+      shout.save
       render json: { result: { comments: shout.comments.reverse } }, status: 201
     else 
       render json: { errors: { internal: comment.errors } }, :status => 500

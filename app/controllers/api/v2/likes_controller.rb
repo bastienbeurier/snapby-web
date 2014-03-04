@@ -17,8 +17,9 @@ class Api::V2::LikesController < Api::V2::ApiController
     like = Like.new(like_params)  
     
     if like.save
-      shout = Shout.find(params[:shout_id])
-      render json: { result: { like_count: shout.likes.count } }, status: 201
+      shout.like_count += 1
+      shout.save
+      render json: { result: { like_count: shout.like_count } }, status: 201
     else 
       render json: { errors: { internal: like.errors } }, :status => 500
     end
@@ -37,6 +38,16 @@ class Api::V2::LikesController < Api::V2::ApiController
 
     #TODO: handle when there is a lot of likes (not for now)
     render json: {result: {likes: shout.likes.reverse } }, status: 200
+  end
+
+  #Get user likes
+  def user_likes
+    Rails.logger.debug "BAB user_likes params: #{params}"
+
+    likes = Like.where("created_at >= :max_age AND liker_id = :current_user_id", {max_age: max_age, current_user_id: current_user.id})
+
+    #TODO: handle when there is a lot of likes (not for now)
+    render json: {result: {likes: likes } }, status: 200
   end
 
 private
