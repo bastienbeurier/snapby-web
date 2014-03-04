@@ -35,7 +35,7 @@ module PushNotification
       user_notification.save!
     end
 
-    message = '"' + shout.description + '"'
+    message = 'Check this shout in your area!'
     android_extra = {shout: shout.to_json}
     ios_extra = {shout_id: shout.id}
 
