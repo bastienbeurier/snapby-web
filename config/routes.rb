@@ -36,6 +36,7 @@ StreetShout::Application.routes.draw do
       get  "/get_shout_meta_data" => "shouts#get_shout_meta_data"
       patch "/modify_user_credentials" => "users#modify_user_credentials"
       put "/modify_user_credentials" => "users#modify_user_credentials"
+      get  "/user_likes" => "likes#user_likes"
     end
   end
 end
