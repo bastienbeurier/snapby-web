@@ -11,6 +11,7 @@ class Api::V2::ShoutsController < Api::V2::ApiController
     shout = Shout.new(shout_params)
 
     shout.anonymous = params[:anonymous] == "1"
+    shout.trending = params[:trending] == "1"
 
     if shout.save
       render json: { result: { shout: shout } }, status: 201
