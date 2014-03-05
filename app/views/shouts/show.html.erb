@@ -43,7 +43,9 @@
             <%= image_tag("shout-place-holder.png") %> 
           <% end %>
 
-         	<h2><span> <%= @shout.description %> </span></p>
+          <% if ! @shout.description.empty? %>
+         	  <h2><span> <%= @shout.description %> </span></h2>
+          <% end %>
         </div>
       </div>
     </section>

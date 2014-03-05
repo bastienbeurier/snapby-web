@@ -12,9 +12,6 @@ StreetShout::Application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
-  # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = true
-
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
 
@@ -31,7 +28,7 @@ StreetShout::Application.configure do
   config.action_mailer.raise_delivery_errors = true
   ActionMailer::Base.smtp_settings = {
       :address        => 'smtp.gmail.com',
-      :domain         => 'http://www.shouthereandnow.com',
+      :domain         => 'http://dev-street-shout.herokuapp.com/',
       :port           => 587,
       :user_name      => SENDER_EMAIL_,
       :password       => ENV['INFO_MAIL_PASS'],

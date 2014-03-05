@@ -18,7 +18,7 @@ CONTACT_EMAIL = "info@shouthereandnow.com"
 SENDER_EMAIL = SENDER_EMAIL_
 FLAG_EMAIL = "info@shouthereandnow.com"
 
-WEBSITE_HOME = "www.shouthereandnow.com"
+WEBSITE_HOME = "www.shouthereandnow.com/"
 
 APPLE_STORE_LINK = "http://itunes.apple.com/app/id734887535?mt=8"
 ANDROID_STORE_LINK = "https://play.google.com/store/apps/details?id=com.streetshout.android"
