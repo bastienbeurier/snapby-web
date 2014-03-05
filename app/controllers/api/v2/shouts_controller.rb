@@ -62,6 +62,17 @@ class Api::V2::ShoutsController < Api::V2::ApiController
     render json: {result: {shouts: shouts } }, status: 200
   end
 
+  # Remove shout (for the shouter only)
+  def remove
+    if current_user.id == params[:shouter_id]
+      shout = Shout.find(params[:shout_id])
+      shout.update_attributes(removed: true)
+      render json: {result: { messages: ["shout successfully removed"] } }, status: 200
+    else
+      render json: { errors: { internal: ["The shout does not belong to the current user"] } }, :status => 500
+    end
+  end
+
 private 
 
   def shout_params
