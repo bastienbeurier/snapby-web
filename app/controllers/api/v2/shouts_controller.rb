@@ -64,7 +64,8 @@ class Api::V2::ShoutsController < Api::V2::ApiController
 
   # Remove shout (for the shouter only)
   def remove
-    if current_user.id == params[:shouter_id]
+    Rails.logger.debug "TRUCHOV remove_shouts params: #{params}"
+    if current_user.id == params[:shouter_id].to_i
       shout = Shout.find(params[:shout_id])
       shout.update_attributes(removed: true)
       render json: {result: { messages: ["shout successfully removed"] } }, status: 200
