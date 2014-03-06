@@ -54,6 +54,7 @@ class Api::V2::LikesController < Api::V2::ApiController
 
     if likes.count < 1
       render json: { errors: { internal: ["User did not like this shout"] } }, :status => 500
+      return
     end
 
     if likes.destroy_all
