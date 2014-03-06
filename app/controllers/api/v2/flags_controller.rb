@@ -14,7 +14,7 @@ class Api::V2::FlagsController < Api::V2::ApiController
     existing_flags = Flag.where(shout_id: shout.id)
 
     #Case where this user already flagged this shout
-    if existing_flags.collect(&:flagger_id).include?(params[:flagger_id])
+    if existing_flags.collect(&:flagger_id).include?(params[:flagger_id].to_i)
       render json: {errors: { duplicate: ["shout already flagged by user"] } }, status: 422
       return
     else
@@ -26,7 +26,7 @@ class Api::V2::FlagsController < Api::V2::ApiController
           shout.update_attributes(removed: true)
         end
 
-        #send mail (specified if automatically removed)
+        #send mail
         begin
           UserMailer.flagged_shout_email(flag,shout).deliver
         rescue Exception => e

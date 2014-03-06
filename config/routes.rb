@@ -27,7 +27,7 @@ StreetShout::Application.routes.draw do
       resources :flags, only: [:create]
       resources :shouts, only: [:create, :show]
       resources :comments, only: [:create, :index]
-      resources :likes, only: [:create, :index]
+      resources :likes, only: [:create, :index, :destroy]
       devise_for :users, :skip => [:registrations], :controllers => { sessions:'api/v2/sessions', passwords:'api/v2/passwords' } # custom controller for API token access with devise
 
       get "/obsolete_api" => "api#obsolete_api"
@@ -37,6 +37,9 @@ StreetShout::Application.routes.draw do
       patch "/modify_user_credentials" => "users#modify_user_credentials"
       put "/modify_user_credentials" => "users#modify_user_credentials"
       get  "/user_likes" => "likes#user_likes"
+      put  "shouts/remove" => "shouts#remove"
+      patch  "shouts/remove" => "shouts#remove"
+      patch  "shouts/trending" => "shouts#trending"
     end
   end
 end

@@ -17,7 +17,14 @@ class Api::V2::LikesController < Api::V2::ApiController
     like = Like.new(like_params)  
     
     if like.save
+      # update counter in shout
       shout.update_attributes(like_count: shout.like_count + 1)
+
+      # if 5 likes, mark as trending
+      if shout.like_count == TRENDING_LIKES_COUNT
+        shout.update_attributes(trending: true)
+      end
+
       render json: { result: { like_count: shout.like_count } }, status: 201
     else 
       render json: { errors: { internal: like.errors } }, :status => 500
@@ -36,17 +43,20 @@ class Api::V2::LikesController < Api::V2::ApiController
     shout = Shout.find(params[:shout_id])
 
     #TODO: handle when there is a lot of likes (not for now)
-    render json: {result: {likes: shout.likes.reverse } }, status: 200
+    render json: { result: {likes: shout.likes.reverse } }, status: 200
   end
 
-  #Get user likes
-  def user_likes
-    Rails.logger.debug "BAB user_likes params: #{params}"
 
-    likes = Like.where("created_at >= :max_age AND liker_id = :current_user_id", {max_age: max_age, current_user_id: current_user.id})
-
-    #TODO: handle when there is a lot of likes (not for now)
-    render json: {result: {likes: likes } }, status: 200
+  def destroy
+    Rails.logger.debug "TRUCHOV remove_likes params: #{params}"
+ 
+    if Like.where("liker_id = ? AND shout_id =?", current_user.id, params[:shout_id]).destroy_all
+      shout = Shout.find(params[:shout_id])
+      shout.update_attributes(like_count: shout.like_count - 1)
+      render json: { result: { messages: ["Like successfully destroyed"] } }, status: 200
+    else
+      render json: { errors: { internal: ["User did not like this shout"] } }, :status => 500
+    end
   end
 
 private

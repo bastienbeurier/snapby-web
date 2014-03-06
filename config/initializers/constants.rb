@@ -7,6 +7,8 @@ ACCEPTED_APIS = [2]
 MAX_USERNAME_LENGTH = 20
 MIN_USERNAME_LENGTH = 1
 
+TRENDING_LIKES_COUNT = 5
+
 SHOUT_COMPANY_NAME = "Street Shout Inc."
 SHOUT_TRADEMARK_NAME = "Shout - Here & Now\u2122"
 SHOUT_SHORT_NAME = "Shout"
@@ -18,7 +20,7 @@ CONTACT_EMAIL = "info@shouthereandnow.com"
 SENDER_EMAIL = SENDER_EMAIL_
 FLAG_EMAIL = "info@shouthereandnow.com"
 
-WEBSITE_HOME = "www.shouthereandnow.com"
+WEBSITE_HOME = "www.shouthereandnow.com/"
 
 APPLE_STORE_LINK = "http://itunes.apple.com/app/id734887535?mt=8"
 ANDROID_STORE_LINK = "https://play.google.com/store/apps/details?id=com.streetshout.android"
