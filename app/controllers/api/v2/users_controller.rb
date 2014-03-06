@@ -28,8 +28,12 @@ class Api::V2::UsersController < Api::V2::ApiController
       current_user.lng = params[:lng]
     end
 
+    max_age = Time.now - SHOUT_DURATION
+    user_likes = Like.where("created_at >= :max_age AND liker_id = :current_user_id", 
+      {max_age: max_age, current_user_id: current_user.id})
+
     if current_user.save
-      render json: { result: {user: current_user } }, status: 201
+      render json: { result: {user: current_user, likes: user_likes} }, status: 201
     else 
       render json: { errors: ["Failed to update user info"] }, :status => 500 
     end

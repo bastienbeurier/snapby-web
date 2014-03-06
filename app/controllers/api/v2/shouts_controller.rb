@@ -1,4 +1,5 @@
 class Api::V2::ShoutsController < Api::V2::ApiController
+  include ApplicationHelper
   skip_before_filter :authenticate_user!, :only => [:show, :bound_box_shouts, :get_shout_meta_data]
 
   #Create a shout
@@ -59,18 +60,26 @@ class Api::V2::ShoutsController < Api::V2::ApiController
         shout.username = ANONYMOUS_USERNAME
       end
     end
-    render json: {result: {shouts: shouts } }, status: 200
+    render json: { result: {shouts: shouts } }, status: 200
   end
 
   # Remove shout (for the shouter only)
   def remove
     Rails.logger.debug "TRUCHOV remove_shouts params: #{params}"
-    if current_user.id == params[:shouter_id].to_i
-      shout = Shout.find(params[:shout_id])
+    shout = Shout.find(params[:shout_id])
+    if current_user.id == shout.user_id or isAdmin
       shout.update_attributes(removed: true)
-      render json: {result: { messages: ["shout successfully removed"] } }, status: 200
+      render json: { result: { messages: ["shout successfully removed"] } }, status: 200
     else
       render json: { errors: { internal: ["The shout does not belong to the current user"] } }, :status => 500
+    end
+  end
+
+  def trending
+    shout = Shout.find(params[:shout_id])
+    if isAdmin
+      shout.update_attributes(trending: true)
+      render json: { result: { messages: ["Trended baby"] } }, status: 200
     end
   end
 
