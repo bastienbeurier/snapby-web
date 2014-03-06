@@ -41,6 +41,7 @@ StreetShout::Application.routes.draw do
       patch  "shouts/remove" => "shouts#remove"
       put  "shouts/trending" => "shouts#trending"
       patch  "shouts/trending" => "shouts#trending"
+      post "likes/delete" => "shouts#destroy"
     end
   end
 end
