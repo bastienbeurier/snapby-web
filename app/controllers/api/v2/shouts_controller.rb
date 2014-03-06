@@ -67,7 +67,7 @@ class Api::V2::ShoutsController < Api::V2::ApiController
   def remove
     Rails.logger.debug "TRUCHOV remove_shouts params: #{params}"
     shout = Shout.find(params[:shout_id])
-    if current_user.id == shout.user_id or isAdmin
+    if current_user.id == shout.user_id or is_admin
       shout.update_attributes(removed: true)
       render json: { result: { messages: ["shout successfully removed"] } }, status: 200
     else
@@ -77,7 +77,7 @@ class Api::V2::ShoutsController < Api::V2::ApiController
 
   def trending
     shout = Shout.find(params[:shout_id])
-    if isAdmin
+    if is_admin
       shout.update_attributes(trending: true)
       render json: { result: { messages: ["Trended baby"] } }, status: 200
     end
