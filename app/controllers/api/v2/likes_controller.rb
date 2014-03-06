@@ -50,7 +50,13 @@ class Api::V2::LikesController < Api::V2::ApiController
   def destroy
     Rails.logger.debug "TRUCHOV remove_likes params: #{params}"
  
-    if Like.where("liker_id = ? AND shout_id =?", current_user.id, params[:shout_id]).destroy_all
+    likes = Like.where("liker_id = ? AND shout_id =?", current_user.id, params[:shout_id])
+
+    if likes.count < 1
+      render json: { errors: { internal: ["User did not like this shout"] } }, :status => 500
+    end
+
+    if likes.destroy_all
       shout = Shout.find(params[:shout_id])
       shout.update_attributes(like_count: shout.like_count - 1)
       render json: { result: { messages: ["Like successfully destroyed"] } }, status: 200
