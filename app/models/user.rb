@@ -1,7 +1,13 @@
 class User < ActiveRecord::Base
   has_many :shouts
-  has_many :likes, :foreign_key => 'liker_id'
+  has_many :likes, foreign_key: 'liker_id'
   has_one :user_notification
+
+  has_many :relationships, foreign_key: "follower_id", dependent: :destroy
+  has_many :reverse_relationships, foreign_key: "followed_id", class_name:  "Relationship", dependent: :destroy
+
+  has_many :followed_users, through: :relationships, source: :followed
+  has_many :followers, through: :reverse_relationships
 
   acts_as_mappable  :default_units => :kms, 
                     :default_formula => :sphere, 
@@ -18,5 +24,17 @@ class User < ActiveRecord::Base
   validates :email, presence: true
   validates :password, presence: true , on: :create #between 6..128 chars (defined in Devise config)
   validates :username, presence: true, length: { minimum: MIN_USERNAME_LENGTH, maximum: MAX_USERNAME_LENGTH }
+
+  def following?(other_user)
+    relationships.find_by(followed_id: other_user.id) ? true : false
+  end
+
+  def follow!(other_user)
+    relationships.create!(followed_id: other_user.id)
+  end
+
+  def unfollow!(other_user)
+    relationships.find_by(followed_id: other_user.id).destroy
+  end
 
 end
