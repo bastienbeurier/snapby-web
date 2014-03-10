@@ -4,16 +4,6 @@ StreetShout::Application.routes.draw do
   patch  "/users/password" => "passwords#update"
   root :to => "home#index"
 
-  get "/zone_shouts" => "shouts#zone_shout"
-  get "/bound_box_shouts" => "shouts#bound_box_shouts"
-  get "/global_feed_shouts" => "home#global_feed_shouts"
-  get "/demo" => "shouts#demo"
-
-  post "/update_device_info" => "devices#update_device_info"
-  post "/flag_shout" => "shouts#flag_shout"
-
-  get "/black_listed_devices" => "devices#black_listed_devices"
-
   get "/about" => "home#about"
   get "/privacy" => "home#privacy"
   get "/terms" => "home#terms"
@@ -23,11 +13,17 @@ StreetShout::Application.routes.draw do
 
   namespace :api do
     namespace :v2  do
-      resources :users, only: [:create, :update]
+      resources :users, only: [:create, :update] do
+        member do
+          get :followed_users, :followers
+        end
+      end
+
       resources :flags, only: [:create]
       resources :shouts, only: [:create, :show]
       resources :comments, only: [:create, :index]
       resources :likes, only: [:create, :index, :destroy]
+      resources :relationships, only: [:create]
       devise_for :users, :skip => [:registrations], :controllers => { sessions:'api/v2/sessions', passwords:'api/v2/passwords' } # custom controller for API token access with devise
 
       get "/obsolete_api" => "api#obsolete_api"
@@ -42,6 +38,8 @@ StreetShout::Application.routes.draw do
       put  "shouts/trending" => "shouts#trending"
       patch  "shouts/trending" => "shouts#trending"
       post "likes/delete" => "likes#destroy"
+      post "relationships/delete" => "relationships#destroy"
+      get "users/info" => "users#user_info"
     end
   end
 end

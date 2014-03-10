@@ -77,6 +77,28 @@ class Api::V2::UsersController < Api::V2::ApiController
     end
   end
 
+  def followed_users
+    user = User.find(params[:user_id])
+    users = user.followed_users
+    render json: { result: { followed_users: users} }, status: 201
+  end
+
+  def followers
+    user = User.find(params[:user_id])
+    users = user.followers
+    render json: { result: { followers: users} }, status: 201
+  end
+
+  # info for user profile
+  def user_info
+    user = User.find(params[:user_id])
+    followers_count = user.followers.count
+    is_followed = current_user.following?(user)
+    followed_count = user.followed_users.count
+
+    render json: { result: { user: user, followers_count: followers_count, is_followed: is_followed,
+                                                            followed_count: followed_count} }, status: 201
+  end
 
 private 
 
