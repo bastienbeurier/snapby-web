@@ -1,7 +1,7 @@
 class Api::V2::RelationshipsController < Api::V2::ApiController
 
   def create
-    if params[:followed_id] == current_user.id 
+    if  current_user.id == params[:followed_id].to_i
       render json: { errors: { internal: ["User can't follow himself"] } }, :status => 500
     else
       user = User.find(params[:followed_id])
