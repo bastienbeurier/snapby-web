@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   validates :username, presence: true, length: { minimum: MIN_USERNAME_LENGTH, maximum: MAX_USERNAME_LENGTH }
 
   def following?(other_user)
-    relationships.find_by(followed_id: other_user.id).nil?
+    !relationships.find_by(followed_id: other_user.id).nil?
   end
 
   def follow!(other_user)
