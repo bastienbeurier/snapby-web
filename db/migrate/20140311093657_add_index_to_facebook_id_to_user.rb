@@ -1,5 +1,5 @@
 class AddIndexToFacebookIdToUser < ActiveRecord::Migration
   def change
-  	add_index :user, :facebook_id
+  	add_index :users, :facebook_id
   end
 end
