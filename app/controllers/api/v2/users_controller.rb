@@ -77,7 +77,7 @@ class Api::V2::UsersController < Api::V2::ApiController
     end
   end
 
-  def autofollow
+  def create_relationships_from_facebook_friends
     params[:friend_ids].each { |friend_id|
       user = User.find_by(facebook_id: friend_id)
       if user

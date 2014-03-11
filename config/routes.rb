@@ -40,7 +40,7 @@ StreetShout::Application.routes.draw do
       post "likes/delete" => "likes#destroy"
       post "relationships/delete" => "relationships#destroy"
       get "users/info" => "users#user_info"
-      post "users/autofollow" => "users#autofollow"
+      post "users/autofollow" => "users#create_relationships_from_facebook_friends"
     end
   end
 end
