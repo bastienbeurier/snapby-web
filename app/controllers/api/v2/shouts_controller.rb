@@ -15,6 +15,10 @@ class Api::V2::ShoutsController < Api::V2::ApiController
     shout.trending = params[:trending] == "1"
 
     if shout.save
+      # update shout_count
+      if !shout.anonymous
+        shout.user.update_attributes(shout_count: shout.user.shout_count + 1)
+      end
       render json: { result: { shout: shout } }, status: 201
     else 
       render json: { errors: { internal: shout.errors } }, :status => 500
