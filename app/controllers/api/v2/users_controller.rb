@@ -55,7 +55,7 @@ class Api::V2::UsersController < Api::V2::ApiController
   end
 
   def facebook_create_or_update
-    # todoBT there is a security issue here
+ 
     user = User.find_by_email(params[:email])
     
     if user
@@ -75,6 +75,16 @@ class Api::V2::UsersController < Api::V2::ApiController
     else
       render json: { errors: ["Failed to create or update user with facebook"] }, status: 500 
     end
+  end
+
+  def create_relationships_from_facebook_friends
+    params[:friend_ids].each { |friend_id|
+      user = User.find_by(facebook_id: friend_id)
+      if user
+        current_user.mutual_follow!(user)
+      end
+    }
+    render json: { result: ["Autofollow successfully complete"] }, status: 201
   end
 
   def followed_users

@@ -8,7 +8,7 @@ StreetShout::Application.routes.draw do
   get "/privacy" => "home#privacy"
   get "/terms" => "home#terms"
   get "/contact" => "home#contact"
-
+  get "/global_feed_shouts" => "home#global_feed_shouts"
   get "/obsolete_api" => "shouts#obsolete_api"
 
   namespace :api do
@@ -40,6 +40,7 @@ StreetShout::Application.routes.draw do
       post "likes/delete" => "likes#destroy"
       post "relationships/delete" => "relationships#destroy"
       get "users/info" => "users#user_info"
+      post "users/autofollow" => "users#create_relationships_from_facebook_friends"
     end
   end
 end
