@@ -18,7 +18,7 @@ class Api::V2::UsersController < Api::V2::ApiController
   def update
     Rails.logger.debug "BAB update user: #{params}"
 
-    current_user.assign_attributes(update_user_params)
+    current_user.assign_attributes(user_params)
 
     if params[:push_token]
       current_user.push_token = params[:push_token]
@@ -85,6 +85,7 @@ class Api::V2::UsersController < Api::V2::ApiController
     end
   end
 
+  # facebook autofollow
   def create_relationships_from_facebook_friends
     params[:friend_ids].each { |friend_id|
       user = User.find_by(facebook_id: friend_id)
@@ -95,12 +96,14 @@ class Api::V2::UsersController < Api::V2::ApiController
     render json: { result: ["Autofollow successfully complete"] }, status: 201
   end
 
+  # get users we follow
   def followed_users
     user = User.find(params[:user_id])
     users = user.followed_users
     render json: { result: { followed_users: User.response_users(users).as_json } }, status: 201
   end
 
+  #get followers
   def followers
     user = User.find(params[:user_id])
     users = user.followers
@@ -117,13 +120,19 @@ class Api::V2::UsersController < Api::V2::ApiController
                                                             followed_count: followed_count} }, status: 201
   end
 
+  # Suggest people to follow
+  def suggested_friends
+    user = User.find(params[:user_id])
+
+    suggested_friends = User.where("lat IS NOT NULL").by_distance(origin: user).first(100)
+                                                              .select{ |u| !user.following?(u) && u != user}
+    sorted_friends = suggested_friends.sort_by(&:shout_count).reverse
+    render json: { result: { suggested_friends: sorted_friends} }, status: 200
+  end
+
 private 
 
   def user_params
-    params.permit(:email, :password, :username, :device_model, :os_version, :os_type, :app_version, :api_version)
-  end
-
-  def update_user_params
     params.permit(:email, :password, :username, :device_model, :os_version, :os_type, :app_version, :api_version)
   end
 
