@@ -25,6 +25,14 @@ class User < ActiveRecord::Base
   validates :password, presence: true , on: :create #between 6..128 chars (defined in Devise config)
   validates :username, presence: true, length: { minimum: MIN_USERNAME_LENGTH, maximum: MAX_USERNAME_LENGTH }
 
+  Paperclip.interpolates :file_name do |attachment, style|
+    "profile_" + attachment.instance.id.to_s
+  end
+
+  # This method associates the attribute ":avatar" with a file attachment
+  has_attached_file :avatar, styles: { thumb: '100x100#' }, path: ":style/:file_name", bucket: "shout_profile_pics"
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
   def following?(other_user)
     relationships.find_by(followed_id: other_user.id).present?
   end
@@ -47,4 +55,19 @@ class User < ActiveRecord::Base
     end
   end
 
+  def profile_picture
+    avatar.url(:thumb)
+  end
+
+  def response_user
+    { id: self.id,
+      email: self.email,
+      username: self.username,
+      black_listed: self.black_listed,
+      profile_picture: self.profile_picture }
+  end
+
+  def self.response_users(users)
+    users.map { |user| user.response_user }
+  end
 end

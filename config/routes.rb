@@ -30,8 +30,8 @@ StreetShout::Application.routes.draw do
       get "/bound_box_shouts" => "shouts#bound_box_shouts"
       post "users/facebook_create_or_update" => "users#facebook_create_or_update"
       get  "/get_shout_meta_data" => "shouts#get_shout_meta_data"
-      patch "/modify_user_credentials" => "users#modify_user_credentials"
-      put "/modify_user_credentials" => "users#modify_user_credentials"
+      patch "/modify_user_credentials" => "users#modify_user_credentials" #deprecated
+      put "/modify_user_credentials" => "users#modify_user_credentials" #deprecated
       get  "/user_likes" => "likes#user_likes"
       put  "shouts/remove" => "shouts#remove"
       patch  "shouts/remove" => "shouts#remove"
@@ -39,8 +39,8 @@ StreetShout::Application.routes.draw do
       patch  "shouts/trending" => "shouts#trending"
       post "likes/delete" => "likes#destroy"
       post "relationships/delete" => "relationships#destroy"
-      get "users/info" => "users#user_info"
       post "users/autofollow" => "users#create_relationships_from_facebook_friends"
+      post "users/get_user_info" => "users#get_user_info"
     end
   end
 end
