@@ -55,16 +55,11 @@ class User < ActiveRecord::Base
     end
   end
 
-  def profile_picture
-    avatar.url(:thumb)
-  end
-
   def response_user
     { id: self.id,
       email: self.email,
       username: self.username,
-      black_listed: self.black_listed,
-      profile_picture: self.profile_picture }
+      black_listed: self.black_listed}
   end
 
   def self.response_users(users)
