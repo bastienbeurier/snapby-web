@@ -20,15 +20,6 @@ class Api::V2::UsersController < Api::V2::ApiController
 
     current_user.assign_attributes(user_params)
 
-    if params[:push_token]
-      current_user.push_token = params[:push_token]
-    end
-    
-    if params[:lat] and params[:lng]
-      current_user.lat = params[:lat]
-      current_user.lng = params[:lng]
-    end
-
     if params[:avatar]
       current_user.avatar = StringIO.new(Base64.decode64(params[:avatar]))
     end
@@ -127,7 +118,7 @@ class Api::V2::UsersController < Api::V2::ApiController
 private 
 
   def user_params
-    params.permit(:email, :password, :username, :device_model, :os_version, :os_type, :app_version, :api_version)
+    params.permit(:email, :password, :username, :device_model, :os_version, :os_type, :app_version, :api_version, :push_token, :lat, :lng)
   end
 
   def facebook_user_params
