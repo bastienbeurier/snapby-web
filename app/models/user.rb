@@ -26,7 +26,11 @@ class User < ActiveRecord::Base
   validates :username, presence: true, length: { minimum: MIN_USERNAME_LENGTH, maximum: MAX_USERNAME_LENGTH }
 
   Paperclip.interpolates :file_name do |attachment, style|
-    "profile_" + attachment.instance.id.to_s
+    if attachment.instance.class.to_s == "Shout"
+      "image_#{attachment.instance.id.to_s}--400"
+    else 
+      "profile_" + attachment.instance.id.to_s
+    end
   end
 
   # This method associates the attribute ":avatar" with a file attachment
@@ -59,7 +63,9 @@ class User < ActiveRecord::Base
     { id: self.id,
       email: self.email,
       username: self.username,
-      black_listed: self.black_listed}
+      black_listed: self.black_listed,
+      lat: self.lat,
+      lng: self.lng }
   end
 
   def self.response_users(users)
