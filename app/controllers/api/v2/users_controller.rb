@@ -121,7 +121,7 @@ class Api::V2::UsersController < Api::V2::ApiController
     suggested_friends = User.where("lat IS NOT NULL").by_distance(origin: current_user).first(100)
                                                               .select{ |user| !current_user.following?(user) && user != current_user}
     sorted_friends = suggested_friends.sort_by(&:shout_count).reverse
-    render json: { result: { suggested_friends: sorted_friends.response_users} }, status: 200
+    render json: { result: { suggested_friends: User.response_users(sorted_friends)} }, status: 200
   end
 
 private 
