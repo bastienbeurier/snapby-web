@@ -3,8 +3,12 @@ namespace :fb_profile_pic do
   task save_fb_pic: :environment do
   	a = 0
   	User.all.each { |user|
-  		if user.facebook_id && user.username.length < 20
-  			user.avatar = open("http://graph.facebook.com/#{user.username}/picture")
+  		if user.facebook_id and user.username.length < 20
+  			begin
+  				user.avatar = open("http://graph.facebook.com/#{user.username}/picture")
+  			rescue Exception => e
+  				next
+  			end
       		user.save
       		a += 1
       	end
