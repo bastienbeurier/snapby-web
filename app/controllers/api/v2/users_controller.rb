@@ -87,11 +87,8 @@ class Api::V2::UsersController < Api::V2::ApiController
 
   # facebook autofollow
   def create_relationships_from_facebook_friends
-    params[:friend_ids].each { |friend_id|
-      user = User.find_by(facebook_id: friend_id)
-      if user
-        current_user.mutual_follow!(user)
-      end
+    User.where(facebook_id: params[:friend_ids]).each { |user|
+      current_user.mutual_follow!(user)
     }
     render json: { result: ["Autofollow successfully complete"] }, status: 201
   end
