@@ -70,11 +70,10 @@ class Api::V2::UsersController < Api::V2::ApiController
       user.facebook_name = params[:facebook_name]
     else
       is_signup = true
-      fb_username = params[:username]
       params[:username] = params[:username][0, [params[:username].length, MAX_USERNAME_LENGTH].min]
       user = User.new(facebook_user_params)
 
-      user.avatar = open("http://graph.facebook.com/#{fb_username}/picture")
+      user.avatar = open("http://graph.facebook.com/#{user.facebook_id}/picture")
     end
 
     if user.save(validate: false)
