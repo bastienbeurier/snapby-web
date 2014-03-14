@@ -29,9 +29,6 @@ class Api::V2::ShoutsController < Api::V2::ApiController
 
     shout.avatar = avatar
 
-    #For retrocompatibility, remove when we can
-    # shout.oldavatar = avatar
-
     if shout.save
       # update shout_count
       if !shout.anonymous

@@ -18,6 +18,7 @@ class Shout < ActiveRecord::Base
   validates :username,    presence: true
   #add validates image
 
+  #Interpolation for shout and user collides because attachment has the same name :avatar
   Paperclip.interpolates :file_name do |attachment, style|
     if attachment.instance.class.to_s == "Shout"
       "image_#{attachment.instance.id.to_s}--400"
@@ -26,17 +27,9 @@ class Shout < ActiveRecord::Base
     end
   end
 
-  # Paperclip.interpolates :oldavatar_file_name do |attachment, style|
-  #   "oldimage_#{attachment.instance.id.to_s}--400"
-  # end
-
   # This method associates the attribute ":avatar" with a file attachment
   has_attached_file :avatar, styles: { small: '145x220#' }, path: ":style/:file_name"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
-
-  # # # This is for retro compatibility
-  # has_attached_file :oldavatar, styles: { small: '145x220#' }, path: ":style/:file_name"
-  # validates_attachment_content_type :oldavatar, :content_type => /\Aimage\/.*\Z/
 
   def response_shout
     { id: self.id,
