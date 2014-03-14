@@ -86,15 +86,15 @@ class Api::V2::UsersController < Api::V2::ApiController
   # get users we follow
   def followed_users
     user = User.find(params[:user_id])
-    users = user.followed_users
-    render json: { result: { followed_users: User.response_users(users) } }, status: 201
+    render json: { result: { followed_users: User.response_users(user.followed_users), 
+                             current_user_followed_user_ids: current_user.followed_user_ids } }, status: 201
   end
 
   #get followers
   def followers
     user = User.find(params[:user_id])
-    users = user.followers
-    render json: { result: { followers: User.response_users(users) } }, status: 201
+    render json: { result: { followers: User.response_users(user.followers), 
+                             current_user_followed_user_ids: current_user.followed_user_ids } }, status: 201
   end
 
   def get_user_info
@@ -112,7 +112,8 @@ class Api::V2::UsersController < Api::V2::ApiController
     suggested_friends = User.where("lat IS NOT NULL").by_distance(origin: current_user).first(100)
                                                               .select{ |user| !current_user.following?(user) && user != current_user}
     sorted_friends = suggested_friends.sort_by(&:shout_count).reverse
-    render json: { result: { suggested_friends: User.response_users(sorted_friends)} }, status: 200
+    render json: { result: { suggested_friends: User.response_users(sorted_friends), 
+                             current_user_followed_user_ids: current_user.followed_user_ids} }, status: 200
   end
 
 private 

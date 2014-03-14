@@ -70,6 +70,10 @@ class User < ActiveRecord::Base
       shout_count: self.shout_count }
   end
 
+  def followed_users_ids
+    self.followed_users.map { |u| u.id }
+  end
+
   def self.response_users(users)
     users.map { |user| user.response_user }
   end
