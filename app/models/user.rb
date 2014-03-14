@@ -25,8 +25,13 @@ class User < ActiveRecord::Base
   validates :password, presence: true , on: :create #between 6..128 chars (defined in Devise config)
   validates :username, presence: true, length: { minimum: MIN_USERNAME_LENGTH, maximum: MAX_USERNAME_LENGTH }
 
+  #Interpolation for shout and user collides because attachment has the same name :avatar
   Paperclip.interpolates :file_name do |attachment, style|
-    "profile_" + attachment.instance.id.to_s
+    if attachment.instance.class.to_s == "Shout"
+      "image_#{attachment.instance.id.to_s}--400"
+    else 
+      "profile_" + attachment.instance.id.to_s
+    end
   end
 
   # This method associates the attribute ":avatar" with a file attachment
@@ -59,7 +64,9 @@ class User < ActiveRecord::Base
     { id: self.id,
       email: self.email,
       username: self.username,
-      black_listed: self.black_listed}
+      black_listed: self.black_listed,
+      lat: self.lat,
+      lng: self.lng }
   end
 
   def self.response_users(users)
