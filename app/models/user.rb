@@ -66,7 +66,8 @@ class User < ActiveRecord::Base
       username: self.username,
       black_listed: self.black_listed,
       lat: self.lat,
-      lng: self.lng }
+      lng: self.lng,
+      shout_count: self.shout_count }
   end
 
   def self.response_users(users)
