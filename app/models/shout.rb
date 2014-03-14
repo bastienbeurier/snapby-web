@@ -44,7 +44,8 @@ class Shout < ActiveRecord::Base
       anonymous: self.anonymous,
       trending: self.trending,
       like_count: self.like_count,
-      comment_count: self.comment_count }
+      comment_count: self.comment_count,
+      source: "" }
   end
 
   def self.response_shouts(shouts)

@@ -67,7 +67,8 @@ class User < ActiveRecord::Base
       black_listed: self.black_listed,
       lat: self.lat,
       lng: self.lng,
-      shout_count: self.shout_count }
+      shout_count: self.shout_count,
+      profile_picture: "" }
   end
 
   def followed_users_ids
