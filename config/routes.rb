@@ -13,12 +13,7 @@ StreetShout::Application.routes.draw do
 
   namespace :api do
     namespace :v2  do
-      resources :users, only: [:create, :update] do
-        member do
-          get :followed_users, :followers
-        end
-      end
-
+      resources :users, only: [:create, :update] 
       resources :flags, only: [:create]
       resources :shouts, only: [:create, :show]
       resources :comments, only: [:create, :index]
@@ -42,6 +37,11 @@ StreetShout::Application.routes.draw do
       post "users/autofollow" => "users#create_relationships_from_facebook_friends"
       post "users/get_user_info" => "users#get_user_info"
       get "users/suggested_friends" => "users#suggested_friends"
+      post "users/suggested_friends" => "users#suggested_friends"
+      get "users/followers" => "users#followers"
+      post "users/followers" => "users#followers"
+      get "users/followed_users" => "users#followed_users"
+      post "users/followed_users" => "users#followed_users"
     end
   end
 end
