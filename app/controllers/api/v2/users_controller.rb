@@ -24,6 +24,7 @@ class Api::V2::UsersController < Api::V2::ApiController
       current_user.avatar = StringIO.new(Base64.decode64(params[:avatar]))
     end
 
+    #DEPRECATED: use my_likes_and_followed_users action
     max_age = Time.now - SHOUT_DURATION
     user_likes = Like.where("created_at >= :max_age AND liker_id = :current_user_id", 
       {max_age: max_age, current_user_id: current_user.id})
@@ -33,6 +34,14 @@ class Api::V2::UsersController < Api::V2::ApiController
     else 
       render json: { errors: { user: current_user.errors } }, status: 222 # Need a success code to handle errors in IOS
     end
+  end
+
+  def my_likes_and_followed_users
+    max_age = Time.now - SHOUT_DURATION
+    user_likes = Like.where("created_at >= :max_age AND liker_id = :current_user_id", 
+      {max_age: max_age, current_user_id: current_user.id})
+    render json: { result: { likes: user_likes, 
+                             current_user_followed_user_ids: current_user.followed_user_ids } }, status: 201  
   end
 
   #DEPRECATED: use update
