@@ -68,7 +68,7 @@ class User < ActiveRecord::Base
       lat: self.lat,
       lng: self.lng,
       shout_count: self.shout_count,
-      profile_picture: "" }
+      profile_picture: "dummy" }
   end
 
   def followed_users_ids

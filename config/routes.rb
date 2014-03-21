@@ -42,6 +42,8 @@ StreetShout::Application.routes.draw do
       post "users/followers" => "users#followers"
       get "users/followed_users" => "users#followed_users"
       post "users/followed_users" => "users#followed_users"
+      get "users/my_likes_and_followed_users" => "users#my_likes_and_followed_users"
+      post "users/my_likes_and_followed_users" => "users#my_likes_and_followed_users"
     end
   end
 end
