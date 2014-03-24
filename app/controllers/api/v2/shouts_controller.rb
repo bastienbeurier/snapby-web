@@ -80,7 +80,7 @@ class Api::V2::ShoutsController < Api::V2::ApiController
     Rails.logger.debug "BAB zone_shouts params: #{params}"
     max_age = Time.now - SHOUT_DURATION
 
-    shouts = Shout.where("created_at >= :max_age", {:max_age => max_age}).in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).limit(100).order("created_at DESC")
+    shouts = Shout.where("created_at >= :max_age", {:max_age => max_age}).in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).limit(20).order("created_at DESC")
 
     shouts.each do |shout|
       if shout.anonymous
