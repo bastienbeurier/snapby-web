@@ -86,9 +86,15 @@ class Api::V2::UsersController < Api::V2::ApiController
 
   # facebook autofollow
   def create_relationships_from_facebook_friends
+    #Android sends a String that we have to parse
+    if params[:friend_ids].is_a? String
+      params[:friend_ids] = params[:friend_ids][1..-2].split(", ")
+    end
+
     User.where(facebook_id: params[:friend_ids]).each { |user|
       current_user.mutual_follow!(user)
     }
+
     render json: { result: ["Autofollow successfully complete"] }, status: 201
   end
 
