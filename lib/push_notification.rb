@@ -102,6 +102,11 @@ module PushNotification
     end
   end 
 
+  def self.notify_new_facebook_friend(user, friend_ids)
+    message = 'Your friend ' + user.facebook_name + ' joined Shout as @' + user.username + '.'
+    send_notifications(friend_ids, message, nil, nil)
+  end
+
   def self.send_notifications(user_ids, message, android_extra, ios_extra)
     users = User.select([:push_token, :os_type]).where(id: user_ids)
 

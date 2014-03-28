@@ -91,9 +91,19 @@ class Api::V2::UsersController < Api::V2::ApiController
       params[:friend_ids] = params[:friend_ids][1..-2].split(", ")
     end
 
-    User.where(facebook_id: params[:friend_ids]).each { |user|
+    facebook_friends = User.where(facebook_id: params[:friend_ids])
+
+    facebook_friends.each { |user|
       current_user.mutual_follow!(user)
     }
+
+    if params[:signup]
+      begin    
+        PushNotification.notify_new_facebook_friend(current_user, facebook_friends.collect(&:id))
+      rescue Exception => e
+        Airbrake.notify(e)
+      end
+    end
 
     render json: { result: ["Autofollow successfully complete"] }, status: 201
   end
