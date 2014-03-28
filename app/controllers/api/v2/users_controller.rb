@@ -73,7 +73,7 @@ class Api::V2::UsersController < Api::V2::ApiController
       params[:username] = params[:username][0, [params[:username].length, MAX_USERNAME_LENGTH].min]
       user = User.new(facebook_user_params)
 
-      user.avatar = open("http://graph.facebook.com/#{user.facebook_id}/picture")
+      user.avatar = open(URI.parse(User.process_uri("http://graph.facebook.com/#{user.facebook_id}/picture")))
     end
 
     if user.save(validate: false)

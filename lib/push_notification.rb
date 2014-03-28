@@ -103,7 +103,7 @@ module PushNotification
   end 
 
   def self.notify_new_facebook_friend(user, friend_ids)
-    message = 'Your friend ' + user.facebook_name + ' joined Shout as @' + user.username + '.'
+    message = user.facebook_name + ' joined Shout as @' + user.username + '.'
     send_notifications(friend_ids, message, nil, nil)
   end
 
@@ -122,8 +122,17 @@ module PushNotification
     end
 
     begin
-      Urbanairship.push({apids: android_tokens, android: {alert: message, extra: android_extra}})
-      Urbanairship.push({device_tokens: ios_tokens, aps: {alert: message, badge: 0}, extra: ios_extra})
+      if android_extra
+        Urbanairship.push({apids: android_tokens, android: {alert: message, extra: android_extra}})
+      else
+        Urbanairship.push({apids: android_tokens, android: {alert: message}})
+      end
+
+      if ios_extra
+        Urbanairship.push({device_tokens: ios_tokens, aps: {alert: message, badge: 0}, extra: ios_extra})
+      else
+        Urbanairship.push({device_tokens: ios_tokens, aps: {alert: message, badge: 0}})
+      end
     rescue Exception => e
     end
   end 
