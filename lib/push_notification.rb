@@ -119,7 +119,7 @@ module PushNotification
     end
   end 
 
-  def self.notify_new_facebook_friend(user, friend_ids)
+  def self.notify_new_facebook_friend(user, friend_ids, android_extra, ios_extra)
     message = user.facebook_name + ' joined Shout as @' + user.username 
     android_extra = {user_id: user.id, new_friend: true}
     ios_extra = {user_id: user.id, new_friend: true}
