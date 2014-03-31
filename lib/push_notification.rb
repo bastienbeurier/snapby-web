@@ -4,7 +4,7 @@ module PushNotification
     notified_user_ids = []
     
     if Rails.env.development?
-      users = User.select([:id]).within(NOTIFICATION_RADIUS , :origin => [shout.lat, shout.lng]).where("id != :shout_user_id", {shout_user_id: shout.user_id})
+      users = User.select([:id]).within(NOTIFICATION_RADIUS , :origin => [shout.lat, shout.lng])
     else
       users = User.select([:id]).within(NOTIFICATION_RADIUS , :origin => [shout.lat, shout.lng]).where("id != :shout_user_id", {shout_user_id: shout.user_id})
     end
