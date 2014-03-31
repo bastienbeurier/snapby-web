@@ -13,6 +13,10 @@ gem 'paperclip'
 gem 'aws-sdk'
 gem 'open_uri_redirections'
 gem 'sidekiq'
+gem 'redis'
+gem 'sinatra', require: false
+gem 'slim'
+gem 'unicorn'
 
 gem 'sass-rails', '4.0.1'
 gem 'uglifier', '2.1.1'

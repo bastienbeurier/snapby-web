@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 StreetShout::Application.routes.draw do
   devise_for :users, :skip => [:registrations], :controllers => { passwords:'passwords' } 
   resources :shouts
@@ -10,6 +12,9 @@ StreetShout::Application.routes.draw do
   get "/contact" => "home#contact"
   get "/global_feed_shouts" => "home#global_feed_shouts"
   get "/obsolete_api" => "shouts#obsolete_api"
+
+  #Sinatra app to monitor queues provided by sidekiq/web
+  mount Sidekiq::Web, at: '/sidekiq'
 
   namespace :api do
     namespace :v2  do
