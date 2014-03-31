@@ -105,7 +105,7 @@ class Api::V2::ShoutsController < Api::V2::ApiController
   def trending
     shout = Shout.find(params[:shout_id])
     if is_admin
-      shout.update_attributes(trending: true)
+      shout.make_trending
       render json: { result: { messages: ["Trended baby"] } }, status: 200
     end
   end
