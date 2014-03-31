@@ -24,7 +24,7 @@ class Api::V2::ShoutsController < Api::V2::ApiController
       avatar = StringIO.new(Base64.decode64(params[:avatar]))
     else
       #For retrocompatibility, remove when we can
-      avatar = open("http://#{shout.image}--400")
+      avatar = open(URI.parse(process_uri("http://#{shout.image}--400")))
     end
 
     shout.avatar = avatar
