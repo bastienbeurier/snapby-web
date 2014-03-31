@@ -10,6 +10,12 @@ module PushNotification
     end
 
     user_ids = users.collect(&:id)
+    followers_ids = []
+
+    unless shout.anonymous
+      followers_ids = User.find(shout.user_id).followers.collect(&:id)
+      user_ids -= followers_ids
+    end
 
     user_ids.each do |user_id|
       user_notification = UserNotification.find_by_user_id(user_id)
@@ -35,11 +41,18 @@ module PushNotification
       user_notification.save!
     end
 
+
     message = 'New shout in your area'
+    followers_message = 'New shout by @' + shout.username + ' (following)'
+
     android_extra = {shout: shout.to_json}
     ios_extra = {shout_id: shout.id}
 
     send_notifications(notified_user_ids, message, android_extra, ios_extra)
+
+    unless shout.anonymous
+      send_notifications(followers_ids, followers_message, android_extra, ios_extra)
+    end
   end
 
   def self.notify_new_comment(comment)
@@ -89,6 +102,11 @@ module PushNotification
     end
   end 
 
+  def self.notify_new_facebook_friend(user, friend_ids)
+    message = user.facebook_name + ' joined Shout as @' + user.username + '.'
+    send_notifications(friend_ids, message, nil, nil)
+  end
+
   def self.send_notifications(user_ids, message, android_extra, ios_extra)
     users = User.select([:push_token, :os_type]).where(id: user_ids)
 
@@ -104,8 +122,17 @@ module PushNotification
     end
 
     begin
-      Urbanairship.push({apids: android_tokens, android: {alert: message, extra: android_extra}})
-      Urbanairship.push({device_tokens: ios_tokens, aps: {alert: message, badge: 0}, extra: ios_extra})
+      if android_extra
+        Urbanairship.push({apids: android_tokens, android: {alert: message, extra: android_extra}})
+      else
+        Urbanairship.push({apids: android_tokens, android: {alert: message}})
+      end
+
+      if ios_extra
+        Urbanairship.push({device_tokens: ios_tokens, aps: {alert: message, badge: 0}, extra: ios_extra})
+      else
+        Urbanairship.push({device_tokens: ios_tokens, aps: {alert: message, badge: 0}})
+      end
     rescue Exception => e
     end
   end 
