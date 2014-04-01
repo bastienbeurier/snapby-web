@@ -24,7 +24,7 @@ class Api::V2::ShoutsController < Api::V2::ApiController
       avatar = StringIO.new(Base64.decode64(params[:avatar]))
     else
       #For retrocompatibility, remove when we can
-      avatar = open("http://#{shout.image}--400")
+      avatar = open(URI.parse(process_uri("http://#{shout.image}--400")))
     end
 
     shout.avatar = avatar
@@ -105,7 +105,7 @@ class Api::V2::ShoutsController < Api::V2::ApiController
   def trending
     shout = Shout.find(params[:shout_id])
     if is_admin
-      shout.update_attributes(trending: true)
+      shout.make_trending
       render json: { result: { messages: ["Trended baby"] } }, status: 200
     end
   end

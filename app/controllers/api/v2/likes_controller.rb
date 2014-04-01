@@ -22,7 +22,7 @@ class Api::V2::LikesController < Api::V2::ApiController
 
       # if 5 likes, mark as trending
       if shout.like_count == TRENDING_LIKES_COUNT
-        shout.update_attributes(trending: true)
+        shout.make_trending
       end
 
       render json: { result: { like_count: shout.like_count } }, status: 201

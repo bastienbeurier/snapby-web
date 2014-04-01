@@ -50,7 +50,7 @@ production:
   collation: utf8_general_ci
   reconnect: false
   database: streetshoutproduction
-  pool: 5
+  pool: 25
   username: streetshout
   password: isthisit99
   socket: /tmp/mysql.sock

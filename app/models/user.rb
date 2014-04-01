@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
   end
 
   # This method associates the attribute ":avatar" with a file attachment
-  has_attached_file :avatar, styles: { thumb: '100x100#' }, path: ":style/:file_name", bucket: "shout_profile_pics"
+  has_attached_file :avatar, styles: { thumb: '100x100#' }, path: ":style/:file_name", bucket: proc { |attachment| Rails.env.development? ? PROFILE_PICTURE_BUCKET_DEV : PROFILE_PICTURE_BUCKET_PROD}
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   def following?(other_user)
@@ -77,13 +77,5 @@ class User < ActiveRecord::Base
 
   def self.response_users(users)
     users.map { |user| user.response_user }
-  end
-
-  def self.process_uri(uri)
-    require 'open-uri'
-    require 'open_uri_redirections'
-    open(uri, :allow_redirections => :safe) do |r|
-      r.base_uri.to_s
-    end
   end
 end

@@ -4,7 +4,7 @@ module PushNotification
     notified_user_ids = []
     
     if Rails.env.development?
-      users = User.select([:id]).within(NOTIFICATION_RADIUS , :origin => [shout.lat, shout.lng]).where("id != :shout_user_id", {shout_user_id: shout.user_id})
+      users = User.select([:id]).within(NOTIFICATION_RADIUS , :origin => [shout.lat, shout.lng])
     else
       users = User.select([:id]).within(NOTIFICATION_RADIUS , :origin => [shout.lat, shout.lng]).where("id != :shout_user_id", {shout_user_id: shout.user_id})
     end
@@ -43,16 +43,33 @@ module PushNotification
 
 
     message = 'New shout in your area'
-    followers_message = 'New shout by @' + shout.username + ' (following)'
+    followers_message = 'New shout by @' + shout.username
 
-    android_extra = {shout: shout.to_json}
-    ios_extra = {shout_id: shout.id}
+    android_extra = {shout: shout.to_json, new_shout: true}
+    ios_extra = {shout_id: shout.id, new_shout: true}
 
     send_notifications(notified_user_ids, message, android_extra, ios_extra)
 
     unless shout.anonymous
       send_notifications(followers_ids, followers_message, android_extra, ios_extra)
     end
+  end
+
+  def self.notify_trending_shout(shout)
+    users = []
+    notified_user_ids = []
+    
+    users = User.select([:id]).within(TRENDING_NOTIFICATION_RADIUS , :origin => [shout.lat, shout.lng]).where("id != :shout_user_id", {shout_user_id: shout.user_id})
+    user_ids = users.collect(&:id)
+
+    message = 'A shout is trending in your area!'
+    shouter_message = 'Your shout is trending!'
+
+    android_extra = {shout: shout.to_json, trending: true}
+    ios_extra = {shout_id: shout.id, trending: true}
+
+    send_notifications(user_ids, message, android_extra, ios_extra)
+    send_notifications([shout.user_id], shouter_message, android_extra, ios_extra)
   end
 
   def self.notify_new_comment(comment)
@@ -77,8 +94,8 @@ module PushNotification
 
     message_commenters = 'New comment from ' + comment.commenter_username + ' on the shout you commented'
     message_likers = 'New comment from ' + comment.commenter_username + ' on the shout you liked'  
-    android_extra = {shout: shout.to_json}
-    ios_extra = {shout_id: comment.shout_id}
+    android_extra = {shout: shout.to_json, new_comment: true}
+    ios_extra = {shout_id: comment.shout_id, new_comment: true}
 
     send_notifications(notified_user_ids_for_comment, message_commenters, android_extra, ios_extra)
     send_notifications(notified_user_ids_for_like, message_likers, android_extra, ios_extra)
@@ -95,15 +112,17 @@ module PushNotification
 
     if like.liker_id != like.shout.user_id and ( nb_likes == 1 or nb_likes % 5 == 0 )
       message = like.liker_username + (nb_likes == 1? ' likes' : ' and ' + (nb_likes - 1).to_s + ' others like') + ' your shout'
-      android_extra = {shout: like.shout.to_json}
-      ios_extra = {shout_id: like.shout.id}
+      android_extra = {shout: like.shout.to_json, new_like: true}
+      ios_extra = {shout_id: like.shout.id, new_like: true}
 
       send_notifications([like.shout.user_id], message, android_extra, ios_extra)
     end
   end 
 
-  def self.notify_new_facebook_friend(user, friend_ids)
-    message = user.facebook_name + ' joined Shout as @' + user.username + '.'
+  def self.notify_new_facebook_friend(user, friend_ids, android_extra, ios_extra)
+    message = user.facebook_name + ' joined Shout as @' + user.username 
+    android_extra = {user_id: user.id, new_friend: true}
+    ios_extra = {user_id: user.id, new_friend: true}
     send_notifications(friend_ids, message, nil, nil)
   end
 

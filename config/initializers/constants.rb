@@ -1,5 +1,6 @@
 SHOUT_DURATION = 4.hours
 NOTIFICATION_RADIUS = 5 #km
+TRENDING_NOTIFICATION_RADIUS = 50 #km
 NOTIFICATION_DELAY = 8.hours
 
 ACCEPTED_APIS = [2]
@@ -34,3 +35,6 @@ WEBZEEN_LINK = "http://www.webzeen.fr/high-tech/applications-mobiles/shout-tous-
 DELETE_ACCOUNT_LINK = "#" #todoBT delete account
 
 ANONYMOUS_USERNAME = "Anonymous"
+
+PROFILE_PICTURE_BUCKET_PROD = "shout_profile_pics"
+PROFILE_PICTURE_BUCKET_DEV = "shout_profile_pics_dev"

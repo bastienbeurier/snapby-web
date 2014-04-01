@@ -31,6 +31,12 @@ class Shout < ActiveRecord::Base
   has_attached_file :avatar, styles: { small: '145x220#' }, path: ":style/:file_name"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
+  def make_trending
+    self.update_attributes(trending: true)
+
+    TrendingShoutNotificationsWorker.perform_async(self.id)
+  end
+
   def response_shout
     { id: self.id,
       lat: self.lat,
