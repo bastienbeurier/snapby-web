@@ -1,4 +1,4 @@
-class CreateShoutNotificationsWorker
+class TrendingShoutNotificationsWorker
   include Sidekiq::Worker
 
   def perform(shout_id)
