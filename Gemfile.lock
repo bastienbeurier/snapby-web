@@ -81,6 +81,7 @@ GEM
     minitest (4.7.5)
     multi_json (1.9.0)
     mysql2 (0.3.15)
+    newrelic_rpm (3.7.3.204)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     open_uri_redirections (0.1.4)
@@ -184,6 +185,7 @@ DEPENDENCIES
   geokit-rails
   jquery-rails (= 3.0.4)
   mysql2
+  newrelic_rpm
   open_uri_redirections
   paperclip
   rails (= 4.0.2)
