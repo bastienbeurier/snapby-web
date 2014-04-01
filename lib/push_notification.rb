@@ -91,16 +91,12 @@ module PushNotification
     end
   end
 
-  def self.notify_new_like(like)
-    nb_likes = like.shout.likes.count
+  def self.notify_new_like(like, nb_likes)
+    message = like.liker_username + (nb_likes == 1? ' likes' : ' and ' + (nb_likes - 1).to_s + ' others like') + ' your shout'
+    android_extra = {shout: like.shout.to_json, new_like: true}
+    ios_extra = {shout_id: like.shout_id, new_like: true}
 
-    if like.liker_id != like.shout.user_id and ( nb_likes == 1 or nb_likes % 5 == 0 )
-      message = like.liker_username + (nb_likes == 1? ' likes' : ' and ' + (nb_likes - 1).to_s + ' others like') + ' your shout'
-      android_extra = {shout: like.shout.to_json, new_like: true}
-      ios_extra = {shout_id: like.shout.id, new_like: true}
-
-      send_notifications([like.shout.user_id], message, android_extra, ios_extra)
-    end
+    send_notifications([like.shout.user_id], message, android_extra, ios_extra)
   end 
 
   def self.notify_new_facebook_friend(user, friend_ids, android_extra, ios_extra)
