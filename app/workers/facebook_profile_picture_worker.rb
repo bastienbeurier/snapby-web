@@ -1,5 +1,6 @@
 class FacebookProfilePictureWorker
   include Sidekiq::Worker
+  include ApplicationHelper
 
   def perform(user_id)
     user = User.find(user_id)
