@@ -34,11 +34,7 @@ class Shout < ActiveRecord::Base
   def make_trending
     self.update_attributes(trending: true)
 
-    begin    
-      PushNotification.notify_trending_shout(self)
-    rescue Exception => e
-      Airbrake.notify(e)
-    end
+    TrendingShoutNotificationsWorker.perform_async(self.id)
   end
 
   def response_shout

@@ -73,11 +73,13 @@ class Api::V2::UsersController < Api::V2::ApiController
       is_signup = true
       params[:username] = params[:username][0, [params[:username].length, MAX_USERNAME_LENGTH].min]
       user = User.new(facebook_user_params)
-
-      user.avatar = open(URI.parse(process_uri("http://graph.facebook.com/#{user.facebook_id}/picture")))
     end
 
     if user.save(validate: false)
+      if is_signup
+        FacebookProfilePictureWorker.perform_async(user.id)
+      end
+
       user.ensure_authentication_token!
       render json: { result: { user: user.response_user, auth_token: user.authentication_token, is_signup: is_signup} }, status: 201
     else
@@ -87,24 +89,9 @@ class Api::V2::UsersController < Api::V2::ApiController
 
   # facebook autofollow
   def create_relationships_from_facebook_friends
-    #Android sends a String that we have to parse
-    if params[:friend_ids].is_a? String
-      params[:friend_ids] = params[:friend_ids][1..-2].split(", ")
-    end
+    AutofollowWorker.perform_async(params[:friend_ids], current_user.id)
 
-    facebook_friends = User.where(facebook_id: params[:friend_ids])
-
-    facebook_friends.each { |user|
-      current_user.mutual_follow!(user)
-    }
-
-    begin    
-      PushNotification.notify_new_facebook_friend(current_user, facebook_friends.collect(&:id))
-    rescue Exception => e
-      Airbrake.notify(e)
-    end
-
-    render json: { result: ["Autofollow successfully complete"] }, status: 201
+    render json: { result: ["Autofollow successfully queued"] }, status: 201
   end
 
   # get users we follow
