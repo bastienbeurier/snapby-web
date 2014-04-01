@@ -56,26 +56,7 @@ module PushNotification
     send_notifications([shout.user_id], shouter_message, android_extra, ios_extra)
   end
 
-  def self.notify_new_comment(comment)
-    notified_user_ids_for_comment = []
-    notified_user_ids_for_like = []
-
-    shout = comment.shout
-
-    #Send notification to previous commenters if they are not the current commenter
-    shout.comments.each do |com|
-      if !notified_user_ids_for_comment.include?(com.commenter_id) and com.commenter_id != comment.commenter_id and com.commenter_id != comment.shouter_id
-        notified_user_ids_for_comment += [com.commenter_id]
-      end
-    end
-
-    #Send notification to previous likers if not already sent notification for comment and if not the current commenter
-    shout.likes.each do |like|
-      if !notified_user_ids_for_comment.include?(like.liker_id) and like.liker_id != comment.commenter_id and like.liker_id != comment.shouter_id
-        notified_user_ids_for_like += [like.liker_id]
-      end
-    end
-
+  def self.notify_new_comment(comment, notified_user_ids_for_comment, notified_user_ids_for_like)
     message_commenters = 'New comment from ' + comment.commenter_username + ' on the shout you commented'
     message_likers = 'New comment from ' + comment.commenter_username + ' on the shout you liked'  
     android_extra = {shout: shout.to_json, new_comment: true}

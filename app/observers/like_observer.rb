@@ -6,7 +6,7 @@ class LikeObserver < ActiveRecord::Observer
     if like.liker_id != like.shout.user_id and ( nb_likes == 1 or nb_likes % 5 == 0 )
       like.shout.user_id.activities.create!(
         subject: like.shout,
-        activity_type: "shout_liked",
+        activity_type: "my_shout_liked",
         object_id: like.shout_id
       )
 
