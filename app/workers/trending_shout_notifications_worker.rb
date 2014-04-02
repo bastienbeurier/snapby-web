@@ -4,6 +4,12 @@ class TrendingShoutNotificationsWorker
   def perform(shout_id)
     shout = Shout.find(shout_id)
 
+    User.find(shout.user_id).activities.create!(
+        subject: shout, 
+        activity_type: "my_shout_trending", 
+        extra: {shout_id: shout.id}
+      )
+
     users = User.select([:id]).within(NOTIFICATION_RADIUS , :origin => [shout.lat, shout.lng]).where("id != :shout_user_id", {shout_user_id: shout.user_id})
 
     follower_ids = []
