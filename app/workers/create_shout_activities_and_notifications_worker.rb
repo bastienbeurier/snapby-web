@@ -44,7 +44,8 @@ class CreateShoutActivitiesAndNotificationsWorker
       f.activities.create!(
         subject: shout, 
         activity_type: "shout_by_followed", 
-        object_id: shout.id
+        object_id: shout.id,
+        extra: {shouter_username: shout.username}
       )
     end
   end
