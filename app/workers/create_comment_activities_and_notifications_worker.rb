@@ -32,8 +32,7 @@ class CreateCommentActivitiesAndNotificationsWorker
       User.find(comment.shouter_id).activities.create!(
         subject: comment.shout, 
         activity_type: "my_shout_commented", 
-        object_id: comment.shout.id,
-        extra: {commenter_username: comment.commenter_username}
+        extra: {shout_id: comment.shout.id, commenter_username: comment.commenter_username}
       )
     end
 
@@ -49,8 +48,7 @@ class CreateCommentActivitiesAndNotificationsWorker
       User.find(id).activities.create!(
         subject: comment.shout, 
         activity_type: "commenter_shout_commented", 
-        object_id: comment.shout.id,
-        extra: {commenter_username: comment.commenter_username}
+        extra: {shout_id: comment.shout.id, commenter_username: comment.commenter_username}
       )
     end
   end
@@ -60,8 +58,7 @@ class CreateCommentActivitiesAndNotificationsWorker
       User.find(id).activities.create!(
         subject: comment.shout, 
         activity_type: "liker_shout_commented", 
-        object_id: comment.shout.id,
-        extra: {commenter_username: comment.commenter_username}
+        extra: {shout_id: comment.shout.id, commenter_username: comment.commenter_username}
       )
     end
   end

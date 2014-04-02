@@ -15,10 +15,22 @@ class AutofollowWorker
       current_user.mutual_follow!(user)
     }
 
+    new_facebook_friend_activities(current_user, facebook_friends)
+
     begin    
       PushNotification.notify_new_facebook_friend(current_user, facebook_friends.collect(&:id))
     rescue Exception => e
       Airbrake.notify(e)
+    end
+  end
+
+  def new_facebook_friend_activities(friend, users)
+    users.each do |u|
+      u.activities.create!(
+        subject: friend, 
+        activity_type: "new_facebook_friend", 
+        extra: {user_id: friend.id, username: friend.username, facebook_name: friend.facebook_name}
+      )
     end
   end
 end

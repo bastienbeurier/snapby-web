@@ -46,6 +46,7 @@ class User < ActiveRecord::Base
   def follow!(other_user)
     if !following?(other_user)
       relationships.create!(followed_id: other_user.id)
+      FollowActivityWorker.perform_async(self.id, other_user.id)
     end
   end
 

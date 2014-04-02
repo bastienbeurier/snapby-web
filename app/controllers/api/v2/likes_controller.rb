@@ -25,6 +25,8 @@ class Api::V2::LikesController < Api::V2::ApiController
         shout.make_trending
       end
 
+      CreateLikeActivityAndNotificationWorker.perform_async(like.id)
+
       render json: { result: { like_count: shout.like_count } }, status: 201
     else 
       render json: { errors: { internal: like.errors } }, :status => 500

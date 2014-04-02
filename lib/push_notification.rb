@@ -29,7 +29,7 @@ module PushNotification
     update_users_notifications(follower_ids)
 
     message = 'New shout in your area'
-    follower_message = 'New shout by @' + shout.username
+    follower_message = 'New shout by @' + shout.username + 'in your area'
 
     android_extra = {shout: shout.to_json, new_shout: true}
     ios_extra = {shout_id: shout.id, new_shout: true}
@@ -41,22 +41,19 @@ module PushNotification
     end
   end
 
-  def self.notify_trending_shout(shout)
-    users = []
-    notified_user_ids = []
-    
-    users = User.select([:id]).within(TRENDING_NOTIFICATION_RADIUS , :origin => [shout.lat, shout.lng]).where("id != :shout_user_id", {shout_user_id: shout.user_id})
-    user_ids = users.collect(&:id)
-
+  def self.notify_trending_shout(shout, user_ids, follower_ids)
     update_users_notifications(user_ids)
+    update_users_notifications(follower_ids)
 
     message = 'A shout is now trending in your area!'
+    follower_message = "@" + shout.username + "'shout is now trending"
     shouter_message = 'Your shout is now trending!'
 
     android_extra = {shout: shout.to_json, trending: true}
     ios_extra = {shout_id: shout.id, trending: true}
 
     send_notifications(user_ids, message, android_extra, ios_extra)
+    send_notifications(follower_ids, follower_message, android_extra, ios_extra)
     send_notifications([shout.user_id], shouter_message, android_extra, ios_extra)
   end
 

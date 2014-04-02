@@ -26,5 +26,4 @@ gem 'jquery-rails', '3.0.4'
 gem 'rails_12factor', group: :production
 
 #for rails 3 functionalities
-gem 'rails-observers'
 gem 'actionpack-page_caching'
