@@ -1,21 +1,6 @@
 module PushNotification
-  def self.notify_new_shout(shout)
-    users = []
+  def self.notify_new_shout(shout, user_ids, follower_ids)
     notified_user_ids = []
-    
-    if Rails.env.development?
-      users = User.select([:id]).within(NOTIFICATION_RADIUS , :origin => [shout.lat, shout.lng])
-    else
-      users = User.select([:id]).within(NOTIFICATION_RADIUS , :origin => [shout.lat, shout.lng]).where("id != :shout_user_id", {shout_user_id: shout.user_id})
-    end
-
-    user_ids = users.collect(&:id)
-    followers_ids = []
-
-    unless shout.anonymous
-      followers_ids = User.find(shout.user_id).followers.collect(&:id)
-      user_ids -= followers_ids
-    end
 
     user_ids.each do |user_id|
       user_notification = UserNotification.find_by_user_id(user_id)
@@ -41,9 +26,8 @@ module PushNotification
       user_notification.save!
     end
 
-
     message = 'New shout in your area'
-    followers_message = 'New shout by @' + shout.username
+    follower_message = 'New shout by @' + shout.username
 
     android_extra = {shout: shout.to_json, new_shout: true}
     ios_extra = {shout_id: shout.id, new_shout: true}
@@ -51,7 +35,7 @@ module PushNotification
     send_notifications(notified_user_ids, message, android_extra, ios_extra)
 
     unless shout.anonymous
-      send_notifications(followers_ids, followers_message, android_extra, ios_extra)
+      send_notifications(follower_ids, follower_message, android_extra, ios_extra)
     end
   end
 
@@ -72,26 +56,7 @@ module PushNotification
     send_notifications([shout.user_id], shouter_message, android_extra, ios_extra)
   end
 
-  def self.notify_new_comment(comment)
-    notified_user_ids_for_comment = []
-    notified_user_ids_for_like = []
-
-    shout = comment.shout
-
-    #Send notification to previous commenters if they are not the current commenter
-    shout.comments.each do |com|
-      if !notified_user_ids_for_comment.include?(com.commenter_id) and com.commenter_id != comment.commenter_id and com.commenter_id != comment.shouter_id
-        notified_user_ids_for_comment += [com.commenter_id]
-      end
-    end
-
-    #Send notification to previous likers if not already sent notification for comment and if not the current commenter
-    shout.likes.each do |like|
-      if !notified_user_ids_for_comment.include?(like.liker_id) and like.liker_id != comment.commenter_id and like.liker_id != comment.shouter_id
-        notified_user_ids_for_like += [like.liker_id]
-      end
-    end
-
+  def self.notify_new_comment(comment, notified_user_ids_for_comment, notified_user_ids_for_like)
     message_commenters = 'New comment from ' + comment.commenter_username + ' on the shout you commented'
     message_likers = 'New comment from ' + comment.commenter_username + ' on the shout you liked'  
     android_extra = {shout: shout.to_json, new_comment: true}
@@ -107,16 +72,12 @@ module PushNotification
     end
   end
 
-  def self.notify_new_like(like)
-    nb_likes = like.shout.likes.count
+  def self.notify_new_like(like, nb_likes)
+    message = like.liker_username + (nb_likes == 1? ' likes' : ' and ' + (nb_likes - 1).to_s + ' others like') + ' your shout'
+    android_extra = {shout: like.shout.to_json, new_like: true}
+    ios_extra = {shout_id: like.shout_id, new_like: true}
 
-    if like.liker_id != like.shout.user_id and ( nb_likes == 1 or nb_likes % 5 == 0 )
-      message = like.liker_username + (nb_likes == 1? ' likes' : ' and ' + (nb_likes - 1).to_s + ' others like') + ' your shout'
-      android_extra = {shout: like.shout.to_json, new_like: true}
-      ios_extra = {shout_id: like.shout.id, new_like: true}
-
-      send_notifications([like.shout.user_id], message, android_extra, ios_extra)
-    end
+    send_notifications([like.shout.user_id], message, android_extra, ios_extra)
   end 
 
   def self.notify_new_facebook_friend(user, friend_ids, android_extra, ios_extra)

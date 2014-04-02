@@ -1,8 +1,10 @@
 class Shout < ActiveRecord::Base
-  has_many :flags
-  has_many :comments
-  has_many :likes
+  has_many :flags, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
   belongs_to :user
+
+  after_commit :create_activities_and_notifs, on: :create
   
   acts_as_mappable  :default_units => :kms, 
                     :default_formula => :sphere, 
@@ -16,7 +18,10 @@ class Shout < ActiveRecord::Base
   validates :source,      presence: true
   validates :user_id,     presence: true
   validates :username,    presence: true
-  #add validates image
+
+  def create_activities_and_notifs
+    CreateShoutActivitiesAndNotificationsWorker.perform_async(self.id)
+  end
 
   #Interpolation for shout and user collides because attachment has the same name :avatar
   Paperclip.interpolates :file_name do |attachment, style|

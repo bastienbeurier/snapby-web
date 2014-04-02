@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   has_many :shouts
   has_many :likes, foreign_key: 'liker_id'
-  has_one :user_notification
+  has_many :activities, dependent: :destroy
+  has_one :user_notification, dependent: :destroy
 
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_relationships, foreign_key: "followed_id", class_name:  "Relationship", dependent: :destroy
