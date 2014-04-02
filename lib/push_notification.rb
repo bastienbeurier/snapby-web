@@ -27,7 +27,7 @@ module PushNotification
     end
 
     update_users_notifications(follower_ids)
-    
+
     message = 'New shout in your area'
     follower_message = 'New shout by @' + shout.username
 
@@ -131,6 +131,7 @@ module PushNotification
         user_notification.last_sent = Time.now
       end
       user_notification.save!
+    end
   end
 
 end 
