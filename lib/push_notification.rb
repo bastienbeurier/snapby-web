@@ -26,6 +26,8 @@ module PushNotification
       user_notification.save!
     end
 
+    update_users_notifications(follower_ids)
+
     message = 'New shout in your area'
     follower_message = 'New shout by @' + shout.username
 
@@ -46,8 +48,10 @@ module PushNotification
     users = User.select([:id]).within(TRENDING_NOTIFICATION_RADIUS , :origin => [shout.lat, shout.lng]).where("id != :shout_user_id", {shout_user_id: shout.user_id})
     user_ids = users.collect(&:id)
 
-    message = 'A shout is trending in your area!'
-    shouter_message = 'Your shout is trending!'
+    update_users_notifications(user_ids)
+
+    message = 'A shout is now trending in your area!'
+    shouter_message = 'Your shout is now trending!'
 
     android_extra = {shout: shout.to_json, trending: true}
     ios_extra = {shout_id: shout.id, trending: true}
@@ -80,11 +84,11 @@ module PushNotification
     send_notifications([like.shout.user_id], message, android_extra, ios_extra)
   end 
 
-  def self.notify_new_facebook_friend(user, friend_ids, android_extra, ios_extra)
+  def self.notify_new_facebook_friend(user, friend_ids)
     message = user.facebook_name + ' joined Shout as @' + user.username 
     android_extra = {user_id: user.id, new_friend: true}
     ios_extra = {user_id: user.id, new_friend: true}
-    send_notifications(friend_ids, message, nil, nil)
+    send_notifications(friend_ids, message, android_extra, ios_extra)
   end
 
   def self.send_notifications(user_ids, message, android_extra, ios_extra)
@@ -116,4 +120,18 @@ module PushNotification
     rescue Exception => e
     end
   end 
+
+  def self.update_users_notifications(user_ids)
+    user_ids.each do |user_id|
+      user_notification = UserNotification.find_by_user_id(user_id)
+      #Create UserNotification instance if user doesn't have one, else update last sent time 
+      if !user_notification
+        user_notification  = UserNotification.new(user_id: user_id, sent_count: 0, last_sent: Time.now, blocked_count: 0)
+      else
+        user_notification.last_sent = Time.now
+      end
+      user_notification.save!
+    end
+  end
+
 end 
