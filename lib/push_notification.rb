@@ -26,6 +26,8 @@ module PushNotification
       user_notification.save!
     end
 
+    update_users_notifications(follower_ids)
+    
     message = 'New shout in your area'
     follower_message = 'New shout by @' + shout.username
 
@@ -45,6 +47,8 @@ module PushNotification
     
     users = User.select([:id]).within(TRENDING_NOTIFICATION_RADIUS , :origin => [shout.lat, shout.lng]).where("id != :shout_user_id", {shout_user_id: shout.user_id})
     user_ids = users.collect(&:id)
+
+    update_users_notifications(user_ids)
 
     message = 'A shout is now trending in your area!'
     shouter_message = 'Your shout is now trending!'
@@ -116,4 +120,17 @@ module PushNotification
     rescue Exception => e
     end
   end 
+
+  def self.update_users_notifications(user_ids)
+    user_ids.each do |user_id|
+      user_notification = UserNotification.find_by_user_id(user_id)
+      #Create UserNotification instance if user doesn't have one, else update last sent time 
+      if !user_notification
+        user_notification  = UserNotification.new(user_id: user_id, sent_count: 0, last_sent: Time.now, blocked_count: 0)
+      else
+        user_notification.last_sent = Time.now
+      end
+      user_notification.save!
+  end
+
 end 
