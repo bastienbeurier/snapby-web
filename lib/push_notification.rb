@@ -115,6 +115,7 @@ module PushNotification
         Urbanairship.push({device_tokens: ios_tokens, aps: {alert: message, badge: 0}})
       end
     rescue Exception => e
+      Airbrake.notify(e)
     end
   end 
 
