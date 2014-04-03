@@ -31,7 +31,7 @@ module PushNotification
     message = 'New shout in your area'
     follower_message = 'New shout by @' + shout.username + 'in your area'
 
-    android_extra = {shout: shout.response_shout, notif_type: "new_shout"}
+    android_extra = {shout: shout.response_shout.to_json, notif_type: "new_shout"}
     ios_extra = {shout_id: shout.id, notif_type: "new_shout"}
 
     send_notifications(notified_user_ids, message, android_extra, ios_extra)
@@ -49,7 +49,7 @@ module PushNotification
     follower_message = "@" + shout.username + "'shout is now trending"
     shouter_message = 'Your shout is now trending!'
 
-    android_extra = {shout: shout.response_shout, notif_type: "trending"}
+    android_extra = {shout: shout.response_shout.to_json, notif_type: "trending"}
     ios_extra = {shout_id: shout.id, notif_type: "trending"}
 
     send_notifications(user_ids, message, android_extra, ios_extra)
@@ -60,7 +60,7 @@ module PushNotification
   def self.notify_new_comment(comment, notified_user_ids_for_comment, notified_user_ids_for_like)
     message_commenters = 'New comment from ' + comment.commenter_username + ' on the shout you commented'
     message_likers = 'New comment from ' + comment.commenter_username + ' on the shout you liked'  
-    android_extra = {shout: shout.response_shout, notif_type: "new_comment"}
+    android_extra = {shout: shout.response_shout.to_json, notif_type: "new_comment"}
     ios_extra = {shout_id: comment.shout_id, notif_type: "new_comment"}
 
     send_notifications(notified_user_ids_for_comment, message_commenters, android_extra, ios_extra)
@@ -75,7 +75,7 @@ module PushNotification
 
   def self.notify_new_like(like, nb_likes)
     message = like.liker_username + (nb_likes == 1? ' likes' : ' and ' + (nb_likes - 1).to_s + ' others like') + ' your shout'
-    android_extra = {shout: like.shout.response_shout, notif_type: "new_like"}
+    android_extra = {shout: like.shout.response_shout.to_json, notif_type: "new_like"}
     ios_extra = {shout_id: like.shout_id, notif_type: "new_like"}
 
     send_notifications([like.shout.user_id], message, android_extra, ios_extra)
