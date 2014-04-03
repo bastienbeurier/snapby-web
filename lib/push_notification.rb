@@ -31,7 +31,7 @@ module PushNotification
     message = 'New shout in your area'
     follower_message = 'New shout by @' + shout.username + 'in your area'
 
-    android_extra = {shout: shout.to_json, new_shout: true}
+    android_extra = {shout: shout.response_shout, new_shout: true}
     ios_extra = {shout_id: shout.id, new_shout: true}
 
     send_notifications(notified_user_ids, message, android_extra, ios_extra)
@@ -49,7 +49,7 @@ module PushNotification
     follower_message = "@" + shout.username + "'shout is now trending"
     shouter_message = 'Your shout is now trending!'
 
-    android_extra = {shout: shout.to_json, trending: true}
+    android_extra = {shout: shout.response_shout, trending: true}
     ios_extra = {shout_id: shout.id, trending: true}
 
     send_notifications(user_ids, message, android_extra, ios_extra)
@@ -60,7 +60,7 @@ module PushNotification
   def self.notify_new_comment(comment, notified_user_ids_for_comment, notified_user_ids_for_like)
     message_commenters = 'New comment from ' + comment.commenter_username + ' on the shout you commented'
     message_likers = 'New comment from ' + comment.commenter_username + ' on the shout you liked'  
-    android_extra = {shout: shout.to_json, new_comment: true}
+    android_extra = {shout: shout.response_shout, new_comment: true}
     ios_extra = {shout_id: comment.shout_id, new_comment: true}
 
     send_notifications(notified_user_ids_for_comment, message_commenters, android_extra, ios_extra)
@@ -75,7 +75,7 @@ module PushNotification
 
   def self.notify_new_like(like, nb_likes)
     message = like.liker_username + (nb_likes == 1? ' likes' : ' and ' + (nb_likes - 1).to_s + ' others like') + ' your shout'
-    android_extra = {shout: like.shout.to_json, new_like: true}
+    android_extra = {shout: like.shout.response_shout, new_like: true}
     ios_extra = {shout_id: like.shout_id, new_like: true}
 
     send_notifications([like.shout.user_id], message, android_extra, ios_extra)
@@ -130,5 +130,4 @@ module PushNotification
       user_notification.save!
     end
   end
-
 end 
