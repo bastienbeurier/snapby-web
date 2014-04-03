@@ -42,7 +42,7 @@ class Api::V2::ShoutsController < Api::V2::ApiController
         shout.update_attributes(image: "s3.amazonaws.com/shout_production1/original/image_#{shout.id.to_s}") 
       end
 
-      render json: { result: { shout: shout } }, status: 201
+      render json: { result: { shout: shout.response_shout } }, status: 201
     else 
       render json: { errors: { internal: shout.errors } }, :status => 500
     end
@@ -57,7 +57,7 @@ class Api::V2::ShoutsController < Api::V2::ApiController
       if shout.anonymous
         shout.username = ANONYMOUS_USERNAME
       end
-      render json: { result: { shout: shout } }, status: 200
+      render json: { result: { shout: shout.response_shout } }, status: 200
     else
       render json: { errors: { internal: ["failed to retrieve shout"] } }, :status => 500
     end
