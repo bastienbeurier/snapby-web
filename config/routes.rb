@@ -50,6 +50,8 @@ StreetShout::Application.routes.draw do
       post "users/followed_users" => "users#followed_users"
       get "users/my_likes_and_followed_users" => "users#my_likes_and_followed_users"
       post "users/my_likes_and_followed_users" => "users#my_likes_and_followed_users"
+      get "activities/unread_activities_count" => "activities#unread_activities_count"
+      post "activities/unread_activities_count" => "activities#unread_activities_count"
     end
   end
 end
