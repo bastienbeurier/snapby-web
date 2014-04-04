@@ -110,6 +110,12 @@ class Api::V2::ShoutsController < Api::V2::ApiController
     end
   end
 
+  def index 
+    shouts = User.find(params[:user_id]).shouts.where("anonymous = 0 AND removed = 0")
+
+    render json: { result: { shouts: Shout.response_shouts(shouts).reverse } }, status: 200
+  end
+
 private 
 
   def shout_params

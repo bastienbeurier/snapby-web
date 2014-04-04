@@ -20,7 +20,7 @@ StreetShout::Application.routes.draw do
     namespace :v2  do
       resources :users, only: [:create, :update] 
       resources :flags, only: [:create]
-      resources :shouts, only: [:create, :show]
+      resources :shouts, only: [:create, :show, :index]
       resources :comments, only: [:create, :index]
       resources :likes, only: [:create, :index, :destroy]
       resources :relationships, only: [:create]
