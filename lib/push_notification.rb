@@ -46,7 +46,7 @@ module PushNotification
     update_users_notifications(follower_ids)
 
     message = 'A shout is now trending in your area!'
-    follower_message = "@" + shout.username + "'shout is now trending"
+    follower_message = "@" + shout.username + "'s shout is now trending"
     shouter_message = 'Your shout is now trending!'
 
     android_extra = {shout: shout.response_shout.to_json, notif_type: "trending"}
@@ -60,7 +60,7 @@ module PushNotification
   def self.notify_new_comment(comment, notified_user_ids_for_comment, notified_user_ids_for_like)
     message_commenters = 'New comment from ' + comment.commenter_username + ' on the shout you commented'
     message_likers = 'New comment from ' + comment.commenter_username + ' on the shout you liked'  
-    android_extra = {shout: shout.response_shout.to_json, notif_type: "new_comment"}
+    android_extra = {shout: comment.shout.response_shout.to_json, notif_type: "new_comment"}
     ios_extra = {shout_id: comment.shout_id, notif_type: "new_comment"}
 
     send_notifications(notified_user_ids_for_comment, message_commenters, android_extra, ios_extra)
