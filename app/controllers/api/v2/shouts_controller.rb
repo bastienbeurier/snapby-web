@@ -111,9 +111,12 @@ class Api::V2::ShoutsController < Api::V2::ApiController
   end
 
   def index 
-    shouts = User.find(params[:user_id]).shouts.where("anonymous = 0 AND removed = 0")
+    per_page = params[:page_size] ? params[:page_size] : 20
+    page = params[:page] ? params[:page] : 1
 
-    render json: { result: { shouts: Shout.response_shouts(shouts).reverse } }, status: 200
+    shouts = User.find(params[:user_id]).shouts.where("anonymous = 0 AND removed = 0").paginate(page: page, per_page: per_page).order('id DESC')
+
+    render json: { result: { shouts: Shout.response_shouts(shouts) } }, status: 200
   end
 
 private 
