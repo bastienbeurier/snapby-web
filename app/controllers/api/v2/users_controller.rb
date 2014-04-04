@@ -8,6 +8,8 @@ class Api::V2::UsersController < Api::V2::ApiController
     user = User.new(user_params)
 
     if user.save
+      WelcomeEmailWorker.perform_async(user.id)
+
       user.ensure_authentication_token!
       render json: { result: { user: user.response_user, auth_token: user.authentication_token } }, status: 201
     else

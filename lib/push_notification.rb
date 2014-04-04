@@ -29,10 +29,10 @@ module PushNotification
     update_users_notifications(follower_ids)
 
     message = 'New shout in your area'
-    follower_message = 'New shout by @' + shout.username
+    follower_message = 'New shout by @' + shout.username + 'in your area'
 
-    android_extra = {shout: shout.to_json, new_shout: true}
-    ios_extra = {shout_id: shout.id, new_shout: true}
+    android_extra = {shout: shout.response_shout.to_json, notif_type: "new_shout"}
+    ios_extra = {shout_id: shout.id, notif_type: "new_shout"}
 
     send_notifications(notified_user_ids, message, android_extra, ios_extra)
 
@@ -41,30 +41,27 @@ module PushNotification
     end
   end
 
-  def self.notify_trending_shout(shout)
-    users = []
-    notified_user_ids = []
-    
-    users = User.select([:id]).within(TRENDING_NOTIFICATION_RADIUS , :origin => [shout.lat, shout.lng]).where("id != :shout_user_id", {shout_user_id: shout.user_id})
-    user_ids = users.collect(&:id)
-
+  def self.notify_trending_shout(shout, user_ids, follower_ids)
     update_users_notifications(user_ids)
+    update_users_notifications(follower_ids)
 
     message = 'A shout is now trending in your area!'
+    follower_message = "@" + shout.username + "'shout is now trending"
     shouter_message = 'Your shout is now trending!'
 
-    android_extra = {shout: shout.to_json, trending: true}
-    ios_extra = {shout_id: shout.id, trending: true}
+    android_extra = {shout: shout.response_shout.to_json, notif_type: "trending"}
+    ios_extra = {shout_id: shout.id, notif_type: "trending"}
 
     send_notifications(user_ids, message, android_extra, ios_extra)
+    send_notifications(follower_ids, follower_message, android_extra, ios_extra)
     send_notifications([shout.user_id], shouter_message, android_extra, ios_extra)
   end
 
   def self.notify_new_comment(comment, notified_user_ids_for_comment, notified_user_ids_for_like)
     message_commenters = 'New comment from ' + comment.commenter_username + ' on the shout you commented'
     message_likers = 'New comment from ' + comment.commenter_username + ' on the shout you liked'  
-    android_extra = {shout: shout.to_json, new_comment: true}
-    ios_extra = {shout_id: comment.shout_id, new_comment: true}
+    android_extra = {shout: shout.response_shout.to_json, notif_type: "new_comment"}
+    ios_extra = {shout_id: comment.shout_id, notif_type: "new_comment"}
 
     send_notifications(notified_user_ids_for_comment, message_commenters, android_extra, ios_extra)
     send_notifications(notified_user_ids_for_like, message_likers, android_extra, ios_extra)
@@ -78,16 +75,16 @@ module PushNotification
 
   def self.notify_new_like(like, nb_likes)
     message = like.liker_username + (nb_likes == 1? ' likes' : ' and ' + (nb_likes - 1).to_s + ' others like') + ' your shout'
-    android_extra = {shout: like.shout.to_json, new_like: true}
-    ios_extra = {shout_id: like.shout_id, new_like: true}
+    android_extra = {shout: like.shout.response_shout.to_json, notif_type: "new_like"}
+    ios_extra = {shout_id: like.shout_id, notif_type: "new_like"}
 
     send_notifications([like.shout.user_id], message, android_extra, ios_extra)
   end 
 
   def self.notify_new_facebook_friend(user, friend_ids)
     message = user.facebook_name + ' joined Shout as @' + user.username 
-    android_extra = {user_id: user.id, new_friend: true}
-    ios_extra = {user_id: user.id, new_friend: true}
+    android_extra = {user_id: user.id, notif_type: "new_friend"}
+    ios_extra = {user_id: user.id, notif_type: "new_friend"}
     send_notifications(friend_ids, message, android_extra, ios_extra)
   end
 
@@ -118,6 +115,7 @@ module PushNotification
         Urbanairship.push({device_tokens: ios_tokens, aps: {alert: message, badge: 0}})
       end
     rescue Exception => e
+      Airbrake.notify(e)
     end
   end 
 
@@ -133,5 +131,4 @@ module PushNotification
       user_notification.save!
     end
   end
-
 end 

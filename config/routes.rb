@@ -24,6 +24,7 @@ StreetShout::Application.routes.draw do
       resources :comments, only: [:create, :index]
       resources :likes, only: [:create, :index, :destroy]
       resources :relationships, only: [:create]
+      resources :activities, only: [:index]
       devise_for :users, :skip => [:registrations], :controllers => { sessions:'api/v2/sessions', passwords:'api/v2/passwords' } # custom controller for API token access with devise
 
       get "/obsolete_api" => "api#obsolete_api"
@@ -49,6 +50,8 @@ StreetShout::Application.routes.draw do
       post "users/followed_users" => "users#followed_users"
       get "users/my_likes_and_followed_users" => "users#my_likes_and_followed_users"
       post "users/my_likes_and_followed_users" => "users#my_likes_and_followed_users"
+      get "activities/unread_activities_count" => "activities#unread_activities_count"
+      post "activities/unread_activities_count" => "activities#unread_activities_count"
     end
   end
 end

@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_many :followed_users, through: :relationships, source: :followed
   has_many :followers, through: :reverse_relationships
 
+  after_create :create_welcome_activity
+
   acts_as_mappable  :default_units => :kms, 
                     :default_formula => :sphere, 
                     :distance_field_name => :distance,
@@ -46,6 +48,7 @@ class User < ActiveRecord::Base
   def follow!(other_user)
     if !following?(other_user)
       relationships.create!(followed_id: other_user.id)
+      FollowActivityWorker.perform_async(self.id, other_user.id)
     end
   end
 
@@ -78,5 +81,12 @@ class User < ActiveRecord::Base
 
   def self.response_users(users)
     users.map { |user| user.response_user }
+  end
+
+  def create_welcome_activity
+    self.activities.create!(
+        subject: self, 
+        activity_type: "welcome"
+      )
   end
 end

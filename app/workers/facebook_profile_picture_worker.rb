@@ -5,7 +5,7 @@ class FacebookProfilePictureWorker
   def perform(user_id)
     user = User.find(user_id)
 
-    user.avatar = open(URI.parse(process_uri("http://graph.facebook.com/#{user.facebook_id}/picture")))
+    user.avatar = open(URI.parse(process_uri("http://graph.facebook.com/#{user.facebook_id}/picture?type=large")))
 
     user.save
   end
