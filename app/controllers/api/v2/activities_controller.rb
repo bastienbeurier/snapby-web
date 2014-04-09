@@ -4,7 +4,12 @@ class Api::V2::ActivitiesController < Api::V2::ApiController
   def index
     Rails.logger.debug "BAB index activies index params: #{params}"
 
-    render json: { result: {activities: current_user.activities.limit(100).reverse } }, status: 200
+    per_page = params[:page_size] ? params[:page_size] : 20
+    page = params[:page] ? params[:page] : 1
+
+    activities = current_user.activities.paginate(page: page, per_page: per_page).order('id DESC')
+
+    render json: { result: {activities: activities } }, status: 200
   end
 
   def unread_activities_count
