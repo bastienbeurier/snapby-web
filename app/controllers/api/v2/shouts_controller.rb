@@ -89,6 +89,27 @@ class Api::V2::ShoutsController < Api::V2::ApiController
     render json: { result: { shouts: Shout.response_shouts(shouts) } }, status: 200
   end
 
+  def local_shouts_count
+    shouts_count = Shout.where("id >= 3183 AND source = 'native' AND removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).count
+  
+    render json: { result: { shouts_count: shouts_count } }, status: 200
+  end
+
+  def local_shouts
+    per_page = params[:page_size] ? params[:page_size] : 20
+    page = params[:page] ? params[:page] : 1
+
+    shouts = Shout.where("id >= 3183 AND source = 'native' AND removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).paginate(page: page, per_page: per_page).order("created_at DESC")
+
+    shouts.each do |shout|
+      if shout.anonymous
+        shout.username = ANONYMOUS_USERNAME
+      end
+    end
+
+    render json: { result: { shouts: Shout.response_shouts(shouts), page: page } }, status: 200
+  end
+
   # Remove shout (for the shouter only)
   def remove
     Rails.logger.debug "TRUCHOV remove_shouts params: #{params}"
