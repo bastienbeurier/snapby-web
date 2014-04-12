@@ -78,9 +78,8 @@ class Api::V2::ShoutsController < Api::V2::ApiController
   #Retrieve shouts within a zone (bouding box)
   def bound_box_shouts
     Rails.logger.debug "BAB zone_shouts params: #{params}"
-    max_age = Time.now - SHOUT_DURATION
 
-    shouts = Shout.where("created_at >= :max_age", {:max_age => max_age}).in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).limit(20).order("created_at DESC")
+    shouts = Shout.where("id >= 3183 AND source = 'native' AND removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).limit(10).order("created_at DESC")
 
     shouts.each do |shout|
       if shout.anonymous
@@ -88,6 +87,27 @@ class Api::V2::ShoutsController < Api::V2::ApiController
       end
     end
     render json: { result: { shouts: Shout.response_shouts(shouts) } }, status: 200
+  end
+
+  def local_shouts_count
+    shouts_count = Shout.where("id >= 3183 AND source = 'native' AND removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).count
+  
+    render json: { result: { shouts_count: shouts_count } }, status: 200
+  end
+
+  def local_shouts
+    per_page = params[:page_size] ? params[:page_size] : 20
+    page = params[:page] ? params[:page] : 1
+
+    shouts = Shout.where("id >= 3183 AND source = 'native' AND removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).paginate(page: page, per_page: per_page).order("created_at DESC")
+
+    shouts.each do |shout|
+      if shout.anonymous
+        shout.username = ANONYMOUS_USERNAME
+      end
+    end
+
+    render json: { result: { shouts: Shout.response_shouts(shouts), page: page } }, status: 200
   end
 
   # Remove shout (for the shouter only)
@@ -114,7 +134,7 @@ class Api::V2::ShoutsController < Api::V2::ApiController
     per_page = params[:page_size] ? params[:page_size] : 20
     page = params[:page] ? params[:page] : 1
 
-    shouts = User.find(params[:user_id]).shouts.where("anonymous = 0 AND removed = 0").paginate(page: page, per_page: per_page).order('id DESC')
+    shouts = User.find(params[:user_id]).shouts.where("id >= 3183 AND anonymous = 0 AND removed = 0").paginate(page: page, per_page: per_page).order('id DESC')
 
     render json: { result: { shouts: Shout.response_shouts(shouts) } }, status: 200
   end
