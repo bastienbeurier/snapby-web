@@ -90,8 +90,8 @@ module PushNotification
 
   def self.notify_new_follower(follower, followed_id)
     message = follower.username + ' is now following you!'
-    android_extra = {user_id: follower_id, notif_type: "new_friend"}
-    ios_extra = {user_id: follower_id, notif_type: "new_friend"}
+    android_extra = {user_id: follower.id, notif_type: "new_friend"}
+    ios_extra = {user_id: follower.id, notif_type: "new_friend"}
     send_notifications(followed_id, message, android_extra, ios_extra)
   end
 
