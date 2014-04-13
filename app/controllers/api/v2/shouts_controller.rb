@@ -79,7 +79,11 @@ class Api::V2::ShoutsController < Api::V2::ApiController
   def bound_box_shouts
     Rails.logger.debug "BAB zone_shouts params: #{params}"
 
-    shouts = Shout.where("id >= 3183 AND source = 'native' AND removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).limit(10).order("created_at DESC")
+    if Rails.env.development?
+      shouts = Shout.where("id >= 800 AND source = 'native' AND removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).limit(10).order("created_at DESC")
+    else
+      shouts = Shout.where("id >= 3183 AND source = 'native' AND removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).limit(10).order("created_at DESC")
+    end
 
     shouts.each do |shout|
       if shout.anonymous
