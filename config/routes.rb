@@ -53,7 +53,7 @@ StreetShout::Application.routes.draw do
       get "activities/unread_activities_count" => "activities#unread_activities_count"
       post "activities/unread_activities_count" => "activities#unread_activities_count"
       get "shouts/local_shouts" => "shouts#local_shouts"
-      get "shouts/local_shouts_count" => "shouts#local_shouts_count"
+      get "local_shouts_count" => "shouts#local_shouts_count"
     end
   end
 end

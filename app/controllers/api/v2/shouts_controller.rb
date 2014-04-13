@@ -1,6 +1,6 @@
 class Api::V2::ShoutsController < Api::V2::ApiController
   include ApplicationHelper
-  skip_before_filter :authenticate_user!, :only => [:show, :bound_box_shouts, :get_shout_meta_data]
+  skip_before_filter :authenticate_user!, :only => [:show, :bound_box_shouts, :get_shout_meta_data, :local_shouts_count]
 
   #Create a shout
   def create
@@ -79,7 +79,14 @@ class Api::V2::ShoutsController < Api::V2::ApiController
   def bound_box_shouts
     Rails.logger.debug "BAB zone_shouts params: #{params}"
 
-    shouts = Shout.where("id >= 3183 AND source = 'native' AND removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).limit(10).order("created_at DESC")
+    shouts = []
+
+    if Rails.env.development?
+      shouts = Shout.where("id >= 800 AND source = 'native' AND removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).limit(10).order("created_at DESC")
+    else
+      shouts = Shout.where("id >= 3183 AND source = 'native' AND removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).limit(10).order("created_at DESC")
+    end
+
 
     shouts.each do |shout|
       if shout.anonymous
@@ -90,7 +97,13 @@ class Api::V2::ShoutsController < Api::V2::ApiController
   end
 
   def local_shouts_count
-    shouts_count = Shout.where("id >= 3183 AND source = 'native' AND removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).count
+    shouts_count = 0
+
+    if Rails.env.development?
+      shouts_count = Shout.where("id >= 800 AND source = 'native' AND removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).count
+    else
+      shouts_count = Shout.where("id >= 3183 AND source = 'native' AND removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).count
+    end
   
     render json: { result: { shouts_count: shouts_count } }, status: 200
   end
@@ -99,7 +112,13 @@ class Api::V2::ShoutsController < Api::V2::ApiController
     per_page = params[:page_size] ? params[:page_size] : 20
     page = params[:page] ? params[:page] : 1
 
-    shouts = Shout.where("id >= 3183 AND source = 'native' AND removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).paginate(page: page, per_page: per_page).order("created_at DESC")
+    shouts = []
+
+    if Rails.env.development?
+      shouts = Shout.where("id >= 800 AND source = 'native' AND removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).paginate(page: page, per_page: per_page).order("created_at DESC")
+    else
+      shouts = Shout.where("id >= 3183 AND source = 'native' AND removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).paginate(page: page, per_page: per_page).order("created_at DESC")
+    end
 
     shouts.each do |shout|
       if shout.anonymous
@@ -134,7 +153,13 @@ class Api::V2::ShoutsController < Api::V2::ApiController
     per_page = params[:page_size] ? params[:page_size] : 20
     page = params[:page] ? params[:page] : 1
 
-    shouts = User.find(params[:user_id]).shouts.where("id >= 3183 AND anonymous = 0 AND removed = 0").paginate(page: page, per_page: per_page).order('id DESC')
+    shouts = []
+
+    if Rails.env.development?
+      shouts = User.find(params[:user_id]).shouts.where("id >= 800 AND anonymous = 0 AND removed = 0").paginate(page: page, per_page: per_page).order('id DESC')
+    else
+      shouts = User.find(params[:user_id]).shouts.where("id >= 3183 AND anonymous = 0 AND removed = 0").paginate(page: page, per_page: per_page).order('id DESC')
+    end
 
     render json: { result: { shouts: Shout.response_shouts(shouts) } }, status: 200
   end
