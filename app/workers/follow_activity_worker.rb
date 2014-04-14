@@ -10,5 +10,11 @@ class FollowActivityWorker
       activity_type: "new_follower", 
       extra: {user_id: follower.id, username: follower.username}
     )
+
+    begin    
+      PushNotification.notify_new_follower(follower, followed_id)
+    rescue Exception => e
+      Airbrake.notify(e)
+    end
   end
 end
