@@ -12,18 +12,26 @@ class DeviseCreateUsers < ActiveRecord::Migration
       ## Rememberable
       t.datetime :remember_created_at
 
-      ## Trackable
-      t.integer  :sign_in_count, :default => 0, :null => false
-      t.datetime :current_sign_in_at
-      t.datetime :last_sign_in_at
-      t.string   :current_sign_in_ip
-      t.string   :last_sign_in_ip
-
       ## Encryptable
       t.string :password_salt
 
       # Token authenticatable
       t.string :authentication_token
+
+      t.string :username
+      t.float :lat
+      t.float :lng
+      t.string :device_model
+      t.string :os_version
+      t.string :os_type
+      t.string :app_version
+      t.string :api_version
+      t.string :push_token
+      t.string :facebook_id
+      t.string :facebook_name
+      t.boolean :black_listed, default: false
+      t.integer :snapby_count, default: 0
+      t.integer :liked_snapbies, default: 0
 
       t.timestamps
     end
@@ -31,5 +39,6 @@ class DeviseCreateUsers < ActiveRecord::Migration
     add_index :users, :email,                :unique => true
     add_index :users, :reset_password_token, :unique => true
     add_index :users, :authentication_token, :unique => true
+    add_index :users, [:lat, :lng]
   end
 end
