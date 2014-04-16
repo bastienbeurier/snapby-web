@@ -224,4 +224,8 @@ production:
 staging:
   <<: *default_settings
   monitor_mode: true
+
+development:
+  <<: *default_settings
+  monitor_mode: fase
   # app_name: My Application (Staging)
