@@ -1,6 +1,6 @@
 require 'sidekiq/web'
 
-Snapby::Application.routes.draw do
+SnapbyApp::Application.routes.draw do
   devise_for :users, :skip => [:registrations], :controllers => { passwords:'passwords' } 
   resources :snapbys
   patch  "/users/password" => "passwords#update"

@@ -5,4 +5,4 @@ require File.expand_path('../application', __FILE__)
 SENDER_EMAIL_ = "info@snapby.co"
 
 # Initialize the rails application
-Snapby::Application.initialize!
+SnapbyApp::Application.initialize!

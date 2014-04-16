@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Snapby::Application.load_tasks
+SnapbyApp::Application.load_tasks
