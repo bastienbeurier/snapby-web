@@ -16,30 +16,13 @@ class Api::V1::ShoutsController < Api::V1::ApiController
     shout = Shout.new(shout_params)
 
     shout.anonymous = params[:anonymous] == "1"
-    shout.trending = params[:trending] == "1"
 
-    avatar = nil
-
-    if params[:avatar]
-      avatar = StringIO.new(Base64.decode64(params[:avatar]))
-    else
-      #For retrocompatibility, remove when we can
-      avatar = open(URI.parse(process_uri("http://#{shout.image}--400")))
-    end
-
-    shout.avatar = avatar
+    shout.avatar = StringIO.new(Base64.decode64(params[:avatar]))
 
     if shout.save
       # update shout_count
       if !shout.anonymous
         shout.user.update_attributes(shout_count: shout.user.shout_count + 1)
-      end
-
-      #For retrocompatibility, remove when we can
-      if Rails.env.development?
-        shout.update_attributes(image: "s3.amazonaws.com/shout_development/original/image_#{shout.id.to_s}")
-      else
-        shout.update_attributes(image: "s3.amazonaws.com/shout_production1/original/image_#{shout.id.to_s}") 
       end
 
       render json: { result: { shout: shout.response_shout } }, status: 201
