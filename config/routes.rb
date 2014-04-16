@@ -17,7 +17,7 @@ StreetShout::Application.routes.draw do
   mount Sidekiq::Web, at: '/sidekiq'
 
   namespace :api do
-    namespace :v2  do
+    namespace :v1  do
       resources :users, only: [:create, :update] 
       resources :flags, only: [:create]
       resources :shouts, only: [:create, :show, :index]
@@ -25,7 +25,7 @@ StreetShout::Application.routes.draw do
       resources :likes, only: [:create, :index, :destroy]
       resources :relationships, only: [:create]
       resources :activities, only: [:index]
-      devise_for :users, :skip => [:registrations], :controllers => { sessions:'api/v2/sessions', passwords:'api/v2/passwords' } # custom controller for API token access with devise
+      devise_for :users, :skip => [:registrations], :controllers => { sessions:'api/v1/sessions', passwords:'api/v1/passwords' } # custom controller for API token access with devise
 
       get "/obsolete_api" => "api#obsolete_api"
       get "/bound_box_shouts" => "shouts#bound_box_shouts"
