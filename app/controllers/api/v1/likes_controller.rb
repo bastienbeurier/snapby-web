@@ -20,11 +20,6 @@ class Api::V1::LikesController < Api::V1::ApiController
       # update counter in snapby
       snapby.update_attributes(like_count: snapby.like_count + 1)
 
-      # if 5 likes, mark as trending
-      if snapby.like_count == TRENDING_LIKES_COUNT
-        snapby.make_trending
-      end
-
       CreateLikeActivityAndNotificationWorker.perform_async(like.id)
 
       render json: { result: { like_count: snapby.like_count } }, status: 201

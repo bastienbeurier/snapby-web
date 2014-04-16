@@ -34,12 +34,10 @@ class Api::V1::UsersController < Api::V1::ApiController
     end
   end
 
-  def my_likes_and_followed_users
-    max_age = Time.now - SNAPBY_DURATION
-    user_likes = Like.where("created_at >= :max_age AND liker_id = :current_user_id", 
+  def my_likes
+    user_likes = Like.where("liker_id = :current_user_id", 
       {max_age: max_age, current_user_id: current_user.id})
-    render json: { result: { likes: user_likes, 
-                             current_user_followed_user_ids: current_user.followed_user_ids } }, status: 201  
+    render json: { result: { likes: user_likes } }, status: 201  
   end
 
 
