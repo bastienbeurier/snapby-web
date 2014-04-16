@@ -1,7 +1,7 @@
-class CreateRemovedShouts < ActiveRecord::Migration
+class CreateRemovedSnapbys < ActiveRecord::Migration
   def change
-    create_table :removed_shouts do |t|
-      t.integer :shout_id
+    create_table :removed_snapbys do |t|
+      t.integer :snapby_id
       t.float :lat
       t.float :lng
       t.string :description

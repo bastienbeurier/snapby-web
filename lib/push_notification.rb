@@ -1,5 +1,5 @@
 module PushNotification
-  def self.notify_new_shout(shout, user_ids, follower_ids)
+  def self.notify_new_snapby(snapby, user_ids, follower_ids)
     notified_user_ids = []
 
     user_ids.each do |user_id|
@@ -28,61 +28,61 @@ module PushNotification
 
     update_users_notifications(follower_ids)
 
-    message = 'New shout in your area'
-    follower_message = 'New shout by @' + shout.username + ' in your area'
+    message = 'New snapby in your area'
+    follower_message = 'New snapby by @' + snapby.username + ' in your area'
 
-    android_extra = {shout: shout.response_shout.to_json, notif_type: "new_shout"}
-    ios_extra = {shout_id: shout.id, notif_type: "new_shout"}
+    android_extra = {snapby: snapby.response_snapby.to_json, notif_type: "new_snapby"}
+    ios_extra = {snapby_id: snapby.id, notif_type: "new_snapby"}
 
     send_notifications(notified_user_ids, message, android_extra, ios_extra)
 
-    unless shout.anonymous
+    unless snapby.anonymous
       send_notifications(follower_ids, follower_message, android_extra, ios_extra)
     end
   end
 
-  def self.notify_trending_shout(shout, user_ids, follower_ids)
+  def self.notify_trending_snapby(snapby, user_ids, follower_ids)
     update_users_notifications(user_ids)
     update_users_notifications(follower_ids)
 
-    message = 'A shout is now trending in your area!'
-    follower_message = "@" + shout.username + "'s shout is now trending"
-    shouter_message = 'Your shout is now trending!'
+    message = 'A snapby is now trending in your area!'
+    follower_message = "@" + snapby.username + "'s snapby is now trending"
+    snapbyer_message = 'Your snapby is now trending!'
 
-    android_extra = {shout: shout.response_shout.to_json, notif_type: "trending"}
-    ios_extra = {shout_id: shout.id, notif_type: "trending"}
+    android_extra = {snapby: snapby.response_snapby.to_json, notif_type: "trending"}
+    ios_extra = {snapby_id: snapby.id, notif_type: "trending"}
 
     send_notifications(user_ids, message, android_extra, ios_extra)
     send_notifications(follower_ids, follower_message, android_extra, ios_extra)
-    send_notifications([shout.user_id], shouter_message, android_extra, ios_extra)
+    send_notifications([snapby.user_id], snapbyer_message, android_extra, ios_extra)
   end
 
   def self.notify_new_comment(comment, notified_user_ids_for_comment, notified_user_ids_for_like)
-    message_commenters = 'New comment from ' + comment.commenter_username + ' on the shout you commented'
-    message_likers = 'New comment from ' + comment.commenter_username + ' on the shout you liked'  
-    android_extra = {shout: comment.shout.response_shout.to_json, notif_type: "new_comment"}
-    ios_extra = {shout_id: comment.shout_id, notif_type: "new_comment"}
+    message_commenters = 'New comment from ' + comment.commenter_username + ' on the snapby you commented'
+    message_likers = 'New comment from ' + comment.commenter_username + ' on the snapby you liked'  
+    android_extra = {snapby: comment.snapby.response_snapby.to_json, notif_type: "new_comment"}
+    ios_extra = {snapby_id: comment.snapby_id, notif_type: "new_comment"}
 
     send_notifications(notified_user_ids_for_comment, message_commenters, android_extra, ios_extra)
     send_notifications(notified_user_ids_for_like, message_likers, android_extra, ios_extra)
 
-    #Send notification to shouter if he is not the current commenter
-    if (comment.shouter_id != comment.commenter_id)
-      message_shouter = 'New comment from ' + comment.commenter_username + ' on your shout'
-      send_notifications([comment.shouter_id], message_shouter, android_extra, ios_extra)
+    #Send notification to snapbyer if he is not the current commenter
+    if (comment.snapbyer_id != comment.commenter_id)
+      message_snapbyer = 'New comment from ' + comment.commenter_username + ' on your snapby'
+      send_notifications([comment.snapbyer_id], message_snapbyer, android_extra, ios_extra)
     end
   end
 
   def self.notify_new_like(like, nb_likes)
-    message = like.liker_username + (nb_likes == 1? ' likes' : ' and ' + (nb_likes - 1).to_s + ' others like') + ' your shout'
-    android_extra = {shout: like.shout.response_shout.to_json, notif_type: "new_like"}
-    ios_extra = {shout_id: like.shout_id, notif_type: "new_like"}
+    message = like.liker_username + (nb_likes == 1? ' likes' : ' and ' + (nb_likes - 1).to_s + ' others like') + ' your snapby'
+    android_extra = {snapby: like.snapby.response_snapby.to_json, notif_type: "new_like"}
+    ios_extra = {snapby_id: like.snapby_id, notif_type: "new_like"}
 
-    send_notifications([like.shout.user_id], message, android_extra, ios_extra)
+    send_notifications([like.snapby.user_id], message, android_extra, ios_extra)
   end 
 
   def self.notify_new_facebook_friend(user, friend_ids)
-    message = user.facebook_name + ' joined Shout as @' + user.username 
+    message = user.facebook_name + ' joined Snapby as @' + user.username 
     android_extra = {user_id: user.id, notif_type: "new_friend"}
     ios_extra = {user_id: user.id, notif_type: "new_friend"}
     send_notifications(friend_ids, message, android_extra, ios_extra)

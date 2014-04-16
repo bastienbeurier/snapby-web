@@ -7,11 +7,11 @@ class CreateCommentActivitiesAndNotificationsWorker
     notified_user_ids_for_comment = []
     notified_user_ids_for_like = []
 
-    shout = comment.shout
+    snapby = comment.snapby
 
     #Activity for previous commenters if they are not the current commenter
-    shout.comments.each do |com|
-      if !notified_user_ids_for_comment.include?(com.commenter_id) and com.commenter_id != comment.commenter_id and com.commenter_id != comment.shouter_id
+    snapby.comments.each do |com|
+      if !notified_user_ids_for_comment.include?(com.commenter_id) and com.commenter_id != comment.commenter_id and com.commenter_id != comment.snapbyer_id
         notified_user_ids_for_comment += [com.commenter_id]
       end
     end
@@ -19,20 +19,20 @@ class CreateCommentActivitiesAndNotificationsWorker
     commenters_activities(comment, notified_user_ids_for_comment)
 
     #Activity for previous likers if not already sent notification for comment and if not the current commenter
-    shout.likes.each do |like|
-      if !notified_user_ids_for_comment.include?(like.liker_id) and like.liker_id != comment.commenter_id and like.liker_id != comment.shouter_id
+    snapby.likes.each do |like|
+      if !notified_user_ids_for_comment.include?(like.liker_id) and like.liker_id != comment.commenter_id and like.liker_id != comment.snapbyer_id
         notified_user_ids_for_like += [like.liker_id]
       end
     end
 
     likers_activities(comment, notified_user_ids_for_like)
 
-    #Activity for shouter if he is not the current commenter
-    if (comment.shouter_id != comment.commenter_id)
-      User.find(comment.shouter_id).activities.create!(
-        subject: comment.shout, 
-        activity_type: "my_shout_commented", 
-        extra: {shout_id: comment.shout.id, commenter_username: comment.commenter_username}
+    #Activity for snapbyer if he is not the current commenter
+    if (comment.snapbyer_id != comment.commenter_id)
+      User.find(comment.snapbyer_id).activities.create!(
+        subject: comment.snapby, 
+        activity_type: "my_snapby_commented", 
+        extra: {snapby_id: comment.snapby.id, commenter_username: comment.commenter_username}
       )
     end
 
@@ -46,9 +46,9 @@ class CreateCommentActivitiesAndNotificationsWorker
   def commenters_activities(comment, commenter_ids)
     commenter_ids.each do |id|
       User.find(id).activities.create!(
-        subject: comment.shout, 
-        activity_type: "commenter_shout_commented", 
-        extra: {shout_id: comment.shout.id, commenter_username: comment.commenter_username}
+        subject: comment.snapby, 
+        activity_type: "commenter_snapby_commented", 
+        extra: {snapby_id: comment.snapby.id, commenter_username: comment.commenter_username}
       )
     end
   end
@@ -56,9 +56,9 @@ class CreateCommentActivitiesAndNotificationsWorker
   def likers_activities(comment, liker_ids)
     liker_ids.each do |id|
       User.find(id).activities.create!(
-        subject: comment.shout, 
-        activity_type: "liker_shout_commented", 
-        extra: {shout_id: comment.shout.id, commenter_username: comment.commenter_username}
+        subject: comment.snapby, 
+        activity_type: "liker_snapby_commented", 
+        extra: {snapby_id: comment.snapby.id, commenter_username: comment.commenter_username}
       )
     end
   end

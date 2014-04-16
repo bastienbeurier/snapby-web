@@ -14,11 +14,11 @@ class AddColumnsToUser < ActiveRecord::Migration
 
   def self.up
     add_index  :users, [:lat, :lng]
-    add_index  :shouts, [:lat, :lng]
+    add_index  :snapbys, [:lat, :lng]
   end
 
   def self.down
     remove_index  :users, [:lat, :lng]
-    remove_index  :shouts, [:lat, :lng]
+    remove_index  :snapbys, [:lat, :lng]
   end
 end

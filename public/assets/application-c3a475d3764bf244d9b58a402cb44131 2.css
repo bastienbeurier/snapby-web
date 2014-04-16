@@ -516,9 +516,9 @@ a:hover {
   font-weight: 400;
   margin-bottom: 5px; }
 
-/* Display_shout
+/* Display_snapby
 -------------------------------------*/
-#display_shout {
+#display_snapby {
   width: 90%;
   position: relative;
   top: 5%;
@@ -526,7 +526,7 @@ a:hover {
   height: auto;
   padding-bottom: 30px; }
 
-#display_shout img {
+#display_snapby img {
   display: block;
   max-width: 100%;
   margin-left: auto;
@@ -535,14 +535,14 @@ a:hover {
   width: auto\9;
   /*ie8  */ }
 
-#display_shout h2 {
+#display_snapby h2 {
   position: absolute;
   top: 5%%;
   text-align: center;
   width: 70%;
   margin-left: 15%; }
 
-#display_shout h2 span {
+#display_snapby h2 span {
   border-radius: 10px;
   color: white;
   font-size: 40px;
@@ -673,14 +673,14 @@ a:hover {
       text-align: center;
     }
 
-  /* DISPLAY_SHOUT */
-  #display_shout {
+  /* DISPLAY_SNAPBY */
+  #display_snapby {
     padding-bottom: 10px;}
-    #display_shout h2{
+    #display_snapby h2{
       width: 100%;
       margin-left: 0%;
     }
-    #display_shout h2 span {
+    #display_snapby h2 span {
       font-size: 18px;
   }
 
@@ -712,9 +712,9 @@ a:hover {
     padding-right: 9px;
   }
 
-  /* DISPLAY_SHOUT*/
-    /* DISPLAY_SHOUT */
-    #display_shout h2{
+  /* DISPLAY_SNAPBY*/
+    /* DISPLAY_SNAPBY */
+    #display_snapby h2{
       width: 90%;
       margin-left: 5%;
     }

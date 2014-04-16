@@ -7,70 +7,70 @@ class Api::V1::LikesController < Api::V1::ApiController
     params[:liker_id] = current_user.id
     params[:liker_username] = current_user.username
 
-    shout = Shout.find(params[:shout_id])
+    snapby = Snapby.find(params[:snapby_id])
 
-    if shout.likes.collect(&:liker_id).include? current_user.id
-      render json: { errors: { invalid: ["Shout already liked by user"] } }, :status => 406
+    if snapby.likes.collect(&:liker_id).include? current_user.id
+      render json: { errors: { invalid: ["Snapby already liked by user"] } }, :status => 406
       return
     end
 
     like = Like.new(like_params)  
     
     if like.save
-      # update counter in shout
-      shout.update_attributes(like_count: shout.like_count + 1)
+      # update counter in snapby
+      snapby.update_attributes(like_count: snapby.like_count + 1)
 
       # if 5 likes, mark as trending
-      if shout.like_count == TRENDING_LIKES_COUNT
-        shout.make_trending
+      if snapby.like_count == TRENDING_LIKES_COUNT
+        snapby.make_trending
       end
 
       CreateLikeActivityAndNotificationWorker.perform_async(like.id)
 
-      render json: { result: { like_count: shout.like_count } }, status: 201
+      render json: { result: { like_count: snapby.like_count } }, status: 201
     else 
       render json: { errors: { internal: like.errors } }, :status => 500
     end
   end
 
-  #Display likes for a shout
+  #Display likes for a snapby
   def index
     Rails.logger.debug "BAB index likes params: #{params}"
 
-    if !params[:shout_id]
+    if !params[:snapby_id]
       render json: { errors: {incomplete: ["Incomplete like information"] } }, :status => 406
       return
     end
 
-    shout = Shout.find(params[:shout_id])
+    snapby = Snapby.find(params[:snapby_id])
 
     #TODO: handle when there is a lot of likes (not for now)
-    render json: { result: {likes: shout.likes.reverse } }, status: 200
+    render json: { result: {likes: snapby.likes.reverse } }, status: 200
   end
 
 
   def destroy
     Rails.logger.debug "TRUCHOV remove_likes params: #{params}"
  
-    likes = Like.where("liker_id = ? AND shout_id =?", current_user.id, params[:shout_id])
+    likes = Like.where("liker_id = ? AND snapby_id =?", current_user.id, params[:snapby_id])
 
     if likes.count < 1
-      render json: { errors: { internal: ["User did not like this shout"] } }, :status => 500
+      render json: { errors: { internal: ["User did not like this snapby"] } }, :status => 500
       return
     end
 
     if likes.destroy_all
-      shout = Shout.find(params[:shout_id])
-      shout.update_attributes(like_count: shout.like_count - 1)
+      snapby = Snapby.find(params[:snapby_id])
+      snapby.update_attributes(like_count: snapby.like_count - 1)
       render json: { result: { messages: ["Like successfully destroyed"] } }, status: 200
     else
-      render json: { errors: { internal: ["User did not like this shout"] } }, :status => 500
+      render json: { errors: { internal: ["User did not like this snapby"] } }, :status => 500
     end
   end
 
 private
 
   def like_params
-    params.permit(:shout_id, :liker_id, :liker_username, :lat, :lng)
+    params.permit(:snapby_id, :liker_id, :liker_username, :lat, :lng)
   end 
 end

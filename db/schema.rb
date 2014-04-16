@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(version: 20140228164516) do
 
   create_table "comments", force: true do |t|
-    t.integer  "shout_id"
-    t.integer  "shouter_id"
+    t.integer  "snapby_id"
+    t.integer  "snapbyer_id"
     t.integer  "commenter_id"
     t.string   "commenter_username"
     t.string   "description"
@@ -25,16 +25,16 @@ ActiveRecord::Schema.define(version: 20140228164516) do
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["shout_id"], name: "index_comments_on_shout_id", using: :btree
+  add_index "comments", ["snapby_id"], name: "index_comments_on_snapby_id", using: :btree
 
   create_table "flags", force: true do |t|
-    t.integer "shout_id"
+    t.integer "snapby_id"
     t.string  "motive"
     t.integer "flagger_id"
   end
 
   create_table "likes", force: true do |t|
-    t.integer  "shout_id"
+    t.integer  "snapby_id"
     t.integer  "liker_id"
     t.string   "liker_username"
     t.float    "lat"
@@ -43,9 +43,9 @@ ActiveRecord::Schema.define(version: 20140228164516) do
     t.datetime "updated_at"
   end
 
-  add_index "likes", ["shout_id"], name: "index_likes_on_shout_id", using: :btree
+  add_index "likes", ["snapby_id"], name: "index_likes_on_snapby_id", using: :btree
 
-  create_table "scheduled_shouts", force: true do |t|
+  create_table "scheduled_snapbys", force: true do |t|
     t.float    "lat"
     t.float    "lng"
     t.datetime "scheduled_time"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20140228164516) do
     t.boolean  "is_born",             default: false
   end
 
-  create_table "shouts", force: true do |t|
+  create_table "snapbys", force: true do |t|
     t.float    "lat"
     t.float    "lng"
     t.string   "description"

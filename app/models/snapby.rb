@@ -1,4 +1,4 @@
-class Shout < ActiveRecord::Base
+class Snapby < ActiveRecord::Base
   has_many :flags, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -20,12 +20,12 @@ class Shout < ActiveRecord::Base
   validates :username,    presence: true
 
   def create_activities_and_notifs
-    CreateShoutActivitiesAndNotificationsWorker.perform_async(self.id)
+    CreateSnapbyActivitiesAndNotificationsWorker.perform_async(self.id)
   end
 
-  #Interpolation for shout and user collides because attachment has the same name :avatar
+  #Interpolation for snapby and user collides because attachment has the same name :avatar
   Paperclip.interpolates :file_name do |attachment, style|
-    if attachment.instance.class.to_s == "Shout"
+    if attachment.instance.class.to_s == "Snapby"
       "image_#{attachment.instance.id.to_s}--400"
     else 
       "profile_" + attachment.instance.id.to_s
@@ -39,10 +39,10 @@ class Shout < ActiveRecord::Base
   def make_trending
     self.update_attributes(trending: true)
 
-    TrendingShoutNotificationsWorker.perform_async(self.id)
+    TrendingSnapbyNotificationsWorker.perform_async(self.id)
   end
 
-  def response_shout
+  def response_snapby
     { id: self.id,
       lat: self.lat,
       lng: self.lng, 
@@ -59,7 +59,7 @@ class Shout < ActiveRecord::Base
       source: "dummy" }
   end
 
-  def self.response_shouts(shouts)
-    shouts.map { |shout| shout.response_shout }
+  def self.response_snapbys(snapbys)
+    snapbys.map { |snapby| snapby.response_snapby }
   end
 end

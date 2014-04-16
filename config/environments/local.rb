@@ -1,4 +1,4 @@
-StreetShout::Application.configure do
+Snapby::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -25,13 +25,13 @@ StreetShout::Application.configure do
   config.assets.debug = true
 
   # Mailer
-  config.action_mailer.default_url_options = { :host => 'dev-street-shout.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'dev-snapby-web.herokuapp.com' }
   ActionMailer::Base.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   ActionMailer::Base.smtp_settings = {
       :address        => 'smtp.gmail.com',
-      :domain         => 'http://www.shouthereandnow.com',
+      :domain         => 'http://dev-snapby-web.herokuapp.com',
       :port           => 587,
       :user_name      => SENDER_EMAIL_,
       :password       => ENV['INFO_MAIL_PASS'],

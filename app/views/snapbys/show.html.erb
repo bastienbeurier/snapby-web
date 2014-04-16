@@ -1,0 +1,54 @@
+<% provide(:title, 'Snapby') %>
+
+<% if @snapby.image %>
+  <%= provide(:image,"http://" + @snapby.image + "--400") %>
+<% end %>
+
+<section id="title_blue">
+  <div class="container">
+    <div class="logo">
+      <%= image_tag("snapby-logo-blue.png") %>
+    </div>
+    <h1>snapby</h1>
+  </div>
+</section>  
+
+<section id="message">
+  <div class="container">
+    <p> Someone shared a snapby with you!
+    </p>
+  </div>
+</section>
+
+<section id="standard-text">
+      <div class="container">
+
+        <div id="display_snapby">
+          <% if @snapby.image %>
+            <%= image_tag("http://" + @snapby.image + "--400") %>
+          <% else %>
+            <%= image_tag("snapby-place-holder.png") %> 
+          <% end %>
+
+          <% if ! @snapby.description.empty? %>
+            <h2><span> <%= @snapby.description %> </span></h2>
+          <% end %>
+        </div>
+      </div>
+    </section>
+
+    <section id="standard-text">
+      <div class="container">
+        <h2>@<%= @snapby.username %>  </h2>
+        <p> <%= time_ago_in_words(@snapby.created_at) %> ago | <%=pluralize( @snapby.likes.count ,"like")%> | <%= pluralize(@snapby.comments.count,"comment")%></p>
+      </div>
+    </section>
+
+<section id="message">
+  <div class="container">
+    <p> Download the app to get all snapbys around you in real time! </p>
+  </div>
+</section>
+
+<div class="spacer-fix">
+</div>

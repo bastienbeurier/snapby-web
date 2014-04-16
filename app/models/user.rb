@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :shouts
+  has_many :snapbys
   has_many :likes, foreign_key: 'liker_id'
   has_many :activities, dependent: :destroy
   has_one :user_notification, dependent: :destroy
@@ -28,9 +28,9 @@ class User < ActiveRecord::Base
   validates :password, presence: true , on: :create #between 6..128 chars (defined in Devise config)
   validates :username, presence: true, length: { minimum: MIN_USERNAME_LENGTH, maximum: MAX_USERNAME_LENGTH }
 
-  #Interpolation for shout and user collides because attachment has the same name :avatar
+  #Interpolation for snapby and user collides because attachment has the same name :avatar
   Paperclip.interpolates :file_name do |attachment, style|
-    if attachment.instance.class.to_s == "Shout"
+    if attachment.instance.class.to_s == "Snapby"
       "image_#{attachment.instance.id.to_s}--400"
     else 
       "profile_" + attachment.instance.id.to_s
@@ -71,7 +71,7 @@ class User < ActiveRecord::Base
       black_listed: self.black_listed,
       lat: self.lat,
       lng: self.lng,
-      shout_count: self.shout_count,
+      snapby_count: self.snapby_count,
       profile_picture: "dummy" }
   end
 

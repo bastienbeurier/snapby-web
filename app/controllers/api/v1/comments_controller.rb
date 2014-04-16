@@ -10,33 +10,33 @@ class Api::V1::CommentsController < Api::V1::ApiController
     comment = Comment.new(comment_params)
 
     if comment.save
-      shout = Shout.find(params[:shout_id])
-      shout.update_attributes(comment_count: shout.comment_count + 1)
-      render json: { result: { comments: shout.comments.reverse } }, status: 201
+      snapby = Snapby.find(params[:snapby_id])
+      snapby.update_attributes(comment_count: snapby.comment_count + 1)
+      render json: { result: { comments: snapby.comments.reverse } }, status: 201
     else 
       render json: { errors: { internal: comment.errors } }, :status => 500
     end
   end
 
-  #Display comments for a shout
+  #Display comments for a snapby
   def index
     Rails.logger.debug "BAB comment index params: #{params}"
 
-    if !params[:shout_id]
+    if !params[:snapby_id]
       render json: { errors: {incomplete: ["Incomplete comment information"] } }, :status => 406
       return
     end
 
-    shout = Shout.find(params[:shout_id])
+    snapby = Snapby.find(params[:snapby_id])
 
     #TODO: handle when there is a lot of comments (not for now)
-    render json: {result: {comments: shout.comments.reverse } }, status: 200
+    render json: {result: {comments: snapby.comments.reverse } }, status: 200
   end
 
 private
 
   def comment_params
-    params.permit(:shout_id, :shouter_id, :description, :commenter_id, :commenter_username, :lat, :lng)
+    params.permit(:snapby_id, :snapbyer_id, :description, :commenter_id, :commenter_username, :lat, :lng)
   end 
 
 end

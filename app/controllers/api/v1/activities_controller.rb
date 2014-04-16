@@ -1,6 +1,6 @@
 class Api::V1::ActivitiesController < Api::V1::ApiController
 
-  #Display likes for a shout
+  #Display likes for a snapby
   def index
     Rails.logger.debug "BAB index activies index params: #{params}"
 

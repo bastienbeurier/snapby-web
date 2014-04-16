@@ -1,22 +1,22 @@
-class ShoutsController < ApplicationController
+class SnapbysController < ApplicationController
 
-  # Get shout by id
+  # Get snapby by id
   # Still used for web sharing
   def show
-    Rails.logger.debug "BAB show shout params: #{params}"
-    @shout = Shout.find_by(id: params[:id])
+    Rails.logger.debug "BAB show snapby params: #{params}"
+    @snapby = Snapby.find_by(id: params[:id])
 
-    if @shout
-      if @shout.anonymous
-        @shout.username = ANONYMOUS_USERNAME
+    if @snapby
+      if @snapby.anonymous
+        @snapby.username = ANONYMOUS_USERNAME
       end
       respond_to do |format|
         format.html
-        format.json { render json: {result: @shout}, status: 200 }
+        format.json { render json: {result: @snapby}, status: 200 }
       end
     else
       respond_to do |format|
-        format.json { render :json => { :errors => ["Failed to retrieve shout"]}, :status => 500}
+        format.json { render :json => { :errors => ["Failed to retrieve snapby"]}, :status => 500}
       end
     end
   end

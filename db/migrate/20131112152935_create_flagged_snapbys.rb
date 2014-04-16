@@ -1,7 +1,7 @@
-class CreateFlaggedShouts < ActiveRecord::Migration
+class CreateFlaggedSnapbys < ActiveRecord::Migration
   def change
-    create_table :flagged_shouts do |t|
-      t.integer :shout_id
+    create_table :flagged_snapbys do |t|
+      t.integer :snapby_id
       t.integer :count
       t.string :motive
       t.string :device_id

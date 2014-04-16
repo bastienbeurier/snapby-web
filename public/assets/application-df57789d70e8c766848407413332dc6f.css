@@ -302,9 +302,9 @@ a {
   font-weight: 400;
   margin-bottom: 5px; }
 
-/* Display_shout
+/* Display_snapby
 -------------------------------------*/
-#display_shout {
+#display_snapby {
   width: 90%;
   position: relative;
   top: 5%;
@@ -312,7 +312,7 @@ a {
   height: auto;
   padding-bottom: 30px; }
 
-#display_shout img {
+#display_snapby img {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -321,14 +321,14 @@ a {
   width: auto\9;
   /*ie8  */ }
 
-#display_shout h2 {
+#display_snapby h2 {
   position: absolute;
   top: 5%%;
   text-align: center;
   padding: 30px;
   width: 80%; }
 
-#display_shout h2 span {
+#display_snapby h2 span {
   border-radius: 10px;
   color: white;
   font-size: 40px;
@@ -382,10 +382,10 @@ a {
     padding-right: 0px;
   }
 
-  /* DISPLAY_SHOUT */
-  #display_shout {
+  /* DISPLAY_SNAPBY */
+  #display_snapby {
     padding-bottom: 10px;}
-    #display_shout h2 span {
+    #display_snapby h2 span {
       font-size: 18px;
   }
 }

@@ -64,10 +64,10 @@
       text-align: center;
     }
 
-  /* DISPLAY_SHOUT */
-  #display_shout {
+  /* DISPLAY_SNAPBY */
+  #display_snapby {
     padding-bottom: 10px;}
-    #display_shout h2 span {
+    #display_snapby h2 span {
       font-size: 18px;
   }
 }

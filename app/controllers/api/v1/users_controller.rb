@@ -28,7 +28,7 @@ class Api::V1::UsersController < Api::V1::ApiController
     end
 
     #DEPRECATED: use my_likes_and_followed_users action
-    max_age = Time.now - SHOUT_DURATION
+    max_age = Time.now - SNAPBY_DURATION
     user_likes = Like.where("created_at >= :max_age AND liker_id = :current_user_id", 
       {max_age: max_age, current_user_id: current_user.id})
 
@@ -40,7 +40,7 @@ class Api::V1::UsersController < Api::V1::ApiController
   end
 
   def my_likes_and_followed_users
-    max_age = Time.now - SHOUT_DURATION
+    max_age = Time.now - SNAPBY_DURATION
     user_likes = Like.where("created_at >= :max_age AND liker_id = :current_user_id", 
       {max_age: max_age, current_user_id: current_user.id})
     render json: { result: { likes: user_likes, 
@@ -124,7 +124,7 @@ class Api::V1::UsersController < Api::V1::ApiController
   def suggested_friends
     suggested_friends = User.where("lat IS NOT NULL").by_distance(origin: current_user).first(100)
                                                               .select{ |user| !current_user.following?(user) && user != current_user}
-    sorted_friends = suggested_friends.sort_by(&:shout_count).reverse
+    sorted_friends = suggested_friends.sort_by(&:snapby_count).reverse
     render json: { result: { suggested_friends: User.response_users(sorted_friends), 
                              current_user_followed_user_ids: current_user.followed_user_ids} }, status: 200
   end

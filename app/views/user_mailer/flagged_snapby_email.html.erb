@@ -1,0 +1,12 @@
+<h1>The snapby with id <%= @flag.snapby_id %> has just been flag by:  <%= User.find(@flag.flagger_id).username %>. 
+</h1>
+
+<p>The motive of this flag is: <%= @flag.motive %>.</p>
+
+<p>You can find the snapby at: <%= link_to "this adress", WEBSITE_HOME + "snapbys/" + @flag.snapby_id.to_s %>.</p>
+
+<p>The text of this snapby is:  <%= @snapby.description%>. </p>
+<p>You can find the image at: <%= link_to "this adress", "http://" + @snapby.image + "--400" %>.</p>
+<p>The number of flags for this snapby is:  <%= Flag.where(snapby_id: @flag.snapby_id).count%>. </p>
+
+

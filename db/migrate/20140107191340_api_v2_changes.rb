@@ -1,7 +1,7 @@
 class ApiV2Changes < ActiveRecord::Migration
   def change
-  	add_column :removed_shouts, :user_id, :integer
-  	remove_column :shouts, :is_born
-  	add_column :shouts, :username, :string
+  	add_column :removed_snapbys, :user_id, :integer
+  	remove_column :snapbys, :is_born
+  	add_column :snapbys, :username, :string
   end
 end

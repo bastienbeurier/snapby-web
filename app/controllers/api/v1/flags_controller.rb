@@ -1,41 +1,41 @@
 class Api::V1::FlagsController < Api::V1::ApiController
 
-  #User flags an abusive shout
+  #User flags an abusive snapby
   def create
-    Rails.logger.debug "BAB report_shout params: #{params}"
+    Rails.logger.debug "BAB report_snapby params: #{params}"
 
-    shout = Shout.find(params[:shout_id])
+    snapby = Snapby.find(params[:snapby_id])
     
-    if !shout or !params[:motive]
-      render :json => { :errors => { incomplete: ["incomplete information to flag shout"] } }, status: 406
+    if !snapby or !params[:motive]
+      render :json => { :errors => { incomplete: ["incomplete information to flag snapby"] } }, status: 406
       return
     end
 
-    existing_flags = Flag.where(shout_id: shout.id)
+    existing_flags = Flag.where(snapby_id: snapby.id)
 
-    #Case where this user already flagged this shout
+    #Case where this user already flagged this snapby
     if existing_flags.collect(&:flagger_id).include?(params[:flagger_id].to_i)
-      render json: {errors: { duplicate: ["shout already flagged by user"] } }, status: 422
+      render json: {errors: { duplicate: ["snapby already flagged by user"] } }, status: 422
       return
     else
       flag = Flag.new(flag_params)
 
       if flag.save
-        #if more than 5 flags, do not display the shout anymore
+        #if more than 5 flags, do not display the snapby anymore
         if existing_flags.count >= 5
-          shout.update_attributes(removed: true)
+          snapby.update_attributes(removed: true)
         end
 
         #send mail
         begin
-          UserMailer.flagged_shout_email(flag,shout).deliver
+          UserMailer.flagged_snapby_email(flag,snapby).deliver
         rescue Exception => e
           Airbrake.notify(e)
         end
         
-        render json: {result: { messages: ["shout successfully flagged"] } }, status: 200
+        render json: {result: { messages: ["snapby successfully flagged"] } }, status: 200
       else 
-        render json: {errors: { internal: ["Failed to flag shout"] } }, status: 500 
+        render json: {errors: { internal: ["Failed to flag snapby"] } }, status: 500 
       end
     end
   end
@@ -43,7 +43,7 @@ class Api::V1::FlagsController < Api::V1::ApiController
 private
 
   def flag_params
-    params.permit(:shout_id, :motive, :flagger_id)
+    params.permit(:snapby_id, :motive, :flagger_id)
   end 
 
 end

@@ -1,8 +1,8 @@
 require 'sidekiq/web'
 
-StreetShout::Application.routes.draw do
+Snapby::Application.routes.draw do
   devise_for :users, :skip => [:registrations], :controllers => { passwords:'passwords' } 
-  resources :shouts
+  resources :snapbys
   patch  "/users/password" => "passwords#update"
   root :to => "home#index"
 
@@ -10,8 +10,8 @@ StreetShout::Application.routes.draw do
   get "/privacy" => "home#privacy"
   get "/terms" => "home#terms"
   get "/contact" => "home#contact"
-  get "/global_feed_shouts" => "home#global_feed_shouts"
-  get "/obsolete_api" => "shouts#obsolete_api"
+  get "/global_feed_snapbys" => "home#global_feed_snapbys"
+  get "/obsolete_api" => "snapbys#obsolete_api"
 
   #Sinatra app to monitor queues provided by sidekiq/web
   mount Sidekiq::Web, at: '/sidekiq'
@@ -20,7 +20,7 @@ StreetShout::Application.routes.draw do
     namespace :v1  do
       resources :users, only: [:create, :update] 
       resources :flags, only: [:create]
-      resources :shouts, only: [:create, :show, :index]
+      resources :snapbys, only: [:create, :show, :index]
       resources :comments, only: [:create, :index]
       resources :likes, only: [:create, :index, :destroy]
       resources :relationships, only: [:create]
@@ -28,16 +28,16 @@ StreetShout::Application.routes.draw do
       devise_for :users, :skip => [:registrations], :controllers => { sessions:'api/v1/sessions', passwords:'api/v1/passwords' } # custom controller for API token access with devise
 
       get "/obsolete_api" => "api#obsolete_api"
-      get "/bound_box_shouts" => "shouts#bound_box_shouts"
+      get "/bound_box_snapbys" => "snapbys#bound_box_snapbys"
       post "users/facebook_create_or_update" => "users#facebook_create_or_update"
-      get  "/get_shout_meta_data" => "shouts#get_shout_meta_data"
+      get  "/get_snapby_meta_data" => "snapbys#get_snapby_meta_data"
       patch "/modify_user_credentials" => "users#modify_user_credentials" #deprecated
       put "/modify_user_credentials" => "users#modify_user_credentials" #deprecated
       get  "/user_likes" => "likes#user_likes"
-      put  "shouts/remove" => "shouts#remove"
-      patch  "shouts/remove" => "shouts#remove"
-      put  "shouts/trending" => "shouts#trending"
-      patch  "shouts/trending" => "shouts#trending"
+      put  "snapbys/remove" => "snapbys#remove"
+      patch  "snapbys/remove" => "snapbys#remove"
+      put  "snapbys/trending" => "snapbys#trending"
+      patch  "snapbys/trending" => "snapbys#trending"
       post "likes/delete" => "likes#destroy"
       post "relationships/delete" => "relationships#destroy"
       post "users/autofollow" => "users#create_relationships_from_facebook_friends"
@@ -52,8 +52,8 @@ StreetShout::Application.routes.draw do
       post "users/my_likes_and_followed_users" => "users#my_likes_and_followed_users"
       get "activities/unread_activities_count" => "activities#unread_activities_count"
       post "activities/unread_activities_count" => "activities#unread_activities_count"
-      get "shouts/local_shouts" => "shouts#local_shouts"
-      get "local_shouts_count" => "shouts#local_shouts_count"
+      get "snapbys/local_snapbys" => "snapbys#local_snapbys"
+      get "local_snapbys_count" => "snapbys#local_snapbys_count"
     end
   end
 end

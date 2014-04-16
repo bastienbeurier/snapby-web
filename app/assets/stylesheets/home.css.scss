@@ -1,7 +1,7 @@
 
 /* Constant
 -------------------------------------*/
-$shout_blue : #7A9ED3;
+$snapby_blue : #7A9ED3;
 
 
 
@@ -356,11 +356,11 @@ a {
       margin: -15px 0 -15px 0;
       line-height: 1.25em; 
       text-align: center;
-      color: $shout_blue;}
+      color: $snapby_blue;}
     #title_blue .container h2 {
       font-size: 24px;
       text-align: center;
-      color: $shout_blue; }
+      color: $snapby_blue; }
     #title_blue .container .logo img{
       display: block;
       max-width: 70px;
@@ -382,7 +382,7 @@ a {
   z-index: 1000;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  border: 1.5px solid $shout_blue ;
+  border: 1.5px solid $snapby_blue ;
   border-bottom-style:none;
   }
   .footer a, .footer p {
@@ -415,7 +415,7 @@ a {
       .footer .container #footer-right .footer-link {
         height:100%;
         padding-right: 30px;
-        color: $shout_blue ;
+        color: $snapby_blue ;
         font-weight: 600;}
     .footer .container #footer-phone-left {
       float: left;
@@ -447,21 +447,21 @@ a {
     max-width: 600px; 
     padding: 10px;
     color: #000; 
-    border-top: 2px solid $shout_blue;}
+    border-top: 2px solid $snapby_blue;}
     #standard-text .container h1 {
       font-weight: 800;
       font-size: 24px; 
       margin-bottom: 20px; 
       margin-top: 15px;
       line-height:200%;
-      color: $shout_blue;}
+      color: $snapby_blue;}
     #standard-text .container h2 {
       font-weight: 800;
       font-size: 18px; 
       margin-bottom: 10px; 
       margin-top: 20px;
       line-height:150%;
-      color: $shout_blue; }
+      color: $snapby_blue; }
     #standard-text .container h3 {
       font-weight:bold; 
       margin-top: 10px;
@@ -475,27 +475,27 @@ a {
       margin-bottom: 5px; }
 
 
-/* Display_shout
+/* Display_snapby
 -------------------------------------*/
-#display_shout {
+#display_snapby {
     width: 90%;
     position: relative;
     top: 5%;
     left:5%;
     height: auto;
     padding-bottom: 30px;}
-#display_shout img {
+#display_snapby img {
   display: block;
   width: 100%;
   margin-top: 5px;
   height: auto;}
-#display_shout h2{
+#display_snapby h2{
   position: absolute;
   margin: 5%;
   top: 5%%;
   text-align: center;
   width: 90%;}
-#display_shout h2 span { 
+#display_snapby h2 span { 
   border-radius: 10px;
   color: white; 
   font-size: 40px;

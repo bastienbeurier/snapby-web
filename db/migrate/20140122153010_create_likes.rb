@@ -1,7 +1,7 @@
 class CreateLikes < ActiveRecord::Migration
   def change
     create_table :likes do |t|
-      t.integer :shout_id
+      t.integer :snapby_id
       t.integer :liker_id
       t.string :liker_username
       t.float :lat
@@ -10,7 +10,7 @@ class CreateLikes < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :likes, :shout_id
+    add_index :likes, :snapby_id
   end
 end
 
