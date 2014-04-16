@@ -19,7 +19,7 @@ SCORE_NAME = "karma"
 
 CONTACT_EMAIL = "info@snapby.co"
 SENDER_EMAIL = SENDER_EMAIL_
-FLAG_EMAIL = "info@snapby.com"
+FLAG_EMAIL = "info@snapby.co"
 
 WEBSITE_HOME = "www.snapby.co/"
 

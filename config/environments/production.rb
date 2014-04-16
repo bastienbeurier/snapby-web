@@ -74,7 +74,7 @@ Snapby::Application.configure do
   config.action_mailer.raise_delivery_errors = true
   ActionMailer::Base.smtp_settings = {
       :address        => 'smtp.gmail.com',
-      :domain         => 'http://www.snapby.com',
+      :domain         => 'http://www.snapby.co',
       :port           => 587,
       :user_name      => SENDER_EMAIL_,
       :password       => ENV['INFO_MAIL_PASS'],
