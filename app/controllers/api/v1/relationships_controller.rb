@@ -1,4 +1,4 @@
-class Api::V2::RelationshipsController < Api::V2::ApiController
+class Api::V1::RelationshipsController < Api::V1::ApiController
 
   def create
     if  current_user.id == params[:followed_id].to_i

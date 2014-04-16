@@ -1,4 +1,4 @@
-class Api::V2::UsersController < Api::V2::ApiController
+class Api::V1::UsersController < Api::V1::ApiController
   include ApplicationHelper
   skip_before_filter :authenticate_user!, :only => [:create, :facebook_create_or_update]
 

@@ -1,4 +1,4 @@
-class Api::V2::SessionsController < Api::V2::ApiController
+class Api::V1::SessionsController < Api::V1::ApiController
   skip_before_filter :authenticate_user!, :only => :create
 
   def create

@@ -1,4 +1,4 @@
-class Api::V2::CommentsController < Api::V2::ApiController
+class Api::V1::CommentsController < Api::V1::ApiController
 
   #User creates comments
   def create

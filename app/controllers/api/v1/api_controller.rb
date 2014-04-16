@@ -1,4 +1,4 @@
-class Api::V2::ApiController < ApplicationController
+class Api::V1::ApiController < ApplicationController
   before_action :authenticate_user!
 
   skip_before_filter :authenticate_user!, :only => :obsolete_api

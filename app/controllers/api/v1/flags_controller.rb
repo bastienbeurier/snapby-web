@@ -1,4 +1,4 @@
-class Api::V2::FlagsController < Api::V2::ApiController
+class Api::V1::FlagsController < Api::V1::ApiController
 
   #User flags an abusive shout
   def create

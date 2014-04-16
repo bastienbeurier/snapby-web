@@ -1,4 +1,4 @@
-class Api::V2::ShoutsController < Api::V2::ApiController
+class Api::V1::ShoutsController < Api::V1::ApiController
   include ApplicationHelper
   skip_before_filter :authenticate_user!, :only => [:show, :bound_box_shouts, :get_shout_meta_data, :local_shouts_count]
 

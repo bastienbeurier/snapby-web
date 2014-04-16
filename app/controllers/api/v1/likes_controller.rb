@@ -1,4 +1,4 @@
-class Api::V2::LikesController < Api::V2::ApiController
+class Api::V1::LikesController < Api::V1::ApiController
 
   #User creates like
   def create

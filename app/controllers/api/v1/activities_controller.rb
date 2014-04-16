@@ -1,4 +1,4 @@
-class Api::V2::ActivitiesController < Api::V2::ApiController
+class Api::V1::ActivitiesController < Api::V1::ApiController
 
   #Display likes for a shout
   def index
