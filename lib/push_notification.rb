@@ -26,19 +26,12 @@ module PushNotification
       user_notification.save!
     end
 
-    update_users_notifications(follower_ids)
-
     message = 'New snapby in your area'
-    follower_message = 'New snapby by @' + snapby.username + ' in your area'
 
     android_extra = {snapby: snapby.response_snapby.to_json, notif_type: "new_snapby"}
     ios_extra = {snapby_id: snapby.id, notif_type: "new_snapby"}
 
     send_notifications(notified_user_ids, message, android_extra, ios_extra)
-
-    unless snapby.anonymous
-      send_notifications(follower_ids, follower_message, android_extra, ios_extra)
-    end
   end
 
   def self.notify_new_comment(comment, notified_user_ids_for_comment, notified_user_ids_for_like)

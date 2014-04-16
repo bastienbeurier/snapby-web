@@ -35,8 +35,7 @@ class Api::V1::UsersController < Api::V1::ApiController
   end
 
   def my_likes
-    user_likes = Like.where("liker_id = :current_user_id", 
-      {max_age: max_age, current_user_id: current_user.id})
+    user_likes = Like.where("liker_id = :current_user_id", {current_user_id: current_user.id})
     render json: { result: { likes: user_likes } }, status: 201  
   end
 
@@ -69,12 +68,8 @@ class Api::V1::UsersController < Api::V1::ApiController
 
   def get_user_info
     user = User.find(params[:user_id])
-    followers_count = user.followers.count
-    is_followed = current_user.following?(user)
-    followed_count = user.followed_users.count
 
-    render json: { result: { user: user.response_user, followers_count: followers_count, is_followed: is_followed,
-                                                            followed_count: followed_count} }, status: 201
+    render json: { result: { user: user.response_user} }, status: 201
   end
 
 private 
