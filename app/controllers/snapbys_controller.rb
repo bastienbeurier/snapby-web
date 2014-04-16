@@ -1,4 +1,4 @@
-class SnapbysController < ApplicationController
+class SnapbiesController < ApplicationController
 
   # Get snapby by id
   # Still used for web sharing

@@ -1,5 +1,5 @@
-class AddRemovedToSnapbys < ActiveRecord::Migration
+class AddRemovedToSnapbies < ActiveRecord::Migration
   def change
-    add_column :snapbys, :removed, :boolean, default: false
+    add_column :snapbies, :removed, :boolean, default: false
   end
 end

@@ -1,6 +1,6 @@
-class CreateSnapbys < ActiveRecord::Migration
+class CreateSnapbies < ActiveRecord::Migration
   def change
-    create_table :snapbys do |t|
+    create_table :snapbies do |t|
       t.float :lat
       t.float :lng
       t.string :description

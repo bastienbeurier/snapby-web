@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20140228164516) do
 
   add_index "likes", ["snapby_id"], name: "index_likes_on_snapby_id", using: :btree
 
-  create_table "scheduled_snapbys", force: true do |t|
+  create_table "scheduled_snapbies", force: true do |t|
     t.float    "lat"
     t.float    "lng"
     t.datetime "scheduled_time"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20140228164516) do
     t.boolean  "is_born",             default: false
   end
 
-  create_table "snapbys", force: true do |t|
+  create_table "snapbies", force: true do |t|
     t.float    "lat"
     t.float    "lng"
     t.string   "description"

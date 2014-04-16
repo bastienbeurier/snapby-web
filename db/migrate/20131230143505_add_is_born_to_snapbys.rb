@@ -1,5 +1,5 @@
-class AddIsBornToSnapbys < ActiveRecord::Migration
+class AddIsBornToSnapbies < ActiveRecord::Migration
   def change
-    add_column :snapbys, :is_born, :boolean, default: false
+    add_column :snapbies, :is_born, :boolean, default: false
   end
 end

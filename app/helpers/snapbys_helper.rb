@@ -1,2 +1,2 @@
-module SnapbysHelper
+module SnapbiesHelper
 end

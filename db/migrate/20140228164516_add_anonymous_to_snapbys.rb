@@ -1,5 +1,5 @@
-class AddAnonymousToSnapbys < ActiveRecord::Migration
+class AddAnonymousToSnapbies < ActiveRecord::Migration
   def change
-    add_column :snapbys, :anonymous, :boolean, default: false
+    add_column :snapbies, :anonymous, :boolean, default: false
   end
 end

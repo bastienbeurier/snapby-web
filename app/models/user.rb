@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :snapbys
+  has_many :snapbies
   has_many :likes, foreign_key: 'liker_id'
   has_many :activities, dependent: :destroy
   has_one :user_notification, dependent: :destroy

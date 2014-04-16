@@ -1,5 +1,5 @@
 class AddTrendingToSnapby < ActiveRecord::Migration
   def change
-  	add_column :snapbys, :trending, :boolean, default: false
+  	add_column :snapbies, :trending, :boolean, default: false
   end
 end

@@ -1,6 +1,6 @@
-class CreateScheduledSnapbys < ActiveRecord::Migration
+class CreateScheduledSnapbies < ActiveRecord::Migration
   def change
-    create_table :scheduled_snapbys do |t|
+    create_table :scheduled_snapbies do |t|
       t.float :lat
       t.float :lng
       t.datetime :scheduled_time

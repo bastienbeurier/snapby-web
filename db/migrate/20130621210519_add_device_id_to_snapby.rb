@@ -1,5 +1,5 @@
 class AddDeviceIdToSnapby < ActiveRecord::Migration
   def change
-  	add_column :snapbys, :device_id, :string
+  	add_column :snapbies, :device_id, :string
   end
 end

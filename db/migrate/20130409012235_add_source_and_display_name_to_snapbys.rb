@@ -1,6 +1,6 @@
-class AddSourceAndDisplayNameToSnapbys < ActiveRecord::Migration
+class AddSourceAndDisplayNameToSnapbies < ActiveRecord::Migration
   def change
-    add_column :snapbys, :display_name, :string
-    add_column :snapbys, :source, :string
+    add_column :snapbies, :display_name, :string
+    add_column :snapbies, :source, :string
   end
 end

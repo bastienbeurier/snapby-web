@@ -1,6 +1,6 @@
-class Api::V1::SnapbysController < Api::V1::ApiController
+class Api::V1::SnapbiesController < Api::V1::ApiController
   include ApplicationHelper
-  skip_before_filter :authenticate_user!, :only => [:show, :bound_box_snapbys, :get_snapby_meta_data, :local_snapbys_count]
+  skip_before_filter :authenticate_user!, :only => [:show, :bound_box_snapbies, :get_snapby_meta_data, :local_snapbies_count]
 
   #Create a snapby
   def create
@@ -54,55 +54,55 @@ class Api::V1::SnapbysController < Api::V1::ApiController
     render json: { result: { comment_count: snapby.comments.length, liker_ids: snapby.likes.collect(&:liker_id)} }, status: 200
   end
 
-  #Retrieve snapbys within a zone (bouding box)
-  def bound_box_snapbys
-    snapbys = []
+  #Retrieve snapbies within a zone (bouding box)
+  def bound_box_snapbies
+    snapbies = []
     
     if Rails.env.development?
-      snapbys = Snapby.where("removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).limit(10).order("created_at DESC")
+      snapbies = Snapby.where("removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).limit(10).order("created_at DESC")
     else
-      snapbys = Snapby.where("removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).limit(10).order("created_at DESC")
+      snapbies = Snapby.where("removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).limit(10).order("created_at DESC")
     end
 
-    snapbys.each do |snapby|
+    snapbies.each do |snapby|
       if snapby.anonymous
         snapby.username = ANONYMOUS_USERNAME
       end
     end
-    render json: { result: { snapbys: Snapby.response_snapbys(snapbys) } }, status: 200
+    render json: { result: { snapbies: Snapby.response_snapbies(snapbies) } }, status: 200
   end
 
-  def local_snapbys_count
-    snapbys_count = 0
+  def local_snapbies_count
+    snapbies_count = 0
 
     if Rails.env.development?
-      snapbys_count = Snapby.where("removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).count
+      snapbies_count = Snapby.where("removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).count
     else
-      snapbys_count = Snapby.where("removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).count
+      snapbies_count = Snapby.where("removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).count
     end
 
-    render json: { result: { snapbys_count: snapbys_count } }, status: 200
+    render json: { result: { snapbies_count: snapbies_count } }, status: 200
   end
 
-  def local_snapbys
+  def local_snapbies
     per_page = params[:page_size] ? params[:page_size] : 20
     page = params[:page] ? params[:page] : 1
 
-    snapbys = []
+    snapbies = []
 
     if Rails.env.development?
-      snapbys = Snapby.where("removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).paginate(page: page, per_page: per_page).order("created_at DESC")
+      snapbies = Snapby.where("removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).paginate(page: page, per_page: per_page).order("created_at DESC")
     else
-      snapbys = Snapby.where("removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).paginate(page: page, per_page: per_page).order("created_at DESC")
+      snapbies = Snapby.where("removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).paginate(page: page, per_page: per_page).order("created_at DESC")
     end
 
-    snapbys.each do |snapby|
+    snapbies.each do |snapby|
       if snapby.anonymous
         snapby.username = ANONYMOUS_USERNAME
       end
     end
 
-    render json: { result: { snapbys: Snapby.response_snapbys(snapbys), page: page } }, status: 200
+    render json: { result: { snapbies: Snapby.response_snapbies(snapbies), page: page } }, status: 200
   end
 
   # Remove snapby (for the snapbyer only)
@@ -128,15 +128,15 @@ class Api::V1::SnapbysController < Api::V1::ApiController
     per_page = params[:page_size] ? params[:page_size] : 20
     page = params[:page] ? params[:page] : 1
 
-    snapbys = []
+    snapbies = []
 
     if Rails.env.development?
-      snapbys = User.find(params[:user_id]).snapbys.where("removed = 0").paginate(page: page, per_page: per_page).order('id DESC')
+      snapbies = User.find(params[:user_id]).snapbies.where("removed = 0").paginate(page: page, per_page: per_page).order('id DESC')
     else
-      snapbys = User.find(params[:user_id]).snapbys.where("removed = 0").paginate(page: page, per_page: per_page).order('id DESC')
+      snapbies = User.find(params[:user_id]).snapbies.where("removed = 0").paginate(page: page, per_page: per_page).order('id DESC')
     end
 
-    render json: { result: { snapbys: Snapby.response_snapbys(snapbys) } }, status: 200
+    render json: { result: { snapbies: Snapby.response_snapbies(snapbies) } }, status: 200
   end
 
 private 

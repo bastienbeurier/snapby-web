@@ -59,7 +59,7 @@ class Snapby < ActiveRecord::Base
       source: "dummy" }
   end
 
-  def self.response_snapbys(snapbys)
-    snapbys.map { |snapby| snapby.response_snapby }
+  def self.response_snapbies(snapbies)
+    snapbies.map { |snapby| snapby.response_snapby }
   end
 end

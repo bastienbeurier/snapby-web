@@ -1,5 +1,5 @@
 class ChangeSnapbyColumns < ActiveRecord::Migration
   def change
-  	add_column :snapbys, :user_id, :integer
+  	add_column :snapbies, :user_id, :integer
   end
 end
