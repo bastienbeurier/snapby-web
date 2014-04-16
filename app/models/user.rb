@@ -1,16 +1,7 @@
 class User < ActiveRecord::Base
   has_many :snapbies
   has_many :likes, foreign_key: 'liker_id'
-  has_many :activities, dependent: :destroy
   has_one :user_notification, dependent: :destroy
-
-  has_many :relationships, foreign_key: "follower_id", dependent: :destroy
-  has_many :reverse_relationships, foreign_key: "followed_id", class_name:  "Relationship", dependent: :destroy
-
-  has_many :followed_users, through: :relationships, source: :followed
-  has_many :followers, through: :reverse_relationships
-
-  after_create :create_welcome_activity
 
   acts_as_mappable  :default_units => :kms, 
                     :default_formula => :sphere, 
@@ -41,29 +32,6 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, styles: { thumb: '100x100#' }, path: ":style/:file_name", bucket: proc { |attachment| Rails.env.development? ? PROFILE_PICTURE_BUCKET_DEV : PROFILE_PICTURE_BUCKET_PROD}
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
-  def following?(other_user)
-    relationships.find_by(followed_id: other_user.id).present?
-  end
-
-  def follow!(other_user)
-    if !following?(other_user)
-      relationships.create!(followed_id: other_user.id)
-      FollowActivityWorker.perform_async(self.id, other_user.id)
-    end
-  end
-
-  def mutual_follow!(other_user)
-    self.follow!(other_user)
-    other_user.follow!(self)
-  end
-
-  def unfollow!(other_user)
-    relationship = self.relationships.find_by(followed_id: other_user.id)
-    if relationship
-      relationship.destroy
-    end
-  end
-
   def response_user
     { id: self.id,
       email: self.email,
@@ -71,22 +39,10 @@ class User < ActiveRecord::Base
       black_listed: self.black_listed,
       lat: self.lat,
       lng: self.lng,
-      snapby_count: self.snapby_count,
-      profile_picture: "dummy" }
-  end
-
-  def followed_users_ids
-    self.followed_users.map { |u| u.id }
+      snapby_count: self.snapby_count}
   end
 
   def self.response_users(users)
     users.map { |user| user.response_user }
-  end
-
-  def create_welcome_activity
-    self.activities.create!(
-        subject: self, 
-        activity_type: "welcome"
-      )
   end
 end

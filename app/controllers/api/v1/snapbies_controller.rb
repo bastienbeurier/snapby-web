@@ -43,17 +43,6 @@ class Api::V1::SnapbiesController < Api::V1::ApiController
     end
   end
 
-  #Get snapby meta data
-  def get_snapby_meta_data
-    snapby = Snapby.find(params[:snapby_id])
-
-    if !snapby
-      render json: { errors: { invalid: ["wrong snapby id"] } }, :status => 406
-    end
-
-    render json: { result: { comment_count: snapby.comments.length, liker_ids: snapby.likes.collect(&:liker_id)} }, status: 200
-  end
-
   #Retrieve snapbies within a zone (bouding box)
   def bound_box_snapbies
     snapbies = []
@@ -116,14 +105,6 @@ class Api::V1::SnapbiesController < Api::V1::ApiController
     end
   end
 
-  def trending
-    snapby = Snapby.find(params[:snapby_id])
-    if is_admin
-      snapby.make_trending
-      render json: { result: { messages: ["Trended baby"] } }, status: 200
-    end
-  end
-
   def index 
     per_page = params[:page_size] ? params[:page_size] : 20
     page = params[:page] ? params[:page] : 1
@@ -142,6 +123,6 @@ class Api::V1::SnapbiesController < Api::V1::ApiController
 private 
 
   def snapby_params
-    params.permit(:lat, :lng, :username, :description, :source, :user_id, :image)
+    params.permit(:lat, :lng, :username, :source, :user_id)
   end
 end

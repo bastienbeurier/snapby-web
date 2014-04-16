@@ -33,22 +33,6 @@ class Api::V1::LikesController < Api::V1::ApiController
     end
   end
 
-  #Display likes for a snapby
-  def index
-    Rails.logger.debug "BAB index likes params: #{params}"
-
-    if !params[:snapby_id]
-      render json: { errors: {incomplete: ["Incomplete like information"] } }, :status => 406
-      return
-    end
-
-    snapby = Snapby.find(params[:snapby_id])
-
-    #TODO: handle when there is a lot of likes (not for now)
-    render json: { result: {likes: snapby.likes.reverse } }, status: 200
-  end
-
-
   def destroy
     Rails.logger.debug "TRUCHOV remove_likes params: #{params}"
  

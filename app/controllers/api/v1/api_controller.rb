@@ -12,7 +12,6 @@ class Api::V1::ApiController < ApplicationController
   end
 
   def obsolete_api
-    Rails.logger.debug "TRUCHOV API_Version params: #{params}"
     if ACCEPTED_APIS.include?(params[:api_version].to_i)
       render json: {result: { obsolete: "false" } }, status: 200
     else

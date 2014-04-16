@@ -2,8 +2,6 @@ class Api::V1::FlagsController < Api::V1::ApiController
 
   #User flags an abusive snapby
   def create
-    Rails.logger.debug "BAB report_snapby params: #{params}"
-
     snapby = Snapby.find(params[:snapby_id])
     
     if !snapby or !params[:motive]

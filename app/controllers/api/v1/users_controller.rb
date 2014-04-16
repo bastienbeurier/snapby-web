@@ -27,13 +27,8 @@ class Api::V1::UsersController < Api::V1::ApiController
       current_user.avatar = StringIO.new(Base64.decode64(params[:avatar]))
     end
 
-    #DEPRECATED: use my_likes_and_followed_users action
-    max_age = Time.now - SNAPBY_DURATION
-    user_likes = Like.where("created_at >= :max_age AND liker_id = :current_user_id", 
-      {max_age: max_age, current_user_id: current_user.id})
-
     if current_user.save
-      render json: { result: {user: current_user.response_user, likes: user_likes} }, status: 201
+      render json: { result: {user: current_user.response_user} }, status: 201
     else 
       render json: { errors: { user: current_user.errors } }, status: 222 # Need a success code to handle errors in IOS
     end
@@ -47,21 +42,6 @@ class Api::V1::UsersController < Api::V1::ApiController
                              current_user_followed_user_ids: current_user.followed_user_ids } }, status: 201  
   end
 
-  #DEPRECATED: use update
-  def modify_user_credentials
-    Rails.logger.debug "BAB update user credentials: #{params}"
-
-    #Only username for now, potentially profile picture, email, password in the future
-    if params[:username]
-      current_user.username = params[:username]
-    end
-
-    if current_user.save
-      render json: { result: {user: current_user.response_user } }, status: 201
-    else 
-      render json: { errors: { user: current_user.errors } }, status: 222 # Need a success code to handle errors in IOS
-    end
-  end
 
   def facebook_create_or_update
  
@@ -89,27 +69,6 @@ class Api::V1::UsersController < Api::V1::ApiController
     end
   end
 
-  # facebook autofollow
-  def create_relationships_from_facebook_friends
-    AutofollowWorker.perform_async(params[:friend_ids], current_user.id)
-
-    render json: { result: ["Autofollow successfully queued"] }, status: 201
-  end
-
-  # get users we follow
-  def followed_users
-    user = User.find(params[:user_id])
-    render json: { result: { followed_users: User.response_users(user.followed_users), 
-                             current_user_followed_user_ids: current_user.followed_user_ids } }, status: 201
-  end
-
-  #get followers
-  def followers
-    user = User.find(params[:user_id])
-    render json: { result: { followers: User.response_users(user.followers), 
-                             current_user_followed_user_ids: current_user.followed_user_ids } }, status: 201
-  end
-
   def get_user_info
     user = User.find(params[:user_id])
     followers_count = user.followers.count
@@ -118,15 +77,6 @@ class Api::V1::UsersController < Api::V1::ApiController
 
     render json: { result: { user: user.response_user, followers_count: followers_count, is_followed: is_followed,
                                                             followed_count: followed_count} }, status: 201
-  end
-
-  # Suggest people to follow
-  def suggested_friends
-    suggested_friends = User.where("lat IS NOT NULL").by_distance(origin: current_user).first(100)
-                                                              .select{ |user| !current_user.following?(user) && user != current_user}
-    sorted_friends = suggested_friends.sort_by(&:snapby_count).reverse
-    render json: { result: { suggested_friends: User.response_users(sorted_friends), 
-                             current_user_followed_user_ids: current_user.followed_user_ids} }, status: 200
   end
 
 private 

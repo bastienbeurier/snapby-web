@@ -41,22 +41,6 @@ module PushNotification
     end
   end
 
-  def self.notify_trending_snapby(snapby, user_ids, follower_ids)
-    update_users_notifications(user_ids)
-    update_users_notifications(follower_ids)
-
-    message = 'A snapby is now trending in your area!'
-    follower_message = "@" + snapby.username + "'s snapby is now trending"
-    snapbyer_message = 'Your snapby is now trending!'
-
-    android_extra = {snapby: snapby.response_snapby.to_json, notif_type: "trending"}
-    ios_extra = {snapby_id: snapby.id, notif_type: "trending"}
-
-    send_notifications(user_ids, message, android_extra, ios_extra)
-    send_notifications(follower_ids, follower_message, android_extra, ios_extra)
-    send_notifications([snapby.user_id], snapbyer_message, android_extra, ios_extra)
-  end
-
   def self.notify_new_comment(comment, notified_user_ids_for_comment, notified_user_ids_for_like)
     message_commenters = 'New comment from ' + comment.commenter_username + ' on the snapby you commented'
     message_likers = 'New comment from ' + comment.commenter_username + ' on the snapby you liked'  
@@ -80,20 +64,6 @@ module PushNotification
 
     send_notifications([like.snapby.user_id], message, android_extra, ios_extra)
   end 
-
-  def self.notify_new_facebook_friend(user, friend_ids)
-    message = user.facebook_name + ' joined Snapby as @' + user.username 
-    android_extra = {user_id: user.id, notif_type: "new_friend"}
-    ios_extra = {user_id: user.id, notif_type: "new_friend"}
-    send_notifications(friend_ids, message, android_extra, ios_extra)
-  end
-
-  def self.notify_new_follower(follower, followed_id)
-    message = follower.username + ' is now following you!'
-    android_extra = {user_id: follower.id, notif_type: "new_friend"}
-    ios_extra = {user_id: follower.id, notif_type: "new_friend"}
-    send_notifications(followed_id, message, android_extra, ios_extra)
-  end
 
   def self.send_notifications(user_ids, message, android_extra, ios_extra)
     users = User.select([:push_token, :os_type]).where(id: user_ids)

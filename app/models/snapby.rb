@@ -12,7 +12,6 @@ class Snapby < ActiveRecord::Base
                     :lat_column_name => :lat,
                     :lng_column_name => :lng
 
-  validates :description, length: { maximum: 140 }
   validates :lat,         presence: true
   validates :lng,         presence: true
   validates :source,      presence: true
@@ -36,24 +35,15 @@ class Snapby < ActiveRecord::Base
   has_attached_file :avatar, styles: { small: '145x220#' }, path: ":style/:file_name"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
-  def make_trending
-    self.update_attributes(trending: true)
-
-    TrendingSnapbyNotificationsWorker.perform_async(self.id)
-  end
-
   def response_snapby
     { id: self.id,
       lat: self.lat,
       lng: self.lng, 
-      description: self.description,
       created_at: self.created_at,
-      image: self.image,
       user_id: self.user_id,
       username: self.username,
       removed: self.removed,
       anonymous: self.anonymous,
-      trending: self.trending,
       like_count: self.like_count,
       comment_count: self.comment_count,
       source: "dummy" }
