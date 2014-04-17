@@ -17,9 +17,14 @@ class Api::V1::UsersController < Api::V1::ApiController
     end
   end
 
-  #TODO: REMOVE LIKE LOGIC FROM HERE
   def update
     Rails.logger.debug "BAB update user: #{params}"
+
+    new_username = false
+
+    if (params[:username] and params[:username] != current_user.username)
+      new_username = true
+    end
 
     current_user.assign_attributes(user_params)
 
@@ -28,6 +33,10 @@ class Api::V1::UsersController < Api::V1::ApiController
     end
 
     if current_user.save
+      if new_username
+        UpdateUsernameWorker.perform_async(current_user.id)
+      end
+
       render json: { result: {user: current_user.response_user} }, status: 201
     else 
       render json: { errors: { user: current_user.errors } }, status: 222 # Need a success code to handle errors in IOS

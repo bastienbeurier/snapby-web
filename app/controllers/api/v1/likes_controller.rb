@@ -24,6 +24,7 @@ class Api::V1::LikesController < Api::V1::ApiController
       snapbyer.update_attributes(liked_snapbies: snapbyer.liked_snapbies + 1)
 
       CreateLikeActivityAndNotificationWorker.perform_async(like.id)
+      UpdateUserScoreWorker.perform_async(snapbyer.id)
 
       render json: { result: { like_count: snapby.like_count } }, status: 201
     else 
@@ -49,6 +50,8 @@ class Api::V1::LikesController < Api::V1::ApiController
 
       snapbyer = User.find(snapby.user_id)
       snapbyer.update_attributes(liked_snapbies: snapbyer.liked_snapbies - 1)
+
+      UpdateUserScoreWorker.perform_async(snapbyer.id)
 
       render json: { result: { messages: ["Like successfully destroyed"] } }, status: 200
     else
