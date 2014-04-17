@@ -20,9 +20,8 @@ class Api::V1::SnapbiesController < Api::V1::ApiController
 
     if snapby.save
       # update snapby_count
-      if !snapby.anonymous
-        snapby.user.update_attributes(snapby_count: snapby.user.snapby_count + 1)
-      end
+      snapbyer = User.find(snapby.user_id)
+      snapbyer.update_attributes(snapby_count: snapbyer.snapbies.where("removed = 0").count)
 
       render json: { result: { snapby: snapby.response_snapby } }, status: 201
     else 
@@ -83,7 +82,7 @@ class Api::V1::SnapbiesController < Api::V1::ApiController
     if current_user.id == snapby.user_id or is_admin
       snapby.update_attributes(removed: true)
       snapbyer = User.find(snapby.user_id)
-      snapbyer.update_attributes(liked_snapbies: snapbyer.liked_snapbies - snapby.like_count)
+      snapbyer.update_attributes(snapby_count: snapbyer.snapbies.where("removed = 0").count)
 
       render json: { result: { messages: ["snapby successfully removed"] } }, status: 200
     else

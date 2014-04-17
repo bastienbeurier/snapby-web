@@ -46,6 +46,7 @@ class Snapby < ActiveRecord::Base
       anonymous: self.anonymous,
       like_count: self.like_count,
       comment_count: self.comment_count,
+      last_active: self.last_active,
       source: "dummy" }
   end
 
