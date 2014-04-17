@@ -4,6 +4,7 @@ class CreateSnapbies < ActiveRecord::Migration
       t.float :lat
       t.float :lng
       t.string :description
+      t.string :username
       t.string :source
       t.integer :user_id
       t.boolean :removed, default: false
