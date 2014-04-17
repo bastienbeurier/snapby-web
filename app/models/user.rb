@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :snapbies
   has_many :likes, foreign_key: 'liker_id'
+  has_many :comments, foreign_key: 'commenter_id'
   has_one :user_notification, dependent: :destroy
 
   acts_as_mappable  :default_units => :kms, 
