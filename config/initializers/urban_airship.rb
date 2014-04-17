@@ -1,11 +1,11 @@
 if Rails.env.development?
-	Urbanairship.application_key = 'd-rOeAKNRGKn9gsFgi18ew'
-	Urbanairship.application_secret = 'EDtx_9xdQOqNvOQDKQJw2w'
-	Urbanairship.master_secret = '52CbajzGRY6cFBLE54tdmA'
+	Urbanairship.application_key = 'aXRfOGGkRrKQITn0D60pOw'
+	Urbanairship.application_secret = '07LuCbkpTKyEaWuNoUBTqg'
+	Urbanairship.master_secret = '0cxOSgKATBupI2yWxVERRw'
 else 	
-	Urbanairship.application_key = 'AzqCIDWGSqmEOJvM95Vfqw'
-	Urbanairship.application_secret = '_YOtj7i6RyeelX_BE9AohQ'
-	Urbanairship.master_secret = 'Jv4zxUycQC2ASS--Ea-1Fg'
+	Urbanairship.application_key = 'Ci9HFIAAQ1OoOxkFykDtzA'
+	Urbanairship.application_secret = 'IR0pVUgaSb2W0xQ4jrgXUQ'
+	Urbanairship.master_secret = 'jf003iDXQ-u3ECZ9ORmULg'
 end
 Urbanairship.logger = Rails.logger
 Urbanairship.request_timeout = 5
