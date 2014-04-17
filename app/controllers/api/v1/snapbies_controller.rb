@@ -11,9 +11,7 @@ class Api::V1::SnapbiesController < Api::V1::ApiController
     params[:source] = "native"
     params[:user_id] = current_user.id
 
-    unless params[:anonymous] == "1"
-      # params[:user_score] = current_user.liked_snapbies
-    end
+    params[:user_score] = current_user.liked_snapbies
 
     snapby = Snapby.new(snapby_params)
 
