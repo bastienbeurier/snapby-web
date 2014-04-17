@@ -44,7 +44,7 @@ class Api::V1::LikesController < Api::V1::ApiController
 
     like = likes[0]
 
-    if like.destroy_all
+    if like.destroy
       snapby = Snapby.find(params[:snapby_id])
       snapby.update_attributes(like_count: snapby.like_count - 1)
 
