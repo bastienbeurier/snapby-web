@@ -11,14 +11,14 @@ class Api::V1::SnapbiesController < Api::V1::ApiController
     params[:source] = "native"
     params[:user_id] = current_user.id
 
+    unless params[:anonymous] == "1"
+      params[:user_score] = current_user.liked_snapbies
+    end
+
     snapby = Snapby.new(snapby_params)
 
     snapby.anonymous = params[:anonymous] == "1"
     snapby.last_active = Time.now
-
-    # unless snapby.anonymous
-    #   snapby.user_score = current_user.liked_snapbies
-    # end
 
     snapby.avatar = StringIO.new(Base64.decode64(params[:avatar]))
 
@@ -110,6 +110,6 @@ class Api::V1::SnapbiesController < Api::V1::ApiController
 private 
 
   def snapby_params
-    params.permit(:lat, :lng, :username, :source, :user_id)
+    params.permit(:lat, :lng, :username, :source, :user_id, :user_score)
   end
 end
