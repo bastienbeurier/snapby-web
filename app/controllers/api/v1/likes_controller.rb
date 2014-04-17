@@ -20,6 +20,9 @@ class Api::V1::LikesController < Api::V1::ApiController
       # update counter in snapby
       snapby.update_attributes(like_count: snapby.like_count + 1)
 
+      snapbyer = User.find(snapby.user_id)
+      snapbyer.update_attributes(liked_snapbies: snapbyer.liked_snapbies + 1)
+
       CreateLikeActivityAndNotificationWorker.perform_async(like.id)
 
       render json: { result: { like_count: snapby.like_count } }, status: 201
@@ -38,9 +41,15 @@ class Api::V1::LikesController < Api::V1::ApiController
       return
     end
 
-    if likes.destroy_all
+    like = likes[0]
+
+    if like.destroy_all
       snapby = Snapby.find(params[:snapby_id])
       snapby.update_attributes(like_count: snapby.like_count - 1)
+
+      snapbyer = User.find(snapby.user_id)
+      snapbyer.update_attributes(liked_snapbies: snapbyer.liked_snapbies - 1)
+
       render json: { result: { messages: ["Like successfully destroyed"] } }, status: 200
     else
       render json: { errors: { internal: ["User did not like this snapby"] } }, :status => 500

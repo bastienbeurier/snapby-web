@@ -39,7 +39,8 @@ class User < ActiveRecord::Base
       black_listed: self.black_listed,
       lat: self.lat,
       lng: self.lng,
-      snapby_count: self.snapby_count}
+      snapby_count: self.snapby_count
+      liked_snapbies: self.liked_snapbies}
   end
 
   def self.response_users(users)

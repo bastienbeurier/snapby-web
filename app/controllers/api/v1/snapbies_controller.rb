@@ -99,6 +99,9 @@ class Api::V1::SnapbiesController < Api::V1::ApiController
     snapby = Snapby.find(params[:snapby_id])
     if current_user.id == snapby.user_id or is_admin
       snapby.update_attributes(removed: true)
+      snapbyer = User.find(snapby.user_id)
+      snapbyer.update_attributes(liked_snapbies: snapbyer.liked_snapbies - snapby.like_count)
+
       render json: { result: { messages: ["snapby successfully removed"] } }, status: 200
     else
       render json: { errors: { internal: ["The snapby does not belong to the current user"] } }, :status => 500
