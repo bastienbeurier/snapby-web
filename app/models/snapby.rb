@@ -47,7 +47,7 @@ class Snapby < ActiveRecord::Base
       like_count: self.like_count,
       comment_count: self.comment_count,
       last_active: self.last_active,
-      source: "dummy" }
+      user_score: self.user_score}
   end
 
   def self.response_snapbies(snapbies)

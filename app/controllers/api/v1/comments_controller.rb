@@ -11,7 +11,7 @@ class Api::V1::CommentsController < Api::V1::ApiController
 
     if comment.save
       snapby = Snapby.find(params[:snapby_id])
-      snapby.update_attributes(comment_count: snapby.comment_count + 1, last_active: time_now)
+      snapby.update_attributes(comment_count: snapby.comment_count + 1, last_active: Time.now)
       render json: { result: { comments: snapby.comments.reverse } }, status: 201
     else 
       render json: { errors: { internal: comment.errors } }, :status => 500

@@ -24,7 +24,6 @@ class Api::V1::SnapbiesController < Api::V1::ApiController
     snapby.avatar = StringIO.new(Base64.decode64(params[:avatar]))
 
     if snapby.save
-      # update snapby_count
       snapbyer.update_attributes(snapby_count: snapbyer.snapbies.where("removed = 0").count)
 
       render json: { result: { snapby: snapby.response_snapby } }, status: 201
