@@ -1,4 +1,4 @@
-class UpdateUsername
+class UpdateUsernameWorker
   include Sidekiq::Worker
 
   def perform(user_id)
