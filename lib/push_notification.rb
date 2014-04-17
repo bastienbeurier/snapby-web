@@ -1,5 +1,5 @@
 module PushNotification
-  def self.notify_new_snapby(snapby, user_ids, follower_ids)
+  def self.notify_new_snapby(snapby, user_ids)
     notified_user_ids = []
 
     user_ids.each do |user_id|

@@ -10,8 +10,7 @@ class Api::V1::SnapbiesController < Api::V1::ApiController
 
     params[:source] = "native"
     params[:user_id] = current_user.id
-
-    # params[:user_score] = current_user.liked_snapbies
+    params[:user_score] = current_user.liked_snapbies
 
     snapby = Snapby.new(snapby_params)
 
