@@ -18,7 +18,7 @@ class Api::V1::LikesController < Api::V1::ApiController
     
     if like.save
       # update counter in snapby
-      snapby.update_attributes(like_count: snapby.like_count + 1)
+      snapby.update_attributes(like_count: snapby.like_count + 1, last_active: Time.now)
 
       snapbyer = User.find(snapby.user_id)
       snapbyer.update_attributes(liked_snapbies: snapbyer.liked_snapbies + 1)

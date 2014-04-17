@@ -33,7 +33,6 @@ SnapbyApp::Application.routes.draw do
       post "users/get_user_info" => "users#get_user_info"
       get "users/my_likes" => "users#my_likes"
       post "users/my_likes" => "users#my_likes"
-      get "snapbies/local_snapbies" => "snapbies#local_snapbies"
       get "local_snapbies_count" => "snapbies#local_snapbies_count"
     end
   end

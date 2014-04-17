@@ -14,6 +14,7 @@ class Api::V1::SnapbiesController < Api::V1::ApiController
     snapby = Snapby.new(snapby_params)
 
     snapby.anonymous = params[:anonymous] == "1"
+    snapby.last_active = Time.now
 
     snapby.avatar = StringIO.new(Base64.decode64(params[:avatar]))
 
@@ -45,12 +46,15 @@ class Api::V1::SnapbiesController < Api::V1::ApiController
 
   #Retrieve snapbies within a zone (bouding box)
   def bound_box_snapbies
+    per_page = params[:page_size] ? params[:page_size] : 20
+    page = params[:page] ? params[:page] : 1
+
     snapbies = []
     
     if Rails.env.development?
-      snapbies = Snapby.where("removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).limit(10).order("created_at DESC")
+      snapbies = Snapby.where("removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).order("last_active DESC").paginate(page: page, per_page: per_page)
     else
-      snapbies = Snapby.where("removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).limit(10).order("created_at DESC")
+      snapbies = Snapby.where("removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).order("last_active DESC").paginate(page: page, per_page: per_page)
     end
 
     snapbies.each do |snapby|
@@ -71,27 +75,6 @@ class Api::V1::SnapbiesController < Api::V1::ApiController
     end
 
     render json: { result: { snapbies_count: snapbies_count } }, status: 200
-  end
-
-  def local_snapbies
-    per_page = params[:page_size] ? params[:page_size] : 20
-    page = params[:page] ? params[:page] : 1
-
-    snapbies = []
-
-    if Rails.env.development?
-      snapbies = Snapby.where("removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).paginate(page: page, per_page: per_page).order("created_at DESC")
-    else
-      snapbies = Snapby.where("removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).paginate(page: page, per_page: per_page).order("created_at DESC")
-    end
-
-    snapbies.each do |snapby|
-      if snapby.anonymous
-        snapby.username = ANONYMOUS_USERNAME
-      end
-    end
-
-    render json: { result: { snapbies: Snapby.response_snapbies(snapbies), page: page } }, status: 200
   end
 
   # Remove snapby (for the snapbyer only)
