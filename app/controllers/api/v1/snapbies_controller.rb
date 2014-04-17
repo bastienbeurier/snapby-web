@@ -16,9 +16,9 @@ class Api::V1::SnapbiesController < Api::V1::ApiController
     snapby.anonymous = params[:anonymous] == "1"
     snapby.last_active = Time.now
 
-    unless snapby.anonymous
-      snapby.user_score = current_user.liked_snapbies
-    end
+    # unless snapby.anonymous
+    #   snapby.user_score = current_user.liked_snapbies
+    # end
 
     snapby.avatar = StringIO.new(Base64.decode64(params[:avatar]))
 
