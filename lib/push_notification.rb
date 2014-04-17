@@ -45,7 +45,7 @@ module PushNotification
 
     #Send notification to snapbyer if he is not the current commenter
     if (comment.snapbyer_id != comment.commenter_id)
-      message_snapbyer = 'New comment from ' + comment.commenter_username + ' on your snapby'
+      message_snapbyer = 'New comment on your snapby'
       send_notifications([comment.snapbyer_id], message_snapbyer, android_extra, ios_extra)
     end
   end
