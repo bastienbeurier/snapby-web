@@ -98,9 +98,9 @@ class Api::V1::SnapbiesController < Api::V1::ApiController
     snapbies = []
 
     if Rails.env.development?
-      snapbies = User.find(params[:user_id]).snapbies.where("removed = 0").paginate(page: page, per_page: per_page).order('id DESC')
+      snapbies = User.find(params[:user_id]).snapbies.where("removed = 0").order('last_active DESC').paginate(page: page, per_page: per_page)
     else
-      snapbies = User.find(params[:user_id]).snapbies.where("removed = 0").paginate(page: page, per_page: per_page).order('id DESC')
+      snapbies = User.find(params[:user_id]).snapbies.where("removed = 0").order('last_active DESC').paginate(page: page, per_page: per_page)
     end
 
     render json: { result: { snapbies: Snapby.response_snapbies(snapbies) } }, status: 200
