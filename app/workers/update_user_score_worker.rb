@@ -9,5 +9,11 @@ class UpdateUserScoreWorker
     snapbies.each do |snapby|
       snapby.update_attributes(user_score: user.liked_snapbies)
     end  
+
+    comments = user.comments
+
+    comments.each do |comment|
+      comment.update_attributes(commenter_score: user.liked_snapbies)
+    end
   end
 end

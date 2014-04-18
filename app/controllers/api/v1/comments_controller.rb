@@ -6,6 +6,7 @@ class Api::V1::CommentsController < Api::V1::ApiController
 
     params[:commenter_id] = current_user.id
     params[:commenter_username] = current_user.username
+    params[:commenter_score] = current_user.liked_snapbies
 
     comment = Comment.new(comment_params)
 
@@ -36,7 +37,7 @@ class Api::V1::CommentsController < Api::V1::ApiController
 private
 
   def comment_params
-    params.permit(:snapby_id, :snapbyer_id, :description, :commenter_id, :commenter_username, :lat, :lng)
+    params.permit(:snapby_id, :snapbyer_id, :description, :commenter_id, :commenter_username, :lat, :lng, :commenter_score)
   end 
 
 end
