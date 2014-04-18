@@ -60,7 +60,7 @@ class Api::V1::SnapbiesController < Api::V1::ApiController
         snapby.username = ANONYMOUS_USERNAME
       end
     end
-    render json: { result: { snapbies: Snapby.response_snapbies(snapbies) } }, status: 200
+    render json: { result: { snapbies: Snapby.response_snapbies(snapbies), page: page } }, status: 200
   end
 
   def local_snapbies_count
