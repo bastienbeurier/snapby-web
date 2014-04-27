@@ -25,14 +25,14 @@ class Snapby < ActiveRecord::Base
   #Interpolation for snapby and user collides because attachment has the same name :avatar
   Paperclip.interpolates :file_name do |attachment, style|
     if attachment.instance.class.to_s == "Snapby"
-      "image_#{attachment.instance.id.to_s}--400"
+      "image_" + attachment.instance.id.to_s
     else 
       "profile_" + attachment.instance.id.to_s
     end
   end
 
   # This method associates the attribute ":avatar" with a file attachment
-  has_attached_file :avatar, styles: { small: '145x220#' }, path: ":style/:file_name"
+  has_attached_file :avatar, styles: { small: '290x440#' }, path: ":style/:file_name"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   def response_snapby

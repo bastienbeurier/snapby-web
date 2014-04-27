@@ -49,11 +49,7 @@ class Api::V1::SnapbiesController < Api::V1::ApiController
 
     snapbies = []
     
-    if Rails.env.development?
-      snapbies = Snapby.where("removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).order("last_active DESC").paginate(page: page, per_page: per_page)
-    else
-      snapbies = Snapby.where("removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).order("last_active DESC").paginate(page: page, per_page: per_page)
-    end
+    snapbies = Snapby.where("removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).order("last_active DESC").paginate(page: page, per_page: per_page)
 
     snapbies.each do |snapby|
       if snapby.anonymous
@@ -66,11 +62,7 @@ class Api::V1::SnapbiesController < Api::V1::ApiController
   def local_snapbies_count
     snapbies_count = 0
 
-    if Rails.env.development?
-      snapbies_count = Snapby.where("removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).count
-    else
-      snapbies_count = Snapby.where("removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).count
-    end
+    snapbies_count = Snapby.where("removed = 0").in_bounds([[params[:swLat], params[:swLng]], [params[:neLat], params[:neLng]]]).count
 
     render json: { result: { snapbies_count: snapbies_count } }, status: 200
   end
@@ -95,11 +87,7 @@ class Api::V1::SnapbiesController < Api::V1::ApiController
 
     snapbies = []
 
-    if Rails.env.development?
-      snapbies = User.find(params[:user_id]).snapbies.where("removed = 0").order('last_active DESC').paginate(page: page, per_page: per_page)
-    else
-      snapbies = User.find(params[:user_id]).snapbies.where("removed = 0").order('last_active DESC').paginate(page: page, per_page: per_page)
-    end
+    snapbies = User.find(params[:user_id]).snapbies.where("removed = 0").order('last_active DESC').paginate(page: page, per_page: per_page)
 
     render json: { result: { snapbies: Snapby.response_snapbies(snapbies) } }, status: 200
   end
