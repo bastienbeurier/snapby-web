@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   #Interpolation for snapby and user collides because attachment has the same name :avatar
   Paperclip.interpolates :file_name do |attachment, style|
     if attachment.instance.class.to_s == "Snapby"
-      "image_#{attachment.instance.id.to_s}--400"
+      "image_#{attachment.instance.id.to_s}"
     else 
       "profile_" + attachment.instance.id.to_s
     end

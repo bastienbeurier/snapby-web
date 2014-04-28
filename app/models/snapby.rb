@@ -32,7 +32,7 @@ class Snapby < ActiveRecord::Base
   end
 
   # This method associates the attribute ":avatar" with a file attachment
-  has_attached_file :avatar, styles: { small: '266x400#' }, path: ":style/:file_name"
+  has_attached_file :avatar, styles: { small: '200x300#' }, path: ":style/:file_name"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   def response_snapby
