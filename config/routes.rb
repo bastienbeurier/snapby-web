@@ -31,8 +31,8 @@ SnapbyApp::Application.routes.draw do
       patch  "snapbies/remove" => "snapbies#remove"
       post "likes/delete" => "likes#destroy"
       post "users/get_user_info" => "users#get_user_info"
-      get "users/my_likes" => "users#my_likes"
-      post "users/my_likes" => "users#my_likes"
+      get "users/my_likes_and_comments" => "users#my_likes_and_comments"
+      post "users/my_likes_and_comments" => "users#my_likes_and_comments"
       get "local_snapbies_count" => "snapbies#local_snapbies_count"
     end
   end

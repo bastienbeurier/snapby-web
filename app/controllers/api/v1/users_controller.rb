@@ -43,9 +43,10 @@ class Api::V1::UsersController < Api::V1::ApiController
     end
   end
 
-  def my_likes
-    user_likes = Like.where("liker_id = :current_user_id", {current_user_id: current_user.id})
-    render json: { result: { likes: user_likes.collect(&:snapby_id) } }, status: 201  
+  def my_likes_and_comments
+    user_likes = Like.where("liker_id = :current_user_id", {current_user_id: current_user.id}).pluck(:snapby_id)
+    user_comments =  Comment.where("commenter_id = :current_user_id", {current_user_id: current_user.id}).pluck(:snapby_id).uniq
+    render json: { result: { likes: user_likes, comments: user_comments } }, status: 201  
   end
 
 
