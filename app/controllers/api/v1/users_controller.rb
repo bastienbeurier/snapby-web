@@ -45,13 +45,13 @@ class Api::V1::UsersController < Api::V1::ApiController
 
   def my_likes
     user_likes = Like.where("liker_id = :current_user_id", {current_user_id: current_user.id})
-    render json: { result: { likes: user_likes } }, status: 201  
+    render json: { result: { likes: user_likes.collect(&:snapby_id) } }, status: 201  
   end
 
 
   def facebook_create_or_update
  
-    user = User.find_by_email(params[:email])
+    user = User.find_by_email(params[:email]) 
     
     if user
       is_signup = false
