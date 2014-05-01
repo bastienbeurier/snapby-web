@@ -59,6 +59,21 @@ class Api::V1::SnapbiesController < Api::V1::ApiController
     render json: { result: { snapbies: Snapby.response_snapbies(snapbies), page: page } }, status: 200
   end
 
+  def local_snapbies
+    per_page = params[:page_size] ? params[:page_size] : 20
+    page = params[:page] ? params[:page] : 1
+    
+    snapbies = Snapby.where("removed = 0").within(5, units: :kms, origin: [params[:lat], params[:lng]]).order("last_active DESC").paginate(page: page, per_page: per_page)
+
+    snapbies.each do |snapby|
+      if snapby.anonymous
+        snapby.username = ANONYMOUS_USERNAME
+      end
+    end
+
+    render json: { result: { snapbies: Snapby.response_snapbies(snapbies), page: page } }, status: 200
+  end
+
   def local_snapbies_count
     snapbies_count = 0
 
