@@ -4,7 +4,11 @@ class CreateSnapbyActivitiesAndNotificationsWorker
   def perform(snapby_id)
     snapby = Snapby.find(snapby_id)
 
-    nearby_users = User.select([:id]).within(NOTIFICATION_RADIUS , :origin => [snapby.lat, snapby.lng]).where("id != :snapby_user_id", {snapby_user_id: snapby.user_id})
+    if Rails.env.development?
+      nearby_users = User.select([:id]).within(NOTIFICATION_RADIUS , :origin => [snapby.lat, snapby.lng])
+    else
+      nearby_users = User.select([:id]).within(NOTIFICATION_RADIUS , :origin => [snapby.lat, snapby.lng]).where("id != :snapby_user_id", {snapby_user_id: snapby.user_id})
+    end
 
     nearby_user_ids = nearby_users.collect(&:id)
 
