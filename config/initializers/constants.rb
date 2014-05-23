@@ -28,3 +28,4 @@ ANONYMOUS_USERNAME = "Anonymous"
 
 PROFILE_PICTURE_BUCKET_PROD = "snapby_profile_pics"
 PROFILE_PICTURE_BUCKET_DEV = "snapby_profile_pics_dev"
+HEADBLEND_BUCKET = "headblend_pictures"

@@ -1,6 +1,6 @@
 class Api::V1::SnapbiesController < Api::V1::ApiController
   include ApplicationHelper
-  skip_before_filter :authenticate_user!, :only => [:show, :bound_box_snapbies, :get_snapby_meta_data, :local_snapbies_count]
+  skip_before_filter :authenticate_user!, :only => [:show, :bound_box_snapbies, :get_snapby_meta_data, :local_snapbies_count, :headblend]
 
   #Create a snapby
   def create
@@ -107,8 +107,13 @@ class Api::V1::SnapbiesController < Api::V1::ApiController
     render json: { result: { snapbies: Snapby.response_snapbies(snapbies) } }, status: 200
   end
 
-private 
+  def headblend
+    headblend = Headblend.new
+    headblend.avatar = StringIO.new(Base64.decode64(params[:headblend]))  
+    headblend.save
+  end
 
+private 
   def snapby_params
     params.permit(:lat, :lng, :username, :source, :user_id, :user_score)
   end
